@@ -11,6 +11,5 @@ function App(): ReactElement {
     </div>
   );
 }
-//
 
 export default App;
