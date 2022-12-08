@@ -17,6 +17,10 @@ module.exports = {
           light: "#8695A4",
         },
       },
+      spacing: { 17.5: "70px" },
+      maxWidth: {
+        450: "1800px",
+      },
     },
   },
   plugins: [],
