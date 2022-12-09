@@ -1,0 +1,5 @@
+export enum ButtonVariants {
+  PRIMARY = "PRIMARY",
+  SIMPLE_SECONDARY = "SIMPLE_SECONDARY",
+  DISABLED = "DISABLED",
+}
