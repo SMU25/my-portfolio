@@ -7,7 +7,7 @@ interface Props {
   children: ReactNode;
   variant?: ButtonVariants;
   className?: string;
-  onClick: VoidFunction;
+  onClick?: VoidFunction;
 }
 
 export const Button: FC<Props> = ({
@@ -18,7 +18,7 @@ export const Button: FC<Props> = ({
 }) => (
   <button
     className={cn(
-      "py-3.5 px-5 transition ease-in-out active:translate-y-1 duration-200 active:duration-150 active:brightness-95",
+      "py-3.5 px-5 transition ease-in-out duration-200 active:duration-150",
       BUTTON_VARIANTS_STYLES[variant],
       className
     )}

@@ -15,9 +15,5 @@ export const Heading: FC<Props> = ({
 }) => {
   const Heading = tagHeading;
 
-  return (
-    <Heading className={cn("capitalize text-black-dark font-bold", className)}>
-      {children}
-    </Heading>
-  );
+  return <Heading className={cn("font-bold", className)}>{children}</Heading>;
 };

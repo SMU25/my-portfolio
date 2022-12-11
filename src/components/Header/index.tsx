@@ -5,7 +5,7 @@ import MenuItem from "./MenuItem";
 export const Header = () => {
   return (
     <header>
-      <nav className="flex justify-end items-center max-w-450 mx-auto">
+      <nav className="flex justify-end mr-15">
         <ul className="flex py-7">
           {MENU_ITEMS.map(({ id, name }) => (
             <MenuItem key={id} name={name} />

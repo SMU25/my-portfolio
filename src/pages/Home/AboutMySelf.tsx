@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC } from "react";
 import { Heading } from "src/components/Heading";
 import { TagsHeading } from "src/components/Heading/types";
 import { Button } from "src/components/Button";
@@ -15,11 +15,11 @@ const PROFILE_IMG = {
   ALT: "Image of Oleksandr Myronchuk",
 };
 
-export const AboutMySelf = () => (
+export const AboutMySelf: FC = () => (
   <div className="flex justify-center items-start">
     <div className="max-w-118 w-full">
       <Heading
-        className="mt-4.5 text-44 leading-15"
+        className="mt-4.5 capitalize text-44 leading-15"
         tagHeading={TagsHeading.H2}
       >
         {HEADING}

@@ -5,7 +5,7 @@ import { Header } from "./components/Header";
 
 function App(): ReactElement {
   return (
-    <div className="App">
+    <div className="App text-black-dark">
       <BrowserRouter>
         <Header />
         <AppRoutes />
