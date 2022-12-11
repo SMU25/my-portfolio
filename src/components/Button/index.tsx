@@ -15,13 +15,15 @@ export const Button: FC<Props> = ({
   variant = ButtonVariants.PRIMARY,
   className,
   onClick,
-}) => {
-  return (
-    <button
-      className={cn("py-3.5 px-5", BUTTON_VARIANTS_STYLES[variant], className)}
-      onClick={onClick}
-    >
-      {children}
-    </button>
-  );
-};
+}) => (
+  <button
+    className={cn(
+      "py-3.5 px-5 transition ease-in-out active:translate-y-1 duration-200 active:duration-150 active:brightness-95",
+      BUTTON_VARIANTS_STYLES[variant],
+      className
+    )}
+    onClick={onClick}
+  >
+    {children}
+  </button>
+);

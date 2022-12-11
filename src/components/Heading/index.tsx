@@ -4,19 +4,19 @@ import { TagsHeading } from "./types";
 
 interface Props {
   children: ReactNode;
-  classNames?: string;
+  className?: string;
   tagHeading?: TagsHeading;
 }
 
 export const Heading: FC<Props> = ({
   children,
-  classNames,
+  className,
   tagHeading = TagsHeading.H1,
 }) => {
   const Heading = tagHeading;
 
   return (
-    <Heading className={cn("capitalize text-black-dark font-bold", classNames)}>
+    <Heading className={cn("capitalize text-black-dark font-bold", className)}>
       {children}
     </Heading>
   );
