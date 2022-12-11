@@ -13,12 +13,12 @@ const ROUTES = [
     path: PATHNAMES.HOME,
   },
   {
-    element: <Blog />,
-    path: PATHNAMES.BLOG,
-  },
-  {
     element: <Portfolio />,
     path: PATHNAMES.PORTFOLIO,
+  },
+  {
+    element: <Blog />,
+    path: PATHNAMES.BLOG,
   },
   {
     element: <Contact />,
