@@ -12,7 +12,7 @@ const DOWNLOAD_RESUME_BUTTON_NAME = "Download Resume";
 
 const PROFILE_IMG = {
   SRC: "https://scontent.frwn1-1.fna.fbcdn.net/v/t39.30808-6/228887766_3017452501906851_4381980517078749345_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=WRyaHDw0DPQAX_SdXZB&_nc_oc=AQmq-CASVDCnO9caMxm4tQIZT-WlCdkF0wRCN2wifpdMwMjWUiwfBVUjkvMwxVo4xuI&_nc_ht=scontent.frwn1-1.fna&oh=00_AfCSvSs-_BmhxnWsVYP8604DdbSO0YfaqoQb2Qe2Sca2dA&oe=639A5DF2",
-  ALT: "Image of Oleksandr Myronchuk",
+  ALT_TEXT: "Image of Oleksandr Myronchuk",
 };
 
 export const AboutMySelf: FC = () => (
@@ -25,17 +25,17 @@ export const AboutMySelf: FC = () => (
         {HEADING}
       </Heading>
       <p className="mt-10 leading-6">{DESCRIPTION}</p>
-      <Button
-        className="mt-9.5 capitalize text-xl font-medium"
-        onClick={() => {}} //CHANGE - deleted
-      >
-        {DOWNLOAD_RESUME_BUTTON_NAME}
-      </Button>
+      {/* CHANGE - add constant for name file */}
+      <a href="." download="Resume of Oleksandr Myronchuk.pdf">
+        <Button className="mt-9.5 capitalize text-xl font-medium">
+          {DOWNLOAD_RESUME_BUTTON_NAME}
+        </Button>
+      </a>
     </div>
     <img
       className="w-60.5 h-60.5 ml-28 rounded-full shadow-lining-lighter-blue"
       src={PROFILE_IMG.SRC}
-      alt={PROFILE_IMG.ALT}
+      alt={PROFILE_IMG.ALT_TEXT}
     />
   </div>
 );

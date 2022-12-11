@@ -7,11 +7,12 @@ import { TagsHeading } from "src/components/Heading/types";
 import { CARD_VIEW_VARIANTS_STYLES } from "./constants";
 import { ViewVariants } from "./types";
 
+const DATE_FORMAT = "d MMM yyyy";
 interface Props {
   variant?: ViewVariants;
   title: string;
   dateCreated: Date;
-  role: string;
+  category: string;
   message: string;
 }
 
@@ -19,10 +20,10 @@ export const BlogCard: FC<Props> = ({
   variant = ViewVariants.ROW,
   title,
   dateCreated,
-  role,
+  category,
   message,
 }) => {
-  const date = format(dateCreated, "d MMM yyyy", {
+  const date = format(dateCreated, DATE_FORMAT, {
     locale: uk,
     //CHANGE - add dynamic choose language
   });
@@ -41,10 +42,10 @@ export const BlogCard: FC<Props> = ({
         <span
           className={cn(
             "capitalize border-l border-black-base",
-            classNames.role
+            classNames.category
           )}
         >
-          {role}
+          {category}
         </span>
       </div>
       <p className={cn("leading-6", classNames.message)}>{message}</p>

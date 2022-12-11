@@ -1,5 +1,6 @@
 import { AboutMySelf } from "./AboutMySelf";
 import { RecentPosts } from "./RecentPosts";
+import { FeaturedWorks } from "./FeaturedWorks";
 
 export const SECTIONS = [
   {
@@ -12,9 +13,9 @@ export const SECTIONS = [
     component: RecentPosts,
     className: "bg-blue-lighter pt-2 pb-8",
   },
-  // {
-  //   id: 3,
-  //   component: ,
-  //   className: "",
-  // },
+  {
+    id: 3,
+    component: FeaturedWorks,
+    className: "",
+  },
 ];

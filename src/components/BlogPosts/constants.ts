@@ -7,7 +7,7 @@ export const CARD_VIEW_VARIANTS_STYLES = {
     title: "text-26 font-bold leading-9.5",
     infoContainer: "mt-4.5 text-lg leading-6.5",
     date: "mr-6.5",
-    role: "pl-6.5",
+    category: "pl-6.5",
     message: "mt-3",
   },
 
@@ -16,7 +16,7 @@ export const CARD_VIEW_VARIANTS_STYLES = {
     title: "text-3xl font-medium leading-11",
     infoContainer: "mt-4 text-xl leading-7",
     date: "mr-5",
-    role: "pl-5 text-gray-light",
+    category: "pl-5 text-gray-light",
     message: "mt-4",
   },
 };

@@ -11,14 +11,15 @@ module.exports = {
         blue: {
           lighter: "#EDF7FA",
           light: "#00A8CC",
-        },
-        black: {
-          base: "#000000",
-          dark: "#21243D",
+          darken: "#142850",
         },
         gray: {
           lighter: "#E0E0E0",
           light: "#8695A4",
+        },
+        black: {
+          base: "#000000",
+          dark: "#21243D",
         },
       },
       fontSize: {
@@ -34,6 +35,7 @@ module.exports = {
       },
       spacing: {
         4.5: "18px",
+        5.5: "22px",
         6.5: "26px",
         9.5: "38px",
         15: "60px",

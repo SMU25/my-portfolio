@@ -1,16 +1,22 @@
 import React, { FC } from "react";
-import { Link, useLocation } from "react-router-dom";
 import cn from "classnames";
+import { Link, useLocation } from "react-router-dom";
+import { PATHNAMES } from "src/constants/routes";
+
+const HOMEPAGE_NAME = "home";
+
+const getMenuPathname = (path: string) => `/${path}`;
 
 interface Props {
   name: string;
 }
 
-const getMenuPathname = (path: string) => `/${path}`;
-
 const MenuItem: FC<Props> = ({ name }) => {
   const { pathname } = useLocation();
-  const isActiveLink = pathname.includes(name);
+
+  const path = name === HOMEPAGE_NAME ? PATHNAMES.HOME : getMenuPathname(name);
+
+  const isActiveLink = pathname === path;
 
   return (
     <Link
@@ -20,7 +26,7 @@ const MenuItem: FC<Props> = ({ name }) => {
           "text-red-light": isActiveLink,
         }
       )}
-      to={getMenuPathname(name)}
+      to={path}
     >
       <li className="capitalize text-sm font-medium leading-7">{name}</li>
     </Link>
