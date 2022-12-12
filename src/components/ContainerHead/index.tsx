@@ -29,13 +29,13 @@ export const ContainerHead: FC<Props> = ({
   return (
     <div className="flex justify-between items-baseline">
       <Heading
-        className={cn("text-22 leading-15", titleClassName)}
+        className={cn("max-w-1/2 text-22 leading-15 truncate", titleClassName)}
         tagHeading={TagsHeading.H2}
       >
         {title}
       </Heading>
       {href && (
-        <Link to={href}>
+        <Link to={href} className="max-w-1/2 ml-10">
           <Button variant={ButtonVariants.SIMPLE_SECONDARY}>{label}</Button>
         </Link>
       )}

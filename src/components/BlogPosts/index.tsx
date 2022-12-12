@@ -20,7 +20,7 @@ export const BlogPosts: FC<Props> = ({ variant, maxCountPosts }) => {
       })}
     >
       {/* CHANGE */}
-      {[1, 2, 3, 4].map((item) => (
+      {[1, 2, 3].map((item) => (
         <BlogCard
           key={item}
           title="Making a design system from scratch"

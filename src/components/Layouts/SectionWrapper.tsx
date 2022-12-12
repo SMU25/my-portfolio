@@ -8,6 +8,6 @@ interface Props {
 
 export const SectionWrapper: FC<Props> = ({ children, className }) => (
   <section className={cn("px-20", className)}>
-    <div className="max-w-406 w-full mx-auto">{children}</div>
+    <div className="max-w-323.5 w-full mx-auto">{children}</div>
   </section>
 );

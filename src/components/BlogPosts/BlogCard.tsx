@@ -35,7 +35,7 @@ export const BlogCard: FC<Props> = ({
       <Heading className={classNames.title} tagHeading={TagsHeading.H4}>
         {title}
       </Heading>
-      <div className={classNames.infoContainer}>
+      <div className={cn("truncate", classNames.infoContainer)}>
         <time className={classNames.date} dateTime={date}>
           {date}
         </time>

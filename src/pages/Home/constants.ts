@@ -16,6 +16,6 @@ export const SECTIONS = [
   {
     id: 3,
     component: FeaturedWorks,
-    className: "",
+    className: "pt-4 pb-21",
   },
 ];

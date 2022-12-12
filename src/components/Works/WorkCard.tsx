@@ -1,4 +1,5 @@
 import React, { FC } from "react";
+import cn from "classnames";
 import format from "date-fns/format";
 import { Heading } from "src/components/Heading";
 import { TagsHeading } from "src/components/Heading/types";
@@ -12,6 +13,7 @@ const WORK_IMG_SIZE = {
 };
 
 interface Props {
+  className?: string;
   imageUrl: string;
   title: string;
   dateCreated: Date;
@@ -20,6 +22,7 @@ interface Props {
 }
 
 export const WorkCard: FC<Props> = ({
+  className,
   imageUrl,
   title,
   dateCreated,
@@ -29,7 +32,7 @@ export const WorkCard: FC<Props> = ({
   const date = format(dateCreated, DATE_FORMAT);
 
   return (
-    <div className="flex py-8 border-b border-gray-lighter">
+    <div className={cn("flex py-8 border-b border-gray-lighter", className)}>
       <img
         className="rounded-md"
         src={imageUrl}
@@ -44,11 +47,13 @@ export const WorkCard: FC<Props> = ({
         >
           {title}
         </Heading>
-        <div className="flex items-baseline mt-4 leading-6.5">
+        <div className="flex items-center mt-4 leading-6.5">
           <MarkLabel>
             <time dateTime={date}>{date}</time>
           </MarkLabel>
-          <span className="ml-6.5 text-gray-light text-xl">{category}</span>
+          <span className="ml-6.5 text-gray-light text-xl break-all">
+            {category}
+          </span>
         </div>
         <p className="mt-5.5 leading-6">{description}</p>
       </div>
