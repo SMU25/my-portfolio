@@ -36,7 +36,7 @@ export const BlogCard: FC<Props> = ({
         {title}
       </Heading>
       <div className={cn("truncate", classNames.infoContainer)}>
-        <time className={classNames.date} dateTime={date}>
+        <time className={cn("font-medium", classNames.date)} dateTime={date}>
           {date}
         </time>
         <span

@@ -29,8 +29,11 @@ export const ContainerHead: FC<Props> = ({
   return (
     <div className="flex justify-between items-baseline">
       <Heading
-        className={cn("max-w-1/2 text-22 leading-15 truncate", titleClassName)}
-        tagHeading={TagsHeading.H2}
+        className={cn(
+          "max-w-1/2 text-22 font-medium leading-15 truncate",
+          titleClassName
+        )}
+        tagHeading={TagsHeading.H3}
       >
         {title}
       </Heading>

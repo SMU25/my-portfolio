@@ -18,7 +18,7 @@ export const Button: FC<Props> = ({
 }) => (
   <button
     className={cn(
-      "max-w-full px-5 truncate transition ease-in-out duration-200 active:duration-150",
+      "max-w-full truncate transition ease-in-out duration-200 active:duration-150",
       BUTTON_VARIANTS_STYLES[variant],
       className
     )}

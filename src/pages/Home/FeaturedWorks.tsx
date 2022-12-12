@@ -1,5 +1,5 @@
 import React from "react";
-import { ContainerHead } from "src/components/ContainerHead";
+import { ContainerHead } from "src/components/Layouts/ContainerHead";
 import { Works } from "src/components/Works";
 import { PATHNAMES } from "src/constants/routes";
 

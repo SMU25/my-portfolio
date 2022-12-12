@@ -32,6 +32,7 @@ module.exports = {
         11: "44px",
         9.5: "38px",
         15: "60px",
+        17: "68px",
       },
       spacing: {
         4.5: "18px",
@@ -46,16 +47,41 @@ module.exports = {
         21: "84px",
         35: "140px",
         60.5: "242px",
+        112.5: "450px",
       },
       maxWidth: {
+        72.5: "290px",
+        92: "368px",
+        95: "380px",
         104.5: "418px",
         118: "472px",
+        150: "600px",
+        161: "644px",
+        195: "780px",
+        214: "856px",
         323.5: "1294px",
         "1/2": "50%",
+      },
+      maxHeight: {
+        25.5: "102px",
       },
       boxShadow: {
         "lining-lighter-blue": "-5px 10px 0px 5px rgba(237,247,250,1);",
         "light-white": "0px 4px 10px rgba(187, 225, 250, 0.25);",
+      },
+      screens: {
+        // xs: "",
+        // s
+        //
+        // sm: "",
+        // m, ml
+        default: "0px",
+        xs: "538px", //maybe CHANGE
+        sm: "720px",
+        md: "900px",
+        lg: "1076px",
+        gl: "1300px",
+        xl: "1614px",
       },
     },
   },

@@ -3,12 +3,12 @@ import { ViewVariants } from "./types";
 export const CARD_VIEW_VARIANTS_STYLES = {
   [ViewVariants.ROW]: {
     container:
-      "max-w-104.5 bg-white ml-5 first:ml-0 p-6 pb-2 shadow-light-white rounded",
-    title: "text-26 font-bold leading-9.5",
-    infoContainer: "mt-4.5 text-lg leading-6.5",
-    date: "mr-6.5",
-    category: "pl-6.5",
-    message: "mt-3",
+      "max-w-72.5 md:max-w-95 lg:max-w-104.5 bg-white ml-5 first:ml-0 p-6 pb-2 shadow-light-white rounded",
+    title: "text-xl md:text-26 font-bold leading-6.5 md:leading-9.5",
+    infoContainer: "mt-2.5 md:mt-4.5 text-sm md:text-lg leading-6.5",
+    date: "mr-3 md:mr-6.5",
+    category: "pl-3 md:pl-6.5 italic",
+    message: "mt-1.5 md:mt-3",
   },
 
   [ViewVariants.COLUMN]: {

@@ -1,8 +1,8 @@
 import React, { FC } from "react";
+import { ContainerHead } from "src/components/Layouts/ContainerHead";
 import { BlogPosts } from "src/components/BlogPosts";
 import { ViewVariants } from "src/components/BlogPosts/types";
 import { PATHNAMES } from "src/constants/routes";
-import { ContainerHead } from "src/components/ContainerHead";
 
 const HEADING = "Recent posts";
 
