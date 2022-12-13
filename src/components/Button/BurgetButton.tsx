@@ -13,19 +13,13 @@ export const BurgetButton: FC<Props> = ({ className, setIsOpen }) => {
   const toggleIsOpen = () => setIsOpen((prev: boolean) => !prev);
 
   return (
-    <div
-      className={cn(
-        "flex flex-col w-7.5 h-full hover:rounded-full hover:bg-black-dark",
-        className
-      )}
+    <button
+      className={cn("hover:rounded-full hover:bg-blue-lighter", className)}
       onClick={toggleIsOpen}
     >
       {ARRAY_NUMBERS.map((item) => (
-        <span
-          key={item}
-          className="absolute w-7.5 w-full h-0.5 bg-black-dark top-5 first:top-2.5 last:top-7.5"
-        />
+        <div key={item} className="w-7.5 h-0.5 bg-black-dark mt-3 first:mt-0" />
       ))}
-    </div>
+    </button>
   );
 };

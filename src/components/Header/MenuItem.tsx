@@ -23,7 +23,7 @@ const MenuItem: FC<Props> = ({ name }) => {
       className={cn(
         "sm:ml-8 px-2.5 sm:px-0 first:ml-0 transition ease-in-out duration-150 hover:scale-110",
         {
-          "text-red-light": isActiveLink,
+          "text-red-primary": isActiveLink,
         }
       )}
       to={path}
