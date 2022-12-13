@@ -3,7 +3,8 @@ import { ViewVariants } from "./types";
 export const CARD_VIEW_VARIANTS_STYLES = {
   [ViewVariants.ROW]: {
     container:
-      "max-w-72.5 md:max-w-95 lg:max-w-104.5 bg-white ml-5 first:ml-0 p-6 pb-2 shadow-light-white rounded",
+      "sm:max-w-72.5 md:max-w-95 lg:max-w-104.5 bg-white mb-5 sm:ml-5 first:ml-0 pt-3 sm:pt-6 px-5 sm:px-6 pb-3 sm:pb-5 shadow-light-white rounded",
+    // sm:even:ml-5 xl:ml-5 CHANGE - del
     title: "text-xl md:text-26 font-bold leading-6.5 md:leading-9.5",
     infoContainer: "mt-2.5 md:mt-4.5 text-sm md:text-lg leading-6.5",
     date: "mr-3 md:mr-6.5",

@@ -16,11 +16,11 @@ export const BlogPosts: FC<Props> = ({ variant, maxCountPosts }) => {
   return (
     <div
       className={cn({
-        flex: ViewVariants.ROW === activeVariant,
+        "flex flex-wrap": ViewVariants.ROW === activeVariant,
       })}
     >
       {/* CHANGE */}
-      {[1, 2].map((item) => (
+      {[1, 2, 3, 4, 5].map((item, index) => (
         <BlogCard
           key={item}
           title="Making a design system from scratch"

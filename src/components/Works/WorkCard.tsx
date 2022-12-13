@@ -40,15 +40,20 @@ export const WorkCard: FC<Props> = ({
   );
 
   return (
-    <div className={cn("flex py-8 border-b border-gray-lighter", className)}>
+    <div
+      className={cn(
+        "flex flex-col sm:flex-row py-4.5 sm:py-8 border-b border-gray-lighter",
+        className
+      )}
+    >
       <img
-        className="self-start rounded-md"
+        className="w-full sm:max-w-61.5 sm:self-start rounded-md"
         src={imageUrl}
         width={WORK_IMG_SIZE.WIDTH}
         height={WORK_IMG_SIZE.HEIGHT}
         alt={title}
       />
-      <div className="ml-4.5">
+      <div className="mt-4.5 sm:mt-0 sm:ml-4.5">
         <Heading
           className="text-2xl md:text-3xl font-bold leading-8 md:leading-11"
           tagHeading={TagsHeading.H4}
@@ -63,7 +68,7 @@ export const WorkCard: FC<Props> = ({
             {category}
           </span>
         </div>
-        <p className="max-h-25.5 mt-2 md:mt-5.5 leading-6 text-clip overflow-hidden">
+        <p className="max-h-25.5 mt-6 sm:mt-2 md:mt-5.5 leading-6 overflow-hidden">
           {truncatedDescription}
         </p>
       </div>

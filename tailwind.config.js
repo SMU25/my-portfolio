@@ -38,6 +38,8 @@ module.exports = {
         4.5: "18px",
         5.5: "22px",
         6.5: "26px",
+        7.5: "30px",
+        8.5: "34px",
         9.5: "38px",
         12.5: "50px",
         13.5: "54px",
@@ -46,11 +48,15 @@ module.exports = {
         17.5: "70px",
         21: "84px",
         35: "140px",
+        37.5: "150px",
+        45: "180px",
         60.5: "242px",
         112.5: "450px",
       },
       maxWidth: {
+        61.5: "246px",
         72.5: "290px",
+        88.5: "354px",
         92: "368px",
         95: "380px",
         104.5: "418px",
@@ -65,18 +71,16 @@ module.exports = {
       maxHeight: {
         25.5: "102px",
       },
+      height: {
+        "screen-1/2": "50vh",
+      },
       boxShadow: {
         "lining-lighter-blue": "-5px 10px 0px 5px rgba(237,247,250,1);",
         "light-white": "0px 4px 10px rgba(187, 225, 250, 0.25);",
       },
       screens: {
-        // xs: "",
-        // s
-        //
-        // sm: "",
-        // m, ml
         default: "0px",
-        xs: "538px", //maybe CHANGE
+        xs: "450px",
         sm: "720px",
         md: "900px",
         lg: "1076px",

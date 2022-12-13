@@ -21,14 +21,16 @@ const MenuItem: FC<Props> = ({ name }) => {
   return (
     <Link
       className={cn(
-        "ml-8 first:ml-0 transition ease-in-out duration-150 hover:scale-110",
+        "sm:ml-8 px-2.5 sm:px-0 first:ml-0 transition ease-in-out duration-150 hover:scale-110",
         {
           "text-red-light": isActiveLink,
         }
       )}
       to={path}
     >
-      <li className="capitalize text-sm font-medium leading-7">{name}</li>
+      <li className="capitalize text-center sm:text-left text-sm font-medium leading-7">
+        {name}
+      </li>
     </Link>
   );
 };

@@ -2,6 +2,7 @@ import React from "react";
 import { WorkCard } from "./WorkCard";
 
 export const Works = () => {
+  //CHANGE - del return лишні
   return (
     <div>
       {[1, 2, 3, 4].map((item) => (

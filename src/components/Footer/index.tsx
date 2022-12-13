@@ -2,7 +2,7 @@ import React, { FC } from "react";
 import { Sprite } from "src/components/Sprite";
 import { SPRITE_ITEMS } from "./constants";
 
-const INFO_TEXT = "Copyright by Oleksandr Myronchuk ©2022 All rights reserved ";
+const INFO_TEXT = "©2022 Copyright by Oleksandr Myronchuk";
 
 export const Footer: FC = () => (
   <footer>

@@ -30,7 +30,7 @@ export const ContainerHead: FC<Props> = ({
     <div className="flex justify-between items-baseline">
       <Heading
         className={cn(
-          "max-w-1/2 text-22 font-medium leading-15 truncate",
+          "max-w-1/2 text-lg sm:text-22 font-medium leading-15 truncate",
           titleClassName
         )}
         tagHeading={TagsHeading.H3}
