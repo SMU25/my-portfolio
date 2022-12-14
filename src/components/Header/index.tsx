@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { FC, useState } from "react";
 import cn from "classnames";
-import { MENU_ITEMS } from "./constants";
-import MenuItem from "./MenuItem";
 import { BurgetButton } from "src/components/Button/BurgetButton";
+import MenuItem from "./MenuItem";
+import { MENU_ITEMS } from "./constants";
 
-export const Header = () => {
+export const Header: FC = () => {
   const [isOpenMenu, setIsOpenMenu] = useState<boolean>(false);
 
   return (

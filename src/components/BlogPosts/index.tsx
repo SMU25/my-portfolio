@@ -1,8 +1,8 @@
 import React, { FC } from "react";
 import cn from "classnames";
 import Cookies from "js-cookie";
-import { BlogCard } from "./BlogCard";
 import { POST_TYPE_VIEW } from "src/constants/cookiesKeys";
+import { BlogCard } from "./BlogCard";
 import { ViewVariants } from "./types";
 
 interface Props {
@@ -11,7 +11,7 @@ interface Props {
 }
 
 export const BlogPosts: FC<Props> = ({ variant, maxCountPosts }) => {
-  const activeVariant = Cookies.get(POST_TYPE_VIEW) || variant;
+  const activeVariant = variant || Cookies.get(POST_TYPE_VIEW);
 
   return (
     <div
@@ -20,7 +20,7 @@ export const BlogPosts: FC<Props> = ({ variant, maxCountPosts }) => {
       })}
     >
       {/* CHANGE */}
-      {[1, 2, 3, 4, 5].map((item, index) => (
+      {[1, 2, 3].map((item) => (
         <BlogCard
           key={item}
           title="Making a design system from scratch"

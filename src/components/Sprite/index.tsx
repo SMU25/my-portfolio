@@ -6,12 +6,10 @@ interface Props {
   items: ISpriteItem[];
 }
 
-export const Sprite: FC<Props> = ({ items }) => {
-  return (
-    <ul className="flex">
-      {items.map(({ id, ...item }) => (
-        <SpriteItem key={id} {...item} />
-      ))}
-    </ul>
-  );
-};
+export const Sprite: FC<Props> = ({ items }) => (
+  <ul className="flex">
+    {items.map(({ id, ...item }) => (
+      <SpriteItem key={id} {...item} />
+    ))}
+  </ul>
+);

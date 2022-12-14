@@ -1,5 +1,5 @@
-import cn from "classnames";
 import React, { FC, ReactNode } from "react";
+import cn from "classnames";
 
 interface Props {
   children: ReactNode;
