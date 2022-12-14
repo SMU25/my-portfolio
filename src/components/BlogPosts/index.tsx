@@ -6,16 +6,17 @@ import { BlogCard } from "./BlogCard";
 import { ViewVariants } from "./types";
 
 interface Props {
-  variant: ViewVariants;
+  className?: string;
+  variant?: ViewVariants;
   maxCountPosts?: number;
 }
 
-export const BlogPosts: FC<Props> = ({ variant, maxCountPosts }) => {
+export const BlogPosts: FC<Props> = ({ className, variant, maxCountPosts }) => {
   const activeVariant = variant || Cookies.get(POST_TYPE_VIEW);
 
   return (
     <div
-      className={cn({
+      className={cn(className, {
         "flex flex-wrap": ViewVariants.ROW === activeVariant,
       })}
     >

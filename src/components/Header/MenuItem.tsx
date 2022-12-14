@@ -21,7 +21,7 @@ const MenuItem: FC<Props> = ({ name }) => {
   return (
     <Link
       className={cn(
-        "sm:ml-8 py-1.5 sm:py-0 px-2.5 sm:px-0 first:ml-0 transition ease-in-out duration-150 hover:scale-110",
+        "sm:ml-8 py-3 sm:py-0 px-2.5 sm:px-0 first:ml-0 transition ease-in-out duration-150 hover:scale-110",
         {
           "text-red-primary": isActiveLink,
         }

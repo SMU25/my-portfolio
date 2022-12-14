@@ -1,7 +1,7 @@
-import React from "react";
+import React, { FC } from "react";
 
-const Portfolio = () => {
-  return <div>Portfolio</div>;
+const Portfolio: FC = () => {
+  return <div>:FC</div>;
 };
 
 export default Portfolio;
