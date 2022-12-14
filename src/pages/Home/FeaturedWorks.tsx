@@ -8,6 +8,6 @@ const HEADING = "Featured works";
 export const FeaturedWorks: FC = () => (
   <div>
     <ContainerHead title={HEADING} href={PATHNAMES.PORTFOLIO} />
-    <Works />
+    <Works className="border-t border-gray-lighter" />
   </div>
 );

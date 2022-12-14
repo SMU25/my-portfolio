@@ -3,16 +3,20 @@ import cn from "classnames";
 import Cookies from "js-cookie";
 import { POST_TYPE_VIEW } from "src/constants/cookiesKeys";
 import { BlogCard } from "./BlogCard";
-import { ViewVariants } from "./types";
+import { ViewVariants, IBlogItem } from "./types";
 
 interface Props {
   className?: string;
   variant?: ViewVariants;
+  // items: IBlogItem[];
   maxCountPosts?: number;
 }
 
 export const BlogPosts: FC<Props> = ({ className, variant, maxCountPosts }) => {
   const activeVariant = variant || Cookies.get(POST_TYPE_VIEW);
+
+  //CHANGE - винести цю логіку в редакс
+  const slisedItems = [1, 2, 3, 4, 5].slice(0, maxCountPosts);
 
   return (
     <div
@@ -21,7 +25,7 @@ export const BlogPosts: FC<Props> = ({ className, variant, maxCountPosts }) => {
       })}
     >
       {/* CHANGE */}
-      {[1, 2, 3].map((item) => (
+      {slisedItems.map((item) => (
         <BlogCard
           key={item}
           title="Making a design system from scratch"
