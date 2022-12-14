@@ -5,16 +5,20 @@ const ARRAY_NUMBERS = [1, 2, 3];
 
 interface Props {
   className?: string;
-  setIsOpen: (isOpen: any) => void;
-  //CHANGE - fix any
+  setIsOpen: (isOpen: boolean | ((isOpen: boolean) => void)) => void;
 }
+
+//CHANGE -  burger button bg color
 
 export const BurgetButton: FC<Props> = ({ className, setIsOpen }) => {
   const toggleIsOpen = () => setIsOpen((prev: boolean) => !prev);
 
   return (
     <button
-      className={cn("hover:rounded-full hover:bg-blue-lighter", className)}
+      className={cn(
+        // "hover:bg-blue-lighter rounded-full transition duration-250 active:brightness-95",
+        className
+      )}
       onClick={toggleIsOpen}
     >
       {ARRAY_NUMBERS.map((item) => (
