@@ -1,7 +1,7 @@
-import React from "react";
+import React, { FC } from "react";
 import { WorkCard } from "./WorkCard";
 
-export const Works = () => (
+export const Works: FC = () => (
   <div>
     {[1, 2, 3, 4].map((item) => (
       <WorkCard
