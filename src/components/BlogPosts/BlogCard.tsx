@@ -5,15 +5,11 @@ import { uk } from "date-fns/locale";
 import { Heading } from "src/components/Heading";
 import { TagsHeading } from "src/components/Heading/types";
 import { CARD_VIEW_VARIANTS_STYLES } from "./constants";
-import { ViewVariants } from "./types";
+import { ViewVariants, IBlogItem } from "./types";
 
 const DATE_FORMAT = "d MMM yyyy";
-interface Props {
+interface Props extends IBlogItem {
   variant?: ViewVariants;
-  title: string;
-  dateCreated: Date;
-  category: string;
-  message: string;
 }
 
 export const BlogCard: FC<Props> = ({

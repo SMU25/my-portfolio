@@ -16,7 +16,6 @@ const WORK_IMG_SIZE = {
 };
 
 interface Props {
-  className?: string;
   imageUrl: string;
   title: string;
   dateCreated: Date;
@@ -25,7 +24,6 @@ interface Props {
 }
 
 export const WorkCard: FC<Props> = ({
-  className,
   imageUrl,
   title,
   dateCreated,
@@ -40,12 +38,7 @@ export const WorkCard: FC<Props> = ({
   );
 
   return (
-    <div
-      className={cn(
-        "flex flex-col sm:flex-row py-4.5 sm:py-8 border-b border-gray-lighter",
-        className
-      )}
-    >
+    <div className="flex flex-col sm:flex-row py-4.5 sm:py-8 border-b border-gray-lighter">
       <img
         className="w-full sm:max-w-61.5 sm:self-start rounded-md"
         src={imageUrl}

@@ -3,16 +3,24 @@ import { SectionWrapper } from "src/components/Layouts/SectionWrapper";
 import { ContainerHead } from "src/components/Layouts/ContainerHead";
 import { BlogPosts } from "src/components/BlogPosts";
 import { ViewVariants } from "src/components/BlogPosts/types";
+import {
+  DEFAULT_SECTION_CLASS_NAME,
+  DEFAULT_HEADING_CLASS_NAME,
+  DEFAULT_ITEMS_COMPONENT_CLASS_NAME,
+} from "./constants";
 
 const HEADING = "blog";
 
 const Blog: FC = () => (
-  <SectionWrapper className="pt-22.5 pb-13.5">
+  <SectionWrapper className={DEFAULT_SECTION_CLASS_NAME}>
     <ContainerHead
-      titleClassName="capitalize default:text-3xl sm:text-44"
+      titleClassName={DEFAULT_HEADING_CLASS_NAME}
       title={HEADING}
     />
-    <BlogPosts className="mt-4.5 sm:mt-6" variant={ViewVariants.COLUMN} />
+    <BlogPosts
+      className={DEFAULT_ITEMS_COMPONENT_CLASS_NAME}
+      variant={ViewVariants.COLUMN}
+    />
   </SectionWrapper>
 );
 

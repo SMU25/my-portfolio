@@ -1,12 +1,15 @@
 import React, { FC } from "react";
 import { WorkCard } from "./WorkCard";
 
-export const Works: FC = () => (
-  <div>
+interface Props {
+  className?: string;
+}
+
+export const Works: FC<Props> = ({ className }) => (
+  <div className={className}>
     {[1, 2, 3, 4].map((item) => (
       <WorkCard
         key={item}
-        className="first:border-t"
         imageUrl="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTk4gH5NGHUSQc73A5PzMfaGT4gkkQMepN9Cg&usqp=CAU"
         title="Designing Dashboards"
         dateCreated={new Date()}
