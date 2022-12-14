@@ -1,7 +1,5 @@
-import React from "react";
+import React, { FC } from "react";
 
-const Contact = () => {
-  return <div>Contact</div>;
-};
+const Contact: FC = () => <div>Contact</div>;
 
 export default Contact;

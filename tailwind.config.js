@@ -47,6 +47,7 @@ module.exports = {
         17: "68px",
         17.5: "70px",
         21: "84px",
+        22.5: "90px",
         35: "140px",
         37.5: "150px",
         45: "180px",
@@ -70,9 +71,6 @@ module.exports = {
       },
       maxHeight: {
         25.5: "102px",
-      },
-      height: {
-        "screen-1/2": "50vh",
       },
       boxShadow: {
         "lining-lighter-blue": "-5px 10px 0px 5px rgba(237,247,250,1);",

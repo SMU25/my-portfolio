@@ -17,7 +17,7 @@ export const Header: FC = () => {
         <ul
           className={cn(
             `invisible sm:visible fixed sm:static top-0 left-1/2 -translate-y-full sm:translate-y-0 -translate-x-1/2
-             sm:translate-x-0 flex flex-col items-center sm:flex-row w-full sm:w-auto h-screen-1/2 sm:h-auto bg-white 
+             sm:translate-x-0 flex flex-col items-center sm:flex-row w-full sm:w-auto h-screen sm:h-auto bg-white 
              py-7 opacity-0 sm:opacity-100 transition-all sm:transition-none ease-in-out duration-300`,
             {
               "!visible translate-y-17.5 opacity-100": isOpenMenu,
