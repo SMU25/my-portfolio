@@ -6,16 +6,14 @@ import { ViewVariants } from "src/components/BlogPosts/types";
 
 const HEADING = "blog";
 
-const Blog: FC = () => {
-  return (
-    <SectionWrapper className="pt-22.5 pb-13.5">
-      <ContainerHead
-        titleClassName="capitalize default:text-3xl sm:text-44"
-        title={HEADING}
-      />
-      <BlogPosts className="mt-4.5 sm:mt-6" variant={ViewVariants.COLUMN} />
-    </SectionWrapper>
-  );
-};
+const Blog: FC = () => (
+  <SectionWrapper className="pt-22.5 pb-13.5">
+    <ContainerHead
+      titleClassName="capitalize default:text-3xl sm:text-44"
+      title={HEADING}
+    />
+    <BlogPosts className="mt-4.5 sm:mt-6" variant={ViewVariants.COLUMN} />
+  </SectionWrapper>
+);
 
 export default Blog;
