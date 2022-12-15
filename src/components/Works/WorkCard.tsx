@@ -1,5 +1,4 @@
 import React, { FC } from "react";
-import cn from "classnames";
 import format from "date-fns/format";
 import { Heading } from "src/components/Heading";
 import { TagsHeading } from "src/components/Heading/types";

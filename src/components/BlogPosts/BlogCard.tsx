@@ -8,18 +8,20 @@ import { CARD_VIEW_VARIANTS_STYLES } from "./constants";
 import { ViewVariants, IBlogItem } from "./types";
 
 const DATE_FORMAT = "d MMM yyyy";
-interface Props extends IBlogItem {
+interface Props extends Omit<IBlogItem, "id"> {
   variant?: ViewVariants;
 }
+
+//CHANGE - Додати переводи, підключити редакс і запити отримати, спробувати слайдера самому зробити
 
 export const BlogCard: FC<Props> = ({
   variant = ViewVariants.ROW,
   title,
-  dateCreated,
+  createdAt,
   category,
   message,
 }) => {
-  const date = format(dateCreated, DATE_FORMAT, {
+  const date = format(createdAt, DATE_FORMAT, {
     locale: uk,
     //CHANGE - add dynamic choose language
   });

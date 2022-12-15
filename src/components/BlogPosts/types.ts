@@ -4,8 +4,9 @@ export enum ViewVariants {
 }
 
 export interface IBlogItem {
+  id: string;
   title: string;
   message: string;
   category: string;
-  dateCreated: Date;
+  createdAt: Date;
 }

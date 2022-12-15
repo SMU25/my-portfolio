@@ -12,6 +12,7 @@ import {
 const HEADING = "blog";
 
 const Blog: FC = () => (
+  //CHANGE - Додати до цекці ContainerHead і через флаг контролити чи рендерити його
   <SectionWrapper className={DEFAULT_SECTION_CLASS_NAME}>
     <ContainerHead
       titleClassName={DEFAULT_HEADING_CLASS_NAME}

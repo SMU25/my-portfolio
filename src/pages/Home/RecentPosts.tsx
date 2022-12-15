@@ -9,6 +9,6 @@ const HEADING = "Recent posts";
 export const RecentPosts: FC = () => (
   <div>
     <ContainerHead title={HEADING} href={PATHNAMES.BLOG} />
-    <BlogPosts variant={ViewVariants.ROW} />
+    <BlogPosts variant={ViewVariants.ROW} isSlider />
   </div>
 );

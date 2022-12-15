@@ -1,3 +1,4 @@
+import { SCREEN_BREAKPOINTS } from "src/constants/screenBreakpoints";
 import { ViewVariants } from "./types";
 
 export const CARD_VIEW_VARIANTS_STYLES = {
@@ -20,4 +21,23 @@ export const CARD_VIEW_VARIANTS_STYLES = {
     category: "pl-3.5 sm:pl-5 text-gray-light",
     message: "mt-4",
   },
+};
+
+export const SLIDER_SETTINGS = {
+  slidesToShow: 3,
+  autoplay: true,
+  responsive: [
+    {
+      breakpoint: SCREEN_BREAKPOINTS.XL,
+      settings: {
+        slidesToShow: 2,
+      },
+    },
+    {
+      breakpoint: SCREEN_BREAKPOINTS.SM,
+      settings: {
+        slidesToShow: 1,
+      },
+    },
+  ],
 };
