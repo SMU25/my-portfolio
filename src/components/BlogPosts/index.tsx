@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useMemo } from "react";
 import cn from "classnames";
 import Cookies from "js-cookie";
 import { SlickSlider } from "src/components/Slider";
@@ -11,36 +11,30 @@ import { ViewVariants } from "./types";
 interface Props {
   className?: string;
   variant?: ViewVariants;
-  // items: IBlogItem[];
-  maxCountPosts?: number;
+  items: IPostItem[];
   isSlider?: boolean;
 }
 
 export const BlogPosts: FC<Props> = ({
   className,
   variant,
-  maxCountPosts,
+  items,
   isSlider,
 }) => {
   const activeVariant = variant || Cookies.get(POST_TYPE_VIEW);
 
-  //CHANGE - винести цю логіку в редакс , додати хук для перемикача
-  const slisedItems = [1, 2, 3, 4, 5].slice(0, maxCountPosts);
+  const renderBlogPosts = useMemo(
+    () =>
+      Boolean(items?.length) &&
+      items.map(({ id, ...item }) => (
+        <BlogCard key={id} variant={activeVariant} {...item} />
+      )),
+    [activeVariant, items]
+  );
 
   if (isSlider) {
     return (
-      <SlickSlider settings={SLIDER_SETTINGS}>
-        {slisedItems.map((item) => (
-          <BlogCard
-            key={item}
-            title="Making a design system from scratch"
-            message="Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet."
-            category="Design, design"
-            createdAt={new Date()}
-            variant={activeVariant}
-          />
-        ))}
-      </SlickSlider>
+      <SlickSlider settings={SLIDER_SETTINGS}>{renderBlogPosts}</SlickSlider>
     );
   }
 
@@ -50,17 +44,7 @@ export const BlogPosts: FC<Props> = ({
         "flex flex-wrap": ViewVariants.ROW === activeVariant,
       })}
     >
-      {/* CHANGE */}
-      {slisedItems.map((item) => (
-        <BlogCard
-          key={item}
-          title="Making a design system from scratch"
-          message="Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet."
-          category="Design, design"
-          createdAt={new Date()}
-          variant={activeVariant}
-        />
-      ))}
+      {renderBlogPosts}
     </div>
   );
 };

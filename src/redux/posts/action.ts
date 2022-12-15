@@ -16,7 +16,7 @@ export const getPostsAsync = createAsyncThunk(
   async ({ page = 1, limit = 3 }: ParamsGetPostsAsync, { rejectWithValue }) => {
     try {
       const { data } = await instance.get<IPostItem[]>(
-        `/posts?page=${page}&limit=${limit}`
+        `/posts?sortBy=createdAt&order=desc&page=${page}&limit=${limit}`
       );
 
       return data;
