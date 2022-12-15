@@ -1,8 +1,8 @@
 import React, { FC } from "react";
 import cn from "classnames";
-import { Link } from "react-router-dom";
 import { Heading } from "src/components/Heading";
 import { TagsHeading } from "src/components/Heading/types";
+import { Link } from "src/components/Link";
 import { Button } from "src/components/Button";
 import { ButtonVariants } from "src/components/Button/types";
 
@@ -38,7 +38,7 @@ export const ContainerHead: FC<Props> = ({
         {title}
       </Heading>
       {href && (
-        <Link to={href} className="max-w-1/2 ml-10">
+        <Link href={href} className="max-w-1/2 ml-10">
           <Button variant={ButtonVariants.SIMPLE_SECONDARY}>{label}</Button>
         </Link>
       )}

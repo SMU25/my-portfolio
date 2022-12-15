@@ -11,7 +11,7 @@ interface Props {
 //CHANGE -  burger button bg color
 
 export const BurgetButton: FC<Props> = ({ className, setIsOpen }) => {
-  const toggleIsOpen = () => setIsOpen((prev: boolean) => !prev);
+  const toggleIsOpen: VoidFunction = () => setIsOpen((prev) => !prev);
 
   return (
     <button

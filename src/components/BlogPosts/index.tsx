@@ -3,9 +3,10 @@ import cn from "classnames";
 import Cookies from "js-cookie";
 import { SlickSlider } from "src/components/Slider";
 import { POST_TYPE_VIEW } from "src/constants/cookiesKeys";
+import { IPostItem } from "src/types/post";
 import { BlogCard } from "./BlogCard";
 import { SLIDER_SETTINGS } from "./constants";
-import { ViewVariants, IBlogItem } from "./types";
+import { ViewVariants } from "./types";
 
 interface Props {
   className?: string;
@@ -23,7 +24,7 @@ export const BlogPosts: FC<Props> = ({
 }) => {
   const activeVariant = variant || Cookies.get(POST_TYPE_VIEW);
 
-  //CHANGE - винести цю логіку в редакс
+  //CHANGE - винести цю логіку в редакс , додати хук для перемикача
   const slisedItems = [1, 2, 3, 4, 5].slice(0, maxCountPosts);
 
   if (isSlider) {

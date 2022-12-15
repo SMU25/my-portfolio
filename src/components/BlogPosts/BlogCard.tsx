@@ -4,11 +4,12 @@ import format from "date-fns/format";
 import { uk } from "date-fns/locale";
 import { Heading } from "src/components/Heading";
 import { TagsHeading } from "src/components/Heading/types";
+import { IPostItem } from "src/types/post";
 import { CARD_VIEW_VARIANTS_STYLES } from "./constants";
-import { ViewVariants, IBlogItem } from "./types";
+import { ViewVariants } from "./types";
 
 const DATE_FORMAT = "d MMM yyyy";
-interface Props extends Omit<IBlogItem, "id"> {
+interface Props extends Omit<IPostItem, "id"> {
   variant?: ViewVariants;
 }
 

@@ -1,6 +1,7 @@
 import React, { FC } from "react";
 import cn from "classnames";
-import { Link, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
+import { Link } from "src/components/Link";
 import { PATHNAMES } from "src/constants/routes";
 
 const HOMEPAGE_NAME = "home";
@@ -20,13 +21,13 @@ const MenuItem: FC<Props> = ({ name }) => {
 
   return (
     <Link
+      href={path}
       className={cn(
         "sm:ml-8 py-3 sm:py-0 px-2.5 sm:px-0 first:ml-0 transition ease-in-out duration-150 hover:scale-110",
         {
           "text-red-primary": isActiveLink,
         }
       )}
-      to={path}
     >
       <li className="capitalize text-center sm:text-left text-3xl sm:text-sm font-medium leading-10 sm:leading-7">
         {name}
