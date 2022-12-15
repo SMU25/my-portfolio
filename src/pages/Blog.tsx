@@ -12,7 +12,7 @@ import {
   DEFAULT_ITEMS_COMPONENT_CLASS_NAME,
 } from "./constants";
 
-const POSTS_LIMIT_COUNT = 5;
+const POSTS_LIMIT_MAX_COUNT = 5;
 
 const HEADING = "blog";
 
@@ -20,13 +20,13 @@ const Blog: FC = () => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    dispatch(getPostsAsync({ limit: POSTS_LIMIT_COUNT }));
+    dispatch(getPostsAsync({ limit: POSTS_LIMIT_MAX_COUNT }));
   }, [dispatch]);
 
   const posts = useAppSelector(selectPosts);
 
   return (
-    //CHANGE - Додати до цекці ContainerHead і через флаг контролити чи рендерити його
+    //CHANGE - Додати до цекції ContainerHead і через флаг контролити чи рендерити його
     <SectionWrapper className={DEFAULT_SECTION_CLASS_NAME}>
       <ContainerHead
         titleClassName={DEFAULT_HEADING_CLASS_NAME}

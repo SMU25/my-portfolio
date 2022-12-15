@@ -14,7 +14,7 @@ interface ParamsGetWorksAsync {
 
 export const getWorksAsync = createAsyncThunk(
   `${WORKS_SLICE_NAME}/fetchWorks`,
-  async ({ page = 1, limit = 3 }: ParamsGetWorksAsync, { rejectWithValue }) => {
+  async ({ page = 1, limit }: ParamsGetWorksAsync, { rejectWithValue }) => {
     try {
       const { data } = await instance.get<IWorkItem[]>(
         `/works?page=${page}&limit=${limit}`

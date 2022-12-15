@@ -9,11 +9,11 @@ interface ParamsGetPostsAsync {
   limit?: number;
 }
 
-// CHANGE - add env
+// CHANGE - add env , додати ,щоб параметри функції були не обов'язкові, може просто зробити об'єект ,який я деструктурую в функції
 
 export const getPostsAsync = createAsyncThunk(
   `${POSTS_SLICE_NAME}/fetchPosts`,
-  async ({ page = 1, limit = 3 }: ParamsGetPostsAsync, { rejectWithValue }) => {
+  async ({ page = 1, limit }: ParamsGetPostsAsync, { rejectWithValue }) => {
     try {
       const { data } = await instance.get<IPostItem[]>(
         `/posts?sortBy=createdAt&order=desc&page=${page}&limit=${limit}`

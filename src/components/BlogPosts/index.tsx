@@ -23,14 +23,13 @@ export const BlogPosts: FC<Props> = ({
 }) => {
   const activeVariant = variant || Cookies.get(POST_TYPE_VIEW);
 
-  const renderBlogPosts = useMemo(
-    () =>
-      Boolean(items?.length) &&
-      items.map(({ id, ...item }) => (
+  const renderBlogPosts = useMemo(() => {
+    if (items?.length) {
+      return items.map(({ id, ...item }) => (
         <BlogCard key={id} variant={activeVariant} {...item} />
-      )),
-    [activeVariant, items]
-  );
+      ));
+    }
+  }, [activeVariant, items]);
 
   if (isSlider) {
     return (
