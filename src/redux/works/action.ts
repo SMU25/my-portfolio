@@ -17,7 +17,7 @@ export const getWorksAsync = createAsyncThunk(
   async ({ page = 1, limit }: ParamsGetWorksAsync, { rejectWithValue }) => {
     try {
       const { data } = await instance.get<IWorkItem[]>(
-        `/works?page=${page}&limit=${limit}`
+        `/portfolio?page=${page}&limit=${limit}`
       );
 
       return data;

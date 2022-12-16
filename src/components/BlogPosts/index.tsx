@@ -1,11 +1,11 @@
 import React, { FC, useMemo } from "react";
 import cn from "classnames";
 import Cookies from "js-cookie";
-import { SlickSlider } from "src/components/Slider";
+// import { SlickSlider } from "src/components/Slider";
 import { POST_TYPE_VIEW } from "src/constants/cookiesKeys";
 import { IPostItem } from "src/types/post";
 import { BlogCard } from "./BlogCard";
-import { SLIDER_SETTINGS } from "./constants";
+// import { SLIDER_SETTINGS } from "./constants";
 import { ViewVariants } from "./types";
 
 interface Props {
@@ -24,20 +24,20 @@ export const BlogPosts: FC<Props> = ({
   const activeVariant = variant || Cookies.get(POST_TYPE_VIEW);
 
   const renderBlogPosts = useMemo(() => {
-    if (items?.length) {
+    if (items?.length)
       return items.map(({ id, ...item }) => (
         <BlogCard key={id} variant={activeVariant} {...item} />
       ));
-    }
   }, [activeVariant, items]);
 
-  if (isSlider) {
-    return (
-      <SlickSlider settings={SLIDER_SETTINGS}>{renderBlogPosts}</SlickSlider>
-    );
-  }
-
-  return (
+  return isSlider ? (
+    // <SlickSlider
+    // settings={SLIDER_SETTINGS}
+    // >
+    //   {renderBlogPosts}
+    // </SlickSlider>
+    <div></div>
+  ) : (
     <div
       className={cn(className, {
         "flex flex-wrap": ViewVariants.ROW === activeVariant,

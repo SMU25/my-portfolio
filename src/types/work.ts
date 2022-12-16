@@ -8,9 +8,9 @@ interface ImageAlbumItem {
 export interface IWorkItem {
   id: string;
   title: string;
-  description: string;
+  description?: string;
   category: string;
-  dateCreated: Date;
+  createdAt: Date;
   screenSaver?: string;
-  imageAlbum: ImageAlbumItem[];
+  imageAlbum?: ImageAlbumItem[];
 }

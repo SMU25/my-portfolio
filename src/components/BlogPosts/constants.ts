@@ -23,21 +23,21 @@ export const CARD_VIEW_VARIANTS_STYLES = {
   },
 };
 
-export const SLIDER_SETTINGS = {
-  slidesToShow: 3,
-  autoplay: true,
-  responsive: [
-    {
-      breakpoint: SCREEN_BREAKPOINTS.XL,
-      settings: {
-        slidesToShow: 2,
-      },
-    },
-    {
-      breakpoint: SCREEN_BREAKPOINTS.SM,
-      settings: {
-        slidesToShow: 1,
-      },
-    },
-  ],
-};
+// export const SLIDER_SETTINGS = {
+//   slidesToShow: 3,
+//   autoplay: true,
+//   responsive: [
+//     {
+//       breakpoint: SCREEN_BREAKPOINTS.XL,
+//       settings: {
+//         slidesToShow: 2,
+//       },
+//     },
+//     {
+//       breakpoint: SCREEN_BREAKPOINTS.SM,
+//       settings: {
+//         slidesToShow: 1,
+//       },
+//     },
+//   ],
+// };

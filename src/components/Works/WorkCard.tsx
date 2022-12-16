@@ -4,6 +4,7 @@ import { Heading } from "src/components/Heading";
 import { TagsHeading } from "src/components/Heading/types";
 import { MarkLabel } from "src/components/MarkLabel";
 import { getTruncateString } from "src/utils/getTruncateString";
+import { IWorkItem } from "src/types/work";
 
 const MAX_COUNT_DESCRIPTION_SYMBOLS = 175;
 
@@ -14,22 +15,14 @@ const WORK_IMG_SIZE = {
   HEIGHT: 180,
 };
 
-interface Props {
-  imageUrl: string;
-  title: string;
-  dateCreated: Date;
-  category: string;
-  description: string;
-}
-
-export const WorkCard: FC<Props> = ({
-  imageUrl,
+export const WorkCard: FC<Omit<IWorkItem, "id">> = ({
   title,
-  dateCreated,
-  category,
   description,
+  category,
+  createdAt,
+  screenSaver,
 }) => {
-  const date = format(dateCreated, DATE_FORMAT);
+  const date = format(createdAt, DATE_FORMAT);
 
   const truncatedDescription = getTruncateString(
     description,
@@ -40,7 +33,7 @@ export const WorkCard: FC<Props> = ({
     <div className="flex flex-col sm:flex-row py-4.5 sm:py-8 border-b border-gray-lighter">
       <img
         className="w-full sm:max-w-61.5 sm:self-start rounded-md"
-        src={imageUrl}
+        src={screenSaver}
         width={WORK_IMG_SIZE.WIDTH}
         height={WORK_IMG_SIZE.HEIGHT}
         alt={title}
