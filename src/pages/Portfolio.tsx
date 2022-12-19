@@ -15,6 +15,8 @@ const WORKS_LIMIT_MAX_COUNT = 5;
 
 const HEADING = "Portfolio";
 
+//CHANGE - Винести можливо все в Воркс компоннт, там де отримання робіт
+
 const Portfolio: FC = () => {
   const dispatch = useAppDispatch();
 

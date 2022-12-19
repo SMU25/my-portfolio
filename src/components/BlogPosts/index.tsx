@@ -1,11 +1,10 @@
 import React, { FC, useMemo } from "react";
 import cn from "classnames";
 import Cookies from "js-cookie";
-// import { SlickSlider } from "src/components/Slider";
+import { SwiperSlider } from "src/components/SwiperSlider";
 import { POST_TYPE_VIEW } from "src/constants/cookiesKeys";
 import { IPostItem } from "src/types/post";
 import { BlogCard } from "./BlogCard";
-// import { SLIDER_SETTINGS } from "./constants";
 import { ViewVariants } from "./types";
 
 interface Props {
@@ -31,12 +30,7 @@ export const BlogPosts: FC<Props> = ({
   }, [activeVariant, items]);
 
   return isSlider ? (
-    // <SlickSlider
-    // settings={SLIDER_SETTINGS}
-    // >
-    //   {renderBlogPosts}
-    // </SlickSlider>
-    <div></div>
+    <SwiperSlider items={renderBlogPosts} />
   ) : (
     <div
       className={cn(className, {
