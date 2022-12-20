@@ -1,4 +1,5 @@
 import React, { FC, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import { useAppDispatch, useAppSelector } from "src/hooks/redux";
 import { getPostsAsync } from "src/redux/posts/action";
 import { selectPosts } from "src/redux/posts/selectors";
@@ -9,9 +10,13 @@ import { PATHNAMES } from "src/constants/routes";
 
 const POSTS_LIMIT_MAX_COUNT = 3;
 
-const HEADING = "Recent posts";
+const T_PREFIX = "recent-posts";
+
+const HEADING = "title";
 
 export const RecentPosts: FC = () => {
+  const { t } = useTranslation();
+
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -24,7 +29,10 @@ export const RecentPosts: FC = () => {
 
   return (
     <div>
-      <ContainerHead title={HEADING} href={PATHNAMES.BLOG} />
+      <ContainerHead
+        title={t(`${T_PREFIX} - ${HEADING}`)}
+        href={PATHNAMES.BLOG}
+      />
       <BlogPosts variant={ViewVariants.ROW} items={posts} isSlider />
     </div>
   );

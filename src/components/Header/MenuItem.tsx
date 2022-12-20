@@ -1,12 +1,15 @@
 import React, { FC } from "react";
 import cn from "classnames";
 import { useLocation } from "react-router-dom";
+import { Trans } from "react-i18next";
 import { Link } from "src/components/Link";
 import { PATHNAMES } from "src/constants/routes";
 
 const HOMEPAGE_NAME = "home";
 
 const getMenuPathname = (path: string) => `/${path}`;
+
+const T_PREFIX = "menu-item";
 
 interface Props {
   name: string;
@@ -30,7 +33,7 @@ const MenuItem: FC<Props> = ({ name }) => {
       )}
     >
       <li className="capitalize text-center sm:text-left text-3xl sm:text-sm font-medium leading-10 sm:leading-7">
-        {name}
+        <Trans>{`${T_PREFIX} - ${name}`}</Trans>
       </li>
     </Link>
   );

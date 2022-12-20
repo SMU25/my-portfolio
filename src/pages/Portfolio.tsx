@@ -1,4 +1,5 @@
 import React, { FC, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import { useAppDispatch, useAppSelector } from "src/hooks/redux";
 import { getWorksAsync } from "src/redux/works/action";
 import { selectWorks } from "src/redux/works/selectors";
@@ -13,11 +14,15 @@ import {
 
 const WORKS_LIMIT_MAX_COUNT = 5;
 
-const HEADING = "Portfolio";
+const T_PREFIX = "portfolio";
 
-//CHANGE - Винести можливо все в Воркс компоннт, там де отримання робіт
+const HEADING = "title";
+
+//CHANGE - Винести можливо все в Воркс компоннт, там де отримання робіт, а туди кидати об'єкт із даними: макс кількість, сортування і т.д.
 
 const Portfolio: FC = () => {
+  const { t } = useTranslation();
+
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -30,7 +35,7 @@ const Portfolio: FC = () => {
     <SectionWrapper className={DEFAULT_SECTION_CLASS_NAME}>
       <ContainerHead
         titleClassName={DEFAULT_HEADING_CLASS_NAME}
-        title={HEADING}
+        title={t(`${T_PREFIX} - ${HEADING}`)}
       />
       <Works className={DEFAULT_ITEMS_COMPONENT_CLASS_NAME} items={works} />
     </SectionWrapper>

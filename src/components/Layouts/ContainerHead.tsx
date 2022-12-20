@@ -1,13 +1,15 @@
 import React, { FC } from "react";
 import cn from "classnames";
+import { useTranslation } from "react-i18next";
 import { Heading } from "src/components/Heading";
 import { TagsHeading } from "src/components/Heading/types";
 import { Link } from "src/components/Link";
 import { Button } from "src/components/Button";
 import { ButtonVariants } from "src/components/Button/types";
 
-//CHANGE - add translate
-const DEFAULT_LINK_LABEL = "View all";
+const T_PREFIX = "container-head";
+
+const DEFAULT_LINK_LABEL = "view-all";
 
 interface Props {
   title?: string;
@@ -22,9 +24,9 @@ export const ContainerHead: FC<Props> = ({
   href,
   linkLabel,
 }) => {
-  //CHANGE - тут буде перевоД, тому не постaвив параметр за замовчуванням
+  const { t } = useTranslation();
 
-  const label = linkLabel || DEFAULT_LINK_LABEL;
+  const label = linkLabel || t(`${T_PREFIX} - ${DEFAULT_LINK_LABEL}`);
 
   return (
     <div className="flex justify-between items-baseline">

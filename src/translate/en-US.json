@@ -1,0 +1,22 @@
+{
+  "menu-item - home": "Home",
+  "menu-item - portfolio": "Portfolio",
+  "menu-item - blog": "Blog",
+  "menu-item - contacts": "Contacts",
+
+  "container-head - view-all": "View all",
+
+  "about-my-self - title": "Hi, I am John, Creative Technologist",
+  "about-my-self - description": "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.",
+  "about-my-self - download-resume": "Download Resume",
+
+  "recent-posts - title": "Recent posts",
+
+  "featured-works - title": "Featured works",
+
+  "footer - dev-info": "©2022 Developed by Oleksandr Myronchuk",
+
+  "portfolio - title": "Portfolio",
+
+  "blog - title": "Blog"
+}

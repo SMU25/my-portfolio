@@ -1,4 +1,5 @@
 import React, { FC, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import { useAppDispatch, useAppSelector } from "src/hooks/redux";
 import { getPostsAsync } from "src/redux/posts/action";
 import { selectPosts } from "src/redux/posts/selectors";
@@ -14,9 +15,13 @@ import {
 
 const POSTS_LIMIT_MAX_COUNT = 5;
 
-const HEADING = "blog";
+const T_PREFIX = "blog";
+
+const HEADING = "title";
 
 const Blog: FC = () => {
+  const { t } = useTranslation();
+
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -30,7 +35,7 @@ const Blog: FC = () => {
     <SectionWrapper className={DEFAULT_SECTION_CLASS_NAME}>
       <ContainerHead
         titleClassName={DEFAULT_HEADING_CLASS_NAME}
-        title={HEADING}
+        title={t(`${T_PREFIX} - ${HEADING}`)}
       />
       <BlogPosts
         className={DEFAULT_ITEMS_COMPONENT_CLASS_NAME}
