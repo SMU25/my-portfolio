@@ -1,16 +1,18 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { IWorkItem } from "src/types/work";
 import { WORKS_SLICE_NAME } from "./action";
-import { getWorksReducer } from "./reducers";
+import { getWorksReducer, getWorkByIdReducer } from "./reducers";
 
 interface WorksState {
   isLoading: boolean;
   works: IWorkItem[];
+  workById: IWorkItem;
 }
 
 const initialState: WorksState = {
   isLoading: false,
   works: null,
+  workById: null,
 };
 
 export const { reducer: works } = createSlice({
@@ -19,5 +21,6 @@ export const { reducer: works } = createSlice({
   reducers: {},
   extraReducers(builder) {
     getWorksReducer(builder);
+    getWorkByIdReducer(builder);
   },
 });

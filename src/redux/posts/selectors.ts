@@ -1,6 +1,7 @@
 import { createSelector } from "@reduxjs/toolkit";
+import { RootState } from "../store";
 
-export const selectPostsState = (state) => state.posts;
+export const selectPostsState = (state: RootState) => state.posts;
 
 export const selectIsLoading = createSelector(
   selectPostsState,
@@ -10,4 +11,9 @@ export const selectIsLoading = createSelector(
 export const selectPosts = createSelector(
   selectPostsState,
   (postsState) => postsState.posts
+);
+
+export const selectPostById = createSelector(
+  selectPostsState,
+  (postsState) => postsState.postById
 );

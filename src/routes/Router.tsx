@@ -1,6 +1,14 @@
 import React, { FC } from "react";
-import { Route, Routes } from "react-router-dom";
-import { NotFound, Home, Blog, Portfolio, Contact } from "src/pages";
+import { useRoutes } from "react-router-dom";
+import {
+  NotFound,
+  Home,
+  Blog,
+  Post,
+  Portfolio,
+  Work,
+  Contact,
+} from "src/pages";
 import { PATHNAMES } from "src/constants/routes";
 
 const ROUTES = [
@@ -17,8 +25,16 @@ const ROUTES = [
     path: PATHNAMES.PORTFOLIO,
   },
   {
+    element: <Work />,
+    path: PATHNAMES.PORTFOLIO_WORK,
+  },
+  {
     element: <Blog />,
     path: PATHNAMES.BLOG,
+  },
+  {
+    element: <Post />,
+    path: PATHNAMES.BLOG_POST,
   },
   {
     element: <Contact />,
@@ -26,12 +42,6 @@ const ROUTES = [
   },
 ];
 
-const AppRoutes: FC = () => (
-  <Routes>
-    {ROUTES.map((route) => (
-      <Route key={route.path} {...route} />
-    ))}
-  </Routes>
-);
+const AppRoutes: FC = () => useRoutes(ROUTES);
 
 export default AppRoutes;

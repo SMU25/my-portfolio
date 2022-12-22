@@ -1,9 +1,12 @@
 import React, { FC } from "react";
+import { Link } from "react-router-dom";
 import format from "date-fns/format";
 import { Heading } from "src/components/Heading";
 import { TagsHeading } from "src/components/Heading/types";
 import { MarkLabel } from "src/components/MarkLabel";
 import { getTruncateString } from "src/utils/getTruncateString";
+import { getPathName } from "src/utils/getPathName";
+import { PATHNAMES } from "src/constants/routes";
 import { IWorkItem } from "src/types/work";
 
 const MAX_COUNT_DESCRIPTION_SYMBOLS = 175;
@@ -15,7 +18,8 @@ const WORK_IMG_SIZE = {
   HEIGHT: 180,
 };
 
-export const WorkCard: FC<Omit<IWorkItem, "id">> = ({
+export const WorkCard: FC<IWorkItem> = ({
+  id,
   title,
   description,
   category,
@@ -30,33 +34,35 @@ export const WorkCard: FC<Omit<IWorkItem, "id">> = ({
   );
 
   return (
-    <div className="flex flex-col sm:flex-row py-4.5 sm:py-8 border-b border-gray-lighter">
-      <img
-        className="w-full sm:max-w-61.5 sm:self-start rounded-md"
-        src={screenSaver}
-        width={WORK_IMG_SIZE.WIDTH}
-        height={WORK_IMG_SIZE.HEIGHT}
-        alt={title}
-      />
-      <div className="mt-4.5 sm:mt-0 sm:ml-4.5">
-        <Heading
-          className="text-2xl md:text-3xl font-bold leading-8 md:leading-11"
-          tagHeading={TagsHeading.H4}
-        >
-          {title}
-        </Heading>
-        <div className="flex items-center mt-4 leading-6.5">
-          <MarkLabel>
-            <time dateTime={date}>{date}</time>
-          </MarkLabel>
-          <span className="ml-3 md:ml-6.5 text-gray-light text-base md:text-xl break-all">
-            {category}
-          </span>
+    <Link to={getPathName(id, PATHNAMES.PORTFOLIO)}>
+      <div className="flex flex-col sm:flex-row py-4.5 sm:py-8 border-b border-gray-lighter">
+        <img
+          className="w-full sm:max-w-61.5 rounded-md"
+          src={screenSaver}
+          width={WORK_IMG_SIZE.WIDTH}
+          height={WORK_IMG_SIZE.HEIGHT}
+          alt={title}
+        />
+        <div className="mt-4.5 sm:mt-0 sm:ml-4.5">
+          <Heading
+            className="text-2xl md:text-3xl font-bold leading-8 md:leading-11"
+            tagHeading={TagsHeading.H4}
+          >
+            {title}
+          </Heading>
+          <div className="flex items-center mt-4 leading-6.5">
+            <MarkLabel>
+              <time dateTime={date}>{date}</time>
+            </MarkLabel>
+            <span className="ml-3 md:ml-6.5 text-gray-light text-base md:text-xl break-all">
+              {category}
+            </span>
+          </div>
+          <p className="max-h-25.5 mt-6 sm:mt-2 md:mt-5.5 leading-6 overflow-hidden">
+            {truncatedDescription}
+          </p>
         </div>
-        <p className="max-h-25.5 mt-6 sm:mt-2 md:mt-5.5 leading-6 overflow-hidden">
-          {truncatedDescription}
-        </p>
       </div>
-    </div>
+    </Link>
   );
 };

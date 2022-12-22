@@ -2,7 +2,7 @@ import React, { FC, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useAppDispatch, useAppSelector } from "src/hooks/redux";
 import { getPostsAsync } from "src/redux/posts/action";
-import { selectPosts } from "src/redux/posts/selectors";
+import { selectIsLoading, selectPosts } from "src/redux/posts/selectors";
 import { SectionWrapper } from "src/components/Layouts/SectionWrapper";
 import { ContainerHead } from "src/components/Layouts/ContainerHead";
 import { BlogPosts } from "src/components/BlogPosts";
@@ -13,7 +13,7 @@ import {
   DEFAULT_ITEMS_COMPONENT_CLASS_NAME,
 } from "./constants";
 
-const POSTS_LIMIT_MAX_COUNT = 5;
+const MAX_COUNT_POSTS_LIMIT = 5;
 
 const T_PREFIX = "blog";
 
@@ -22,13 +22,14 @@ const HEADING = "title";
 const Blog: FC = () => {
   const { t } = useTranslation();
 
+  const isLoading = useAppSelector(selectIsLoading);
+  const posts = useAppSelector(selectPosts);
+
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    dispatch(getPostsAsync({ limit: POSTS_LIMIT_MAX_COUNT }));
+    dispatch(getPostsAsync({ limit: MAX_COUNT_POSTS_LIMIT }));
   }, [dispatch]);
-
-  const posts = useAppSelector(selectPosts);
 
   return (
     //CHANGE - Додати до цекції ContainerHead і через флаг контролити чи рендерити його
@@ -40,7 +41,9 @@ const Blog: FC = () => {
       <BlogPosts
         className={DEFAULT_ITEMS_COMPONENT_CLASS_NAME}
         variant={ViewVariants.COLUMN}
+        isLoading={isLoading}
         items={posts}
+        maxCountItemsPreloader={MAX_COUNT_POSTS_LIMIT}
       />
     </SectionWrapper>
   );
