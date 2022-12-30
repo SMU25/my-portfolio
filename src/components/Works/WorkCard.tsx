@@ -1,6 +1,8 @@
 import React, { FC } from "react";
 import { Link } from "react-router-dom";
 import format from "date-fns/format";
+import { activeLanguage } from "src/services/i18n";
+import { DATE_LOCALES } from "src/translate/locales";
 import { Heading } from "src/components/Heading";
 import { TagsHeading } from "src/components/Heading/types";
 import { MarkLabel } from "src/components/MarkLabel";
@@ -26,7 +28,9 @@ export const WorkCard: FC<IWorkItem> = ({
   createdAt,
   screenSaver,
 }) => {
-  const date = format(createdAt, DATE_FORMAT);
+  const date = format(createdAt, DATE_FORMAT, {
+    locale: DATE_LOCALES[activeLanguage],
+  });
 
   const truncatedDescription = getTruncateString(
     description,

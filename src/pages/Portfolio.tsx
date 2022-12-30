@@ -18,8 +18,6 @@ const T_PREFIX = "portfolio";
 
 const HEADING = "title";
 
-//CHANGE - Винести можливо все в Воркс компоннт, там де отримання робіт, а туди кидати об'єкт із даними: макс кількість, сортування і т.д.
-
 const Portfolio: FC = () => {
   const { t } = useTranslation();
 

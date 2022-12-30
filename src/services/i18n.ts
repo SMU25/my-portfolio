@@ -30,3 +30,5 @@ i18n
   });
 
 export default i18n;
+
+export const activeLanguage = i18n.language;

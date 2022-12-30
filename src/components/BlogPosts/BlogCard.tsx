@@ -2,7 +2,8 @@ import React, { FC } from "react";
 import cn from "classnames";
 import { Link } from "react-router-dom";
 import format from "date-fns/format";
-import { uk } from "date-fns/locale";
+import { activeLanguage } from "src/services/i18n";
+import { DATE_LOCALES } from "src/translate/locales";
 import { Heading } from "src/components/Heading";
 import { TagsHeading } from "src/components/Heading/types";
 import { IPostItem } from "src/types/post";
@@ -25,8 +26,7 @@ export const BlogCard: FC<Props> = ({
   message,
 }) => {
   const date = format(createdAt, DATE_FORMAT, {
-    locale: uk,
-    //CHANGE - add dynamic choose language
+    locale: DATE_LOCALES[activeLanguage],
   });
 
   const classNames = CARD_VIEW_VARIANTS_STYLES[variant];
