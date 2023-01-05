@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import "./services/i18n";
 import "./style.css";
 import App from "./App";
 

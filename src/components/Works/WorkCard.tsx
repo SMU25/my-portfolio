@@ -1,10 +1,15 @@
 import React, { FC } from "react";
-import cn from "classnames";
+import { Link } from "react-router-dom";
 import format from "date-fns/format";
+import { activeLanguage } from "src/services/i18n";
+import { DATE_LOCALES } from "src/translate/locales";
 import { Heading } from "src/components/Heading";
 import { TagsHeading } from "src/components/Heading/types";
 import { MarkLabel } from "src/components/MarkLabel";
 import { getTruncateString } from "src/utils/getTruncateString";
+import { getPathName } from "src/utils/getPathName";
+import { PATHNAMES } from "src/constants/routes";
+import { IWorkItem } from "src/types/work";
 
 const MAX_COUNT_DESCRIPTION_SYMBOLS = 175;
 
@@ -15,22 +20,17 @@ const WORK_IMG_SIZE = {
   HEIGHT: 180,
 };
 
-interface Props {
-  imageUrl: string;
-  title: string;
-  dateCreated: Date;
-  category: string;
-  description: string;
-}
-
-export const WorkCard: FC<Props> = ({
-  imageUrl,
+export const WorkCard: FC<IWorkItem> = ({
+  id,
   title,
-  dateCreated,
-  category,
   description,
+  category,
+  createdAt,
+  screenSaver,
 }) => {
-  const date = format(dateCreated, DATE_FORMAT);
+  const date = format(createdAt, DATE_FORMAT, {
+    locale: DATE_LOCALES[activeLanguage],
+  });
 
   const truncatedDescription = getTruncateString(
     description,
@@ -38,33 +38,35 @@ export const WorkCard: FC<Props> = ({
   );
 
   return (
-    <div className="flex flex-col sm:flex-row py-4.5 sm:py-8 border-b border-gray-lighter">
-      <img
-        className="w-full sm:max-w-61.5 sm:self-start rounded-md"
-        src={imageUrl}
-        width={WORK_IMG_SIZE.WIDTH}
-        height={WORK_IMG_SIZE.HEIGHT}
-        alt={title}
-      />
-      <div className="mt-4.5 sm:mt-0 sm:ml-4.5">
-        <Heading
-          className="text-2xl md:text-3xl font-bold leading-8 md:leading-11"
-          tagHeading={TagsHeading.H4}
-        >
-          {title}
-        </Heading>
-        <div className="flex items-center mt-4 leading-6.5">
-          <MarkLabel>
-            <time dateTime={date}>{date}</time>
-          </MarkLabel>
-          <span className="ml-3 md:ml-6.5 text-gray-light text-base md:text-xl break-all">
-            {category}
-          </span>
+    <Link to={getPathName(id, PATHNAMES.PORTFOLIO)}>
+      <div className="flex flex-col sm:flex-row py-4.5 sm:py-8 border-b border-gray-lighter">
+        <img
+          className="w-full sm:max-w-61.5 rounded-md"
+          src={screenSaver}
+          width={WORK_IMG_SIZE.WIDTH}
+          height={WORK_IMG_SIZE.HEIGHT}
+          alt={title}
+        />
+        <div className="mt-4.5 sm:mt-0 sm:ml-4.5">
+          <Heading
+            className="text-2xl md:text-3xl font-bold leading-8 md:leading-11"
+            tagHeading={TagsHeading.H4}
+          >
+            {title}
+          </Heading>
+          <div className="flex items-center mt-4 leading-6.5">
+            <MarkLabel>
+              <time dateTime={date}>{date}</time>
+            </MarkLabel>
+            <span className="ml-3 md:ml-6.5 text-gray-light text-base md:text-xl break-all">
+              {category}
+            </span>
+          </div>
+          <p className="max-h-25.5 mt-6 sm:mt-2 md:mt-5.5 leading-6 overflow-hidden">
+            {truncatedDescription}
+          </p>
         </div>
-        <p className="max-h-25.5 mt-6 sm:mt-2 md:mt-5.5 leading-6 overflow-hidden">
-          {truncatedDescription}
-        </p>
       </div>
-    </div>
+    </Link>
   );
 };

@@ -1,4 +1,5 @@
 import React, { FC } from "react";
+import { Trans } from "react-i18next";
 import { Heading } from "src/components/Heading";
 import { TagsHeading } from "src/components/Heading/types";
 import { Button } from "src/components/Button";
@@ -9,12 +10,11 @@ const PROFILE_IMG = {
   ALT_TEXT: "Image of Oleksandr Myronchuk",
 };
 
-const HEADING = "Hi, I am John, Creative Technologist";
-const DESCRIPTION = `Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet
-sint. Velit officia consequat duis enim velit mollit. Exercitation veniam
-consequat sunt nostrud amet.`;
-const DOWNLOAD_RESUME_BUTTON_NAME = "Download Resume";
-//CHANGE - add translate
+const T_PREFIX = "about-my-self";
+
+const HEADING = "title";
+const DESCRIPTION = "description";
+const DOWNLOAD_RESUME_BUTTON_NAME = "download-resume";
 
 export const AboutMySelf: FC = () => (
   <div className="flex flex-col-reverse sm:flex-row justify-center sm:justify-between items-center sm:items-start xl:items-center">
@@ -23,15 +23,15 @@ export const AboutMySelf: FC = () => (
         className="mt-8.5 sm:mt-4.5 capitalize text-3xl md:text-44 xl:text-6xl leading-10 md:leading-15 xl:leading-17"
         tagHeading={TagsHeading.H2}
       >
-        {HEADING}
+        <Trans>{`${T_PREFIX} - ${HEADING}`}</Trans>
       </Heading>
       <p className="mt-5 sm:mt-2 md:mt-10 xl:mt-6 xl:text-xl leading-6">
-        {DESCRIPTION}
+        <Trans>{`${T_PREFIX} - ${DESCRIPTION}`}</Trans>
       </p>
       {/* CHANGE - add constant for name file */}
       <a href="." download="Resume of Oleksandr Myronchuk.pdf">
         <Button className="mt-6.5 sm:mt-9.5 capitalize text-xl font-medium">
-          {DOWNLOAD_RESUME_BUTTON_NAME}
+          <Trans>{`${T_PREFIX} - ${DOWNLOAD_RESUME_BUTTON_NAME}`}</Trans>
         </Button>
       </a>
     </div>

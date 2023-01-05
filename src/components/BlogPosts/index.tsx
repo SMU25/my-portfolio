@@ -1,40 +1,52 @@
-import React, { FC } from "react";
+import React, { FC, useMemo } from "react";
 import cn from "classnames";
 import Cookies from "js-cookie";
+import { SwiperSlider } from "src/components/SwiperSlider";
 import { POST_TYPE_VIEW } from "src/constants/cookiesKeys";
+import { IPostItem } from "src/types/post";
+import { renderPreloader } from "./Preloader";
 import { BlogCard } from "./BlogCard";
-import { ViewVariants, IBlogItem } from "./types";
+import { ViewVariants } from "./types";
 
 interface Props {
   className?: string;
   variant?: ViewVariants;
-  // items: IBlogItem[];
-  maxCountPosts?: number;
+  isLoading: boolean;
+  items: IPostItem[];
+  maxCountItemsPreloader?: number;
+  isSlider?: boolean;
 }
 
-export const BlogPosts: FC<Props> = ({ className, variant, maxCountPosts }) => {
+export const BlogPosts: FC<Props> = ({
+  className,
+  variant,
+  isLoading,
+  items,
+  maxCountItemsPreloader,
+  isSlider,
+}) => {
   const activeVariant = variant || Cookies.get(POST_TYPE_VIEW);
+  const isRowVariant = ViewVariants.ROW === activeVariant;
 
-  //CHANGE - винести цю логіку в редакс
-  const slisedItems = [1, 2, 3, 4, 5].slice(0, maxCountPosts);
+  //CHANGE - Слайдер перебиває меню та хедер
 
-  return (
+  const renderBlogPosts = useMemo(() => {
+    if (isLoading) return renderPreloader(isRowVariant, maxCountItemsPreloader);
+
+    return items?.map((item) => (
+      <BlogCard key={item.id} variant={activeVariant} {...item} />
+    ));
+  }, [activeVariant, isRowVariant, isLoading, items, maxCountItemsPreloader]);
+
+  return isSlider ? (
+    <SwiperSlider items={renderBlogPosts} />
+  ) : (
     <div
       className={cn(className, {
-        "flex flex-wrap": ViewVariants.ROW === activeVariant,
+        "flex flex-wrap": isRowVariant,
       })}
     >
-      {/* CHANGE */}
-      {slisedItems.map((item) => (
-        <BlogCard
-          key={item}
-          title="Making a design system from scratch"
-          message="Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet."
-          category="Design, design"
-          dateCreated={new Date()}
-          variant={activeVariant}
-        />
-      ))}
+      {renderBlogPosts}
     </div>
   );
 };

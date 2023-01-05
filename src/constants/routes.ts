@@ -1,7 +1,9 @@
 export const PATHNAMES = {
-  NOT_FOUND: "*",
+  NOT_FOUND: "/*",
   HOME: "/",
-  BLOG: "/blog",
   PORTFOLIO: "/portfolio",
-  CONTACT: "/contact",
+  PORTFOLIO_WORK: "/portfolio/:id",
+  BLOG: "/blog",
+  BLOG_POST: "/blog/:id",
+  CONTACT: "/contacts",
 };
