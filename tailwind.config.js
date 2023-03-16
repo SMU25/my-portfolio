@@ -5,6 +5,7 @@ module.exports = {
     extend: {
       colors: {
         red: {
+          light: "#FF7C7C",
           primary: "#FF6464",
           dark: "#f84c4c",
         },
@@ -25,12 +26,14 @@ module.exports = {
       fontSize: {
         22: "22px",
         26: "26px",
+        34: "34px",
         44: "44px",
       },
       lineHeight: {
         6.5: "26px",
         11: "44px",
         9.5: "38px",
+        12.5: "50px",
         15: "60px",
         17: "68px",
       },
@@ -41,11 +44,13 @@ module.exports = {
         7.5: "30px",
         8.5: "34px",
         9.5: "38px",
+        11.5: "46px",
         12.5: "50px",
         13.5: "54px",
         15: "60px",
         17: "68px",
         17.5: "70px",
+        19.5: "78px",
         21: "84px",
         22.5: "90px",
         35: "140px",
@@ -55,6 +60,7 @@ module.exports = {
         50: "200px",
         60.5: "242px",
         112.5: "450px",
+        125: "500px",
       },
       maxWidth: {
         61.5: "246px",

@@ -1,7 +1,13 @@
-interface ImageAlbumItem {
+export interface ImageAlbumItem {
   id: string;
   imageUrl: string;
-  name?: string;
+  title?: string;
+  description?: string;
+}
+export interface VideoItem {
+  url: string;
+  poster?: string;
+  title?: string;
   description?: string;
 }
 
@@ -13,4 +19,5 @@ export interface IWorkItem {
   createdAt: Date;
   screenSaver?: string;
   imageAlbum?: ImageAlbumItem[];
+  video: VideoItem;
 }

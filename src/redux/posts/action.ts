@@ -12,6 +12,7 @@ interface GetPostsAsyncParams {
 }
 
 // CHANGE - add env , додати ,щоб параметри функції були не обов'язкові, може просто зробити об'єект ,який я деструктурую в функції
+//перейменувати action => actions
 
 export const getPostsAsync = createAsyncThunk(
   `${POSTS_SLICE_NAME}/fetchPosts`,

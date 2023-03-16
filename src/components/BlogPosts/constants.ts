@@ -9,7 +9,7 @@ export const CARD_VIEW_VARIANTS_STYLES = {
     infoContainer: "mt-2.5 md:mt-4.5 text-sm md:text-lg leading-6.5",
     date: "mr-3 md:mr-6.5",
     category: "pl-3 md:pl-6.5 italic",
-    message: "mt-1.5 md:mt-3",
+    message: "mt-1.5 md:mt-3 max-h-72 overflow-auto",
   },
 
   [ViewVariants.COLUMN]: {

@@ -5,6 +5,7 @@ export const DEFAULT_SETTINGS = {
   loop: true,
   keyboard: true,
   navigation: true,
+  centeredSlides: false,
   slidesPerView: 3,
   spaceBetween: 20,
   autoplay: {
