@@ -5,8 +5,6 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import "./style.css";
 import { DEFAULT_SETTINGS } from "./constants";
-//
-import "swiper/css/grid";
 
 interface Props {
   items: ReactElement[];

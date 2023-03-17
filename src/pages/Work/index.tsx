@@ -7,6 +7,7 @@ import { SectionWrapper } from "src/components/Layouts/SectionWrapper";
 import { Info } from "./Info";
 import { Slider } from "./Slider";
 import { Video } from "./Video";
+import { Preloader } from "./Preloader";
 
 export const T_PREFIX = "work";
 
@@ -23,7 +24,11 @@ const Work: FC = () => {
   }, [id, dispatch]);
 
   if (isLoading) {
-    return <SectionWrapper>...</SectionWrapper>;
+    return (
+      <SectionWrapper>
+        <Preloader />
+      </SectionWrapper>
+    );
   } else if (!work) {
     return null;
   }

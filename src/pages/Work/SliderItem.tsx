@@ -19,7 +19,7 @@ export const SliderItem: FC<Omit<ImageAlbumItem, "id">> = ({
         </Heading>
         <p className="text-black-base leading-6">{description}</p>
       </div>
-      <img className="w-full mt-7.5" src={imageUrl} alt={title} />
+      <img className="max-h-96 w-full mt-7.5" src={imageUrl} alt={title} />
     </div>
   );
 };
