@@ -34,7 +34,13 @@ export const BlogPosts: FC<Props> = ({
     if (isLoading) return renderPreloader(isRowVariant, maxCountItemsPreloader);
 
     return items?.map((item) => (
-      <BlogCard key={item.id} variant={activeVariant} {...item} />
+      <BlogCard
+        key={item.id}
+        variant={activeVariant}
+        maxLengthMessage={220}
+        isLink
+        {...item}
+      />
     ));
   }, [activeVariant, isRowVariant, isLoading, items, maxCountItemsPreloader]);
 

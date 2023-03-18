@@ -7,7 +7,9 @@ interface SkeletonBlogPostProps {
   isRowVariant?: boolean;
 }
 
-const SkeletonBlogPost: FC<SkeletonBlogPostProps> = ({ isRowVariant }) => (
+export const SkeletonBlogPost: FC<SkeletonBlogPostProps> = ({
+  isRowVariant,
+}) => (
   <div
     className={cn("bg-white py-6", {
       "min-h-75 pt-8 px-5 rounded": isRowVariant,
