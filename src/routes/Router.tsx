@@ -7,7 +7,7 @@ import {
   Post,
   Portfolio,
   Work,
-  Contact,
+  Contacts,
 } from "src/pages";
 import { PATHNAMES } from "src/constants/routes";
 
@@ -37,8 +37,8 @@ const ROUTES = [
     path: PATHNAMES.BLOG_POST,
   },
   {
-    element: <Contact />,
-    path: PATHNAMES.CONTACT,
+    element: <Contacts />,
+    path: PATHNAMES.CONTACTS,
   },
 ];
 

@@ -9,8 +9,6 @@ import { Slider } from "./Slider";
 import { Video } from "./Video";
 import { Preloader } from "./Preloader";
 
-export const T_PREFIX = "work";
-
 const Work: FC = () => {
   const { id } = useParams();
 

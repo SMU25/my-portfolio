@@ -6,10 +6,10 @@ import { selectIsLoading, selectPosts } from "src/redux/posts/selectors";
 import { SectionWrapper } from "src/components/Layouts/SectionWrapper";
 import { ContainerHead } from "src/components/Layouts/ContainerHead";
 import { BlogPosts } from "src/components/BlogPosts";
+import { TagsHeading } from "src/components/Heading/types";
 import { ViewVariants } from "src/components/BlogPosts/types";
 import {
   DEFAULT_SECTION_CLASS_NAME,
-  DEFAULT_HEADING_CLASS_NAME,
   DEFAULT_ITEMS_COMPONENT_CLASS_NAME,
 } from "./constants";
 
@@ -35,8 +35,8 @@ const Blog: FC = () => {
     //CHANGE - Додати до цекції ContainerHead і через флаг контролити чи рендерити його
     <SectionWrapper className={DEFAULT_SECTION_CLASS_NAME}>
       <ContainerHead
-        titleClassName={DEFAULT_HEADING_CLASS_NAME}
         title={t(`${T_PREFIX} - ${HEADING}`)}
+        tagHeading={TagsHeading.H2}
       />
       <BlogPosts
         className={DEFAULT_ITEMS_COMPONENT_CLASS_NAME}

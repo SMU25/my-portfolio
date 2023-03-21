@@ -6,9 +6,9 @@ import { selectIsLoading, selectWorks } from "src/redux/works/selectors";
 import { SectionWrapper } from "src/components/Layouts/SectionWrapper";
 import { ContainerHead } from "src/components/Layouts/ContainerHead";
 import { Works } from "src/components/Works";
+import { TagsHeading } from "src/components/Heading/types";
 import {
   DEFAULT_SECTION_CLASS_NAME,
-  DEFAULT_HEADING_CLASS_NAME,
   DEFAULT_ITEMS_COMPONENT_CLASS_NAME,
 } from "./constants";
 
@@ -33,8 +33,8 @@ const Portfolio: FC = () => {
   return (
     <SectionWrapper className={DEFAULT_SECTION_CLASS_NAME}>
       <ContainerHead
-        titleClassName={DEFAULT_HEADING_CLASS_NAME}
         title={t(`${T_PREFIX} - ${HEADING}`)}
+        tagHeading={TagsHeading.H2}
       />
       <Works
         className={DEFAULT_ITEMS_COMPONENT_CLASS_NAME}

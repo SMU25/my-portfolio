@@ -18,9 +18,11 @@
 
   "portfolio - title": "Portfolio",
 
-  "work - slider-title": "Photoalbum",
+  "work-swiper - title": "Photoalbum",
 
   "blog - title": "Blog",
 
-  "post": ""
+  "contacts - title": "Contacts",
+
+  "feedback - title": "Feedback"
 }

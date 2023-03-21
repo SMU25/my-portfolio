@@ -5,5 +5,5 @@ export const PATHNAMES = {
   PORTFOLIO_WORK: "/portfolio/:id",
   BLOG: "/blog",
   BLOG_POST: "/blog/:id",
-  CONTACT: "/contacts",
+  CONTACTS: "/contacts",
 };

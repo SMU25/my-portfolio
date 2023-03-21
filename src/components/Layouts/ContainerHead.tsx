@@ -3,6 +3,7 @@ import cn from "classnames";
 import { useTranslation } from "react-i18next";
 import { Heading } from "src/components/Heading";
 import { TagsHeading } from "src/components/Heading/types";
+import { DEFAULT_CLASS_NAME_HEADING } from "src/components/Heading/constants";
 import { Link } from "src/components/Link";
 import { Button } from "src/components/Button";
 import { ButtonVariants } from "src/components/Button/types";
@@ -14,6 +15,7 @@ const DEFAULT_LINK_LABEL = "view-all";
 interface Props {
   title?: string;
   titleClassName?: string;
+  tagHeading?: TagsHeading;
   href?: string;
   linkLabel?: string;
 }
@@ -21,6 +23,7 @@ interface Props {
 export const ContainerHead: FC<Props> = ({
   title,
   titleClassName,
+  tagHeading = TagsHeading.H3,
   href,
   linkLabel,
 }) => {
@@ -32,10 +35,11 @@ export const ContainerHead: FC<Props> = ({
     <div className="flex justify-between items-baseline">
       <Heading
         className={cn(
-          "max-w-1/2 text-lg sm:text-22 font-medium leading-15 truncate",
+          "max-w-1/2 default:leading-15 truncate",
+          DEFAULT_CLASS_NAME_HEADING[tagHeading],
           titleClassName
         )}
-        tagHeading={TagsHeading.H3}
+        tagHeading={tagHeading}
       >
         {title}
       </Heading>
