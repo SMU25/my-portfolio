@@ -1,5 +1,7 @@
-import { FormFieldVariants } from "./types";
+import { TextFieldVariants } from "./types";
+
+export const DEFAULT_CLASS_NAME_TEXT_FIELD = "p-4 text-lg rounded-10 outline-0";
 
 export const TEXT_FIELD_STYLE_VARIANTS = {
-  [FormFieldVariants.PRIMARY]: "",
+  [TextFieldVariants.PRIMARY]: "border border-gray-lighter",
 };

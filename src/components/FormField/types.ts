@@ -1,3 +1,3 @@
-export enum FormFieldVariants {
+export enum TextFieldVariants {
   PRIMARY = "PRIMARY",
 }

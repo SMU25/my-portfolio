@@ -11,13 +11,13 @@ interface Props {
   sections: SectionItem[];
 }
 
-export const RenderSections: FC<Props> = ({ sections }) => (
+export const RenderSections: FC<Props> = ({ sections, ...props }) => (
   <>
     {sections.map(({ id, component, className }) => {
       const Component = component;
 
       return (
-        <SectionWrapper key={id} className={className}>
+        <SectionWrapper key={id} className={className} {...props}>
           <Component />
         </SectionWrapper>
       );

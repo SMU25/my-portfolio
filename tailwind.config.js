@@ -12,6 +12,7 @@ module.exports = {
         blue: {
           lighter: "#EDF7FA",
           light: "#00A8CC",
+          dark: "#098EAB",
           darken: "#142850",
         },
         gray: {
@@ -79,10 +80,14 @@ module.exports = {
         "1/2": "50%",
       },
       minHeight: {
+        37.5: "150px",
         75: "300px",
       },
       maxHeight: {
         25.5: "102px",
+      },
+      borderRadius: {
+        10: "10px",
       },
       boxShadow: {
         "lining-lighter-blue": "-5px 10px 0px 5px rgba(237,247,250,1);",

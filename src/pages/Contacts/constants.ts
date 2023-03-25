@@ -1,4 +1,5 @@
 import * as yup from "yup";
+import { Input } from "src/components/FormField/Input";
 import {
   EMAIL_VALIDATION_SCHEMA,
   NAME_VALIDATION_SCHEMA,
@@ -65,27 +66,32 @@ export const FEEDBACK_FIELDS = [
     name: "firstName",
     label: "first-name",
     type: "text",
+    component: Input,
   },
   {
     name: "lastName",
     label: "last-name",
     type: "text",
+    component: Input,
   },
   {
     name: "phone",
     label: "phone",
     type: "phone",
+    component: Input,
   },
   {
     name: "email",
     label: "email",
     type: "email",
+    component: Input,
   },
 ];
 
 export const FEEDBACK_VALIDATION_SCHEMA = yup.object().shape({
-  firstName: NAME_VALIDATION_SCHEMA,
+  firstName: NAME_VALIDATION_SCHEMA.required("required"),
   lastName: NAME_VALIDATION_SCHEMA,
   phone: PHONE_VALIDATION_SCHEMA,
   email: EMAIL_VALIDATION_SCHEMA,
+  message: yup.string().required("required"),
 });
