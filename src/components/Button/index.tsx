@@ -33,3 +33,5 @@ export const Button: FC<Props> = ({
     {isLoading ? <Loader /> : children}
   </button>
 );
+
+//
