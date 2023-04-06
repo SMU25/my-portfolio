@@ -1,6 +1,6 @@
 {
-  "form-field - first-name": "Firstname",
-  "form-field - last-name": "Lastname",
+  "form-field - first-name": "First Name",
+  "form-field - last-name": "Last Name",
   "form-field - phone": "Phone Number",
   "form-field - email": "Email",
   "form-field - message": "Message",
