@@ -1,15 +1,24 @@
-import React, { FC, useState } from "react";
+import React, { FC, useState, useCallback } from "react";
 import cn from "classnames";
 import { BurgetButton } from "src/components/Button/BurgetButton";
+import { LANGUAGES } from "src/constants/languages";
 import MenuItem from "./MenuItem";
 import { MENU_ITEMS } from "./constants";
+import { LanguageChooser } from "../LanguageChooser";
 
 export const Header: FC = () => {
   const [isOpenMenu, setIsOpenMenu] = useState<boolean>(false);
+  const onCloseMenu = useCallback(
+    () => setIsOpenMenu(false),
+
+    []
+  );
 
   return (
-    <header className="sticky top-0 bg-white">
-      <nav className="flex justify-end mr-4.5 sm:mr-15">
+    <header className="sticky top-0 bg-white z-50">
+      <nav className="flex justify-between mx-4.5 sm:mx-15">
+        <LanguageChooser languages={LANGUAGES} />
+
         <BurgetButton
           className="sm:hidden mt-3 mb-2 p-2.5"
           setIsOpen={setIsOpenMenu}
@@ -25,7 +34,7 @@ export const Header: FC = () => {
           )}
         >
           {MENU_ITEMS.map(({ id, name }) => (
-            <MenuItem key={id} name={name} />
+            <MenuItem key={id} name={name} onCloseMenu={onCloseMenu} />
           ))}
         </ul>
       </nav>

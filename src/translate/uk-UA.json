@@ -1,1 +1,47 @@
-{}
+{
+  "form-field - first-name": "Прізвище",
+  "form-field - last-name": "Ім'я",
+  "form-field - phone": "Номер телефону",
+  "form-field - email": "Електронна адреса",
+  "form-field - message": "Повідомлення",
+
+  "error - required": "Обов'язкове поле",
+  "error - include-symbol": "Має містити спеціальний символ (&,!,etc.)",
+  "error - passwords-must-match": "Паролі мають збігатися!",
+  "error - incorrect-email": "Введіть коректну електронну адресу",
+  "error - incorrect-phone-number": "Має містити лише цифри, +()-. та x.",
+  "error - phone is invalid": "Недійсний номер телефону",
+  "error - min-symbols": "Мінімальна кількість {{count}} символів",
+  "error - max-symbols": "Максимальна кількість {{count}} символів",
+
+  "menu-item - home": "Головна",
+  "menu-item - portfolio": "Портфоліо",
+  "menu-item - blog": "Блог",
+  "menu-item - contacts": "Контакти",
+
+  "container-head - view-all": "Дивитися усі",
+
+  "about-my-self - title": "Привіт, мене звати Олександр!",
+  "about-my-self - description": "тут буде якийсь текс,який я поки що не придумав.",
+  "about-my-self - download-resume": "Завантажити резюме",
+
+  "recent-posts - title": "Найновіші дописи",
+
+  "featured-works - title": "Вибрані роботи",
+
+  "footer - dev-info": "©2022 Розроблено Мирончуком Олександром у 2023 році",
+
+  "portfolio - title": "Портфоліо",
+
+  "work-swiper - title": "Фотоальбом",
+
+  "blog - title": "Блог",
+
+  "contacts - title": "Контакти",
+
+  "contact-item - phone": "Номер телефону:",
+  "contact-item - email": "Електронна адреса:",
+
+  "feedback - title": "Зворотній зв'язок",
+  "feedback - send": "Надіслати"
+}

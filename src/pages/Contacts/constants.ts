@@ -25,37 +25,37 @@ export const SECTIONS = [
 export const CONTACTS_ITEMS = [
   {
     id: 1,
-    title: "Phone number:",
+    title: "phone",
     linkLabel: "+38098123456",
     link: "tel:+38098123456",
   },
   {
     id: 2,
-    title: "E-Mail:",
+    title: "email",
     linkLabel: "gmailGmail@gamil.com",
     link: "mailto:gmailGmail@gamil.com",
   },
   {
     id: 3,
-    title: "Linkedin:",
+    title: "linkedin",
     linkLabel: "gmailGmail@gamil.com",
     link: "https://gmailGmail@gamil.com",
   },
   {
     id: 4,
-    title: "GitHub:",
+    title: "github",
     linkLabel: "gmailGmail@gamil.com",
     link: "https://gmailGmail@gamil.com",
   },
   {
     id: 5,
-    title: "Facebook:",
+    title: "facebook",
     linkLabel: "gmailGmail@gamil.com",
     link: "https://gmailGmail@gamil.com",
   },
   {
     id: 6,
-    title: "Instagram:",
+    title: "instagram",
     linkLabel: "gmailGmail@gamil.com",
     link: "https://gmailGmail@gamil.com",
   },

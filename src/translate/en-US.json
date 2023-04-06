@@ -29,7 +29,7 @@
 
   "featured-works - title": "Featured works",
 
-  "footer - dev-info": "©2022 Developed by Oleksandr Myronchuk",
+  "footer - dev-info": "©2023 Developed by Oleksandr Myronchuk",
 
   "portfolio - title": "Portfolio",
 
@@ -38,6 +38,13 @@
   "blog - title": "Blog",
 
   "contacts - title": "Contacts",
+
+  "contact-item - phone": "Phone number:",
+  "contact-item - email": "E-mail:",
+  "contact-item - linkedin": "Linkedin:",
+  "contact-item - github": "GitHub:",
+  "contact-item - facebook": "Facebook:",
+  "contact-item - instagram": "Instagram:",
 
   "feedback - title": "Feedback",
   "feedback - send": "Send"

@@ -12,9 +12,10 @@ const T_PREFIX = "menu-item";
 
 interface Props {
   name: string;
+  onCloseMenu: VoidFunction;
 }
 
-const MenuItem: FC<Props> = ({ name }) => {
+const MenuItem: FC<Props> = ({ name, onCloseMenu }) => {
   const { pathname } = useLocation();
 
   const isHomePage = name === HOMEPAGE_NAME;
@@ -27,13 +28,16 @@ const MenuItem: FC<Props> = ({ name }) => {
     <Link
       href={path}
       className={cn(
-        "sm:ml-8 py-3 sm:py-0 px-2.5 sm:px-0 first:ml-0 transition ease-in-out duration-150 hover:scale-110",
+        "sm:ml-8 first:ml-0 transition ease-in-out duration-150 hover:scale-110",
         {
           "text-red-primary": isActiveLink,
         }
       )}
     >
-      <li className="capitalize text-center sm:text-left text-3xl sm:text-sm font-medium leading-10 sm:leading-7">
+      <li
+        className="py-3 sm:py-0 px-2.5 sm:px-0 capitalize text-center sm:text-left text-3xl sm:text-sm font-medium leading-10 sm:leading-7"
+        onClick={onCloseMenu}
+      >
         <Trans>{`${T_PREFIX} - ${name}`}</Trans>
       </li>
     </Link>
