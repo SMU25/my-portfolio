@@ -16,7 +16,10 @@ export const ContactItem: FC<Props> = ({ title, linkLabel, link }) => {
       <p>
         <Trans>{`${T_PREFIX} - ${title}`}</Trans>
       </p>
-      <a href={link} className="text-blue-light font-bold">
+      <a
+        href={link}
+        className="text-blue-light font-bold break-words hover:brightness-50"
+      >
         {linkLabel || link}
       </a>
     </div>

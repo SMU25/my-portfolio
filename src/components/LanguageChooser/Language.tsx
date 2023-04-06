@@ -19,7 +19,8 @@ export const Language: FC<ILanguage> = ({ language }) => {
       className={cn(
         "h-fit mt-5 px-3 text-gray-light font-bold border-r-2 border-r-gray-lighter last:border-r-0",
         {
-          "text-blue-light cursor-pointer": !isCurrentLanguage,
+          "text-blue-light cursor-pointer hover:brightness-50":
+            !isCurrentLanguage,
         }
       )}
       onClick={chooseLanguage}

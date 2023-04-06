@@ -6,7 +6,7 @@ import {
   PHONE_VALIDATION_SCHEMA,
 } from "src/constants/formConstants";
 import { Contacts } from "./Contacts";
-import { Feedback } from "./Feedback";
+import { FeedbackForm } from "./FeedbackForm";
 import { DEFAULT_SECTION_CLASS_NAME } from "../constants";
 
 export const SECTIONS = [
@@ -17,7 +17,7 @@ export const SECTIONS = [
   },
   {
     id: 2,
-    component: Feedback,
+    component: FeedbackForm,
     className: "bg-blue-lighter pt-22.5 pb-40",
   },
 ];
@@ -26,38 +26,38 @@ export const CONTACTS_ITEMS = [
   {
     id: 1,
     title: "phone",
-    linkLabel: "+38098123456",
-    link: "tel:+38098123456",
+    linkLabel: "+380 98-032-87-06",
+    link: "tel:380980328706",
   },
   {
     id: 2,
     title: "email",
-    linkLabel: "gmailGmail@gamil.com",
-    link: "mailto:gmailGmail@gamil.com",
+    linkLabel: "smironcuk35@gmail.com",
+    link: "mailto:smironcuk35@gmail.com",
   },
   {
     id: 3,
     title: "linkedin",
-    linkLabel: "gmailGmail@gamil.com",
-    link: "https://gmailGmail@gamil.com",
+    linkLabel: "oleksandr-myronchuk",
+    link: "https://www.linkedin.com/in/oleksandr-myronchuk-426598255/",
   },
   {
     id: 4,
     title: "github",
-    linkLabel: "gmailGmail@gamil.com",
-    link: "https://gmailGmail@gamil.com",
+    linkLabel: "Myronchuk Oleksandr",
+    link: "https://github.com/SMU25",
   },
   {
     id: 5,
     title: "facebook",
-    linkLabel: "gmailGmail@gamil.com",
-    link: "https://gmailGmail@gamil.com",
+    linkLabel: "oleksandr_myronchuk",
+    link: "https://www.facebook.com/profile.php?id=100009263917153",
   },
   {
     id: 6,
     title: "instagram",
-    linkLabel: "gmailGmail@gamil.com",
-    link: "https://gmailGmail@gamil.com",
+    linkLabel: "@sanchos_mironchuk",
+    link: "https://www.instagram.com/sanchos_mironchuk/",
   },
 ];
 

@@ -15,10 +15,11 @@ export const Contacts: FC = () => {
   return (
     <>
       <ContainerHead
+        titleClassName="default:max-w-none"
         title={t(`${T_PREFIX} - ${HEADING}`)}
         tagHeading={TagsHeading.H2}
       />
-      <div className="grid grid-cols-2">
+      <div className="grid grid-cols-1 md:grid-cols-2">
         {CONTACTS_ITEMS.map(({ id, ...contact }) => (
           <ContactItem key={id} {...contact} />
         ))}

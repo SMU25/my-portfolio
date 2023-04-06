@@ -19,7 +19,7 @@ const T_PREFIX = "feedback";
 const HEADING = "title";
 const SEND_BUTTON_NAME = "send";
 
-export const Feedback: FC = () => {
+export const FeedbackForm: FC = () => {
   const { t } = useTranslation();
 
   const isLoading = useAppSelector(selectIsLoading);
@@ -46,12 +46,12 @@ export const Feedback: FC = () => {
   return (
     <>
       <ContainerHead
-        titleClassName="sm:text-4xl font-extrabold"
+        titleClassName="sm:text-4xl font-extrabold default:max-w-none"
         title={t(`${T_PREFIX} - ${HEADING}`)}
       />
       <FormikProvider value={formik}>
         <form onSubmit={onSubmitForm}>
-          <div className="grid grid-cols-2 gap-y-6 gap-x-13.5 mt-7.5">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-y-6 gap-x-13.5 mt-7.5">
             <RenderFormField fields={FEEDBACK_FIELDS} />
           </div>
           <Textarea
@@ -62,7 +62,7 @@ export const Feedback: FC = () => {
           {/* <ReCaptcha className="mt-10" formik={formik} /> */}
           <Button
             className={cn(
-              "max-w-61.5 w-full mt-10 py-4.5 text-2xl font-medium leading-7",
+              "max-w-none xs:max-w-61.5 w-full mt-10 py-4.5 text-2xl font-medium leading-7",
               { "!py-3.5": isLoading }
             )}
             variant={ButtonVariants.SECONDARY}
