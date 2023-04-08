@@ -15,7 +15,7 @@ export const Loader: FC<Props> = ({
   <div
     className={cn(
       "mx-auto border-2 border-gray-lighter border-t-black-dark rounded-full animate-spin",
-      size,
+      LOADER_SIZES[size],
       className
     )}
   />

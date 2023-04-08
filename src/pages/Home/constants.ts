@@ -19,3 +19,8 @@ export const SECTIONS = [
     className: "sm:pt-4 pb-37.5 sm:pb-21",
   },
 ];
+
+export const RESUME_LINKS = {
+  ua: "https://drive.google.com/file/d/1KiR48q0TXmkTbfWYx1XEIouv8Gb8BVvB/view?usp=sharing",
+  en: "https://drive.google.com/file/d/1hFDbpfM57Uac9yJVEnsY8PnrUK67shWC/view?usp=sharing",
+};

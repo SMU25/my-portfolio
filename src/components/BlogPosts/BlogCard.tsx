@@ -1,6 +1,5 @@
 import React, { FC, ReactNode } from "react";
 import cn from "classnames";
-import { Link } from "react-router-dom";
 import format from "date-fns/format";
 import { activeLanguage } from "src/services/i18n";
 import { DATE_LOCALES } from "src/translate/locales";
@@ -12,6 +11,7 @@ import { PATHNAMES } from "src/constants/routes";
 import { IPostItem } from "src/types/post";
 import { CARD_VIEW_VARIANTS_STYLES } from "./constants";
 import { ViewVariants } from "./types";
+import { Link } from "../Link";
 
 const DATE_FORMAT = "d MMM yyyy";
 
@@ -70,7 +70,7 @@ export const BlogCard: FC<Props> = ({
   );
 
   if (isLink) {
-    return <Link to={getPathName(id, PATHNAMES.BLOG)}>{Component}</Link>;
+    return <Link href={getPathName(id, PATHNAMES.BLOG)}>{Component}</Link>;
   }
 
   return (

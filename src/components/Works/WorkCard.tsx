@@ -1,5 +1,4 @@
 import React, { FC } from "react";
-import { Link } from "react-router-dom";
 import format from "date-fns/format";
 import { activeLanguage } from "src/services/i18n";
 import { DATE_LOCALES } from "src/translate/locales";
@@ -10,6 +9,7 @@ import { getTruncateString } from "src/utils/getTruncateString";
 import { getPathName } from "src/utils/getPathName";
 import { PATHNAMES } from "src/constants/routes";
 import { IWorkItem } from "src/types/work";
+import { Link } from "../Link";
 
 const MAX_COUNT_DESCRIPTION_SYMBOLS = 175;
 
@@ -38,10 +38,10 @@ export const WorkCard: FC<IWorkItem> = ({
   );
 
   return (
-    <Link to={getPathName(id, PATHNAMES.PORTFOLIO)}>
+    <Link href={getPathName(id, PATHNAMES.PORTFOLIO)}>
       <div className="flex flex-col sm:flex-row py-4.5 sm:py-8 border-b border-gray-lighter">
         <img
-          className="w-full sm:max-w-61.5 rounded-md"
+          className="w-full max-h-45 sm:max-w-61.5 object-fill rounded-md"
           src={screenSaver}
           width={WORK_IMG_SIZE.WIDTH}
           height={WORK_IMG_SIZE.HEIGHT}

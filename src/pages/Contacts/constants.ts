@@ -40,24 +40,28 @@ export const CONTACTS_ITEMS = [
     title: "linkedin",
     linkLabel: "oleksandr-myronchuk",
     link: "https://www.linkedin.com/in/oleksandr-myronchuk-426598255/",
+    isOpenNewTab: true,
   },
   {
     id: 4,
     title: "github",
     linkLabel: "Myronchuk Oleksandr",
     link: "https://github.com/SMU25",
+    isOpenNewTab: true,
   },
   {
     id: 5,
     title: "facebook",
     linkLabel: "oleksandr_myronchuk",
     link: "https://www.facebook.com/profile.php?id=100009263917153",
+    isOpenNewTab: true,
   },
   {
     id: 6,
     title: "instagram",
     linkLabel: "@sanchos_mironchuk",
     link: "https://www.instagram.com/sanchos_mironchuk/",
+    isOpenNewTab: true,
   },
 ];
 
