@@ -13,7 +13,7 @@ interface Props {
   variant?: ViewVariants;
   isLoading: boolean;
   items: IPostItem[];
-  maxCountItemsPreloader?: number;
+  countItemsPreloader?: number;
   isSlider?: boolean;
 }
 
@@ -22,7 +22,7 @@ export const BlogPosts: FC<Props> = ({
   variant,
   isLoading,
   items,
-  maxCountItemsPreloader,
+  countItemsPreloader,
   isSlider,
 }) => {
   const activeVariant = variant || Cookies.get(POST_TYPE_VIEW);
@@ -31,7 +31,7 @@ export const BlogPosts: FC<Props> = ({
   //CHANGE - Слайдер перебиває меню та хедер
 
   const renderBlogPosts = useMemo(() => {
-    if (isLoading) return renderPreloader(isRowVariant, maxCountItemsPreloader);
+    if (isLoading) return renderPreloader(isRowVariant, countItemsPreloader);
 
     return items?.map((item) => (
       <BlogCard
@@ -42,7 +42,7 @@ export const BlogPosts: FC<Props> = ({
         {...item}
       />
     ));
-  }, [activeVariant, isRowVariant, isLoading, items, maxCountItemsPreloader]);
+  }, [activeVariant, isRowVariant, isLoading, items, countItemsPreloader]);
 
   return isSlider ? (
     <SwiperSlider items={renderBlogPosts} />

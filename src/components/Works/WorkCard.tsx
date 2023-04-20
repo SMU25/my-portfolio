@@ -39,7 +39,7 @@ export const WorkCard: FC<IWorkItem> = ({
 
   return (
     <Link href={getPathName(id, PATHNAMES.PORTFOLIO)}>
-      <div className="flex flex-col sm:flex-row py-4.5 sm:py-8 border-b border-gray-lighter">
+      <div className="flex flex-col sm:flex-row py-4.5 sm:py-8 border-b border-gray-lighter transition-all duration-300 hover:scale-105">
         <img
           className="w-full max-h-45 sm:max-w-61.5 object-fill rounded-md"
           src={screenSaver}

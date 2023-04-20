@@ -22,11 +22,11 @@ const SkeletonWorkCard: FC = () => (
 );
 
 interface Props {
-  maxCount?: number;
+  countItems?: number;
 }
 
-export const Preloader: FC<Props> = ({ maxCount }) => {
-  const arrayEmptyItems = getArrayNumbers(maxCount);
+export const Preloader: FC<Props> = ({ countItems }) => {
+  const arrayEmptyItems = getArrayNumbers(countItems);
 
   return (
     <>

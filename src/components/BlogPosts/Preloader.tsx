@@ -49,9 +49,9 @@ export const SkeletonBlogPost: FC<SkeletonBlogPostProps> = ({
 
 export const renderPreloader = (
   isRowVariant?: boolean,
-  maxCount: number = 3
+  countItems: number = 3
 ) => {
-  const arrayNumbers = getArrayNumbers(maxCount);
+  const arrayNumbers = getArrayNumbers(countItems);
 
   return arrayNumbers.map((item) => (
     <SkeletonBlogPost key={item} isRowVariant={isRowVariant} />

@@ -1,4 +1,6 @@
 {
+  "button - show-more": "Show {{count}} more items",
+
   "form-field - first-name": "First Name",
   "form-field - last-name": "Last Name",
   "form-field - phone": "Phone Number",

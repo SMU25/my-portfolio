@@ -1,19 +1,19 @@
 import React, { FC, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useAppDispatch, useAppSelector } from "src/hooks/redux";
+import { useQueryParams } from "src/hooks/useQueryParams";
 import { getPostsAsync } from "src/redux/posts/action";
 import { selectIsLoading, selectPosts } from "src/redux/posts/selectors";
 import { SectionWrapper } from "src/components/Layouts/SectionWrapper";
 import { ContainerHead } from "src/components/Layouts/ContainerHead";
 import { BlogPosts } from "src/components/BlogPosts";
+import { ShowMore } from "src/components/Button/ShowMore";
 import { TagsHeading } from "src/components/Heading/types";
 import { ViewVariants } from "src/components/BlogPosts/types";
 import {
   DEFAULT_SECTION_CLASS_NAME,
   DEFAULT_ITEMS_COMPONENT_CLASS_NAME,
 } from "./constants";
-
-const MAX_COUNT_POSTS_LIMIT = 5;
 
 const T_PREFIX = "blog";
 
@@ -22,14 +22,25 @@ const HEADING = "title";
 const Blog: FC = () => {
   const { t } = useTranslation();
 
+  const {
+    limitInitialValue,
+    page,
+    limit,
+    offset,
+    isChangedLimit,
+    incrementLimit,
+  } = useQueryParams();
+
   const isLoading = useAppSelector(selectIsLoading);
   const posts = useAppSelector(selectPosts);
 
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    dispatch(getPostsAsync({ limit: MAX_COUNT_POSTS_LIMIT }));
-  }, [dispatch]);
+    dispatch(getPostsAsync({ page, limit }));
+  }, [page, limit, dispatch]);
+
+  const isLoadingShowMore = isLoading && isChangedLimit;
 
   return (
     //CHANGE - Додати до цекції ContainerHead і через флаг контролити чи рендерити його
@@ -43,8 +54,16 @@ const Blog: FC = () => {
         variant={ViewVariants.COLUMN}
         isLoading={isLoading}
         items={posts}
-        maxCountItemsPreloader={MAX_COUNT_POSTS_LIMIT}
+        countItemsPreloader={limit}
       />
+      <div className="flex justify-center w-full mt-6">
+        <ShowMore
+          isLoading={isLoadingShowMore}
+          showMoreItemsCount={limitInitialValue}
+          onClick={incrementLimit}
+        />
+      </div>
+      pagination
     </SectionWrapper>
   );
 };

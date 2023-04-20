@@ -9,7 +9,10 @@ export const SpriteItem: FC<Omit<ISpriteItem, "id">> = ({
   icon: Icon,
 }) => {
   return (
-    <li className="ml-9 first:ml-0" title={name}>
+    <li
+      className="ml-9 first:ml-0 transition-all duration-300 hover:scale-125"
+      title={name}
+    >
       <a href={link}>
         <Icon width={ICON_SIZE} height={ICON_SIZE} />
       </a>

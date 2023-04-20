@@ -14,6 +14,8 @@ import { getFormikInitialValues } from "src/utils/getFormikInitialValues";
 import { FEEDBACK_FIELDS, FEEDBACK_VALIDATION_SCHEMA } from "./constants";
 // import { ReCaptcha } from "src/components/ReCaptcha";
 
+// CHANGE - модалку виводити після відправки форми
+
 const T_PREFIX = "feedback";
 
 const HEADING = "title";

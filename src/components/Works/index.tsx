@@ -7,16 +7,16 @@ interface Props {
   className?: string;
   isLoading: boolean;
   items: IWorkItem[];
-  maxCountItemsPreloader?: number;
+  countItemsPreloader?: number;
 }
 
 export const Works: FC<Props> = ({
   className,
   isLoading,
   items,
-  maxCountItemsPreloader,
+  countItemsPreloader,
 }) => {
-  if (isLoading) return <Preloader maxCount={maxCountItemsPreloader} />;
+  if (isLoading) return <Preloader countItems={countItemsPreloader} />;
 
   //CHANGE - Змінити ьрохи відображення тексту опису, щоб заповнювв до кінця блока
   return (

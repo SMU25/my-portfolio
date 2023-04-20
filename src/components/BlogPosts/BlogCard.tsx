@@ -47,7 +47,11 @@ export const BlogCard: FC<Props> = ({
 
   const Component = (
     <div
-      className={cn("w-full flex-1", classNames.container, containerClassName)}
+      className={cn(
+        "w-full flex-1 transition-all duration-300",
+        classNames.container,
+        containerClassName
+      )}
     >
       <Heading className={classNames.title} tagHeading={TagsHeading.H4}>
         {title}

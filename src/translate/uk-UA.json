@@ -1,4 +1,6 @@
 {
+  "button - show-more": "Показати ще {{count}} елементів",
+
   "form-field - first-name": "Прізвище",
   "form-field - last-name": "Ім'я",
   "form-field - phone": "Номер телефону",
@@ -29,7 +31,7 @@
 
   "featured-works - title": "Вибрані роботи",
 
-  "footer - dev-info": "©2022 Розроблено Мирончуком Олександром у 2023 році",
+  "footer - dev-info": "©2023 Розроблено Мирончук Олександром",
 
   "portfolio - title": "Портфоліо",
 
