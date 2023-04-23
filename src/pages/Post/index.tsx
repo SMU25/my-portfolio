@@ -5,7 +5,7 @@ import { getPostByIdAsync } from "src/redux/posts/action";
 import { selectIsLoading, selectPostById } from "src/redux/posts/selectors";
 import { SectionWrapper } from "src/components/Layouts/SectionWrapper";
 import { BlogCard } from "src/components/BlogPosts/BlogCard";
-import { ViewVariants } from "src/components/BlogPosts/types";
+import { ListTypeView } from "src/types";
 import { Preloader } from "./Preloader";
 
 interface Props {}
@@ -36,7 +36,7 @@ const Post: FC<Props> = () => {
     <SectionWrapper className="pt-13.5 pb-7">
       <BlogCard
         containerClassName="border-b-0"
-        variant={ViewVariants.COLUMN}
+        listTypeView={ListTypeView.COLUMN}
         {...post}
       >
         {postImg && (

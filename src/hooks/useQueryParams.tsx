@@ -14,7 +14,7 @@ interface InitialValues {
 export const useQueryParams = (initialValues?: InitialValues) => {
   const {
     pageInitialValue = 1,
-    limitInitialValue = 5,
+    limitInitialValue = 6,
     offsetInitialValue,
   } = initialValues || {};
 

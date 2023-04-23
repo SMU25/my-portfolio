@@ -5,8 +5,8 @@ import { getPostsAsync } from "src/redux/posts/action";
 import { selectIsLoading, selectPosts } from "src/redux/posts/selectors";
 import { ContainerHead } from "src/components/Layouts/ContainerHead";
 import { BlogPosts } from "src/components/BlogPosts";
-import { ViewVariants } from "src/components/BlogPosts/types";
 import { PATHNAMES } from "src/constants/routes";
+import { ListTypeView } from "src/types";
 
 const MAX_COUNT_POSTS_LIMIT = 6;
 
@@ -34,8 +34,9 @@ export const RecentPosts: FC = () => {
         title={t(`${T_PREFIX} - ${HEADING}`)}
         href={PATHNAMES.BLOG}
       />
+
       <BlogPosts
-        variant={ViewVariants.ROW}
+        listTypeView={ListTypeView.ROW}
         isLoading={isLoading}
         items={posts}
         isSlider

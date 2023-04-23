@@ -1,1 +1,1 @@
-export const POST_TYPE_VIEW = "POST_TYPE_VIEW";
+export const POST_LIST_TYPE_VIEW = "POST_LIST_TYPE_VIEW";

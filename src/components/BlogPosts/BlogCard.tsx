@@ -8,9 +8,9 @@ import { TagsHeading } from "src/components/Heading/types";
 import { getPathName } from "src/utils/getPathName";
 import { getTruncateString } from "src/utils/getTruncateString";
 import { PATHNAMES } from "src/constants/routes";
+import { ListTypeView } from "src/types";
 import { IPostItem } from "src/types/post";
 import { CARD_VIEW_VARIANTS_STYLES } from "./constants";
-import { ViewVariants } from "./types";
 import { Link } from "../Link";
 
 const DATE_FORMAT = "d MMM yyyy";
@@ -18,13 +18,13 @@ const DATE_FORMAT = "d MMM yyyy";
 interface Props extends IPostItem {
   children?: ReactNode | ChildNode;
   containerClassName?: string;
-  variant?: ViewVariants;
+  listTypeView?: ListTypeView;
   isLink?: boolean;
   maxLengthMessage?: number;
 }
 
 export const BlogCard: FC<Props> = ({
-  variant = ViewVariants.ROW,
+  listTypeView = ListTypeView.ROW,
   children,
   containerClassName,
   isLink,
@@ -39,7 +39,7 @@ export const BlogCard: FC<Props> = ({
     locale: DATE_LOCALES[activeLanguage],
   });
 
-  const classNames = CARD_VIEW_VARIANTS_STYLES[variant];
+  const classNames = CARD_VIEW_VARIANTS_STYLES[listTypeView];
 
   const truncateMessage = getTruncateString(message, maxLengthMessage);
 

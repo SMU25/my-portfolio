@@ -19,6 +19,7 @@ export const Works: FC<Props> = ({
   if (isLoading) return <Preloader countItems={countItemsPreloader} />;
 
   //CHANGE - Змінити ьрохи відображення тексту опису, щоб заповнювв до кінця блока
+  // 2 варінати відображення в рядок і колонку,як  в блозі
   return (
     <div className={className}>
       {items?.map((item) => (

@@ -1,16 +1,14 @@
 import React, { FC, useMemo } from "react";
 import cn from "classnames";
-import Cookies from "js-cookie";
 import { SwiperSlider } from "src/components/SwiperSlider";
-import { POST_TYPE_VIEW } from "src/constants/cookiesKeys";
+import { ListTypeView } from "src/types";
 import { IPostItem } from "src/types/post";
 import { renderPreloader } from "./Preloader";
 import { BlogCard } from "./BlogCard";
-import { ViewVariants } from "./types";
 
 interface Props {
   className?: string;
-  variant?: ViewVariants;
+  listTypeView?: ListTypeView;
   isLoading: boolean;
   items: IPostItem[];
   countItemsPreloader?: number;
@@ -19,37 +17,37 @@ interface Props {
 
 export const BlogPosts: FC<Props> = ({
   className,
-  variant,
+  listTypeView,
   isLoading,
   items,
   countItemsPreloader,
   isSlider,
 }) => {
-  const activeVariant = variant || Cookies.get(POST_TYPE_VIEW);
-  const isRowVariant = ViewVariants.ROW === activeVariant;
+  const isRowListTypeView = ListTypeView.ROW === listTypeView;
 
   //CHANGE - Слайдер перебиває меню та хедер
 
   const renderBlogPosts = useMemo(() => {
-    if (isLoading) return renderPreloader(isRowVariant, countItemsPreloader);
+    if (isLoading)
+      return renderPreloader(isRowListTypeView, countItemsPreloader);
 
     return items?.map((item) => (
       <BlogCard
         key={item.id}
-        variant={activeVariant}
+        listTypeView={listTypeView}
         maxLengthMessage={220}
         isLink
         {...item}
       />
     ));
-  }, [activeVariant, isRowVariant, isLoading, items, countItemsPreloader]);
+  }, [listTypeView, isRowListTypeView, isLoading, items, countItemsPreloader]);
 
   return isSlider ? (
     <SwiperSlider items={renderBlogPosts} />
   ) : (
     <div
       className={cn(className, {
-        "flex flex-wrap": isRowVariant,
+        "grid sm:grid-cols-2 lg:grid-cols-3 gap-5": isRowListTypeView,
       })}
     >
       {renderBlogPosts}
