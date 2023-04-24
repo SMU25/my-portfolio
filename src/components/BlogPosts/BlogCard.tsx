@@ -43,7 +43,7 @@ export const BlogCard: FC<Props> = ({
 
   const truncateMessage = getTruncateString(message, maxLengthMessage);
 
-  // CHANGE - додати динамічний Title на вкладку
+  // CHANGE - додати динамічний Title на вкладку (в браузері)
 
   const Component = (
     <div

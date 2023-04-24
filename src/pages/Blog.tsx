@@ -49,6 +49,8 @@ const Blog: FC = () => {
 
   const isLoadingShowMore = isLoading && isChangedLimit;
 
+  // не обрети усю карточку в лінк,а тільки текст і картинку
+
   return (
     //CHANGE - Додати до цекції ContainerHead і через флаг контролити чи рендерити його
     <SectionWrapper className={DEFAULT_SECTION_CLASS_NAME}>

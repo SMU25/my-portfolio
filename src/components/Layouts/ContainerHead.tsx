@@ -34,7 +34,7 @@ export const ContainerHead: FC<Props> = ({
   const label = linkLabel || t(`${T_PREFIX} - ${DEFAULT_LINK_LABEL}`);
 
   return (
-    <div className="flex justify-between items-baseline">
+    <div className="flex justify-between items-center">
       <Heading
         className={cn(
           "max-w-1/2 default:leading-15 truncate",

@@ -20,7 +20,9 @@ export const SwiperSlider: FC<Props> = ({ items = [], customSettings }) => {
   return (
     <Swiper {...settings}>
       {items?.map((item) => (
-        <SwiperSlide key={item.key}>{item}</SwiperSlide>
+        <SwiperSlide className="!h-auto" key={item.key}>
+          {item}
+        </SwiperSlide>
       ))}
     </Swiper>
   );

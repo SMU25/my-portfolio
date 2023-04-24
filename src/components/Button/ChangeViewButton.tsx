@@ -1,12 +1,11 @@
 import React, { FC } from "react";
 import cn from "classnames";
-import { ReactComponent as ListIcon } from "src/assets/list.svg";
-import { ReactComponent as GridIcon } from "src/assets/grid.svg";
+import { getArrayNumbers } from "src/utils/getArrayNumbers";
+import { ListTypeView } from "src/types";
 import { Button } from ".";
 import { ButtonVariants } from "./types";
-import { ListTypeView } from "src/types";
 
-const ICON_SIZE = 28;
+const ARRAY_NUMBERS = getArrayNumbers(4);
 
 interface Props {
   variant?: ButtonVariants;
@@ -21,15 +20,50 @@ export const ChangeViewButton: FC<Props> = ({
   listTypeView,
   toogleListTypeView,
 }) => {
-  const Icon = listTypeView === ListTypeView.COLUMN ? ListIcon : GridIcon;
+  const isColumnListTypeView = listTypeView === ListTypeView.COLUMN;
 
   return (
     <Button
-      className={cn(" !p-2 border rounded-10 active:translate-y-0", className)}
+      className={cn("!p-2 !rounded-10 active:!translate-y-0", className, {
+        "rotate-180": !isColumnListTypeView,
+      })}
       variant={variant}
       onClick={toogleListTypeView}
     >
-      <Icon className="transition-all" width={ICON_SIZE} height={ICON_SIZE} />
+      <div
+        className={cn(
+          "relative items-center w-7 h-7 transition-all duration-300",
+          {
+            "flex flex-col justify-center gap-1.5": isColumnListTypeView,
+            "grid grid-cols-2 gap-0.5": !isColumnListTypeView,
+          }
+        )}
+      >
+        {ARRAY_NUMBERS.map((item) => (
+          <div
+            key={item}
+            className={cn({
+              "flex justify-between items-center h-1 first:invisible first:absolute":
+                isColumnListTypeView,
+            })}
+          >
+            <div
+              className={cn("transition-all duration-300", {
+                "w-1.5 h-1.5 bg-white mr-0.5 border-0 rounded-sm":
+                  isColumnListTypeView,
+                "w-3 h-3 border-2 border-white rounded": !isColumnListTypeView,
+              })}
+            />
+            <div
+              className={cn("transition-all duration-300", {
+                "w-4.5 h-0.75 bg-white rounded": isColumnListTypeView,
+                "absolute translate-x-10 overflow-hidden":
+                  !isColumnListTypeView,
+              })}
+            />
+          </div>
+        ))}
+      </div>
     </Button>
   );
 };
