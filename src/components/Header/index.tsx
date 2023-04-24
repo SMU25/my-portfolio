@@ -16,7 +16,7 @@ export const Header: FC = () => {
 
   return (
     <header className="sticky top-0 bg-white z-50">
-      <nav className="flex justify-between mx-4.5 sm:mx-15">
+      <nav className="flex justify-between mx-3 sm:mx-15">
         <LanguageChooser languages={LANGUAGES} />
 
         <BurgetButton
@@ -29,7 +29,7 @@ export const Header: FC = () => {
              sm:translate-x-0 flex flex-col items-center sm:flex-row w-full sm:w-auto h-screen sm:h-auto bg-white 
              py-7 opacity-0 sm:opacity-100 transition-all sm:transition-none ease-in-out duration-300`,
             {
-              "!visible translate-y-17.5 opacity-100": isOpenMenu,
+              "!visible !-top-0.5 translate-y-17.5 opacity-100": isOpenMenu,
             }
           )}
         >

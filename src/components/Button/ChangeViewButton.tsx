@@ -55,8 +55,8 @@ export const ChangeViewButton: FC<Props> = ({
               })}
             />
             <div
-              className={cn("transition-all duration-300", {
-                "w-4.5 h-0.75 bg-white rounded": isColumnListTypeView,
+              className={cn("bg-white transition-all duration-300", {
+                "w-4.5 h-0.75  rounded": isColumnListTypeView,
                 "absolute translate-x-10 overflow-hidden":
                   !isColumnListTypeView,
               })}

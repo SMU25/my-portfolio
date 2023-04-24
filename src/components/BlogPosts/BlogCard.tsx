@@ -20,7 +20,7 @@ interface Props extends IPostItem {
   containerClassName?: string;
   listTypeView?: ListTypeView;
   isLink?: boolean;
-  maxLengthMessage?: number;
+  maxLengthDesciption?: number;
 }
 
 export const BlogCard: FC<Props> = ({
@@ -28,12 +28,12 @@ export const BlogCard: FC<Props> = ({
   children,
   containerClassName,
   isLink,
-  maxLengthMessage,
+  maxLengthDesciption,
   id,
   title,
   createdAt,
   category,
-  message,
+  description,
 }) => {
   const date = format(createdAt, DATE_FORMAT, {
     locale: DATE_LOCALES[activeLanguage],
@@ -41,7 +41,10 @@ export const BlogCard: FC<Props> = ({
 
   const classNames = CARD_VIEW_VARIANTS_STYLES[listTypeView];
 
-  const truncateMessage = getTruncateString(message, maxLengthMessage);
+  const truncateDescription = getTruncateString(
+    description,
+    maxLengthDesciption
+  );
 
   // CHANGE - додати динамічний Title на вкладку (в браузері)
 
@@ -69,7 +72,7 @@ export const BlogCard: FC<Props> = ({
           {category}
         </span>
       </div>
-      <p className={cn("leading-6", classNames.message)}>{truncateMessage}</p>
+      <p className={cn(classNames.description)}>{truncateDescription}</p>
     </div>
   );
 

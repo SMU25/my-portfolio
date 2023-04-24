@@ -19,11 +19,10 @@ export const DEFAULT_SETTINGS = {
   modules: [Autoplay, Navigation, Keyboard, Pagination],
   breakpoints: {
     [SCREEN_BREAKPOINTS.DEFAULT]: {
-      slidesPerView: 1,
-      spaceBetween: 0,
+      slidesPerView: 2,
+      spaceBetween: 12,
     },
     [SCREEN_BREAKPOINTS.SM]: {
-      slidesPerView: 2,
       spaceBetween: 20,
     },
     [SCREEN_BREAKPOINTS.XL]: {

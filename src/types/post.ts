@@ -6,7 +6,7 @@ interface PostImg {
 export interface IPostItem {
   id: string;
   title: string;
-  message?: string;
+  description?: string;
   category: string;
   createdAt: Date;
   img?: PostImg;

@@ -25,8 +25,6 @@ export const BlogPosts: FC<Props> = ({
 }) => {
   const isRowListTypeView = ListTypeView.ROW === listTypeView;
 
-  //CHANGE - Слайдер перебиває меню та хедер
-
   const renderBlogPosts = useMemo(() => {
     if (isLoading)
       return renderPreloader(isRowListTypeView, countItemsPreloader);
@@ -35,7 +33,7 @@ export const BlogPosts: FC<Props> = ({
       <BlogCard
         key={item.id}
         listTypeView={listTypeView}
-        maxLengthMessage={220}
+        maxLengthDesciption={220}
         isLink
         {...item}
       />
@@ -47,7 +45,7 @@ export const BlogPosts: FC<Props> = ({
   ) : (
     <div
       className={cn(className, {
-        "grid sm:grid-cols-2 lg:grid-cols-3 gap-5": isRowListTypeView,
+        "grid grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-5": isRowListTypeView,
       })}
     >
       {renderBlogPosts}
