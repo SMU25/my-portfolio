@@ -1,4 +1,4 @@
-import React, { FC, ReactNode } from "react";
+import React, { FC, ReactNode, memo } from "react";
 import cn from "classnames";
 import format from "date-fns/format";
 import { activeLanguage } from "src/services/i18n";
@@ -23,67 +23,69 @@ interface Props extends IPostItem {
   maxLengthDesciption?: number;
 }
 
-export const BlogCard: FC<Props> = ({
-  listTypeView = ListTypeView.ROW,
-  children,
-  containerClassName,
-  isLink,
-  maxLengthDesciption,
-  id,
-  title,
-  createdAt,
-  category,
-  description,
-}) => {
-  const date = format(createdAt, DATE_FORMAT, {
-    locale: DATE_LOCALES[activeLanguage],
-  });
-
-  const classNames = CARD_VIEW_VARIANTS_STYLES[listTypeView];
-
-  const truncateDescription = getTruncateString(
+export const BlogCard: FC<Props> = memo(
+  ({
+    listTypeView = ListTypeView.ROW,
+    children,
+    containerClassName,
+    isLink,
+    maxLengthDesciption,
+    id,
+    title,
+    createdAt,
+    category,
     description,
-    maxLengthDesciption
-  );
+  }) => {
+    const date = format(createdAt, DATE_FORMAT, {
+      locale: DATE_LOCALES[activeLanguage],
+    });
 
-  // CHANGE - додати динамічний Title на вкладку (в браузері)
+    const classNames = CARD_VIEW_VARIANTS_STYLES[listTypeView];
 
-  const Component = (
-    <div
-      className={cn(
-        "w-full flex-1 transition-all duration-300",
-        classNames.container,
-        containerClassName
-      )}
-    >
-      <Heading className={classNames.title} tagHeading={TagsHeading.H4}>
-        {title}
-      </Heading>
-      <div className={cn("truncate", classNames.infoContainer)}>
-        <time className={cn("font-medium", classNames.date)} dateTime={date}>
-          {date}
-        </time>
-        <span
-          className={cn(
-            "capitalize border-l border-black-base",
-            classNames.category
-          )}
-        >
-          {category}
-        </span>
+    const truncateDescription = getTruncateString(
+      description,
+      maxLengthDesciption
+    );
+
+    // CHANGE - додати динамічний Title на вкладку (в браузері)
+
+    const Component = (
+      <div
+        className={cn(
+          "w-full flex-1 transition-all duration-300",
+          classNames.container,
+          containerClassName
+        )}
+      >
+        <Heading className={classNames.title} tagHeading={TagsHeading.H4}>
+          {title}
+        </Heading>
+        <div className={cn("truncate", classNames.infoContainer)}>
+          <time className={cn("font-medium", classNames.date)} dateTime={date}>
+            {date}
+          </time>
+          <span
+            className={cn(
+              "capitalize border-l border-black-base",
+              classNames.category
+            )}
+          >
+            {category}
+          </span>
+        </div>
+        <p className={cn(classNames.description)}>{truncateDescription}</p>
       </div>
-      <p className={cn(classNames.description)}>{truncateDescription}</p>
-    </div>
-  );
+    );
 
-  if (isLink) {
-    return <Link href={getPathName(id, PATHNAMES.BLOG)}>{Component}</Link>;
+    if (isLink) {
+      return <Link href={getPathName(id, PATHNAMES.BLOG)}>{Component}</Link>;
+    }
+
+    return (
+      <>
+        {Component}
+        {children}
+      </>
+    );
   }
-
-  return (
-    <>
-      {Component}
-      {children}
-    </>
-  );
-};
+);

@@ -1,4 +1,4 @@
-import React, { FC, useMemo } from "react";
+import React, { FC, useMemo, memo } from "react";
 import cn from "classnames";
 import { SwiperSlider } from "src/components/SwiperSlider";
 import { ListTypeView } from "src/types";
@@ -15,40 +15,48 @@ interface Props {
   isSlider?: boolean;
 }
 
-export const BlogPosts: FC<Props> = ({
-  className,
-  listTypeView,
-  isLoading,
-  items,
-  countItemsPreloader,
-  isSlider,
-}) => {
-  const isRowListTypeView = ListTypeView.ROW === listTypeView;
+export const BlogPosts: FC<Props> = memo(
+  ({
+    className,
+    listTypeView,
+    isLoading,
+    items,
+    countItemsPreloader,
+    isSlider,
+  }) => {
+    const isRowListTypeView = ListTypeView.ROW === listTypeView;
 
-  const renderBlogPosts = useMemo(() => {
-    if (isLoading)
-      return renderPreloader(isRowListTypeView, countItemsPreloader);
+    const renderBlogPosts = useMemo(() => {
+      if (isLoading)
+        return renderPreloader(isRowListTypeView, countItemsPreloader);
 
-    return items?.map((item) => (
-      <BlogCard
-        key={item.id}
-        listTypeView={listTypeView}
-        maxLengthDesciption={220}
-        isLink
-        {...item}
-      />
-    ));
-  }, [listTypeView, isRowListTypeView, isLoading, items, countItemsPreloader]);
+      return items?.map((item) => (
+        <BlogCard
+          key={item.id}
+          listTypeView={listTypeView}
+          maxLengthDesciption={220}
+          isLink
+          {...item}
+        />
+      ));
+    }, [
+      listTypeView,
+      isRowListTypeView,
+      isLoading,
+      items,
+      countItemsPreloader,
+    ]);
 
-  return isSlider ? (
-    <SwiperSlider items={renderBlogPosts} />
-  ) : (
-    <div
-      className={cn(className, {
-        "grid grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-5": isRowListTypeView,
-      })}
-    >
-      {renderBlogPosts}
-    </div>
-  );
-};
+    return isSlider ? (
+      <SwiperSlider items={renderBlogPosts} />
+    ) : (
+      <div
+        className={cn(className, {
+          "grid grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-5": isRowListTypeView,
+        })}
+      >
+        {renderBlogPosts}
+      </div>
+    );
+  }
+);

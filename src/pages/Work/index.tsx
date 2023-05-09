@@ -12,6 +12,8 @@ import { Preloader } from "./Preloader";
 const Work: FC = () => {
   const { id } = useParams();
 
+  console.log(id);
+
   const isLoading = useAppSelector(selectIsLoading);
   const work = useAppSelector(selectWorkById);
 

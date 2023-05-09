@@ -6,17 +6,17 @@ import { IWorkItem } from "src/types/work";
 
 export const WORKS_SLICE_NAME = "works";
 
-interface GetWorksAsyncParams {
+interface QueryParams {
   page?: number;
   limit?: number;
-  // onlyFeatured
+  offset?: number;
 }
 
 // CHANGE - add env
 
 export const getWorksAsync = createAsyncThunk(
   `${WORKS_SLICE_NAME}/fetchWorks`,
-  async ({ page = 1, limit }: GetWorksAsyncParams, { rejectWithValue }) => {
+  async ({ page = 1, limit }: QueryParams, { rejectWithValue }) => {
     try {
       const { data } = await instance.get<IWorkItem[]>(
         `/portfolio?page=${page}&limit=${limit}`
@@ -43,3 +43,19 @@ export const getWorkByIdAsync = createAsyncThunk(
     }
   }
 );
+
+// буде використано, коли напишу власну API
+// export const getFeaturedWorksAsync = createAsyncThunk(
+//   `${WORKS_SLICE_NAME}/fetchFeaturedWorks`,
+//   async ({ page = 1, limit }: QueryParams, { rejectWithValue }) => {
+//     try {
+//       const { data } = await instance.get<IWorkItem[]>(
+//         `/featured-works?page=${page}&limit=${limit}`
+//       );
+
+//       return data;
+//     } catch (e) {
+//       return rejectWithValue(e);
+//     }
+//   }
+// );

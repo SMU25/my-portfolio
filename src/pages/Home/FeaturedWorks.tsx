@@ -17,7 +17,12 @@ export const FeaturedWorks: FC = () => {
   const { t } = useTranslation();
 
   const isLoading = useAppSelector(selectIsLoading);
-  const works = useAppSelector(selectWorks);
+  const allWorks = useAppSelector(selectWorks);
+
+  // буде змінено, коли напишу власну API
+  const featuredWorks = allWorks?.filter((work) => work.isFeatured);
+
+  const works = featuredWorks?.length ? featuredWorks : allWorks;
 
   const dispatch = useAppDispatch();
 

@@ -16,6 +16,7 @@ export interface IWorkItem {
   title: string;
   description?: string;
   category: string;
+  isFeatured?: boolean;
   createdAt: Date;
   screenSaver?: string;
   imageAlbum?: ImageAlbumItem[];
