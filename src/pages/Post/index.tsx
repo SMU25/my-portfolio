@@ -4,6 +4,7 @@ import { useAppDispatch, useAppSelector } from "src/hooks/redux";
 import { getPostByIdAsync } from "src/redux/posts/action";
 import { selectIsLoading, selectPostById } from "src/redux/posts/selectors";
 import { SectionWrapper } from "src/components/Layouts/SectionWrapper";
+import { BreadCrumbs } from "src/components/BreadCrumbs";
 import { BlogCard } from "src/components/BlogPosts/BlogCard";
 import { ListTypeView } from "src/types";
 import { Preloader } from "./Preloader";
@@ -22,18 +23,10 @@ const Post: FC<Props> = () => {
     dispatch(getPostByIdAsync(id));
   }, [id, dispatch]);
 
-  if (isLoading) {
-    return (
-      <SectionWrapper>
-        <Preloader />
-      </SectionWrapper>
-    );
-  } else if (!post) {
-    return null;
-  }
-
-  return (
-    <SectionWrapper className="pt-13.5 pb-7">
+  const sectionContent = isLoading ? (
+    <Preloader />
+  ) : (
+    post && (
       <BlogCard
         containerClassName="border-b-0"
         listTypeView={ListTypeView.COLUMN}
@@ -43,7 +36,14 @@ const Post: FC<Props> = () => {
           <img className="w-full" src={postImg.url} alt={postImg?.title} />
         )}
       </BlogCard>
-    </SectionWrapper>
+    )
+  );
+
+  return (
+    <>
+      <BreadCrumbs tertiaryPageName={post?.title} />
+      <SectionWrapper className="pt-13.5 pb-7">{sectionContent}</SectionWrapper>
+    </>
   );
 };
 

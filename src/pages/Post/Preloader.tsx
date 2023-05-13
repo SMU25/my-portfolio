@@ -4,7 +4,7 @@ import { SkeletonBlogPost } from "src/components/BlogPosts/Preloader";
 
 export const Preloader = () => {
   return (
-    <div className="pt-13.5 pb-7">
+    <div>
       <SkeletonBlogPost />
       <Shimmer className="w-full h-125" />
     </div>

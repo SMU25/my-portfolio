@@ -4,6 +4,7 @@ import { useAppDispatch, useAppSelector } from "src/hooks/redux";
 import { getWorkByIdAsync } from "src/redux/works/action";
 import { selectIsLoading, selectWorkById } from "src/redux/works/selectors";
 import { SectionWrapper } from "src/components/Layouts/SectionWrapper";
+import { BreadCrumbs } from "src/components/BreadCrumbs";
 import { Info } from "./Info";
 import { Slider } from "./Slider";
 import { Video } from "./Video";
@@ -11,8 +12,6 @@ import { Preloader } from "./Preloader";
 
 const Work: FC = () => {
   const { id } = useParams();
-
-  console.log(id);
 
   const isLoading = useAppSelector(selectIsLoading);
   const work = useAppSelector(selectWorkById);
@@ -23,22 +22,23 @@ const Work: FC = () => {
     dispatch(getWorkByIdAsync(id));
   }, [id, dispatch]);
 
-  if (isLoading) {
-    return (
-      <SectionWrapper>
-        <Preloader />
-      </SectionWrapper>
-    );
-  } else if (!work) {
-    return null;
-  }
+  const sectionContent = isLoading ? (
+    <Preloader />
+  ) : (
+    work && (
+      <>
+        <Info {...work} />
+        <Slider imageAlbum={work.imageAlbum} />
+        <Video {...work.video} />
+      </>
+    )
+  );
 
   return (
-    <SectionWrapper>
-      <Info {...work} />
-      <Slider imageAlbum={work.imageAlbum} />
-      <Video {...work.video} />
-    </SectionWrapper>
+    <>
+      <BreadCrumbs tertiaryPageName={work?.title} />
+      <SectionWrapper className="pt-19.5">{sectionContent}</SectionWrapper>
+    </>
   );
 };
 

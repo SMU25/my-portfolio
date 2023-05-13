@@ -10,7 +10,7 @@ interface WorksState {
 }
 
 const initialState: WorksState = {
-  isLoading: false,
+  isLoading: true,
   works: null,
   workById: null,
 };

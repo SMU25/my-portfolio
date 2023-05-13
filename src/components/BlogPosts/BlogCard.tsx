@@ -36,6 +36,8 @@ export const BlogCard: FC<Props> = memo(
     category,
     description,
   }) => {
+    const pathname = getPathName(id, PATHNAMES.BLOG);
+
     const date = format(createdAt, DATE_FORMAT, {
       locale: DATE_LOCALES[activeLanguage],
     });
@@ -49,41 +51,42 @@ export const BlogCard: FC<Props> = memo(
 
     // CHANGE - додати динамічний Title на вкладку (в браузері)
 
-    const Component = (
-      <div
-        className={cn(
-          "w-full flex-1 transition-all duration-300",
-          classNames.container,
-          containerClassName
-        )}
-      >
-        <Heading className={classNames.title} tagHeading={TagsHeading.H4}>
-          {title}
-        </Heading>
-        <div className={cn("truncate", classNames.infoContainer)}>
-          <time className={cn("font-medium", classNames.date)} dateTime={date}>
-            {date}
-          </time>
-          <span
-            className={cn(
-              "capitalize border-l border-black-base",
-              classNames.category
-            )}
-          >
-            {category}
-          </span>
-        </div>
-        <p className={cn(classNames.description)}>{truncateDescription}</p>
-      </div>
-    );
-
-    if (isLink) {
-      return <Link href={getPathName(id, PATHNAMES.BLOG)}>{Component}</Link>;
-    }
-
     return (
       <>
-        {Component}
+        <div
+          className={cn(
+            "w-full flex-1 transition-all duration-300",
+            classNames.container,
+            containerClassName
+          )}
+        >
+          <Link
+            href={pathname}
+            className="hover:underline hover:underline-offset-8"
+            isDisabled={!isLink}
+          >
+            <Heading className={classNames.title} tagHeading={TagsHeading.H4}>
+              {title}
+            </Heading>
+          </Link>
+          <div className={cn("truncate", classNames.infoContainer)}>
+            <time
+              className={cn("font-medium", classNames.date)}
+              dateTime={date}
+            >
+              {date}
+            </time>
+            <span
+              className={cn(
+                "capitalize border-l border-black-base",
+                classNames.category
+              )}
+            >
+              {category}
+            </span>
+          </div>
+          <p className={cn(classNames.description)}>{truncateDescription}</p>
+        </div>
         {children}
       </>
     );

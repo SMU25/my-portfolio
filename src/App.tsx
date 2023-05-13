@@ -6,7 +6,6 @@ import AppRoutes from "./routes/Router";
 import { store } from "./redux/store";
 import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
-import { BreadCrumbs } from "./components/BreadCrumbs";
 
 function App(): ReactElement {
   return (
@@ -14,7 +13,6 @@ function App(): ReactElement {
       <ReduxProvider store={store}>
         <div className="App text-black-dark">
           <Header />
-          <BreadCrumbs />
           <AppRoutes />
           <Footer />
         </div>

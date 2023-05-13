@@ -7,6 +7,7 @@ import { togglePostListTypeView } from "src/redux/config/action";
 import { selectIsLoading, selectPosts } from "src/redux/posts/selectors";
 import { selectPostListTypeView } from "src/redux/config/selectors";
 import { SectionWrapper } from "src/components/Layouts/SectionWrapper";
+import { BreadCrumbs } from "src/components/BreadCrumbs";
 import { ContainerHead } from "src/components/Layouts/ContainerHead";
 import { BlogPosts } from "src/components/BlogPosts";
 import { ChangeViewButton } from "src/components/Button/ChangeViewButton";
@@ -49,36 +50,40 @@ const Blog: FC = () => {
 
   const isLoadingShowMore = isLoading && isChangedLimit;
 
-  // не обрети усю карточку в лінк,а тільки текст і картинку
+  // не обертати усю карточку в лінк,а тільки текст і картинку
 
   return (
     //CHANGE - Додати до цекції ContainerHead і через флаг контролити чи рендерити його
-    <SectionWrapper className={DEFAULT_SECTION_CLASS_NAME}>
-      <ContainerHead
-        title={t(`${T_PREFIX} - ${HEADING}`)}
-        tagHeading={TagsHeading.H2}
-      >
-        <ChangeViewButton
+
+    <>
+      <BreadCrumbs />
+      <SectionWrapper className={DEFAULT_SECTION_CLASS_NAME}>
+        <ContainerHead
+          title={t(`${T_PREFIX} - ${HEADING}`)}
+          tagHeading={TagsHeading.H2}
+        >
+          <ChangeViewButton
+            listTypeView={postListTypeView}
+            toogleListTypeView={tooglePostView}
+          />
+        </ContainerHead>
+        <BlogPosts
+          className={DEFAULT_ITEMS_COMPONENT_CLASS_NAME}
           listTypeView={postListTypeView}
-          toogleListTypeView={tooglePostView}
+          isLoading={isLoading}
+          items={posts}
+          countItemsPreloader={limit}
         />
-      </ContainerHead>
-      <BlogPosts
-        className={DEFAULT_ITEMS_COMPONENT_CLASS_NAME}
-        listTypeView={postListTypeView}
-        isLoading={isLoading}
-        items={posts}
-        countItemsPreloader={limit}
-      />
-      <div className="flex justify-center w-full mt-6">
-        <ShowMore
-          isLoading={isLoadingShowMore}
-          showMoreItemsCount={limitInitialValue}
-          onClick={incrementLimit}
-        />
-      </div>
-      pagination
-    </SectionWrapper>
+        <div className="flex justify-center w-full mt-6">
+          <ShowMore
+            isLoading={isLoadingShowMore}
+            showMoreItemsCount={limitInitialValue}
+            onClick={incrementLimit}
+          />
+        </div>
+        pagination
+      </SectionWrapper>
+    </>
   );
 };
 

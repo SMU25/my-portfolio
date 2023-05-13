@@ -6,9 +6,9 @@ import { Link } from "src/components/Link";
 import { getPathName } from "src/utils/getPathName";
 import { PATHNAMES } from "src/constants/routes";
 
-const HOMEPAGE_NAME = "home";
-
 const T_PREFIX = "menu-item";
+
+const HOMEPAGE_NAME = "home";
 
 interface Props {
   name: string;

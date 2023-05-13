@@ -5,6 +5,7 @@ import { useQueryParams } from "src/hooks/useQueryParams";
 import { getWorksAsync } from "src/redux/works/action";
 import { selectIsLoading, selectWorks } from "src/redux/works/selectors";
 import { SectionWrapper } from "src/components/Layouts/SectionWrapper";
+import { BreadCrumbs } from "src/components/BreadCrumbs";
 import { ContainerHead } from "src/components/Layouts/ContainerHead";
 import { Works } from "src/components/Works";
 import { ShowMore } from "src/components/Button/ShowMore";
@@ -48,26 +49,29 @@ const Portfolio: FC = () => {
   const isLoadingShowMore = isLoading && isChangedLimit;
 
   return (
-    <SectionWrapper className={DEFAULT_SECTION_CLASS_NAME}>
-      <ContainerHead
-        title={t(`${T_PREFIX} - ${HEADING}`)}
-        tagHeading={TagsHeading.H2}
-      />
-      <Works
-        className={DEFAULT_ITEMS_COMPONENT_CLASS_NAME}
-        isLoading={isLoading}
-        items={works}
-        countItemsPreloader={limit}
-      />
-      <div className="flex justify-center w-full mt-6">
-        <ShowMore
-          isLoading={isLoadingShowMore}
-          showMoreItemsCount={limitInitialValue}
-          onClick={incrementLimit}
+    <>
+      <BreadCrumbs />
+      <SectionWrapper className={DEFAULT_SECTION_CLASS_NAME}>
+        <ContainerHead
+          title={t(`${T_PREFIX} - ${HEADING}`)}
+          tagHeading={TagsHeading.H2}
         />
-      </div>
-      pagination
-    </SectionWrapper>
+        <Works
+          className={DEFAULT_ITEMS_COMPONENT_CLASS_NAME}
+          isLoading={isLoading}
+          items={works}
+          countItemsPreloader={limit}
+        />
+        <div className="flex justify-center w-full mt-6">
+          <ShowMore
+            isLoading={isLoadingShowMore}
+            showMoreItemsCount={limitInitialValue}
+            onClick={incrementLimit}
+          />
+        </div>
+        pagination
+      </SectionWrapper>
+    </>
   );
 };
 

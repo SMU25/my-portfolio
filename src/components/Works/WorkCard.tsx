@@ -20,14 +20,22 @@ const WORK_IMG_SIZE = {
   HEIGHT: 180,
 };
 
-// CHANGE  - додати поле в АПІ для посилання на елемент і видалити функцію для отримання шляху + додати отримання по імені
-// або взагалі, щоб breadcrumbs вертало з АПІ
-// зробити, щоб контролювалося із редакся,але + додавало ще типу (пост чи проект із портфоліо)
+//CHANGE - зробити, щоб контролювалося із редакся,але + додавало ще типу (пост чи проект із портфоліо)
 
+/////////
+/////////
+// Інші варіанти поки відкидаємо, так як апішка не дозволяє нормально працювати
+/////////
+//   - додати поле в АПІ для посилання на елемент і видалити функцію для отримання шляху + додати отримання по імені
+// або взагалі, щоб breadcrumbs вертало з АПІ
 // Або просто по імені отримувати і робити лінку,але ім'я бає бути бзе пробілів і в малому регістрі, тобто через дифіс там де був пробіл
+/////////
+/////////
 
 export const WorkCard: FC<IWorkItem> = memo(
   ({ id, title, description, category, createdAt, screenSaver }) => {
+    const pathname = getPathName(id, PATHNAMES.PORTFOLIO);
+
     const date = format(createdAt, DATE_FORMAT, {
       locale: DATE_LOCALES[activeLanguage],
     });
@@ -38,8 +46,8 @@ export const WorkCard: FC<IWorkItem> = memo(
     );
 
     return (
-      <Link href={getPathName(id, PATHNAMES.PORTFOLIO)}>
-        <div className="flex flex-col sm:flex-row py-4.5 sm:py-8 border-b border-gray-lighter transition-all duration-300 hover:scale-105">
+      <div className="flex flex-col sm:flex-row py-4.5 sm:py-8 border-b border-gray-lighter transition-all duration-300 hover:scale-105">
+        <Link href={pathname}>
           <img
             className="w-full max-h-45 sm:max-w-61.5 object-cover rounded-md"
             src={screenSaver}
@@ -47,27 +55,32 @@ export const WorkCard: FC<IWorkItem> = memo(
             height={WORK_IMG_SIZE.HEIGHT}
             alt={title}
           />
-          <div className="mt-4.5 sm:mt-0 sm:ml-4.5">
+        </Link>
+        <div className="mt-4.5 sm:mt-0 sm:ml-4.5">
+          <Link
+            href={pathname}
+            className="hover:underline hover:underline-offset-8"
+          >
             <Heading
               className="text-2xl md:text-3xl font-bold leading-8 md:leading-11"
               tagHeading={TagsHeading.H4}
             >
               {title}
             </Heading>
-            <div className="flex items-center mt-4 leading-6.5">
-              <MarkLabel>
-                <time dateTime={date}>{date}</time>
-              </MarkLabel>
-              <span className="ml-3 md:ml-6.5 text-gray-light text-base md:text-xl break-all">
-                {category}
-              </span>
-            </div>
-            <p className="max-h-25.5 mt-6 sm:mt-2 md:mt-5.5 leading-6 overflow-hidden">
-              {truncatedDescription}
-            </p>
+          </Link>
+          <div className="flex items-center mt-4 leading-6.5">
+            <MarkLabel>
+              <time dateTime={date}>{date}</time>
+            </MarkLabel>
+            <span className="ml-3 md:ml-6.5 text-gray-light text-base md:text-xl break-all">
+              {category}
+            </span>
           </div>
+          <p className="max-h-25.5 mt-6 sm:mt-2 md:mt-5.5 leading-6 overflow-hidden">
+            {truncatedDescription}
+          </p>
         </div>
-      </Link>
+      </div>
     );
   }
 );

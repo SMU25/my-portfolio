@@ -21,7 +21,7 @@ export const Info: FC<Omit<IWorkItem, "id" | "imageAlbum">> = ({
   });
 
   return (
-    <div className="pt-19.5 pb-13.5">
+    <div className="pb-13.5">
       <Heading
         className="max-w-195 text-34 leading-12.5"
         tagHeading={TagsHeading.H2}
