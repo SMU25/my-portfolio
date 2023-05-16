@@ -1,6 +1,6 @@
 import React, { FC, FormEvent } from "react";
 import cn from "classnames";
-import { useTranslation, Trans } from "react-i18next";
+import { useTranslation } from "react-i18next";
 import { FormikProvider, useFormik } from "formik";
 import { useAppDispatch, useAppSelector } from "src/hooks/redux";
 import { sendFeedbackForm } from "src/redux/feedbackForm/action";
@@ -74,7 +74,7 @@ export const FeedbackForm: FC = () => {
             isDisabled={!isValid}
             isLoading={isLoading}
           >
-            <Trans>{`${T_PREFIX} - ${SEND_BUTTON_NAME}`}</Trans>
+            {t(`${T_PREFIX} - ${SEND_BUTTON_NAME}`)}
           </Button>
         </form>
       </FormikProvider>

@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { useTranslation, Trans } from "react-i18next";
+import { useTranslation } from "react-i18next";
 import { Heading } from "src/components/Heading";
 import { TagsHeading } from "src/components/Heading/types";
 import { Button } from "src/components/Button";
@@ -18,7 +18,7 @@ const DESCRIPTION = "description";
 const VIEW_RESUME_BUTTON_NAME = "view-resume";
 
 export const AboutMySelf: FC = () => {
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const resumeLink = RESUME_LINKS[i18n.language];
 
@@ -29,17 +29,17 @@ export const AboutMySelf: FC = () => {
           className="mt-8.5 sm:mt-4.5 capitalize text-3xl md:text-44 xl:text-6xl leading-10 md:leading-15 xl:leading-17"
           tagHeading={TagsHeading.H2}
         >
-          <Trans>{`${T_PREFIX} - ${HEADING}`}</Trans>
+          {t(`${T_PREFIX} - ${HEADING}`)}
         </Heading>
         <p className="mt-5 sm:mt-2 md:mt-10 xl:mt-6 xl:text-xl leading-6">
-          <Trans>{`${T_PREFIX} - ${DESCRIPTION}`}</Trans>
+          {t(`${T_PREFIX} - ${DESCRIPTION}`)}
         </p>
         {/* CHANGE - add constant for name file */}
         {/* В залежності від мови, таке і резюме повинно завантажуватися
          */}
         <a href={resumeLink} target="_blank" rel="noreferrer">
           <Button className="mt-6.5 sm:mt-9.5 text-xl font-medium">
-            <Trans>{`${T_PREFIX} - ${VIEW_RESUME_BUTTON_NAME}`}</Trans>
+            {t(`${T_PREFIX} - ${VIEW_RESUME_BUTTON_NAME}`)}
           </Button>
         </a>
       </div>

@@ -39,7 +39,7 @@
   "footer - dev-info": "©2023 Developed by Oleksandr Myronchuk",
 
   "not-found - title": "Error 404",
-  "not-found - subtitle": "Page <strong>«{{page}}»</strong> not found.",
+  "not-found - subtitle": "Page {{page}} not found.",
 
   "portfolio - title": "Portfolio",
 

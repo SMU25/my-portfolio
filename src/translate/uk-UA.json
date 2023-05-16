@@ -38,6 +38,9 @@
 
   "footer - dev-info": "©2023 Розроблено Мирончук Олександром",
 
+  "not-found - title": "Помилка 404",
+  "not-found - subtitle": "Сторінка {{page}} не знайдена.",
+
   "portfolio - title": "Портфоліо",
 
   "work-swiper - title": "Фотоальбом",

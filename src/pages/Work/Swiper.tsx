@@ -1,24 +1,25 @@
 import React, { FC } from "react";
-import { Trans } from "react-i18next";
+import { useTranslation } from "react-i18next";
 import "swiper/css/free-mode";
 import { Heading } from "src/components/Heading";
 import { TagsHeading } from "src/components/Heading/types";
 import { SwiperSlider } from "src/components/SwiperSlider";
 import { ImageAlbumItem } from "src/types/work";
-import { SliderItem } from "./SliderItem";
-import { SLIDER_SETTINGS } from "./constants";
+import { SwiperItem } from "./SwiperItem";
+import { SWIPER_SETTINGS } from "./constants";
 
 const T_PREFIX = "work-swiper";
 
+const HEADING = "title";
 interface Props {
   imageAlbum: ImageAlbumItem[];
 }
 
-const HEADING = "title";
+export const Swiper: FC<Props> = ({ imageAlbum }) => {
+  const { t } = useTranslation();
 
-export const Slider: FC<Props> = ({ imageAlbum }) => {
   const swiperItems = imageAlbum?.map(({ id, ...item }) => (
-    <SliderItem key={id} {...item} />
+    <SwiperItem key={id} {...item} />
   ));
 
   if (!imageAlbum?.length) return null;
@@ -29,11 +30,9 @@ export const Slider: FC<Props> = ({ imageAlbum }) => {
         className="ml-1 text-3xl leading-15 font-medium"
         tagHeading={TagsHeading.H3}
       >
-        <Trans>{`${T_PREFIX} - ${HEADING}`}</Trans>
-
-        <Trans></Trans>
+        {t(`${T_PREFIX} - ${HEADING}`)}
       </Heading>
-      <SwiperSlider items={swiperItems} customSettings={SLIDER_SETTINGS} />
+      <SwiperSlider items={swiperItems} customSettings={SWIPER_SETTINGS} />
     </div>
   );
 };

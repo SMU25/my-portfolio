@@ -3,7 +3,7 @@ import { Heading } from "src/components/Heading";
 import { TagsHeading } from "src/components/Heading/types";
 import { ImageAlbumItem } from "src/types/work";
 
-export const SliderItem: FC<Omit<ImageAlbumItem, "id">> = ({
+export const SwiperItem: FC<Omit<ImageAlbumItem, "id">> = ({
   title,
   description,
   imageUrl,

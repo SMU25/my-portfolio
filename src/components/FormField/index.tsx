@@ -1,5 +1,5 @@
 import React, { FC, ReactNode } from "react";
-import { Trans } from "react-i18next";
+import { useTranslation } from "react-i18next";
 import cn from "classnames";
 import { Error } from "../Error";
 
@@ -24,6 +24,8 @@ export const FormField: FC<Props> = ({
   showError,
   error,
 }) => {
+  const { t } = useTranslation();
+
   return (
     <div className={cn("relative flex flex-col", className)}>
       {Boolean(label) && (
@@ -31,7 +33,7 @@ export const FormField: FC<Props> = ({
           htmlFor={labelFor}
           className={cn("ml-4 text-xl leading-7", labelClassName)}
         >
-          <Trans>{`${T_PREFIX} - ${label}`}</Trans>
+          {t(`${T_PREFIX} - ${label}`)}
         </label>
       )}
       {children}

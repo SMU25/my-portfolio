@@ -1,5 +1,5 @@
 import React, { FC, useMemo, memo } from "react";
-import { Trans, useTranslation } from "react-i18next";
+import { useTranslation } from "react-i18next";
 import { useLocation } from "react-router";
 import { PATHNAMES } from "src/constants/routes";
 import { getPathName } from "src/utils/getPathName";
@@ -15,7 +15,7 @@ interface Props {
 
 export const BreadCrumbs: FC<Props> = memo(
   ({ isShownSecondaryPage = true, tertiaryPageName }) => {
-    const { i18n } = useTranslation();
+    const { t } = useTranslation();
 
     const { pathname } = useLocation();
 
@@ -26,13 +26,13 @@ export const BreadCrumbs: FC<Props> = memo(
     const breadCrumbsItems = useMemo(
       () => [
         {
-          pageName: <Trans>{`${T_PREFIX} - ${HOMEPAGE_NAME}`}</Trans>,
+          pageName: t(`${T_PREFIX} - ${HOMEPAGE_NAME}`),
           path: PATHNAMES.HOME,
           isShown: true,
           isReversed: !isShownSecondaryPage,
         },
         {
-          pageName: <Trans>{`${T_PREFIX} - ${secondaryPageName}`}</Trans>,
+          pageName: t(`${T_PREFIX} - ${secondaryPageName}`),
           path: getPathName(secondaryPageName),
           isDisabled: isActiveSecondaryPage,
           isShown: isShownSecondaryPage,
@@ -43,12 +43,10 @@ export const BreadCrumbs: FC<Props> = memo(
           isShown: Boolean(tertiaryPageName),
         },
       ],
-
-      // i18n.language required for the bread crumbs translation to work without refreshing the page
-      // eslint-disable-next-line react-hooks/exhaustive-deps
       [
-        i18n.language,
+        t,
         isActiveSecondaryPage,
+        isShownSecondaryPage,
         secondaryPageName,
         tertiaryPageName,
       ]

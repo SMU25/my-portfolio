@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { Trans } from "react-i18next";
+import { useTranslation } from "react-i18next";
 interface Props {
   title?: string;
   linkLabel?: string;
@@ -15,13 +15,13 @@ export const ContactItem: FC<Props> = ({
   link,
   isOpenNewTab,
 }) => {
+  const { t } = useTranslation();
+
   if (!link) return null;
 
   return (
     <div className="mt-6 text-2xl leading-9">
-      <p>
-        <Trans>{`${T_PREFIX} - ${title}`}</Trans>
-      </p>
+      <p>{t(`${T_PREFIX} - ${title}`)}</p>
       <a
         href={link}
         className="text-blue-light font-bold break-words transition-all hover:brightness-50"

@@ -1,7 +1,7 @@
 import { Autoplay, Keyboard, FreeMode } from "swiper";
 import { SCREEN_BREAKPOINTS } from "src/constants/screenBreakpoints";
 
-export const SLIDER_SETTINGS = {
+export const SWIPER_SETTINGS = {
   loop: true,
   keyboard: true,
   centeredSlides: false,

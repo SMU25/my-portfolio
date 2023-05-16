@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import cn from "classnames";
 import { useLocation } from "react-router-dom";
-import { Trans } from "react-i18next";
+import { useTranslation } from "react-i18next";
 import { Link } from "src/components/Link";
 import { getPathName } from "src/utils/getPathName";
 import { PATHNAMES } from "src/constants/routes";
@@ -16,6 +16,8 @@ interface Props {
 }
 
 const MenuItem: FC<Props> = ({ name, onCloseMenu }) => {
+  const { t } = useTranslation();
+
   const { pathname } = useLocation();
 
   const isHomePage = name === HOMEPAGE_NAME;
@@ -38,7 +40,7 @@ const MenuItem: FC<Props> = ({ name, onCloseMenu }) => {
         className="py-3 sm:py-0 px-2.5 sm:px-0 capitalize text-center sm:text-left text-3xl sm:text-sm font-medium leading-10 sm:leading-7"
         onClick={onCloseMenu}
       >
-        <Trans>{`${T_PREFIX} - ${name}`}</Trans>
+        {t(`${T_PREFIX} - ${name}`)}
       </li>
     </Link>
   );

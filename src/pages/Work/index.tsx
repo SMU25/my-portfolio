@@ -6,7 +6,7 @@ import { selectIsLoading, selectWorkById } from "src/redux/works/selectors";
 import { SectionWrapper } from "src/components/Layouts/SectionWrapper";
 import { BreadCrumbs } from "src/components/BreadCrumbs";
 import { Info } from "./Info";
-import { Slider } from "./Slider";
+import { Swiper } from "./Swiper";
 import { Video } from "./Video";
 import { Preloader } from "./Preloader";
 
@@ -28,7 +28,7 @@ const Work: FC = () => {
     work && (
       <>
         <Info {...work} />
-        <Slider imageAlbum={work.imageAlbum} />
+        <Swiper imageAlbum={work.imageAlbum} />
         <Video {...work.video} />
       </>
     )
