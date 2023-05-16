@@ -25,6 +25,8 @@ const HEADING = "title";
 const Blog: FC = () => {
   const { t } = useTranslation();
 
+  const dispatch = useAppDispatch();
+
   const {
     limitInitialValue,
     page,
@@ -33,8 +35,6 @@ const Blog: FC = () => {
     isChangedLimit,
     incrementLimit,
   } = useQueryParams();
-
-  const dispatch = useAppDispatch();
 
   const isLoading = useAppSelector(selectIsLoading);
   const posts = useAppSelector(selectPosts);

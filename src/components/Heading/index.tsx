@@ -1,5 +1,6 @@
 import React, { FC, ReactNode } from "react";
 import cn from "classnames";
+import { DEFAULT_CLASS_NAME_HEADING } from "./constants";
 import { TagsHeading } from "./types";
 
 interface Props {
@@ -15,5 +16,15 @@ export const Heading: FC<Props> = ({
 }) => {
   const Heading = tagHeading;
 
-  return <Heading className={cn("font-bold", className)}>{children}</Heading>;
+  return (
+    <Heading
+      className={cn(
+        "font-bold",
+        DEFAULT_CLASS_NAME_HEADING[tagHeading],
+        className
+      )}
+    >
+      {children}
+    </Heading>
+  );
 };

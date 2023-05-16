@@ -8,7 +8,7 @@ interface Props {
 
 export const LanguageChooser: FC<Props> = ({ languages }) => {
   return (
-    <ul className="flex">
+    <ul className="flex items-center">
       {languages.map(({ language }) => (
         <Language key={language} language={language} />
       ))}

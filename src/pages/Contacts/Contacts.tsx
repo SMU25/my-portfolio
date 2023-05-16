@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import { useTranslation } from "react-i18next";
+import { Heading } from "src/components/Heading";
 import { TagsHeading } from "src/components/Heading/types";
-import { ContainerHead } from "src/components/Layouts/ContainerHead";
 import { CONTACTS_ITEMS } from "./constants";
 import { ContactItem } from "./ContactItem";
 
@@ -14,11 +14,9 @@ export const Contacts: FC = () => {
 
   return (
     <>
-      <ContainerHead
-        titleClassName="default:max-w-none"
-        title={t(`${T_PREFIX} - ${HEADING}`)}
-        tagHeading={TagsHeading.H2}
-      />
+      <Heading className="default:max-w-none" tagHeading={TagsHeading.H2}>
+        {t(`${T_PREFIX} - ${HEADING}`)}
+      </Heading>
       <div className="grid grid-cols-1 md:grid-cols-2">
         {CONTACTS_ITEMS.map(({ id, ...contact }) => (
           <ContactItem key={id} {...contact} />

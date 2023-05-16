@@ -3,7 +3,6 @@ import cn from "classnames";
 import { useTranslation } from "react-i18next";
 import { Heading } from "src/components/Heading";
 import { TagsHeading } from "src/components/Heading/types";
-import { DEFAULT_CLASS_NAME_HEADING } from "src/components/Heading/constants";
 import { Link } from "src/components/Link";
 import { Button } from "src/components/Button";
 import { ButtonVariants } from "src/components/Button/types";
@@ -36,11 +35,7 @@ export const ContainerHead: FC<Props> = ({
   return (
     <div className="flex justify-between items-center">
       <Heading
-        className={cn(
-          "max-w-1/2 default:leading-15",
-          DEFAULT_CLASS_NAME_HEADING[tagHeading],
-          titleClassName
-        )}
+        className={cn("max-w-1/2 default:leading-15", titleClassName)}
         tagHeading={tagHeading}
       >
         {title}

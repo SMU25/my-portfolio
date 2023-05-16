@@ -16,16 +16,17 @@ export const Language: FC<ILanguage> = ({ language }) => {
 
   return (
     <li
-      className={cn(
-        "h-fit mt-5 px-3 text-gray-light font-bold border-r-2 border-r-gray-lighter last:border-r-0",
-        {
-          "text-blue-light cursor-pointer transition-all hover:text-blue-dark":
-            !isCurrentLanguage,
-        }
-      )}
+      className="border-r-2 border-r-gray-lighter last:border-r-0"
       onClick={chooseLanguage}
     >
-      {language}
+      <span
+        className={cn("h-fit px-3 text-gray-light font-bold", {
+          "text-blue-light cursor-pointer transition-all hover:brightness-50":
+            !isCurrentLanguage,
+        })}
+      >
+        {language}
+      </span>
     </li>
   );
 };

@@ -15,7 +15,7 @@ export const Header: FC = () => {
   );
 
   return (
-    <header className="sticky top-0 bg-white z-50">
+    <header className="sticky top-0 bg-white shadow-light-bottom z-50">
       <nav className="flex justify-between mx-3 sm:mx-15">
         <LanguageChooser languages={LANGUAGES} />
 

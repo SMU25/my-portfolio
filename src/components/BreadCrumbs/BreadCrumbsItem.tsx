@@ -10,20 +10,32 @@ interface Props {
   children: ReactNode;
   path?: string;
   isDisabled?: boolean;
+  isReversed?: boolean;
 }
 
-export const BreadCrumbsItem: FC<Props> = ({ children, path, isDisabled }) => (
-  <li className={cn("ml-3 first:ml-0 text-xl")}>
+export const BreadCrumbsItem: FC<Props> = ({
+  children,
+  path,
+  isDisabled,
+  isReversed,
+}) => (
+  <li className={cn("mt-2 mr-3 last:mr-0 text-xl")}>
     {isDisabled ? (
       <span className="text-gray-light">{children}</span>
     ) : (
       <Link
-        className="flex items-center text-blue-light font-medium transition-all hover:brightness-75"
+        className={cn(
+          "flex items-center text-blue-light font-medium transition-all hover:brightness-50",
+          { "flex-row-reverse": isReversed }
+        )}
         href={path}
       >
         {children}
+
         <Chevron
-          className="mt-1 ml-1"
+          className={cn("mt-1 ml-1", {
+            "mr-3 !ml-0 rotate-180": isReversed,
+          })}
           width={ICON_CHEVRON_SIZE}
           height={ICON_CHEVRON_SIZE}
         />

@@ -5,7 +5,8 @@ import { FormikProvider, useFormik } from "formik";
 import { useAppDispatch, useAppSelector } from "src/hooks/redux";
 import { sendFeedbackForm } from "src/redux/feedbackForm/action";
 import { selectIsLoading } from "src/redux/feedbackForm/selectors";
-import { ContainerHead } from "src/components/Layouts/ContainerHead";
+import { Heading } from "src/components/Heading";
+import { TagsHeading } from "src/components/Heading/types";
 import { RenderFormField } from "src/components/RenderFormField";
 import { Textarea } from "src/components/FormField/Textarea";
 import { Button } from "src/components/Button";
@@ -47,10 +48,12 @@ export const FeedbackForm: FC = () => {
 
   return (
     <>
-      <ContainerHead
-        titleClassName="sm:text-4xl font-extrabold default:max-w-none"
-        title={t(`${T_PREFIX} - ${HEADING}`)}
-      />
+      <Heading
+        className="sm:text-4xl font-extrabold default:max-w-none"
+        tagHeading={TagsHeading.H3}
+      >
+        {t(`${T_PREFIX} - ${HEADING}`)}
+      </Heading>
       <FormikProvider value={formik}>
         <form onSubmit={onSubmitForm}>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-y-6 gap-x-13.5 mt-7.5">
