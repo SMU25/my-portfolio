@@ -11,7 +11,7 @@ function App(): ReactElement {
   return (
     <CustomHistoryRouter history={history}>
       <ReduxProvider store={store}>
-        <div className="App text-black-dark">
+        <div className="App flex flex-col h-screen text-black-dark">
           <Header />
           <AppRoutes />
           <Footer />

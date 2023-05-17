@@ -2,6 +2,7 @@ import React, { FC, useEffect, useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { useAppDispatch, useAppSelector } from "src/hooks/redux";
 import { useQueryParams } from "src/hooks/useQueryParams";
+import { usePageTitle } from "src/hooks/usePageTitle";
 import { getWorksAsync } from "src/redux/works/action";
 import { toggleWorkListTypeView } from "src/redux/config/action";
 import { selectIsLoading, selectWorks } from "src/redux/works/selectors";
@@ -31,6 +32,8 @@ const HEADING = "title";
 const Portfolio: FC = () => {
   const { t } = useTranslation();
 
+  const pageTitle = t(`${T_PREFIX} - ${HEADING}`);
+
   const dispatch = useAppDispatch();
 
   const {
@@ -43,6 +46,7 @@ const Portfolio: FC = () => {
   } = useQueryParams();
 
   const isLoading = useAppSelector(selectIsLoading);
+  const isLoadingShowMore = isLoading && isChangedLimit;
   const works = useAppSelector(selectWorks);
 
   const workListTypeView = useAppSelector(selectWorkListTypeView);
@@ -55,16 +59,13 @@ const Portfolio: FC = () => {
     dispatch(getWorksAsync({ limit, page }));
   }, [page, limit, dispatch]);
 
-  const isLoadingShowMore = isLoading && isChangedLimit;
+  usePageTitle(pageTitle);
 
   return (
     <>
       <BreadCrumbs />
       <SectionWrapper className={DEFAULT_SECTION_CLASS_NAME}>
-        <ContainerHead
-          title={t(`${T_PREFIX} - ${HEADING}`)}
-          tagHeading={TagsHeading.H2}
-        >
+        <ContainerHead title={pageTitle} tagHeading={TagsHeading.H2}>
           <ChangeViewButton
             listTypeView={workListTypeView}
             toogleListTypeView={toogleWorkView}

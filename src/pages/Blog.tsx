@@ -2,6 +2,7 @@ import React, { FC, useEffect, useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { useAppDispatch, useAppSelector } from "src/hooks/redux";
 import { useQueryParams } from "src/hooks/useQueryParams";
+import { usePageTitle } from "src/hooks/usePageTitle";
 import { getPostsAsync } from "src/redux/posts/action";
 import { togglePostListTypeView } from "src/redux/config/action";
 import { selectIsLoading, selectPosts } from "src/redux/posts/selectors";
@@ -25,6 +26,8 @@ const HEADING = "title";
 const Blog: FC = () => {
   const { t } = useTranslation();
 
+  const pageTitle = t(`${T_PREFIX} - ${HEADING}`);
+
   const dispatch = useAppDispatch();
 
   const {
@@ -37,6 +40,7 @@ const Blog: FC = () => {
   } = useQueryParams();
 
   const isLoading = useAppSelector(selectIsLoading);
+  const isLoadingShowMore = isLoading && isChangedLimit;
   const posts = useAppSelector(selectPosts);
   const postListTypeView = useAppSelector(selectPostListTypeView);
 
@@ -48,7 +52,7 @@ const Blog: FC = () => {
     dispatch(getPostsAsync({ page, limit }));
   }, [page, limit, dispatch]);
 
-  const isLoadingShowMore = isLoading && isChangedLimit;
+  usePageTitle(pageTitle);
 
   // не обертати усю карточку в лінк,а тільки текст і картинку
 
@@ -58,10 +62,7 @@ const Blog: FC = () => {
     <>
       <BreadCrumbs />
       <SectionWrapper className={DEFAULT_SECTION_CLASS_NAME}>
-        <ContainerHead
-          title={t(`${T_PREFIX} - ${HEADING}`)}
-          tagHeading={TagsHeading.H2}
-        >
+        <ContainerHead title={pageTitle} tagHeading={TagsHeading.H2}>
           <ChangeViewButton
             listTypeView={postListTypeView}
             toogleListTypeView={tooglePostView}

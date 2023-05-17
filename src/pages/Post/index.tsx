@@ -1,6 +1,7 @@
 import React, { FC, useEffect } from "react";
 import { useParams } from "react-router";
 import { useAppDispatch, useAppSelector } from "src/hooks/redux";
+import { usePageTitle } from "src/hooks/usePageTitle";
 import { getPostByIdAsync } from "src/redux/posts/action";
 import { selectIsLoading, selectPostById } from "src/redux/posts/selectors";
 import { SectionWrapper } from "src/components/Layouts/SectionWrapper";
@@ -14,14 +15,17 @@ interface Props {}
 const Post: FC<Props> = () => {
   const { id } = useParams();
 
+  const dispatch = useAppDispatch();
+
   const isLoading = useAppSelector(selectIsLoading);
   const post = useAppSelector(selectPostById);
-  const postImg = post?.img;
-  const dispatch = useAppDispatch();
+  const { title, img } = post || {};
 
   useEffect(() => {
     dispatch(getPostByIdAsync(id));
   }, [id, dispatch]);
+
+  usePageTitle(title);
 
   const sectionContent = isLoading ? (
     <Preloader />
@@ -32,16 +36,14 @@ const Post: FC<Props> = () => {
         listTypeView={ListTypeView.COLUMN}
         {...post}
       >
-        {postImg && (
-          <img className="w-full" src={postImg.url} alt={postImg?.title} />
-        )}
+        {img && <img className="w-full" src={img.url} alt={img?.title} />}
       </BlogCard>
     )
   );
 
   return (
     <>
-      <BreadCrumbs tertiaryPageName={post?.title} />
+      <BreadCrumbs tertiaryPageName={title} />
       <SectionWrapper className="pt-13.5 pb-7">{sectionContent}</SectionWrapper>
     </>
   );

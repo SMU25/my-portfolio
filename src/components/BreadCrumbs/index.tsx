@@ -19,9 +19,9 @@ export const BreadCrumbs: FC<Props> = memo(
 
     const { pathname } = useLocation();
 
-    const pathnames = pathname.split("/");
-    const secondaryPageName = pathnames[1];
-    const isActiveSecondaryPage = pathnames.length < 3;
+    const routes = pathname.split("/");
+    const secondaryPageName = routes[1];
+    const isActiveSecondaryPage = routes.length < 3;
 
     const breadCrumbsItems = useMemo(
       () => [

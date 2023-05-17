@@ -7,7 +7,7 @@ interface Props {
 }
 
 export const SectionWrapper: FC<Props> = ({ children, className }) => (
-  <section className={cn("px-2.5 sm:px-15 gl:px-40", className)}>
+  <section className={cn("flex-1 px-2.5 sm:px-15 gl:px-40", className)}>
     <div className="max-w-88.5 sm:max-w-150 md:max-w-195 lg:max-w-214 xl:max-w-323.5 w-full mx-auto">
       {children}
     </div>

@@ -9,6 +9,7 @@ import { PATHNAMES } from "src/constants/routes";
 const T_PREFIX = "menu-item";
 
 const HOMEPAGE_NAME = "home";
+// CHANGE - винести в загальну константу ось це або додти в PATHNAMES ім'я та шлях
 
 interface Props {
   name: string;
@@ -20,11 +21,15 @@ const MenuItem: FC<Props> = ({ name, onCloseMenu }) => {
 
   const { pathname } = useLocation();
 
-  const isHomePage = name === HOMEPAGE_NAME;
+  const routes = pathname.split("/");
 
+  const isHomePage = name === HOMEPAGE_NAME;
   const path = isHomePage ? PATHNAMES.HOME : getPathName(name);
 
-  const isActiveLink = isHomePage ? pathname === path : pathname.includes(path);
+  const isActiveLink =
+    isHomePage || routes.length === 2
+      ? pathname === path
+      : pathname.includes(path);
 
   return (
     <Link
