@@ -61,6 +61,10 @@ const Portfolio: FC = () => {
 
   usePageTitle(pageTitle);
 
+  // CHANGE - add preloader for ROW items
+  // add animation for toggle view type list
+  // на головній перша секції з бека отримання можна зробити, і потім залежно від мови, щоб отримувати переклад роботи або посту із API (по ід та lang)
+
   return (
     <>
       <BreadCrumbs />

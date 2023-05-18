@@ -64,9 +64,13 @@ module.exports = {
         45: "180px",
         50: "200px",
         60.5: "242px",
+        61.5: "246px",
         112.5: "450px",
         125: "500px",
         150: "600px",
+      },
+      minWidth: {
+        61.5: "246px",
       },
       maxWidth: {
         61.5: "246px",
@@ -98,6 +102,8 @@ module.exports = {
         "light-bottom": "2px 4px 8px rgba(0, 0, 0, 0.1);",
         "lining-lighter-blue": "-5px 10px 0px 5px rgba(237,247,250,1);",
         "light-white": "0px 4px 10px rgba(187, 225, 250, 0.25);",
+        "card-primary":
+          "0px 10px 15px -3px rgba(0, 0, 0, 0.2), 0px 4px 22px -2px rgba(0, 0, 0, 0.15);",
       },
       screens: {
         default: "0px",

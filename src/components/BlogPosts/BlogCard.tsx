@@ -55,7 +55,7 @@ export const BlogCard: FC<Props> = memo(
       <>
         <div
           className={cn(
-            "w-full flex-1 transition-all duration-300",
+            "w-full flex-1 transition-all duration-300 hover:scale-105",
             classNames.container,
             containerClassName
           )}

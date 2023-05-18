@@ -1,4 +1,5 @@
 import React, { FC, memo } from "react";
+import cn from "classnames";
 import format from "date-fns/format";
 import { activeLanguage } from "src/services/i18n";
 import { DATE_LOCALES } from "src/translate/locales";
@@ -8,10 +9,10 @@ import { MarkLabel } from "src/components/MarkLabel";
 import { getTruncateString } from "src/utils/getTruncateString";
 import { getPathName } from "src/utils/getPathName";
 import { PATHNAMES } from "src/constants/routes";
+import { ListTypeView } from "src/types";
 import { IWorkItem } from "src/types/work";
+import { CARD_VIEW_VARIANTS_STYLES } from "./constants";
 import { Link } from "../Link";
-
-const MAX_COUNT_DESCRIPTION_SYMBOLS = 175;
 
 const DATE_FORMAT = "yyyy";
 
@@ -32,51 +33,84 @@ const WORK_IMG_SIZE = {
 /////////
 /////////
 
-export const WorkCard: FC<IWorkItem> = memo(
-  ({ id, title, description, category, createdAt, screenSaver }) => {
+interface Props extends IWorkItem {
+  // containerClassName?: string;
+  listTypeView?: ListTypeView;
+  maxLengthDesciption?: number;
+}
+
+export const WorkCard: FC<Props> = memo(
+  ({
+    listTypeView = ListTypeView.COLUMN,
+    // containerClassName,
+    maxLengthDesciption,
+    id,
+    title,
+    description,
+    category,
+    createdAt,
+    screenSaver,
+  }) => {
     const pathname = getPathName(id, PATHNAMES.PORTFOLIO);
 
     const date = format(createdAt, DATE_FORMAT, {
       locale: DATE_LOCALES[activeLanguage],
     });
 
+    const classNames = CARD_VIEW_VARIANTS_STYLES[listTypeView];
+
     const truncatedDescription = getTruncateString(
       description,
-      MAX_COUNT_DESCRIPTION_SYMBOLS
+      maxLengthDesciption
     );
 
     return (
-      <div className="flex flex-col sm:flex-row py-4.5 sm:py-8 border-b border-gray-lighter transition-all duration-300 hover:scale-105">
+      <div
+        className={cn(
+          "flex flex-col border-gray-lighter transition-all duration-300",
+          classNames.container
+        )}
+      >
         <Link href={pathname}>
           <img
-            className="w-full max-h-45 sm:max-w-61.5 object-cover rounded-md"
+            className={cn("w-full object-cover rounded-md", classNames.img)}
             src={screenSaver}
             width={WORK_IMG_SIZE.WIDTH}
             height={WORK_IMG_SIZE.HEIGHT}
             alt={title}
           />
         </Link>
-        <div className="mt-4.5 sm:mt-0 sm:ml-4.5">
+        <div className={classNames.infoContainer}>
           <Link
             href={pathname}
             className="hover:underline hover:underline-offset-8"
           >
             <Heading
-              className="text-2xl md:text-3xl font-bold leading-8 md:leading-11"
+              className={cn(
+                "md:text-3xl font-bold leading-8 md:leading-11",
+                classNames.title
+              )}
               tagHeading={TagsHeading.H4}
             >
               {title}
             </Heading>
           </Link>
-          <div className="flex items-center mt-4 leading-6.5">
-            <MarkLabel>
+          <div
+            className={cn(
+              "flex items-center leading-6.5",
+              classNames.infoContainerCenter
+            )}
+          >
+            <MarkLabel className={cn(classNames.date)}>
               <time dateTime={date}>{date}</time>
             </MarkLabel>
             <span className="ml-3 md:ml-6.5 text-gray-light text-base md:text-xl break-all">
               {category}
             </span>
           </div>
-          <p className="max-h-25.5 mt-6 sm:mt-2 md:mt-5.5 leading-6 overflow-hidden">
+          <p
+            className={cn("leading-6 overflow-hidden", classNames.description)}
+          >
             {truncatedDescription}
           </p>
         </div>

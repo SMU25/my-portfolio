@@ -4,15 +4,15 @@ import { Shimmer } from "src/components/Shimmer";
 import { getArrayNumbers } from "src/utils/getArrayNumbers";
 
 interface SkeletonBlogPostProps {
-  isRowVariant?: boolean;
+  isRowListTypeView?: boolean;
 }
 
 export const SkeletonBlogPost: FC<SkeletonBlogPostProps> = ({
-  isRowVariant,
+  isRowListTypeView,
 }) => (
   <div
     className={cn("bg-white py-6", {
-      "min-h-75 pt-8 px-5 rounded": isRowVariant,
+      "min-h-75 pt-8 px-5 rounded": isRowListTypeView,
     })}
   >
     <Shimmer className="w-50 h-7" />
@@ -21,7 +21,7 @@ export const SkeletonBlogPost: FC<SkeletonBlogPostProps> = ({
       <Shimmer className="w-22.5 ml-4" />
     </div>
     <div className="mt-3">
-      {isRowVariant ? (
+      {isRowListTypeView ? (
         <>
           <Shimmer className="w-11/12 h-3 mt-1.5" />
           <Shimmer className="h-3 mt-1.5" />
@@ -47,13 +47,10 @@ export const SkeletonBlogPost: FC<SkeletonBlogPostProps> = ({
   </div>
 );
 
-export const renderPreloader = (
-  isRowVariant?: boolean,
-  countItems: number = 3
-) => {
+export const renderPreloader = (isRowListTypeView: boolean, countItems = 3) => {
   const arrayNumbers = getArrayNumbers(countItems);
 
   return arrayNumbers.map((item) => (
-    <SkeletonBlogPost key={item} isRowVariant={isRowVariant} />
+    <SkeletonBlogPost key={item} isRowListTypeView={isRowListTypeView} />
   ));
 };
