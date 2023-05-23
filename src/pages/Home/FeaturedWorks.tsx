@@ -7,7 +7,7 @@ import { ContainerHead } from "src/components/Layouts/ContainerHead";
 import { Works } from "src/components/Works";
 import { PATHNAMES } from "src/constants/routes";
 
-const MAX_COUNT_WORKS_LIMIT = 3;
+const MAX_COUNT_WORKS_LIMIT = 6;
 
 const T_PREFIX = "featured-works";
 
@@ -42,6 +42,7 @@ export const FeaturedWorks: FC = () => {
         className="border-t border-gray-lighter"
         isLoading={isLoading}
         items={works}
+        isSlider
       />
     </>
   );

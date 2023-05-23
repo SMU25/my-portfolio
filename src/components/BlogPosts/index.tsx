@@ -20,7 +20,7 @@ interface Props {
 export const BlogPosts: FC<Props> = memo(
   ({
     className,
-    listTypeView,
+    listTypeView = ListTypeView.ROW,
     isLoading,
     items,
     countItemsPreloader,

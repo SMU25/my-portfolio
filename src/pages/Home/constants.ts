@@ -10,12 +10,12 @@ export const SECTIONS = [
   },
   {
     id: 2,
-    component: RecentPosts,
-    className: "bg-blue-lighter sm:pt-2 pb-4.5 sm:pb-3",
+    component: FeaturedWorks,
+    className: "bg-blue-lighter sm:pt-2 pb-7 sm:pb-10",
   },
   {
     id: 3,
-    component: FeaturedWorks,
+    component: RecentPosts,
     className: "sm:pt-4 pb-37.5 sm:pb-21",
   },
 ];

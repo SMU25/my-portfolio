@@ -1,10 +1,10 @@
 import React, { FC } from "react";
 import { useTranslation } from "react-i18next";
-import { Button } from "src/components/Button";
-import { ButtonVariants } from "src/components/Button/types";
 import { Loader } from "src/components/Loader";
 import { Sizes } from "src/types/sizes";
 import { ReactComponent as ArrowRotate } from "src/assets/arrow-rotate.svg";
+import { Button } from ".";
+import { ButtonVariants } from "./types";
 import { T_PREFIX } from "./constants";
 
 const ARROW_ROTATE_ICON_SIZE = 24;
@@ -12,6 +12,7 @@ const ARROW_ROTATE_ICON_SIZE = 24;
 const DEFAULT_BUTTON_NAME = "show-more";
 
 interface Props {
+  variant?: ButtonVariants;
   isLoading?: boolean;
   isDisabled?: boolean;
   buttonTitle?: string;
@@ -20,6 +21,7 @@ interface Props {
 }
 
 export const ShowMore: FC<Props> = ({
+  variant = ButtonVariants.SIMPLE_SECONDARY,
   isLoading,
   isDisabled,
   buttonTitle,
@@ -35,7 +37,7 @@ export const ShowMore: FC<Props> = ({
   return (
     <Button
       className="flex items-center px-10 hover:underline hover:brightness-100"
-      variant={ButtonVariants.SIMPLE_SECONDARY}
+      variant={variant}
       isDisabled={isDisabled}
       onClick={onClick}
     >

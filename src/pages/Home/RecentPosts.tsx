@@ -8,7 +8,7 @@ import { BlogPosts } from "src/components/BlogPosts";
 import { PATHNAMES } from "src/constants/routes";
 import { ListTypeView } from "src/types";
 
-const MAX_COUNT_POSTS_LIMIT = 6;
+const MAX_COUNT_POSTS_LIMIT = 3;
 
 const T_PREFIX = "recent-posts";
 
@@ -36,10 +36,9 @@ export const RecentPosts: FC = () => {
       />
 
       <BlogPosts
-        listTypeView={ListTypeView.ROW}
+        listTypeView={ListTypeView.COLUMN}
         isLoading={isLoading}
         items={posts}
-        isSlider
       />
     </>
   );

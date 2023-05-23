@@ -2,7 +2,7 @@ import { ListTypeView } from "src/types";
 
 export const CARD_VIEW_VARIANTS_STYLES = {
   [ListTypeView.ROW]: {
-    container: "py-4 px-3 rounded-lg hover:shadow-card-primary hover:scale-105",
+    container: "py-4 px-3 rounded-lg hover:shadow-card-primary",
     img: "h-24 xs:h-28 sm:h-45 xl:h-60",
     infoContainer: "mt-2 sm:mt-4.5",
     title: "text-base xs:text-lg sm:text-2xl default:leading-5 sm:leading-8",

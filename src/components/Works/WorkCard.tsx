@@ -34,15 +34,15 @@ const WORK_IMG_SIZE = {
 /////////
 
 interface Props extends IWorkItem {
-  // containerClassName?: string;
+  className?: string;
   listTypeView?: ListTypeView;
   maxLengthDesciption?: number;
 }
 
 export const WorkCard: FC<Props> = memo(
   ({
+    className,
     listTypeView = ListTypeView.COLUMN,
-    // containerClassName,
     maxLengthDesciption,
     id,
     title,
@@ -64,11 +64,14 @@ export const WorkCard: FC<Props> = memo(
       maxLengthDesciption
     );
 
+    //CHANGE slug замість path (частина урли це) - замінити скрізь можливо
+
     return (
       <div
         className={cn(
-          "flex flex-col border-gray-lighter transition-all duration-300",
-          classNames.container
+          "flex flex-col bg-white border-gray-lighter transition-all duration-300 hover:scale-105",
+          classNames.container,
+          className
         )}
       >
         <Link href={pathname}>

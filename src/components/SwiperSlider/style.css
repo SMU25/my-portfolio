@@ -1,15 +1,13 @@
-.swiper-button-prev:active,
-.swiper-button-next:active {
-  transform: translateY(2px);
-  transition-duration: 150ms;
-}
-
 .swiper-pagination {
   width: 100px !important;
-  bottom: 0 !important;
+  bottom: 0px !important;
 }
 
 .swiper-pagination-bullet {
   width: 12px;
   height: 12px;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: #00a8cc;
 }

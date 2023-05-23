@@ -9,7 +9,7 @@ interface SkeletonWorkCardProps {
 
 const SkeletonWorkCard: FC<SkeletonWorkCardProps> = ({ isRowListTypeView }) => (
   <div
-    className={cn("flex flex-col sm:flex-row py-5", {
+    className={cn("flex flex-col w-full bg-white sm:flex-row py-5", {
       "!flex-col py-4 px-3": isRowListTypeView,
     })}
   >

@@ -87,6 +87,9 @@ module.exports = {
         323.5: "1294px",
         "1/2": "50%",
       },
+      height: {
+        initial: "initial",
+      },
       minHeight: {
         37.5: "150px",
         45: "180px",
@@ -102,6 +105,7 @@ module.exports = {
         "light-bottom": "2px 4px 8px rgba(0, 0, 0, 0.1);",
         "lining-lighter-blue": "-5px 10px 0px 5px rgba(237,247,250,1);",
         "light-white": "0px 4px 10px rgba(187, 225, 250, 0.25);",
+        "hard-white": "0 0 16px 10px rgba(187, 225, 250, 0.25);",
         "card-primary":
           "0px 10px 15px -3px rgba(0, 0, 0, 0.2), 0px 4px 22px -2px rgba(0, 0, 0, 0.15);",
       },
