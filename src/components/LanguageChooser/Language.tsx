@@ -21,7 +21,7 @@ export const Language: FC<ILanguage> = ({ language }) => {
     >
       <span
         className={cn("h-fit px-3 text-gray-light font-bold", {
-          "text-blue-light cursor-pointer transition-all hover:brightness-50":
+          "!text-blue-light cursor-pointer transition-all hover:brightness-50":
             !isCurrentLanguage,
         })}
       >
