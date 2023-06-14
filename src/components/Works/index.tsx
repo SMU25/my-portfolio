@@ -36,8 +36,7 @@ export const Works: FC<Props> = memo(
         <WorkCard
           key={item.id}
           className={cn({
-            "hover:!shadow-light-white default:hover:scale-100 sm:hover:scale-105":
-              isSlider,
+            "default:hover:scale-100 sm:hover:scale-105": isSlider,
           })}
           listTypeView={listTypeView}
           maxLengthDesciption={MAX_LENGTH_DESCRIPTION}
@@ -48,9 +47,9 @@ export const Works: FC<Props> = memo(
       listTypeView,
       isRowListTypeView,
       isLoading,
-      isSlider,
       items,
       countItemsPreloader,
+      isSlider,
     ]);
 
     //CHANGE - Змінити ьрохи відображення тексту опису, щоб заповнювв до кінця блока
