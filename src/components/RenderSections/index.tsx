@@ -5,6 +5,7 @@ interface SectionItem {
   id: number;
   component: FC;
   className?: string;
+  innerWrapperClassName?: string;
 }
 
 interface Props {
@@ -13,11 +14,11 @@ interface Props {
 
 export const RenderSections: FC<Props> = ({ sections, ...props }) => (
   <>
-    {sections.map(({ id, component, className }) => {
+    {sections.map(({ id, component, ...section }) => {
       const Component = component;
 
       return (
-        <SectionWrapper key={id} className={className} {...props}>
+        <SectionWrapper key={id} {...section} {...props}>
           <Component />
         </SectionWrapper>
       );

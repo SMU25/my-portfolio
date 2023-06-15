@@ -13,7 +13,7 @@ function App(): ReactElement {
   return (
     <CustomHistoryRouter history={history}>
       <ReduxProvider store={store}>
-        <div className="App flex flex-col h-screen text-black-dark">
+        <div className="App flex flex-col h-screen text-black-dark overflow-y-auto overflow-x-hidden">
           <Header />
           <AppRoutes />
           <Footer />

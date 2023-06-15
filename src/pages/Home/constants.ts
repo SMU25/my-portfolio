@@ -11,7 +11,7 @@ export const SECTIONS = [
   {
     id: 2,
     component: FeaturedWorks,
-    className: "bg-blue-lighter sm:pt-2 pb-7 sm:pb-10",
+    className: "bg-blue-lighter !px-2 xs:!px-0 sm:pt-2 pb-7 sm:pb-10",
   },
   {
     id: 3,

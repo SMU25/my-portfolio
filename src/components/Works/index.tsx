@@ -57,7 +57,7 @@ export const Works: FC<Props> = memo(
 
     return isSlider ? (
       <SwiperSlider
-        className="!pt-3.5 md:!pt-7 !pb-10 sm:!px-15 md:!px-20"
+        className="!pt-3.5 md:!pt-7 !pb-10 !overflow-visible"
         items={renderedWorkItems}
       />
     ) : (
