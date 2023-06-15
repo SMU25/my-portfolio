@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import "swiper/css/free-mode";
 import { Heading } from "src/components/Heading";
 import { TagsHeading } from "src/components/Heading/types";
-import { SwiperSlider } from "src/components/SwiperSlider";
+import { ThumbsGallerySwiper } from "src/components/SwiperSlider/ThumbsGallerySwiper";
 import { ImageAlbumItem } from "src/types/work";
 import { SwiperItem } from "./SwiperItem";
 import { SWIPER_SETTINGS } from "./constants";
@@ -32,7 +32,7 @@ export const Swiper: FC<Props> = ({ imageAlbum }) => {
       >
         {t(`${T_PREFIX} - ${HEADING}`)}
       </Heading>
-      <SwiperSlider items={swiperItems} customSettings={SWIPER_SETTINGS} />
+      <ThumbsGallerySwiper items={swiperItems} />
     </div>
   );
 };

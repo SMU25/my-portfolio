@@ -1,6 +1,6 @@
 import React, { FC, ReactElement, useCallback, useRef } from "react";
 import cn from "classnames";
-import { Swiper, SwiperSlide } from "swiper/react";
+import { Swiper, SwiperProps, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import "./style.css";
@@ -9,21 +9,24 @@ import { NavigationButton } from "../Button/NavigationButton";
 
 const DEFAULT_CLASSNAME_NAVIGATION_BUTTON = "absolute top-1/2 -translate-y-1/2";
 
-interface Props {
+export interface CustomSwiperProps extends SwiperProps {
   items: ReactElement[];
   containerClassName?: string;
   className?: string;
-  customSettings?: Object;
+  customSettings?: SwiperProps;
+  isShownNavigationButtons?: boolean;
 }
 
 //CHANGE - змінити bloig post, відступи лишні удалити ізробити норм відображення без слйдера на грідах
 // додати в менюшку хрестик коли відкрита і може анімація неа нього , пофіксити, що розтягувало на всю висоту контейнер
 // Спробувати винести анміацію в TailwindCSS
-export const SwiperSlider: FC<Props> = ({
+export const SwiperSlider: FC<CustomSwiperProps> = ({
   items = [],
   containerClassName,
   className,
   customSettings,
+  isShownNavigationButtons,
+  ...props
 }) => {
   const swiperRef = useRef(null);
 
@@ -47,6 +50,7 @@ export const SwiperSlider: FC<Props> = ({
           swiperRef.current = swiper;
         }}
         {...settings}
+        {...props}
       >
         {items?.map((item) => (
           <SwiperSlide className="flex !h-initial" key={item.key}>
@@ -54,20 +58,24 @@ export const SwiperSlider: FC<Props> = ({
           </SwiperSlide>
         ))}
       </Swiper>
-      <NavigationButton
-        className={cn(
-          "rotate-180 -left-2 xs:-left-7 sm:-left-10",
-          DEFAULT_CLASSNAME_NAVIGATION_BUTTON
-        )}
-        onClick={slidePrev}
-      />
-      <NavigationButton
-        className={cn(
-          "-right-2 xs:-right-7 sm:-right-10",
-          DEFAULT_CLASSNAME_NAVIGATION_BUTTON
-        )}
-        onClick={slideNext}
-      />
+      {isShownNavigationButtons && (
+        <>
+          <NavigationButton
+            className={cn(
+              "rotate-180 -left-2 xs:-left-7 sm:-left-10",
+              DEFAULT_CLASSNAME_NAVIGATION_BUTTON
+            )}
+            onClick={slidePrev}
+          />
+          <NavigationButton
+            className={cn(
+              "-right-2 xs:-right-7 sm:-right-10",
+              DEFAULT_CLASSNAME_NAVIGATION_BUTTON
+            )}
+            onClick={slideNext}
+          />
+        </>
+      )}
     </div>
   );
 };
