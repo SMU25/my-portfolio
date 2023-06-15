@@ -32,11 +32,14 @@ export const Works: FC<Props> = memo(
       if (isLoading)
         return renderPreloader(isRowListTypeView, countItemsPreloader);
 
+      //CHANGE - hover:!shadow-light-white - пофіксити якось
+
       return items?.map((item) => (
         <WorkCard
           key={item.id}
           className={cn({
-            "default:hover:scale-100 sm:hover:scale-105": isSlider,
+            "hover:shadow-light-white default:hover:scale-100 sm:hover:scale-105":
+              isSlider,
           })}
           listTypeView={listTypeView}
           maxLengthDesciption={MAX_LENGTH_DESCRIPTION}
