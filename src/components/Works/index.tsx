@@ -58,6 +58,7 @@ export const Works: FC<Props> = memo(
     return isSlider ? (
       <SwiperSlider
         className="!pt-3.5 md:!pt-7 !pb-10 !overflow-visible"
+        slideClassName="flex"
         items={renderedWorkItems}
         isShownNavigationButtons
       />

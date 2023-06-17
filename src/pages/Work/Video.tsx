@@ -8,7 +8,7 @@ export const Video: FC<VideoItem> = ({ title, description, poster, url }) => {
     <div className="w-full  py-7">
       <div className="ml-1">
         <Heading
-          className="text-3xl leading-15 font-medium"
+          className="!text-3xl leading-15 font-medium"
           tagHeading={TagsHeading.H3}
         >
           {title}

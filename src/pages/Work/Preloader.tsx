@@ -19,7 +19,7 @@ export const Preloader = () => {
         </div>
         <Shimmer className="w-full h-150 mt-11.5" />
       </div>
-      <div>
+      {/* <div>
         <Shimmer className="w-2/5 h-9 my-5 ml-1" />
         <div className="grid grid-cols-2 gap-x-5">
           <div>
@@ -45,7 +45,7 @@ export const Preloader = () => {
             <Shimmer className="w-full h-96 mt-7.5" />
           </div>
         </div>
-      </div>
+      </div> */}
       <div>
         <Shimmer className="w-2/5 h-6 my-5 ml-1" />
         <div className="ml-1">

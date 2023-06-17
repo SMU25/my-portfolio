@@ -2,58 +2,73 @@ import React, { FC, useState } from "react";
 import SwiperCore from "swiper";
 import { SwiperProps } from "swiper/react";
 import "swiper/css/thumbs";
+import "swiper/css/free-mode";
 import { CustomSwiperProps, SwiperSlider } from ".";
 import {
   DEFAULT_SETTINGS_GALLERY_MAIN_SWIPER,
-  DEFAULT_SETTINGS_GALLERY_MINI_SWIPER,
+  DEFAULT_SETTINGS_GALLERY_THUMBS_SWIPER,
 } from "./constants";
 
 interface Props
   extends Pick<CustomSwiperProps, "items" | "containerClassName"> {
   mainSwiperClassName?: string;
   miniSwiperClassName?: string;
+  containerThumbsSwiperClassName?: string;
   customSettingsMainSwiper?: SwiperProps;
-  customSettingsMiniSwiper?: SwiperProps;
+  customSettingsThumbsSwiper?: SwiperProps;
   isShownNavBtnsMainSwiper?: boolean;
-  isShownNavBtnsMiniSwiper?: boolean;
+  isShownNavBtnsThumbsSwiper?: boolean;
 }
-
-// зробити 2 види елементів , для головного і малого слайдера і для малого прибирати опис та заголовок
 
 export const ThumbsGallerySwiper: FC<Props> = ({
   items,
   containerClassName,
   mainSwiperClassName,
   miniSwiperClassName,
+  containerThumbsSwiperClassName,
   customSettingsMainSwiper,
-  customSettingsMiniSwiper,
+  customSettingsThumbsSwiper,
   isShownNavBtnsMainSwiper,
-  isShownNavBtnsMiniSwiper,
+  isShownNavBtnsThumbsSwiper,
 }) => {
+  const [mainSwiper, setMainSwiper] = useState<SwiperCore>();
   const [thumbsSwiper, setThumbsSwiper] = useState<SwiperCore>();
 
   const settingsMainSwiper =
     customSettingsMainSwiper || DEFAULT_SETTINGS_GALLERY_MAIN_SWIPER;
-  const settingsMiniSwiper =
-    customSettingsMiniSwiper || DEFAULT_SETTINGS_GALLERY_MINI_SWIPER;
+  const settingsThumbsSwiper =
+    customSettingsThumbsSwiper || DEFAULT_SETTINGS_GALLERY_THUMBS_SWIPER;
+
+  const commonSwiper =
+    thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null;
 
   return (
     <div className={containerClassName}>
       <SwiperSlider
+        swiperState={mainSwiper}
         className={mainSwiperClassName}
         isShownNavigationButtons={isShownNavBtnsMainSwiper}
         items={items}
         customSettings={settingsMainSwiper}
         thumbs={{
-          swiper: thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null,
+          swiper: commonSwiper,
+        }}
+        onSwiper={setMainSwiper}
+        controller={{
+          control: commonSwiper,
         }}
       />
       <SwiperSlider
+        swiperState={thumbsSwiper}
         className={miniSwiperClassName}
-        isShownNavigationButtons={isShownNavBtnsMiniSwiper}
+        containerClassName={containerThumbsSwiperClassName}
+        isShownNavigationButtons={isShownNavBtnsThumbsSwiper}
         items={items}
-        customSettings={settingsMiniSwiper}
+        customSettings={settingsThumbsSwiper}
         onSwiper={setThumbsSwiper}
+        controller={{
+          control: commonSwiper,
+        }}
       />
     </div>
   );

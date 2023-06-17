@@ -50,7 +50,10 @@ export const BlogPosts: FC<Props> = memo(
     ]);
 
     return isSlider ? (
-      <SwiperSlider items={renderedBlogPosts} />
+      <SwiperSlider
+        slideClassName="flex !h-initial"
+        items={renderedBlogPosts}
+      />
     ) : (
       <div
         className={cn(className, {

@@ -1,12 +1,10 @@
 import React, { FC } from "react";
 import { useTranslation } from "react-i18next";
-import "swiper/css/free-mode";
 import { Heading } from "src/components/Heading";
 import { TagsHeading } from "src/components/Heading/types";
 import { ThumbsGallerySwiper } from "src/components/SwiperSlider/ThumbsGallerySwiper";
 import { ImageAlbumItem } from "src/types/work";
 import { SwiperItem } from "./SwiperItem";
-import { SWIPER_SETTINGS } from "./constants";
 
 const T_PREFIX = "work-swiper";
 
@@ -27,12 +25,16 @@ export const Swiper: FC<Props> = ({ imageAlbum }) => {
   return (
     <div>
       <Heading
-        className="ml-1 text-3xl leading-15 font-medium"
+        className="ml-1 !text-3xl leading-15 font-medium"
         tagHeading={TagsHeading.H3}
       >
         {t(`${T_PREFIX} - ${HEADING}`)}
       </Heading>
-      <ThumbsGallerySwiper items={swiperItems} />
+      <ThumbsGallerySwiper
+        miniSwiperClassName="mt-5"
+        items={swiperItems}
+        isShownNavBtnsThumbsSwiper
+      />
     </div>
   );
 };

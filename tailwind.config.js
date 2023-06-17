@@ -92,15 +92,18 @@ module.exports = {
       },
       minHeight: {
         37.5: "150px",
+        40: "160px",
         45: "180px",
         75: "300px",
       },
       maxHeight: {
         25.5: "102px",
+        200: "800px",
       },
       borderRadius: {
         10: "10px",
       },
+      display: ["group-hover"],
       boxShadow: {
         "light-bottom": "2px 4px 8px rgba(0, 0, 0, 0.1);",
         "lining-lighter-blue": "-5px 10px 0px 5px rgba(237,247,250,1);",
@@ -108,6 +111,9 @@ module.exports = {
         "hard-white": "0 0 16px 10px rgba(187, 225, 250, 0.25);",
         "card-primary":
           "0px 10px 15px -3px rgba(0, 0, 0, 0.2), 0px 4px 22px -2px rgba(0, 0, 0, 0.15);",
+      },
+      dropShadow: {
+        "black-dark-outer": "0 0px 6px #21243D",
       },
       screens: {
         default: "0px",

@@ -1,4 +1,11 @@
-import { Autoplay, Keyboard, Pagination, Thumbs } from "swiper";
+import {
+  Autoplay,
+  Keyboard,
+  Pagination,
+  FreeMode,
+  Thumbs,
+  Controller,
+} from "swiper";
 import { SwiperProps } from "swiper/react";
 import { SCREEN_BREAKPOINTS } from "src/constants/screenBreakpoints";
 
@@ -32,13 +39,17 @@ export const DEFAULT_SETTINGS: SwiperProps = {
 };
 
 export const DEFAULT_SETTINGS_GALLERY_MAIN_SWIPER: SwiperProps = {
-  spaceBetween: 16,
   slidesPerView: 1,
-  modules: [Thumbs],
+  spaceBetween: 16,
+  keyboard: true,
+  centeredSlides: false,
+  grabCursor: true,
+  modules: [Autoplay, Keyboard, FreeMode, Thumbs, Controller],
 };
 
-export const DEFAULT_SETTINGS_GALLERY_MINI_SWIPER: SwiperProps = {
-  spaceBetween: 8,
+export const DEFAULT_SETTINGS_GALLERY_THUMBS_SWIPER: SwiperProps = {
   slidesPerView: 5,
+  spaceBetween: 12,
   slideToClickedSlide: true,
+  modules: [Controller],
 };

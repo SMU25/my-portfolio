@@ -1,6 +1,7 @@
 import React, { FC, ReactElement, useCallback, useRef } from "react";
 import cn from "classnames";
 import { Swiper, SwiperProps, SwiperSlide } from "swiper/react";
+import SwiperClass from "swiper/types/swiper-class";
 import "swiper/css";
 import "swiper/css/pagination";
 import "./style.css";
@@ -11,10 +12,12 @@ const DEFAULT_CLASSNAME_NAVIGATION_BUTTON = "absolute top-1/2 -translate-y-1/2";
 
 export interface CustomSwiperProps extends SwiperProps {
   items: ReactElement[];
-  containerClassName?: string;
   className?: string;
+  containerClassName?: string;
+  slideClassName?: string;
   customSettings?: SwiperProps;
   isShownNavigationButtons?: boolean;
+  swiperState?: SwiperClass;
 }
 
 //CHANGE - змінити bloig post, відступи лишні удалити ізробити норм відображення без слйдера на грідах
@@ -22,22 +25,24 @@ export interface CustomSwiperProps extends SwiperProps {
 // Спробувати винести анміацію в TailwindCSS
 export const SwiperSlider: FC<CustomSwiperProps> = ({
   items = [],
-  containerClassName,
   className,
+  containerClassName,
+  slideClassName,
   customSettings,
   isShownNavigationButtons,
+  swiperState,
   ...props
 }) => {
   const swiperRef = useRef(null);
 
   const slidePrev = useCallback(
-    () => swiperRef.current.slidePrev(),
-    [swiperRef]
+    () => (swiperState || swiperRef.current)?.slidePrev(),
+    [swiperState, swiperRef]
   );
 
   const slideNext = useCallback(
-    () => swiperRef.current.slideNext(),
-    [swiperRef]
+    () => (swiperState || swiperRef.current)?.slideNext(),
+    [swiperState, swiperRef]
   );
 
   const settings = customSettings || DEFAULT_SETTINGS;
@@ -46,14 +51,15 @@ export const SwiperSlider: FC<CustomSwiperProps> = ({
     <div className={cn("relative", containerClassName)}>
       <Swiper
         className={className}
-        onSwiper={(swiper) => {
-          swiperRef.current = swiper;
-        }}
+        onSwiper={(swiper) => (swiperRef.current = swiper)}
         {...settings}
         {...props}
       >
         {items?.map((item) => (
-          <SwiperSlide className="flex !h-initial" key={item.key}>
+          <SwiperSlide
+            className={cn("!h-initial", slideClassName)}
+            key={item.key}
+          >
             {item}
           </SwiperSlide>
         ))}
