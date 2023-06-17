@@ -13,6 +13,7 @@ export const SkeletonBlogPost: FC<SkeletonBlogPostProps> = ({
   <div
     className={cn("bg-white py-6", {
       "min-h-75 pt-8 px-5 rounded": isRowListTypeView,
+      "pt-4.5 sm:pt-8 pb-6 sm:pb-7.5": !isRowListTypeView,
     })}
   >
     <Shimmer className="w-50 h-7" />

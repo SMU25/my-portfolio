@@ -11,11 +11,18 @@ export interface VideoItem {
   description?: string;
 }
 
+interface ProjectLinks {
+  deployedProjectName?: string;
+  deployedProjectUrl?: string;
+  githubProjectUrl?: string;
+}
+
 export interface IWorkItem {
   id: string;
   title: string;
   description?: string;
   category: string;
+  projectLinks?: ProjectLinks;
   isFeatured?: boolean;
   createdAt: Date;
   screenSaver?: string;
