@@ -37,26 +37,31 @@ export const Info: FC<IWorkItem> = ({
       >
         {title}
       </Heading>
-      <div className="flex items-center my-3">
-        <a
-          className="text-blue-light"
-          href={deployedProjectUrl}
-          target="_blank"
-          rel="noreferrer"
-        >
-          {projectLinkName}
-          https://github.com/SMU25/my-portfolio/pull/6
-        </a>
+      {projectLinks && (
+        <div className="flex items-center my-3">
+          {projectLinkName && (
+            <a
+              className="text-blue-light transition-all hover:brightness-50"
+              href={deployedProjectUrl}
+              target="_blank"
+              rel="noreferrer"
+            >
+              {projectLinkName}
+            </a>
+          )}
 
-        <a
-          className="ml-3"
-          href={githubProjectUrl}
-          target="_blank"
-          rel="noreferrer"
-        >
-          <GitHubIcon width={GITHUB_ICON_SIZE} height={GITHUB_ICON_SIZE} />
-        </a>
-      </div>
+          {githubProjectUrl && (
+            <a
+              className="ml-3 transition-all duration-300 hover:scale-125"
+              href={githubProjectUrl}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <GitHubIcon width={GITHUB_ICON_SIZE} height={GITHUB_ICON_SIZE} />
+            </a>
+          )}
+        </div>
+      )}
       <div className="flex items-center">
         <MarkLabel className="bg-red-light ml-1">{date}</MarkLabel>
         <span className="ml-4.5 text-xl leading-7">{category}</span>
