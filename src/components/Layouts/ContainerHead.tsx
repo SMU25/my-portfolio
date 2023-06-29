@@ -9,7 +9,7 @@ import { ButtonVariants } from "src/components/Button/types";
 
 const T_PREFIX = "container-head";
 
-const DEFAULT_LINK_LABEL = "view-all";
+const DEFAULT_LINK_LABEL = "view-all-link";
 
 interface Props {
   children?: ReactNode;

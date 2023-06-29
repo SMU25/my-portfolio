@@ -1,4 +1,5 @@
 import React, { FC, memo } from "react";
+import { useTranslation } from "react-i18next";
 import cn from "classnames";
 import format from "date-fns/format";
 import { activeLanguage } from "src/services/i18n";
@@ -12,6 +13,8 @@ import { PATHNAMES } from "src/constants/routes";
 import { ListTypeView } from "src/types";
 import { IWorkItem } from "src/types/work";
 import { CARD_VIEW_VARIANTS_STYLES } from "./constants";
+import { Button } from "../Button";
+import { ButtonVariants } from "../Button/types";
 import { Link } from "../Link";
 
 const DATE_FORMAT = "yyyy";
@@ -33,6 +36,9 @@ const WORK_IMG_SIZE = {
 /////////
 /////////
 
+const T_PREFIX = "work-card";
+
+const VIEW_BUTTON_NAME = "view-btn";
 interface Props extends IWorkItem {
   className?: string;
   listTypeView?: ListTypeView;
@@ -51,6 +57,8 @@ export const WorkCard: FC<Props> = memo(
     createdAt,
     screenSaver,
   }) => {
+    const { t } = useTranslation();
+
     const pathname = getPathName(id, PATHNAMES.PORTFOLIO);
 
     const date = format(createdAt, DATE_FORMAT, {
@@ -69,7 +77,7 @@ export const WorkCard: FC<Props> = memo(
     return (
       <div
         className={cn(
-          "flex flex-col bg-white border-gray-lighter transition-all duration-300 hover:scale-105",
+          "relative flex flex-col bg-white border-gray-lighter transition-all duration-300",
           classNames.container,
           className
         )}
@@ -104,7 +112,7 @@ export const WorkCard: FC<Props> = memo(
               classNames.infoContainerCenter
             )}
           >
-            <MarkLabel className={cn(classNames.date)}>
+            <MarkLabel className={classNames.date}>
               <time dateTime={date}>{date}</time>
             </MarkLabel>
             <span className="ml-3 md:ml-6.5 text-gray-light text-base md:text-xl break-all">
@@ -117,6 +125,15 @@ export const WorkCard: FC<Props> = memo(
             {truncatedDescription}
           </p>
         </div>
+
+        <Link href={pathname}>
+          <Button
+            className={classNames.viewButton}
+            variant={ButtonVariants.BORDERED_SECONDARY}
+          >
+            {t(`${T_PREFIX} - ${VIEW_BUTTON_NAME}`)}
+          </Button>
+        </Link>
       </div>
     );
   }

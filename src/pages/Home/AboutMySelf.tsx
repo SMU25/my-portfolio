@@ -15,7 +15,7 @@ const T_PREFIX = "about-my-self";
 
 const HEADING = "title";
 const DESCRIPTION = "description";
-const VIEW_RESUME_BUTTON_NAME = "view-resume";
+const VIEW_RESUME_BUTTON_NAME = "view-resume-btn";
 
 export const AboutMySelf: FC = () => {
   const { t, i18n } = useTranslation();
@@ -38,7 +38,7 @@ export const AboutMySelf: FC = () => {
         {/* В залежності від мови, таке і резюме повинно завантажуватися
          */}
         <a href={resumeLink} target="_blank" rel="noreferrer">
-          <Button className="mt-6.5 sm:mt-9.5 text-xl font-medium">
+          <Button className="mt-6.5 sm:mt-9.5 text-xl !rounded-full">
             {t(`${T_PREFIX} - ${VIEW_RESUME_BUTTON_NAME}`)}
           </Button>
         </a>

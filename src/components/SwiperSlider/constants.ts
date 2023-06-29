@@ -24,7 +24,7 @@ export const DEFAULT_SETTINGS: SwiperProps = {
     clickable: true,
     dynamicBullets: true,
   },
-  modules: [Autoplay, Keyboard, Pagination],
+  modules: [Autoplay, Keyboard, Pagination, FreeMode],
   breakpoints: {
     [SCREEN_BREAKPOINTS.DEFAULT]: {
       spaceBetween: 12,
@@ -51,5 +51,5 @@ export const DEFAULT_SETTINGS_GALLERY_THUMBS_SWIPER: SwiperProps = {
   slidesPerView: 5,
   spaceBetween: 12,
   slideToClickedSlide: true,
-  modules: [Controller],
+  modules: [FreeMode, Controller],
 };

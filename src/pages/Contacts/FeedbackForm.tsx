@@ -20,7 +20,7 @@ import { FEEDBACK_FIELDS, FEEDBACK_VALIDATION_SCHEMA } from "./constants";
 const T_PREFIX = "feedback";
 
 const HEADING = "title";
-const SEND_BUTTON_NAME = "send";
+const SEND_BUTTON_NAME = "send-btn";
 
 export const FeedbackForm: FC = () => {
   const { t } = useTranslation();
@@ -67,7 +67,7 @@ export const FeedbackForm: FC = () => {
           {/* <ReCaptcha className="mt-10" formik={formik} /> */}
           <Button
             className={cn(
-              "max-w-none xs:max-w-61.5 w-full mt-10 py-4.5 text-2xl font-medium leading-7",
+              "max-w-none xs:max-w-61.5 w-full mt-10 py-4.5 text-2xl leading-7",
               { "!py-3.5": isLoading }
             )}
             variant={ButtonVariants.SECONDARY}

@@ -26,15 +26,15 @@
   "bread-crumbs - blog": "Blog",
   "bread-crumbs - contacts": "Contacts",
 
-  "container-head - view-all": "View all",
+  "container-head - view-all-link": "View all",
 
   "about-my-self - title": "Hi, I am John, Creative Technologist",
   "about-my-self - description": "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.",
-  "about-my-self - view-resume": "View resume",
+  "about-my-self - view-resume-btn": "View resume",
 
   "recent-posts - title": "Recent posts",
 
-  "featured-works - title": "Featured works",
+  "featured-works - title": "Featured projects",
 
   "footer - dev-info": "©2023 Developed by Oleksandr Myronchuk",
 
@@ -43,9 +43,13 @@
 
   "portfolio - title": "Portfolio",
 
+  "work-card - view-btn": "View project",
+
   "work-swiper - title": "Project overview",
 
   "blog - title": "Blog",
+
+  "blog-card - view-btn": "View post",
 
   "contacts - title": "Contacts",
 
@@ -57,5 +61,5 @@
   "contact-item - instagram": "Instagram:",
 
   "feedback - title": "Feedback",
-  "feedback - send": "Send"
+  "feedback - send-btn": "Send"
 }

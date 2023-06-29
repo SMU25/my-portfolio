@@ -26,11 +26,11 @@
   "bread-crumbs - blog": "Блог",
   "bread-crumbs - contacts": "Контакти",
 
-  "container-head - view-all": "Дивитися усі",
+  "container-head - view-all-link": "Дивитися усі",
 
   "about-my-self - title": "Привіт, мене звати Олександр!",
   "about-my-self - description": "тут буде якийсь текс,який я поки що не придумав.",
-  "about-my-self - view-resume": "Переглянути резюме",
+  "about-my-self - view-resume-btn": "Переглянути резюме",
 
   "recent-posts - title": "Найновіші дописи",
 
@@ -43,9 +43,13 @@
 
   "portfolio - title": "Портфоліо",
 
-  "work-swiper - title": "Огляд проекту",
+  "work-card - view-btn": "Переглянути проєкт",
+
+  "work-swiper - title": "Огляд проєкту",
 
   "blog - title": "Блог",
+
+  "blog-card - view-btn": "Переглянути допис",
 
   "contacts - title": "Контакти",
 
@@ -53,5 +57,5 @@
   "contact-item - email": "Електронна адреса:",
 
   "feedback - title": "Зворотній зв'язок",
-  "feedback - send": "Надіслати"
+  "feedback - send-btn": "Надіслати"
 }

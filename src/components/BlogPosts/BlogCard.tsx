@@ -1,4 +1,5 @@
 import React, { FC, ReactNode, memo } from "react";
+import { useTranslation } from "react-i18next";
 import cn from "classnames";
 import format from "date-fns/format";
 import { activeLanguage } from "src/services/i18n";
@@ -11,10 +12,15 @@ import { PATHNAMES } from "src/constants/routes";
 import { ListTypeView } from "src/types";
 import { IPostItem } from "src/types/post";
 import { CARD_VIEW_VARIANTS_STYLES } from "./constants";
+import { Button } from "../Button";
+import { ButtonVariants } from "../Button/types";
 import { Link } from "../Link";
 
 const DATE_FORMAT = "d MMM yyyy";
 
+const T_PREFIX = "blog-card";
+
+const VIEW_BUTTON_NAME = "view-btn";
 interface Props extends IPostItem {
   children?: ReactNode | ChildNode;
   containerClassName?: string;
@@ -36,6 +42,8 @@ export const BlogCard: FC<Props> = memo(
     category,
     description,
   }) => {
+    const { t } = useTranslation();
+
     const pathname = getPathName(id, PATHNAMES.BLOG);
 
     const date = format(createdAt, DATE_FORMAT, {
@@ -49,43 +57,51 @@ export const BlogCard: FC<Props> = memo(
       maxLengthDesciption
     );
 
-    // CHANGE - додати динамічний Title на вкладку (в браузері)
-
     return (
       <>
         <div
           className={cn(
-            "w-full flex-1 transition-all duration-300 hover:scale-105",
+            "relative w-full flex-1 transition-all duration-300",
             classNames.container,
             containerClassName
           )}
         >
-          <Link
-            href={pathname}
-            className="hover:underline hover:underline-offset-8"
-            isDisabled={!isLink}
-          >
-            <Heading className={classNames.title} tagHeading={TagsHeading.H4}>
-              {title}
-            </Heading>
-          </Link>
-          <div className={cn("truncate", classNames.infoContainer)}>
-            <time
-              className={cn("font-medium", classNames.date)}
-              dateTime={date}
+          <div>
+            <Link
+              href={pathname}
+              className="hover:underline hover:underline-offset-8"
+              isDisabled={!isLink}
             >
-              {date}
-            </time>
-            <span
-              className={cn(
-                "capitalize border-l border-black-base",
-                classNames.category
-              )}
-            >
-              {category}
-            </span>
+              <Heading className={classNames.title} tagHeading={TagsHeading.H4}>
+                {title}
+              </Heading>
+            </Link>
+            <div className={cn("truncate", classNames.infoContainer)}>
+              <time
+                className={cn("font-medium", classNames.date)}
+                dateTime={date}
+              >
+                {date}
+              </time>
+              <span
+                className={cn(
+                  "capitalize border-l border-black-base",
+                  classNames.category
+                )}
+              >
+                {category}
+              </span>
+            </div>
+            <p className={cn(classNames.description)}>{truncateDescription}</p>
           </div>
-          <p className={cn(classNames.description)}>{truncateDescription}</p>
+          <Link href={pathname}>
+            <Button
+              className={classNames.viewButton}
+              variant={ButtonVariants.BORDERED_SECONDARY}
+            >
+              {t(`${T_PREFIX} - ${VIEW_BUTTON_NAME}`)}
+            </Button>
+          </Link>
         </div>
         {children}
       </>

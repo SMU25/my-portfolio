@@ -13,8 +13,8 @@ export interface VideoItem {
 
 interface ProjectLinks {
   deployedProjectName?: string;
-  deployedProjectUrl?: string;
-  githubProjectUrl?: string;
+  deployedProjectUrl: string;
+  githubProjectUrl: string;
 }
 
 export interface IWorkItem {
@@ -22,7 +22,7 @@ export interface IWorkItem {
   title: string;
   description?: string;
   category: string;
-  projectLinks?: ProjectLinks;
+  projectLinks: ProjectLinks;
   isFeatured?: boolean;
   createdAt: Date;
   screenSaver?: string;

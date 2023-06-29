@@ -12,6 +12,7 @@ export const CARD_VIEW_VARIANTS_STYLES = {
     category: "pl-3 md:pl-6.5 italic",
     description:
       "max-h-72 mt-1.5 md:mt-3 text-10 sm:text-base leading-3.5 sm:leading-6 overflow-auto",
+    viewButton: "w-full mt-3 sm:mt-5",
   },
 
   [ListTypeView.COLUMN]: {
@@ -21,5 +22,6 @@ export const CARD_VIEW_VARIANTS_STYLES = {
     date: "mr-3.5 sm:mr-5",
     category: "pl-3.5 sm:pl-5 text-gray-light",
     description: "leading-6 mt-4",
+    viewButton: "absolute top-4.5 sm:top-8 right-0",
   },
 };
