@@ -61,7 +61,7 @@ export const BlogCard: FC<Props> = memo(
       <>
         <div
           className={cn(
-            "relative w-full flex-1 transition-all duration-300",
+            "relative w-full flex-1 overflow-hidden transition-all duration-300",
             classNames.container,
             containerClassName
           )}
@@ -94,14 +94,16 @@ export const BlogCard: FC<Props> = memo(
             </div>
             <p className={cn(classNames.description)}>{truncateDescription}</p>
           </div>
-          <Link href={pathname}>
-            <Button
-              className={classNames.viewButton}
-              variant={ButtonVariants.BORDERED_SECONDARY}
-            >
-              {t(`${T_PREFIX} - ${VIEW_BUTTON_NAME}`)}
-            </Button>
-          </Link>
+          {isLink && (
+            <Link href={pathname}>
+              <Button
+                className={classNames.viewButton}
+                variant={ButtonVariants.BORDERED_SECONDARY}
+              >
+                {t(`${T_PREFIX} - ${VIEW_BUTTON_NAME}`)}
+              </Button>
+            </Link>
+          )}
         </div>
         {children}
       </>

@@ -17,11 +17,13 @@ export const CARD_VIEW_VARIANTS_STYLES = {
 
   [ListTypeView.COLUMN]: {
     container: "pt-4.5 sm:pt-8 pb-6 sm:pb-7.5 border-b border-gray-lighter",
-    title: "text-26 sm:text-3xl font-medium leading-9.5 sm:leading-11",
+    title:
+      "md:w-calc-full-minus-54 text-26 sm:text-3xl font-medium leading-9.5 sm:leading-11",
     infoContainer: "mt-1.5 sm:mt-4 text-base sm:text-xl leading-7",
     date: "mr-3.5 sm:mr-5",
     category: "pl-3.5 sm:pl-5 text-gray-light",
     description: "leading-6 mt-4",
-    viewButton: "absolute top-4.5 sm:top-8 right-0",
+    viewButton:
+      "md:absolute md:top-8 md:right-0 w-full md:w-auto mt-3 sm:mt-5 md:mt-0",
   },
 };

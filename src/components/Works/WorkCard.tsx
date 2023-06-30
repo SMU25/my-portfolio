@@ -77,53 +77,58 @@ export const WorkCard: FC<Props> = memo(
     return (
       <div
         className={cn(
-          "relative flex flex-col bg-white border-gray-lighter transition-all duration-300",
+          "relative flex flex-col justify-between bg-white overflow-hidden border-gray-lighter transition-all duration-300",
           classNames.container,
           className
         )}
       >
-        <Link href={pathname}>
-          <img
-            className={cn("w-full object-cover rounded-md", classNames.img)}
-            src={screenSaver}
-            width={WORK_IMG_SIZE.WIDTH}
-            height={WORK_IMG_SIZE.HEIGHT}
-            alt={title}
-          />
-        </Link>
-        <div className={classNames.infoContainer}>
-          <Link
-            href={pathname}
-            className="hover:underline hover:underline-offset-8"
-          >
-            <Heading
-              className={cn(
-                "md:text-3xl font-bold leading-8 md:leading-11",
-                classNames.title
-              )}
-              tagHeading={TagsHeading.H4}
-            >
-              {title}
-            </Heading>
+        <div className={classNames.wrapper}>
+          <Link href={pathname}>
+            <img
+              className={cn("w-full object-cover rounded-md", classNames.img)}
+              src={screenSaver}
+              width={WORK_IMG_SIZE.WIDTH}
+              height={WORK_IMG_SIZE.HEIGHT}
+              alt={title}
+            />
           </Link>
-          <div
-            className={cn(
-              "flex items-center leading-6.5",
-              classNames.infoContainerCenter
-            )}
-          >
-            <MarkLabel className={classNames.date}>
-              <time dateTime={date}>{date}</time>
-            </MarkLabel>
-            <span className="ml-3 md:ml-6.5 text-gray-light text-base md:text-xl break-all">
-              {category}
-            </span>
+          <div className={classNames.infoContainer}>
+            <Link
+              href={pathname}
+              className="hover:underline hover:underline-offset-8"
+            >
+              <Heading
+                className={cn(
+                  "md:text-3xl font-bold leading-8 md:leading-11",
+                  classNames.title
+                )}
+                tagHeading={TagsHeading.H4}
+              >
+                {title}
+              </Heading>
+            </Link>
+            <div
+              className={cn(
+                "flex items-center leading-6.5",
+                classNames.infoContainerCenter
+              )}
+            >
+              <MarkLabel className={classNames.date}>
+                <time dateTime={date}>{date}</time>
+              </MarkLabel>
+              <span className="ml-3 md:ml-6.5 text-gray-light text-base md:text-xl break-all">
+                {category}
+              </span>
+            </div>
+            <p
+              className={cn(
+                "leading-6 overflow-hidden",
+                classNames.description
+              )}
+            >
+              {truncatedDescription}
+            </p>
           </div>
-          <p
-            className={cn("leading-6 overflow-hidden", classNames.description)}
-          >
-            {truncatedDescription}
-          </p>
         </div>
 
         <Link href={pathname}>

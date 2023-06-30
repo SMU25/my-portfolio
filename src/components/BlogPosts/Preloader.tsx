@@ -11,10 +11,13 @@ export const SkeletonBlogPost: FC<SkeletonBlogPostProps> = ({
   isRowListTypeView,
 }) => (
   <div
-    className={cn("bg-white py-6", {
-      "min-h-75 pt-8 px-5 rounded": isRowListTypeView,
-      "pt-4.5 sm:pt-8 pb-6 sm:pb-7.5": !isRowListTypeView,
-    })}
+    className={cn(
+      "relative bg-white py-6 overflow-hidden transition-all duration-300",
+      {
+        "min-h-75 pt-8 px-5 rounded": isRowListTypeView,
+        "pt-4.5 sm:pt-8 pb-6 sm:pb-7.5": !isRowListTypeView,
+      }
+    )}
   >
     <Shimmer className="w-50 h-7" />
     <div className="flex h-5 mt-3">
@@ -45,6 +48,13 @@ export const SkeletonBlogPost: FC<SkeletonBlogPostProps> = ({
         </>
       )}
     </div>
+    <Shimmer
+      className={cn("h-11 rounded-10", {
+        "w-full mt-3 sm:mt-5": isRowListTypeView,
+        "md:absolute md:top-8 md:right-0 w-full md:w-40 mt-3 sm:mt-5 md:mt-0":
+          !isRowListTypeView,
+      })}
+    />
   </div>
 );
 

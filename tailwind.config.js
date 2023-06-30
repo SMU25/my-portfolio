@@ -70,6 +70,8 @@ module.exports = {
         125: "500px",
         150: "600px",
         160: "640px",
+        "11/20": "55%",
+        "calc-full-minus-54": "calc(100% - 216px)",
       },
       minWidth: {
         61.5: "246px",
