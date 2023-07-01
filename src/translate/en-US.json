@@ -28,6 +28,8 @@
 
   "container-head - view-all-link": "View all",
 
+  "skills-and-technologies - title": "Technologies and skills used:",
+
   "about-my-self - title": "Hi, I am John, Creative Technologist",
   "about-my-self - description": "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.",
   "about-my-self - view-resume-btn": "View resume",
@@ -44,6 +46,8 @@
   "portfolio - title": "Portfolio",
 
   "work-card - view-btn": "View project",
+
+  "work-description - title": "Description",
 
   "work-swiper - title": "Project overview",
 

@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, ReactNode } from "react";
 import { useTranslation } from "react-i18next";
 import { Heading } from "src/components/Heading";
 import { TagsHeading } from "src/components/Heading/types";

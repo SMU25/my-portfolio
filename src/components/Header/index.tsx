@@ -17,7 +17,7 @@ export const Header: FC = () => {
   // CHANGE - BurgetButton зробити хрестик, коли відкрите меню
   // Header зникає на футері в сторінках де багато елементів (Blog, home etc. )
   return (
-    <header className="sticky top-0 bg-white shadow-light-bottom z-50">
+    <header className="sticky top-0 bg-white border-gray-lighter-opacity border-b-2 z-50">
       <nav className="flex justify-between mx-3 sm:mx-15">
         <LanguageChooser languages={LANGUAGES} />
 

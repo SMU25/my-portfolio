@@ -28,6 +28,8 @@
 
   "container-head - view-all-link": "Дивитися усі",
 
+  "skills-and-technologies - title": "Використані технології та навички:",
+
   "about-my-self - title": "Привіт, мене звати Олександр!",
   "about-my-self - description": "тут буде якийсь текс,який я поки що не придумав.",
   "about-my-self - view-resume-btn": "Переглянути резюме",
@@ -44,6 +46,8 @@
   "portfolio - title": "Портфоліо",
 
   "work-card - view-btn": "Переглянути проєкт",
+
+  "work-description - title": "Опис",
 
   "work-swiper - title": "Огляд проєкту",
 

@@ -16,6 +16,7 @@ module.exports = {
           darken: "#142850",
         },
         gray: {
+          "lighter-opacity": "rgba(0, 0, 0, 0.1)",
           lighter: "#E0E0E0",
           light: "#8695A4",
         },
@@ -53,6 +54,7 @@ module.exports = {
         13: "52px",
         13.5: "54px",
         15: "60px",
+        15.5: "62px",
         17: "68px",
         17.5: "70px",
         19.5: "78px",
@@ -117,6 +119,7 @@ module.exports = {
           "0px 10px 15px -3px rgba(0, 0, 0, 0.2), 0px 4px 22px -2px rgba(0, 0, 0, 0.15);",
       },
       dropShadow: {
+        "black-dark-outer-lighter": "0 0px 1px #21243D",
         "black-dark-outer": "0 0px 6px #21243D",
       },
       screens: {

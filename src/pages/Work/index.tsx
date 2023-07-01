@@ -18,13 +18,13 @@ const Work: FC = () => {
 
   const isLoading = useAppSelector(selectIsLoading);
   const work = useAppSelector(selectWorkById);
-  const workTitle = work?.title;
+  const { title, imageAlbum, video } = work || {};
 
   useEffect(() => {
     dispatch(getWorkByIdAsync(id));
   }, [id, dispatch]);
 
-  usePageTitle(workTitle);
+  usePageTitle(title);
 
   const sectionContent = isLoading ? (
     <Preloader />
@@ -32,15 +32,15 @@ const Work: FC = () => {
     work && (
       <>
         <Info {...work} />
-        <Swiper imageAlbum={work.imageAlbum} />
-        <Video {...work.video} />
+        <Swiper imageAlbum={imageAlbum}></Swiper>
+        <Video {...video} />
       </>
     )
   );
 
   return (
     <>
-      <BreadCrumbs tertiaryPageName={workTitle} />
+      <BreadCrumbs tertiaryPageName={title} />
       <SectionWrapper className="pt-19.5">{sectionContent}</SectionWrapper>
     </>
   );

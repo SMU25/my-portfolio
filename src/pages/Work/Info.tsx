@@ -5,8 +5,10 @@ import { DATE_LOCALES } from "src/translate/locales";
 import { Heading } from "src/components/Heading";
 import { TagsHeading } from "src/components/Heading/types";
 import { MarkLabel } from "src/components/MarkLabel";
+import { SkillsAndTechnologies } from "src/components/SkillsAndTechnologies";
 import { IWorkItem } from "src/types/work";
 import { ReactComponent as GitHubIcon } from "src/assets/github.svg";
+import { Description } from "./Description";
 
 const GITHUB_ICON_SIZE = 24;
 
@@ -19,6 +21,7 @@ export const Info: FC<IWorkItem> = ({
   createdAt,
   screenSaver,
   projectLinks,
+  skillsAndTechnologies,
 }) => {
   const date = format(createdAt, DATE_FORMAT, {
     locale: DATE_LOCALES[activeLanguage],
@@ -31,43 +34,80 @@ export const Info: FC<IWorkItem> = ({
 
   return (
     <div className="pb-13.5">
-      <Heading
-        className="max-w-195 text-34 leading-12.5"
-        tagHeading={TagsHeading.H2}
-      >
-        {title}
-      </Heading>
-      {projectLinks && (
-        <div className="flex items-center my-3">
-          {projectLinkName && (
-            <a
-              className="text-blue-light transition-all hover:brightness-50"
-              href={deployedProjectUrl}
-              target="_blank"
-              rel="noreferrer"
-            >
-              {projectLinkName}
-            </a>
-          )}
+      <div>
+        <Heading
+          className="max-w-195 text-34 leading-12.5"
+          tagHeading={TagsHeading.H2}
+        >
+          {title}
+        </Heading>
+        {projectLinks && (
+          <div className="flex items-center my-3">
+            {projectLinkName && (
+              <a
+                className="text-blue-light transition-all hover:brightness-50"
+                href={deployedProjectUrl}
+                target="_blank"
+                rel="noreferrer"
+              >
+                {projectLinkName}
+              </a>
+            )}
 
-          {githubProjectUrl && (
-            <a
-              className="ml-3 transition-all duration-300 hover:scale-125"
-              href={githubProjectUrl}
-              target="_blank"
-              rel="noreferrer"
-            >
-              <GitHubIcon width={GITHUB_ICON_SIZE} height={GITHUB_ICON_SIZE} />
-            </a>
-          )}
+            {githubProjectUrl && (
+              <a
+                className="ml-3 transition-all duration-300 hover:scale-125"
+                href={githubProjectUrl}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <GitHubIcon
+                  width={GITHUB_ICON_SIZE}
+                  height={GITHUB_ICON_SIZE}
+                />
+              </a>
+            )}
+          </div>
+        )}
+        <div className="flex items-center">
+          <MarkLabel className="ml-1">{date}</MarkLabel>
+          <span className="ml-4.5 text-xl leading-7">{category}</span>
         </div>
-      )}
-      <div className="flex items-center">
-        <MarkLabel className="bg-red-light ml-1">{date}</MarkLabel>
-        <span className="ml-4.5 text-xl leading-7">{category}</span>
       </div>
-      <p className="mt-6 text-black-base leading-6">{description}</p>
-      <img className="w-full mt-11.5" src={screenSaver} alt={title} />
+      <img
+        className="w-full max-h-125 object-cover mt-6 rounded-10"
+        src={screenSaver}
+        alt={title}
+      />
+      <SkillsAndTechnologies
+        className="mt-4"
+        items={
+          skillsAndTechnologies || [
+            { key: "typescript", title: "TypeScript" },
+            { key: "scss", title: "SCSS" },
+            { key: "figma", title: "Figma" },
+            { key: "web-app", title: "Web Application" },
+            { key: "html", title: "HTML" },
+            { key: "css", title: "CSS" },
+            { key: "javascript", title: "JavaScript" },
+            { key: "react", title: "React" },
+            { key: "redux", title: "Redux" },
+            { key: "tailwind", title: "TailwindCSS" },
+            { key: "resposive-design", title: "Resposive design" },
+            { key: "git", title: "Git" },
+            {
+              key: "front-end",
+              title: "front-end",
+            },
+            {
+              key: "back-end",
+              title: "back-end",
+            },
+            { key: "website", title: "Website" },
+          ]
+        }
+      />
+      <Description>{description}</Description>
     </div>
   );
 };

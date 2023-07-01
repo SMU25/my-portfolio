@@ -1,22 +1,26 @@
-export interface ImageAlbumItem {
-  id: string;
-  imageUrl: string;
-  title?: string;
-  description?: string;
-}
-export interface VideoItem {
-  url: string;
-  poster?: string;
-  title?: string;
-  description?: string;
-}
-
 interface ProjectLinks {
   deployedProjectName?: string;
   deployedProjectUrl: string;
   githubProjectUrl: string;
 }
 
+export interface SkillsAndTechnologiesItem {
+  key: string;
+  title?: string;
+}
+export interface ImageAlbumItem {
+  id: string;
+  imageUrl: string;
+  title?: string;
+  description?: string;
+}
+
+export interface VideoItem {
+  url: string;
+  poster?: string;
+  title?: string;
+  description?: string;
+}
 export interface IWorkItem {
   id: string;
   title: string;
@@ -26,6 +30,7 @@ export interface IWorkItem {
   isFeatured?: boolean;
   createdAt: Date;
   screenSaver?: string;
+  skillsAndTechnologies?: SkillsAndTechnologiesItem[];
   imageAlbum?: ImageAlbumItem[];
   video: VideoItem;
 }
