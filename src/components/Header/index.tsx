@@ -35,8 +35,8 @@ export const Header: FC = () => {
             }
           )}
         >
-          {MENU_ITEMS.map(({ id, name }) => (
-            <MenuItem key={id} name={name} onCloseMenu={onCloseMenu} />
+          {MENU_ITEMS.map(({ id, ...item }) => (
+            <MenuItem key={id} onCloseMenu={onCloseMenu} {...item} />
           ))}
         </ul>
       </nav>

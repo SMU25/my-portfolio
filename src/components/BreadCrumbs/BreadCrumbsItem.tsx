@@ -19,7 +19,7 @@ export const BreadCrumbsItem: FC<Props> = ({
   isDisabled,
   isReversed,
 }) => (
-  <li className={cn("mt-2 mr-3 last:mr-0 text-xl")}>
+  <li className={cn("mr-3 last:mr-0 text-xl")}>
     {isDisabled ? (
       <span className="text-gray-light">{children}</span>
     ) : (

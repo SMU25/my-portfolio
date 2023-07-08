@@ -15,14 +15,14 @@ export const Description: FC<Props> = ({ children }) => {
   const { t } = useTranslation();
 
   return (
-    <div className="mt-6">
+    <div className="mt-3 sm:mt-5">
       <Heading
         className="text-lg sm:text-22 font-medium"
         tagHeading={TagsHeading.H4}
       >
         {t(`${T_PREFIX} - ${HEADING}`)}
       </Heading>
-      <p className="mt-2.5 text-black-base leading-6">{children}</p>
+      <p className="mt-1 sm:mt-2.5 text-black-base leading-6">{children}</p>
     </div>
   );
 };

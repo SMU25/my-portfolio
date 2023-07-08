@@ -29,7 +29,7 @@ export const SkillsAndTechnologies: FC<Props> = ({ className, items }) => {
       >
         {t(`${T_PREFIX} - ${HEADING}`)}
       </Heading>
-      <div className="flex flex-wrap gap-2 mt-2.5">
+      <div className="flex flex-wrap gap-2 mt-1.5 sm:mt-2.5">
         {items.map(({ key, title }) => (
           <MarkLabel
             key={key}

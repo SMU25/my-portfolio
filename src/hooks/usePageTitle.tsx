@@ -3,5 +3,9 @@ import { DEFAULT_PAGE_TITLE } from "src/pages/constants";
 
 export const usePageTitle = (title?: string) =>
   useEffect(() => {
-    document.title = title || DEFAULT_PAGE_TITLE;
+    const pageTitle = title
+      ? `${title} | ${DEFAULT_PAGE_TITLE}`
+      : DEFAULT_PAGE_TITLE;
+
+    document.title = pageTitle;
   }, [title]);

@@ -42,7 +42,7 @@ export const Info: FC<IWorkItem> = ({
           {title}
         </Heading>
         {projectLinks && (
-          <div className="flex items-center my-3">
+          <div className="flex items-center my-1 sm:my-3">
             {projectLinkName && (
               <a
                 className="text-blue-light transition-all hover:brightness-50"
@@ -75,12 +75,12 @@ export const Info: FC<IWorkItem> = ({
         </div>
       </div>
       <img
-        className="w-full max-h-125 object-cover mt-6 rounded-10"
+        className="w-full max-h-125 object-cover mt-3 sm:mt-4 rounded-10"
         src={screenSaver}
         alt={title}
       />
       <SkillsAndTechnologies
-        className="mt-4"
+        className="mt-2"
         items={
           skillsAndTechnologies || [
             { key: "typescript", title: "TypeScript" },
