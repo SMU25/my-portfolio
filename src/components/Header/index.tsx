@@ -25,7 +25,7 @@ export const Header: FC = () => {
   // Header зникає на футері в сторінках де багато елементів (Blog, home etc. )
   return (
     <header
-      className={cn("sticky top-0 bg-white py-1 md:py-0 z-50", {
+      className={cn("sticky top-0 bg-white py-2 md:py-0 z-50", {
         "shadow-light-bottom": isHomePage,
         "border-gray-lighter-opacity border-b-2": !isHomePage,
       })}
