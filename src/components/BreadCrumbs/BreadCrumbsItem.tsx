@@ -33,7 +33,7 @@ export const BreadCrumbsItem: FC<Props> = ({
   return (
     <li
       className={cn(
-        "min-w-20 mr-3 last:mr-0 text-sm sm:text-base md:text-lg gl:text-xl truncate",
+        "min-w-17 mr-3 last:mr-0 text-sm sm:text-base md:text-lg gl:text-xl truncate",
 
         { "flex items-center": isDisabled }
       )}
