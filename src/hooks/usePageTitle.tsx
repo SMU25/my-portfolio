@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
-import { DEFAULT_PAGE_TITLE } from "src/pages/constants";
+
+const DEFAULT_PAGE_TITLE = "My Portfolio";
 
 export const usePageTitle = (title?: string) =>
   useEffect(() => {

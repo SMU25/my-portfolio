@@ -4,14 +4,11 @@ import { useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { Link } from "src/components/Link";
 import { getPathName } from "src/utils/getPathName";
-import { PATHNAMES } from "src/constants/routes";
+import { HOMEPAGE_NAME, PATHNAMES } from "src/constants/routes";
 
 const ICON_SIZE = 24;
 
 const T_PREFIX = "menu-item";
-
-const HOMEPAGE_NAME = "home";
-// CHANGE - винести в загальну константу ось це або додти в PATHNAMES ім'я та шлях
 
 interface Props {
   name: string;

@@ -53,6 +53,7 @@ module.exports = {
         12.5: "50px",
         13: "52px",
         13.5: "54px",
+        14.5: "58px",
         15: "60px",
         15.5: "62px",
         17: "68px",
@@ -60,6 +61,7 @@ module.exports = {
         19.5: "78px",
         21: "84px",
         22.5: "90px",
+        31: "124px",
         35: "140px",
         37.5: "150px",
         39.5: "158px",
@@ -76,6 +78,8 @@ module.exports = {
         "calc-full-minus-54": "calc(100% - 216px)",
       },
       minWidth: {
+        4: "16px",
+        20: "80px",
         61.5: "246px",
       },
       maxWidth: {

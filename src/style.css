@@ -16,6 +16,18 @@ code {
     monospace;
 }
 
+g {
+  @apply transition-all duration-200;
+}
+
 .fill-g-red-primary g {
-  @apply fill-red-primary transition-all duration-200;
+  @apply fill-red-primary;
+}
+
+.fill-g-blue-light g {
+  @apply fill-blue-light;
+}
+
+.fill-g-gray-light g {
+  @apply fill-gray-light;
 }

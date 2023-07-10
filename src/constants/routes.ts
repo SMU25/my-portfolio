@@ -1,3 +1,5 @@
+export const HOMEPAGE_NAME = "home";
+
 export const PATHNAMES = {
   NOT_FOUND: "/*",
   HOME: "/",

@@ -12,7 +12,7 @@ const SkeletonWorkCard: FC<SkeletonWorkCardProps> = ({ isRowListTypeView }) => (
     className={cn(
       "relative flex flex-col justify-between w-full bg-white transition-all duration-300",
       {
-        "py-4 px-3": isRowListTypeView,
+        "py-4 px-3 rounded-lg shadow-card-primary": isRowListTypeView,
         "py-4.5 sm:py-8": !isRowListTypeView,
       }
     )}
