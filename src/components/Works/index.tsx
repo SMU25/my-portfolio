@@ -36,7 +36,7 @@ export const Works: FC<Props> = memo(
         <WorkCard
           key={item.id}
           className={cn({
-            "default:hover:shadow-light-white default:hover:scale-100 sm:hover:scale-105":
+            "default:shadow-light-white default:hover:scale-100 sm:hover:scale-105":
               isSlider,
           })}
           listTypeView={listTypeView}

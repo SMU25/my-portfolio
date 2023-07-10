@@ -15,3 +15,7 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.fill-g-red-primary g {
+  @apply fill-red-primary transition-all duration-200;
+}

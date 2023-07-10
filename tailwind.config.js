@@ -111,6 +111,7 @@ module.exports = {
       },
       display: ["group-hover"],
       boxShadow: {
+        "light-top": "2px -2px 8px rgba(0, 0, 0, 0.1);",
         "light-bottom": "2px 4px 8px rgba(0, 0, 0, 0.1);",
         "lining-lighter-blue": "-5px 10px 0px 5px rgba(237,247,250,1);",
         "light-white": "0px 4px 10px rgba(187, 225, 250, 0.25);",

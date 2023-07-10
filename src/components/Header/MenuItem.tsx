@@ -38,18 +38,26 @@ const MenuItem: FC<Props> = ({ name, icon: Icon, onCloseMenu }) => {
     <Link
       href={path}
       className={cn(
-        "flex items-center sm:ml-8 first:ml-0 transition ease-in-out duration-200 hover:scale-110",
+        "md:ml-8 first:ml-0 transition ease-in-out duration-200 hover:scale-110",
         {
           "text-red-primary": isActiveLink,
         }
       )}
     >
-      {Icon && <Icon width={ICON_SIZE} height={ICON_SIZE} className="mr-1.5" />}
       <li
-        className="py-3 sm:py-0 px-2.5 sm:px-0 capitalize text-center sm:text-left text-3xl sm:text-base font-medium leading-10 sm:leading-7"
+        className="flex items-center flex-col md:flex-row capitalize text-sm xs:text-base font-medium leading-7"
         onClick={onCloseMenu}
       >
-        {t(`${T_PREFIX} - ${name}`)}
+        {Icon && (
+          <Icon
+            width={ICON_SIZE}
+            height={ICON_SIZE}
+            className={cn("md:mr-1.5", {
+              "fill-g-red-primary": isActiveLink,
+            })}
+          />
+        )}
+        <span>{t(`${T_PREFIX} - ${name}`)}</span>
       </li>
     </Link>
   );
