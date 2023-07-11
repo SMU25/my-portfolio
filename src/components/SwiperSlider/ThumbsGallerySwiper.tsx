@@ -35,7 +35,7 @@ export const ThumbsGallerySwiper: FC<Props> = ({
 }) => {
   const [mainSwiper, setMainSwiper] = useState<SwiperCore>();
   const [thumbsSwiper, setThumbsSwiper] = useState<SwiperCore>();
-  const controllerRef = useRef<SwiperCore>();
+  // const controllerRef = useRef<SwiperCore>();
 
   const settingsMainSwiper =
     customSettingsMainSwiper || DEFAULT_SETTINGS_GALLERY_MAIN_SWIPER;
@@ -43,24 +43,30 @@ export const ThumbsGallerySwiper: FC<Props> = ({
     customSettingsThumbsSwiper || DEFAULT_SETTINGS_GALLERY_THUMBS_SWIPER;
 
   const handleSlideChange = useCallback(() => {
-    if (controllerRef.current && mainSwiper && thumbsSwiper) {
-      const activeIndex = mainSwiper.activeIndex;
-      thumbsSwiper.slideTo(activeIndex);
-      // setActiveIndex(activeIndex);
-      controllerRef.current.update();
-    }
-  }, [
-    mainSwiper,
-    thumbsSwiper,
-    controllerRef,
-    // setActiveIndex
-  ]);
-
-  useEffect(() => {
     if (mainSwiper && thumbsSwiper) {
-      controllerRef.current = mainSwiper;
+      setActiveIndex(mainSwiper.activeIndex);
     }
-  }, [mainSwiper, thumbsSwiper]);
+  }, [mainSwiper, thumbsSwiper, setActiveIndex]);
+
+  // const handleSlideChange = useCallback(() => {
+  //   if (controllerRef.current && mainSwiper && thumbsSwiper) {
+  //     const activeIndex = mainSwiper.activeIndex;
+  //     thumbsSwiper.slideTo(activeIndex);
+  //     // setActiveIndex(activeIndex);
+  //     controllerRef.current.update();
+  //   }
+  // }, [
+  //   mainSwiper,
+  //   thumbsSwiper,
+  //   controllerRef,
+  //   // setActiveIndex
+  // ]);
+
+  // useEffect(() => {
+  //   if (mainSwiper && thumbsSwiper) {
+  //     controllerRef.current = mainSwiper;
+  //   }
+  // }, [mainSwiper, thumbsSwiper]);
 
   return (
     <div className={containerClassName}>
@@ -75,9 +81,10 @@ export const ThumbsGallerySwiper: FC<Props> = ({
         }}
         onSwiper={setMainSwiper}
         onSlideChange={handleSlideChange}
-        controller={{
-          control: controllerRef.current,
-        }}
+        // onSlideChange={handleSlideChange}
+        // controller={{
+        //   control: controllerRef.current,
+        // }}
       />
       <SwiperSlider
         swiperState={thumbsSwiper}
@@ -87,9 +94,9 @@ export const ThumbsGallerySwiper: FC<Props> = ({
         items={items}
         customSettings={settingsThumbsSwiper}
         onSwiper={setThumbsSwiper}
-        controller={{
-          control: controllerRef.current,
-        }}
+        // controller={{
+        //   control: controllerRef.current,
+        // }}
       />
     </div>
   );

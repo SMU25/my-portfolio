@@ -18,8 +18,8 @@ export const Swiper: FC<Props> = ({ imageAlbum }) => {
 
   const [activeIndex, setActiveIndex] = useState(0);
 
-  const swiperItems = imageAlbum?.map(({ id, ...item }) => (
-    <SwiperItem key={id} {...item} />
+  const swiperItems = imageAlbum?.map(({ id, ...item }, index) => (
+    <SwiperItem key={id} isActiveSlide={index === activeIndex} {...item} />
   ));
 
   if (!imageAlbum?.length) return null;
@@ -36,6 +36,7 @@ export const Swiper: FC<Props> = ({ imageAlbum }) => {
         miniSwiperClassName="mt-5"
         items={swiperItems}
         setActiveIndex={setActiveIndex}
+        // isShownNavBtnsMainSwiper
         isShownNavBtnsThumbsSwiper
       />
     </div>
