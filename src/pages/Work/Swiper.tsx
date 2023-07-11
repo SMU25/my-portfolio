@@ -1,4 +1,4 @@
-import React, { FC, ReactNode } from "react";
+import React, { FC, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Heading } from "src/components/Heading";
 import { TagsHeading } from "src/components/Heading/types";
@@ -15,6 +15,8 @@ interface Props {
 
 export const Swiper: FC<Props> = ({ imageAlbum }) => {
   const { t } = useTranslation();
+
+  const [activeIndex, setActiveIndex] = useState(0);
 
   const swiperItems = imageAlbum?.map(({ id, ...item }) => (
     <SwiperItem key={id} {...item} />
@@ -33,6 +35,7 @@ export const Swiper: FC<Props> = ({ imageAlbum }) => {
       <ThumbsGallerySwiper
         miniSwiperClassName="mt-5"
         items={swiperItems}
+        setActiveIndex={setActiveIndex}
         isShownNavBtnsThumbsSwiper
       />
     </div>

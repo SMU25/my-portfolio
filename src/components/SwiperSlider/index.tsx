@@ -35,15 +35,11 @@ export const SwiperSlider: FC<CustomSwiperProps> = ({
 }) => {
   const swiperRef = useRef(null);
 
-  const slidePrev = useCallback(
-    () => (swiperState || swiperRef.current)?.slidePrev(),
-    [swiperState, swiperRef]
-  );
+  const swiperObj = swiperState || swiperRef.current;
 
-  const slideNext = useCallback(
-    () => (swiperState || swiperRef.current)?.slideNext(),
-    [swiperState, swiperRef]
-  );
+  const slidePrev = useCallback(() => swiperObj?.slidePrev(), [swiperObj]);
+
+  const slideNext = useCallback(() => swiperObj?.slideNext(), [swiperObj]);
 
   const settings = customSettings || DEFAULT_SETTINGS;
 
