@@ -10,6 +10,9 @@ import { IWorkItem } from "src/types/work";
 import { ReactComponent as GitHubIcon } from "src/assets/github.svg";
 import { Description } from "./Description";
 
+const LINK_TEXT_CLASSNAME =
+  "mr-3 text-blue-light transition-all hover:brightness-50";
+
 const GITHUB_ICON_SIZE = 24;
 
 const DATE_FORMAT = "yyyy";
@@ -27,26 +30,27 @@ export const Info: FC<IWorkItem> = ({
     locale: DATE_LOCALES[activeLanguage],
   });
 
-  const { deployedProjectName, deployedProjectUrl, githubProjectUrl } =
-    projectLinks || {};
+  const { github, deployed } = projectLinks || {};
+  const githubUrl = github?.url;
+  const deployedUrl = deployed?.url;
 
-  const projectLinkName = deployedProjectName || deployedProjectUrl;
+  const projectLinkName = deployed?.urlName || deployedUrl;
 
   return (
     <div className="pb-13.5">
       <div>
         <Heading
-          className="max-w-195 text-34 leading-12.5"
+          className="max-w-195 text-34 default:leading-9 sm:leading-12.5"
           tagHeading={TagsHeading.H2}
         >
           {title}
         </Heading>
         {projectLinks && (
-          <div className="flex items-center my-1 sm:my-3">
-            {projectLinkName && (
+          <div className="flex items-center mt-1 sm:mt-2">
+            {deployed && (
               <a
-                className="text-blue-light transition-all hover:brightness-50"
-                href={deployedProjectUrl}
+                className={LINK_TEXT_CLASSNAME}
+                href={deployedUrl}
                 target="_blank"
                 rel="noreferrer"
               >
@@ -54,14 +58,18 @@ export const Info: FC<IWorkItem> = ({
               </a>
             )}
 
-            {githubProjectUrl && (
+            {githubUrl && (
               <a
-                className="ml-3 transition-all duration-300 hover:scale-125"
-                href={githubProjectUrl}
+                className="flex items-center"
+                href={githubUrl}
                 target="_blank"
                 rel="noreferrer"
               >
+                {!deployed && (
+                  <span className={LINK_TEXT_CLASSNAME}>{githubUrl}</span>
+                )}
                 <GitHubIcon
+                  className="transition-all duration-300 hover:scale-125"
                   width={GITHUB_ICON_SIZE}
                   height={GITHUB_ICON_SIZE}
                 />
@@ -69,7 +77,7 @@ export const Info: FC<IWorkItem> = ({
             )}
           </div>
         )}
-        <div className="flex items-center">
+        <div className="flex items-center mt-1 sm:mt-3">
           <MarkLabel className="ml-1">{date}</MarkLabel>
           <span className="ml-4.5 text-xl leading-7">{category}</span>
         </div>

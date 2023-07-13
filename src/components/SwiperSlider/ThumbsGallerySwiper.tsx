@@ -8,6 +8,7 @@ import {
   DEFAULT_SETTINGS_GALLERY_MAIN_SWIPER,
   DEFAULT_SETTINGS_GALLERY_THUMBS_SWIPER,
 } from "./constants";
+import { setActiveIndex } from "./types";
 
 interface Props
   extends Pick<CustomSwiperProps, "items" | "containerClassName"> {
@@ -18,7 +19,7 @@ interface Props
   customSettingsThumbsSwiper?: SwiperProps;
   isShownNavBtnsMainSwiper?: boolean;
   isShownNavBtnsThumbsSwiper?: boolean;
-  setActiveIndex: (value: number) => void;
+  setActiveSlideIndex?: setActiveIndex;
 }
 
 export const ThumbsGallerySwiper: FC<Props> = ({
@@ -31,7 +32,7 @@ export const ThumbsGallerySwiper: FC<Props> = ({
   customSettingsThumbsSwiper,
   isShownNavBtnsMainSwiper,
   isShownNavBtnsThumbsSwiper,
-  setActiveIndex,
+  setActiveSlideIndex,
 }) => {
   const [mainSwiper, setMainSwiper] = useState<SwiperCore>();
   const [thumbsSwiper, setThumbsSwiper] = useState<SwiperCore>();
@@ -42,24 +43,23 @@ export const ThumbsGallerySwiper: FC<Props> = ({
   const settingsThumbsSwiper =
     customSettingsThumbsSwiper || DEFAULT_SETTINGS_GALLERY_THUMBS_SWIPER;
 
-  const handleSlideChange = useCallback(() => {
-    if (mainSwiper && thumbsSwiper) {
-      setActiveIndex(mainSwiper.activeIndex);
-    }
-  }, [mainSwiper, thumbsSwiper, setActiveIndex]);
+  // const handleSlideChange = useCallback(() => {
+  //   if (mainSwiper && thumbsSwiper) {
+  //     setActiveSlideIndex(mainSwiper.activeIndex);
+  //   }
+  // }, [mainSwiper, thumbsSwiper, setActiveSlideIndex]);
 
   // const handleSlideChange = useCallback(() => {
   //   if (controllerRef.current && mainSwiper && thumbsSwiper) {
   //     const activeIndex = mainSwiper.activeIndex;
   //     thumbsSwiper.slideTo(activeIndex);
-  //     // setActiveIndex(activeIndex);
   //     controllerRef.current.update();
   //   }
   // }, [
   //   mainSwiper,
   //   thumbsSwiper,
   //   controllerRef,
-  //   // setActiveIndex
+  //   // setActiveSlideIndex
   // ]);
 
   // useEffect(() => {
@@ -80,8 +80,7 @@ export const ThumbsGallerySwiper: FC<Props> = ({
           swiper: thumbsSwiper,
         }}
         onSwiper={setMainSwiper}
-        onSlideChange={handleSlideChange}
-        // onSlideChange={handleSlideChange}
+        setActiveSlideIndex={setActiveSlideIndex}
         // controller={{
         //   control: controllerRef.current,
         // }}

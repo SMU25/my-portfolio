@@ -1,7 +1,13 @@
 interface ProjectLinks {
-  deployedProjectName?: string;
-  deployedProjectUrl: string;
-  githubProjectUrl: string;
+  github?: {
+    title?: string;
+    url: string;
+  };
+  deployed?: {
+    title?: string;
+    urlName?: string;
+    url: string;
+  };
 }
 
 export interface SkillsAndTechnologiesItem {
@@ -26,7 +32,7 @@ export interface IWorkItem {
   title: string;
   description?: string;
   category: string;
-  projectLinks: ProjectLinks;
+  projectLinks?: ProjectLinks;
   isFeatured?: boolean;
   createdAt: Date;
   screenSaver?: string;

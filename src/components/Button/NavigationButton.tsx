@@ -17,7 +17,7 @@ export const NavigationButton: FC<Props> = ({
 }) => (
   <button
     className={cn(
-      "bg-white p-2 xs:p-3 shadow-hard-white rounded-full z-10 transition-all duration-150 opacity-80 hover:opacity-100 active:mt-1 disabled:opacity-100",
+      "bg-white bg-opacity-70 p-2 xs:p-3 shadow-hard-white rounded-full z-10 transition-all duration-150 hover:bg-opacity-100 active:mt-1 disabled:active:mt-0 disabled:bg-opacity-70",
       className
     )}
     onClick={onClick}

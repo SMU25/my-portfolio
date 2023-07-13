@@ -6,6 +6,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "./style.css";
 import { DEFAULT_SETTINGS } from "./constants";
+import { setActiveIndex } from "./types";
 import { NavigationButton } from "../Button/NavigationButton";
 
 const DEFAULT_CLASSNAME_NAVIGATION_BUTTON = "absolute top-1/2 -translate-y-1/2";
@@ -18,6 +19,8 @@ export interface CustomSwiperProps extends SwiperProps {
   customSettings?: SwiperProps;
   isShownNavigationButtons?: boolean;
   swiperState?: SwiperClass;
+  setActiveSlideIndex?: setActiveIndex;
+  handleSlideChange?: VoidFunction;
 }
 
 //CHANGE - змінити bloig post, відступи лишні удалити ізробити норм відображення без слйдера на грідах
@@ -31,9 +34,11 @@ export const SwiperSlider: FC<CustomSwiperProps> = ({
   customSettings,
   isShownNavigationButtons,
   swiperState,
+  setActiveSlideIndex,
+  handleSlideChange,
   ...props
 }) => {
-  const swiperRef = useRef(null);
+  const swiperRef = useRef<SwiperClass>(null);
 
   const swiperObj = swiperState || swiperRef.current;
 
@@ -43,11 +48,22 @@ export const SwiperSlider: FC<CustomSwiperProps> = ({
 
   const settings = customSettings || DEFAULT_SETTINGS;
 
+  const onSlideChange = useCallback(() => {
+    if (setActiveSlideIndex && swiperObj) {
+      setActiveSlideIndex(swiperObj.activeIndex);
+    }
+
+    if (handleSlideChange) {
+      handleSlideChange();
+    }
+  }, [swiperObj, setActiveSlideIndex, handleSlideChange]);
+
   return (
     <div className={cn("relative", containerClassName)}>
       <Swiper
         className={className}
         onSwiper={(swiper) => (swiperRef.current = swiper)}
+        onSlideChange={onSlideChange}
         {...settings}
         {...props}
       >
@@ -68,6 +84,7 @@ export const SwiperSlider: FC<CustomSwiperProps> = ({
               DEFAULT_CLASSNAME_NAVIGATION_BUTTON
             )}
             onClick={slidePrev}
+            isDisabled={swiperObj?.isBeginning}
           />
           <NavigationButton
             className={cn(
@@ -75,6 +92,7 @@ export const SwiperSlider: FC<CustomSwiperProps> = ({
               DEFAULT_CLASSNAME_NAVIGATION_BUTTON
             )}
             onClick={slideNext}
+            isDisabled={swiperObj?.isEnd}
           />
         </>
       )}

@@ -4,7 +4,7 @@ import { Shimmer } from "src/components/Shimmer";
 export const Preloader = () => (
   <div>
     <div className="pb-13.5">
-      <Shimmer className="w-3/5 md:w-1/3 h-8 sm:h-10" />
+      <Shimmer className="w-3/5 md:w-1/3 h-9 sm:h-12" />
       <div className="flex items-center my-1 sm:my-3">
         <Shimmer className="w-4/5 md:w-2/5 h-5" />
         <Shimmer className="w-6 h-6 ml-3 rounded" />

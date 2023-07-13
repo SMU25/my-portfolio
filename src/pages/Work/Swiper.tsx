@@ -16,10 +16,10 @@ interface Props {
 export const Swiper: FC<Props> = ({ imageAlbum }) => {
   const { t } = useTranslation();
 
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [activeSlideIndex, setActiveSlideIndex] = useState(0);
 
   const swiperItems = imageAlbum?.map(({ id, ...item }, index) => (
-    <SwiperItem key={id} isActiveSlide={index === activeIndex} {...item} />
+    <SwiperItem key={id} isActiveSlide={index === activeSlideIndex} {...item} />
   ));
 
   if (!imageAlbum?.length) return null;
@@ -35,9 +35,8 @@ export const Swiper: FC<Props> = ({ imageAlbum }) => {
       <ThumbsGallerySwiper
         miniSwiperClassName="mt-5"
         items={swiperItems}
-        setActiveIndex={setActiveIndex}
-        // isShownNavBtnsMainSwiper
-        isShownNavBtnsThumbsSwiper
+        setActiveSlideIndex={setActiveSlideIndex}
+        isShownNavBtnsMainSwiper
       />
     </div>
   );
