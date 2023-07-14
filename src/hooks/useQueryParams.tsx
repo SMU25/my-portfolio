@@ -20,9 +20,10 @@ export const useQueryParams = (initialValues?: InitialValues) => {
 
   const [queryParams, setQueryParams] = useSearchParams();
 
-  const [page, setPage] = useState<number>(pageInitialValue);
-  const [limit, setLimit] = useState<number>(limitInitialValue);
-  const [offset, setOffset] = useState<number>(offsetInitialValue);
+  const [page, setPage] = useState(pageInitialValue);
+  const [limit, setLimit] = useState(limitInitialValue);
+  const [offset, setOffset] = useState(offsetInitialValue);
+
 
   const isChangedLimit = limitInitialValue !== limit;
 

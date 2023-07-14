@@ -1,4 +1,5 @@
 import React, { FC, useState, useEffect, useCallback, useRef } from "react";
+import cn from "classnames";
 import SwiperCore from "swiper";
 import { SwiperProps } from "swiper/react";
 import "swiper/css/thumbs";
@@ -10,11 +11,12 @@ import {
 } from "./constants";
 import { setActiveIndex } from "./types";
 
+export const THUMBS_MAIN_SWIPER_ID = "main-swiper";
+
 interface Props
   extends Pick<CustomSwiperProps, "items" | "containerClassName"> {
   mainSwiperClassName?: string;
   miniSwiperClassName?: string;
-  containerThumbsSwiperClassName?: string;
   customSettingsMainSwiper?: SwiperProps;
   customSettingsThumbsSwiper?: SwiperProps;
   isShownNavBtnsMainSwiper?: boolean;
@@ -27,7 +29,6 @@ export const ThumbsGallerySwiper: FC<Props> = ({
   containerClassName,
   mainSwiperClassName,
   miniSwiperClassName,
-  containerThumbsSwiperClassName,
   customSettingsMainSwiper,
   customSettingsThumbsSwiper,
   isShownNavBtnsMainSwiper,
@@ -70,8 +71,9 @@ export const ThumbsGallerySwiper: FC<Props> = ({
   return (
     <div className={containerClassName}>
       <SwiperSlider
-        swiperState={mainSwiper}
+        id={THUMBS_MAIN_SWIPER_ID}
         className={mainSwiperClassName}
+        swiperState={mainSwiper}
         isShownNavigationButtons={isShownNavBtnsMainSwiper}
         items={items}
         customSettings={settingsMainSwiper}
@@ -85,9 +87,9 @@ export const ThumbsGallerySwiper: FC<Props> = ({
         // }}
       />
       <SwiperSlider
-        swiperState={thumbsSwiper}
+        id="thumbs-slider"
         className={miniSwiperClassName}
-        containerClassName={containerThumbsSwiperClassName}
+        swiperState={thumbsSwiper}
         isShownNavigationButtons={isShownNavBtnsThumbsSwiper}
         items={items}
         customSettings={settingsThumbsSwiper}

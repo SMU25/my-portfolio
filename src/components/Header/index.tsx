@@ -12,7 +12,7 @@ import { LanguageChooser } from "../LanguageChooser";
 export const Header: FC = () => {
   const { pathname } = useLocation();
 
-  const [isOpenMenu, setIsOpenMenu] = useState<boolean>(false);
+  const [isOpenMenu, setIsOpenMenu] = useState(false);
   const onCloseMenu = useCallback(
     () => setIsOpenMenu(false),
 

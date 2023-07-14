@@ -1,6 +1,6 @@
 import React, { FC, ReactElement, useCallback, useRef } from "react";
 import cn from "classnames";
-import { Swiper, SwiperProps, SwiperSlide } from "swiper/react";
+import { Swiper, SwiperProps, SwiperSlide, useSwiper } from "swiper/react";
 import SwiperClass from "swiper/types/swiper-class";
 import "swiper/css";
 import "swiper/css/pagination";
