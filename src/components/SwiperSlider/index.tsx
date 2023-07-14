@@ -4,7 +4,6 @@ import { Swiper, SwiperProps, SwiperSlide, useSwiper } from "swiper/react";
 import SwiperClass from "swiper/types/swiper-class";
 import "swiper/css";
 import "swiper/css/pagination";
-import "./style.css";
 import { DEFAULT_SETTINGS } from "./constants";
 import { setActiveIndex } from "./types";
 import { NavigationButton } from "../Button/NavigationButton";
@@ -80,7 +79,7 @@ export const SwiperSlider: FC<CustomSwiperProps> = ({
         <>
           <NavigationButton
             className={cn(
-              "rotate-180 -left-2 xs:-left-7 sm:-left-10",
+              "rotate-180 -left-1 xs:-left-4 sm:-left-10",
               DEFAULT_CLASSNAME_NAVIGATION_BUTTON
             )}
             onClick={slidePrev}
@@ -88,7 +87,7 @@ export const SwiperSlider: FC<CustomSwiperProps> = ({
           />
           <NavigationButton
             className={cn(
-              "-right-2 xs:-right-7 sm:-right-10",
+              "-right-1 xs:-right-4 sm:-right-10",
               DEFAULT_CLASSNAME_NAVIGATION_BUTTON
             )}
             onClick={slideNext}

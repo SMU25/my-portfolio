@@ -25,6 +25,9 @@ export const DEFAULT_SETTINGS: SwiperProps = {
     [SCREEN_BREAKPOINTS.DEFAULT]: {
       spaceBetween: 12,
     },
+    [SCREEN_BREAKPOINTS.XS]: {
+      spaceBetween: 22,
+    },
     [SCREEN_BREAKPOINTS.SM]: {
       spaceBetween: 24,
     },

@@ -60,7 +60,6 @@ export const BlogPosts: FC<Props> = memo(
           "grid grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-5": isRowListTypeView,
         })}
       >
-        {renderPreloader(isRowListTypeView, countItemsPreloader)}
         {renderedBlogPosts}
       </div>
     );

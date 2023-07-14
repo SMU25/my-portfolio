@@ -26,7 +26,7 @@ export const AboutMySelf: FC = () => {
     <div className="flex flex-col-reverse sm:flex-row justify-center sm:justify-between items-center sm:items-start xl:items-center">
       <div className="sm:max-w-118 xl:max-w-161 w-full text-center sm:text-left">
         <Heading
-          className="mt-8.5 sm:mt-4.5 capitalize text-3xl md:text-44 xl:text-6xl leading-10 md:leading-15 xl:leading-17"
+          className="mt-8.5 sm:mt-4.5 capitalize text-3xl md:text-44 xl:text-6xl default:leading-10 sm:leading-11 xl:leading-17"
           tagHeading={TagsHeading.H2}
         >
           {t(`${T_PREFIX} - ${HEADING}`)}
