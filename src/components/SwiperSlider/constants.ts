@@ -28,7 +28,7 @@ export const DEFAULT_SETTINGS: SwiperProps = {
     [SCREEN_BREAKPOINTS.SM]: {
       spaceBetween: 24,
     },
-    [SCREEN_BREAKPOINTS.XL]: {
+    [SCREEN_BREAKPOINTS.LG]: {
       slidesPerView: 3,
     },
   },

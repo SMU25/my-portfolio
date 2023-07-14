@@ -20,6 +20,10 @@ g {
   @apply transition-all duration-200;
 }
 
+.container {
+  @apply max-w-none md:max-w-195 lg:max-w-none xl:max-w-323.5 w-full mx-auto;
+}
+
 .fill-g-red-primary g {
   @apply fill-red-primary;
 }

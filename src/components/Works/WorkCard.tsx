@@ -85,7 +85,7 @@ export const WorkCard: FC<Props> = memo(
         <div className={classNames.wrapper}>
           <Link href={pathname}>
             <img
-              className={cn("w-full object-cover rounded-md", classNames.img)}
+              className={cn("w-full object-cover rounded-10", classNames.img)}
               src={screenSaver}
               width={WORK_IMG_SIZE.WIDTH}
               height={WORK_IMG_SIZE.HEIGHT}

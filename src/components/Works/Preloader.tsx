@@ -30,7 +30,8 @@ const SkeletonWorkCard: FC<SkeletonWorkCardProps> = ({
       <Shimmer
         className={cn("w-full rounded-md", {
           "h-24 xs:h-28 sm:h-45 xl:h-60": isRowListTypeView,
-          "sm:min-w-61.5 sm:max-w-61.5 h-45": !isRowListTypeView,
+          "sm:min-w-61.5 sm:max-w-61.5 h-55 xs:h-70 sm:h-45":
+            !isRowListTypeView,
         })}
       />
       <div

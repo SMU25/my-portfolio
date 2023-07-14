@@ -61,7 +61,7 @@ export const BlogCard: FC<Props> = memo(
       <>
         <div
           className={cn(
-            "relative w-full flex-1 overflow-hidden transition-all duration-300",
+            "relative flex flex-col justify-between w-full flex-1 overflow-hidden transition-all duration-300",
             classNames.container,
             containerClassName
           )}

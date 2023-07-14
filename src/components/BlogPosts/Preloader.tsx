@@ -19,24 +19,32 @@ export const SkeletonBlogPost: FC<SkeletonBlogPostProps> = ({
       }
     )}
   >
-    <Shimmer className="w-50 h-7" />
-    <div className="flex h-5 mt-3">
+    <Shimmer
+      className={cn("w-50 h-7", {
+        "!w-full xs:w-40 sm:w-50 default:h-4.5 sm:h-7": isRowListTypeView,
+      })}
+    />
+    <div
+      className={cn("flex h-5 mt-3", {
+        "default:h-3 sm:h-5": isRowListTypeView,
+      })}
+    >
       <Shimmer className="w-22.5" />
       <Shimmer className="w-22.5 ml-4" />
     </div>
     <div className="mt-3">
       {isRowListTypeView ? (
         <>
-          <Shimmer className="w-11/12 h-3 mt-1.5" />
-          <Shimmer className="h-3 mt-1.5" />
-          <Shimmer className="w-10/12 h-3 mt-1.5" />
-          <Shimmer className="w-11/12 h-3 mt-1.5" />
-          <Shimmer className="w-11/12 h-3 mt-1.5" />
-          <Shimmer className="h-3 mt-1.5" />
-          <Shimmer className="w-10/12 h-3 mt-1.5" />
-          <Shimmer className="w-11/12 h-3 mt-1.5" />
-          <Shimmer className="h-3 mt-1.5" />
-          <Shimmer className="w-1/3 h-3 mt-1.5" />
+          <Shimmer className="w-11/12 h-1.5 sm:h-3 mt-1 sm:mt-1.5" />
+          <Shimmer className="h-1.5 sm:h-3 mt-1 sm:mt-1.5" />
+          <Shimmer className="w-10/12 h-1.5 sm:h-3 mt-1 sm:mt-1.5" />
+          <Shimmer className="w-11/12 h-1.5 sm:h-3 mt-1 sm:mt-1.5" />
+          <Shimmer className="w-11/12 h-1.5 sm:h-3 mt-1 sm:mt-1.5" />
+          <Shimmer className="h-1.5 sm:h-3 mt-1 sm:mt-1.5" />
+          <Shimmer className="w-10/12 h-1.5 sm:h-3 mt-1 sm:mt-1.5" />
+          <Shimmer className="w-11/12 h-1.5 sm:h-3 mt-1 sm:mt-1.5" />
+          <Shimmer className="h-1.5 sm:h-3 mt-1 sm:mt-1.5" />
+          <Shimmer className="w-1/3 h-1.5 sm:h-3 mt-1 sm:mt-1.5" />
         </>
       ) : (
         <>
