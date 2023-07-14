@@ -59,7 +59,6 @@ export const ThumbsGallerySwiper: FC<Props> = ({
   //   mainSwiper,
   //   thumbsSwiper,
   //   controllerRef,
-  //   // setActiveSlideIndex
   // ]);
 
   // useEffect(() => {

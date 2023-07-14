@@ -5,15 +5,20 @@ import { getArrayNumbers } from "src/utils/getArrayNumbers";
 
 interface SkeletonWorkCardProps {
   isRowListTypeView?: boolean;
+  isSlider?: boolean;
 }
 
-const SkeletonWorkCard: FC<SkeletonWorkCardProps> = ({ isRowListTypeView }) => (
+const SkeletonWorkCard: FC<SkeletonWorkCardProps> = ({
+  isRowListTypeView,
+  isSlider,
+}) => (
   <div
     className={cn(
       "relative flex flex-col justify-between w-full bg-white transition-all duration-300",
       {
         "py-4 px-3 rounded-lg shadow-card-primary": isRowListTypeView,
         "py-4.5 sm:py-8": !isRowListTypeView,
+        "default:shadow-light-white": isSlider,
       }
     )}
   >
@@ -96,10 +101,18 @@ const SkeletonWorkCard: FC<SkeletonWorkCardProps> = ({ isRowListTypeView }) => (
   </div>
 );
 
-export const renderPreloader = (isRowListTypeView: boolean, countItems = 3) => {
+export const renderPreloader = (
+  isRowListTypeView: boolean,
+  isSlider: boolean,
+  countItems: number = 3
+) => {
   const arrayEmptyItems = getArrayNumbers(countItems);
 
   return arrayEmptyItems.map((item) => (
-    <SkeletonWorkCard key={item} isRowListTypeView={isRowListTypeView} />
+    <SkeletonWorkCard
+      key={item}
+      isRowListTypeView={isRowListTypeView}
+      isSlider={isSlider}
+    />
   ));
 };

@@ -20,10 +20,6 @@ export const DEFAULT_SETTINGS: SwiperProps = {
     disableOnInteraction: true,
     pauseOnMouseEnter: true,
   },
-  // pagination: {
-  //   clickable: true,
-  //   dynamicBullets: true,
-  // },
   modules: [Autoplay, Keyboard, Pagination, FreeMode],
   breakpoints: {
     [SCREEN_BREAKPOINTS.DEFAULT]: {
@@ -51,5 +47,6 @@ export const DEFAULT_SETTINGS_GALLERY_THUMBS_SWIPER: SwiperProps = {
   slidesPerView: 5,
   spaceBetween: 12,
   slideToClickedSlide: true,
-  modules: [FreeMode, Controller],
+  watchSlidesProgress: true,
+  modules: [FreeMode, Thumbs, Controller],
 };

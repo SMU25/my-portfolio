@@ -1,1 +1,5 @@
-export const scrollTop: VoidFunction = () => window.scrollTo(0, 0);
+export const scrollTop: VoidFunction = () => {
+  const appElement = document.querySelector(".App");
+
+  appElement.scrollTo(0, 0);
+};

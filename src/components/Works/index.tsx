@@ -30,7 +30,11 @@ export const Works: FC<Props> = memo(
 
     const renderedWorkItems = useMemo(() => {
       if (isLoading)
-        return renderPreloader(isRowListTypeView, countItemsPreloader);
+        return renderPreloader(
+          isRowListTypeView,
+          isSlider,
+          countItemsPreloader
+        );
 
       return items?.map((item) => (
         <WorkCard

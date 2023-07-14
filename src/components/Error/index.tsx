@@ -1,7 +1,6 @@
 import React, { FC } from "react";
 import cn from "classnames";
 import { useTranslation } from "react-i18next";
-import { TYPE_STRING } from "src/constants/types";
 
 const T_PREFIX = "error";
 
@@ -11,9 +10,7 @@ interface Ii18nErrorObject {
 }
 
 interface Props {
-  children: any;
-  // CHANGE - fix any
-  // children: Ii18nErrorObject | string;
+  children: string | Ii18nErrorObject;
   className?: string;
   showError: boolean;
 }
@@ -24,7 +21,7 @@ export const Error: FC<Props> = ({ children, className, showError }) => {
   if (!showError) return null;
 
   const errorText =
-    typeof children === TYPE_STRING
+    typeof children === "string"
       ? t(`${T_PREFIX} - ${children}`)
       : t(`${T_PREFIX} - ${children.i18nKey}`, children.i18nParams);
 

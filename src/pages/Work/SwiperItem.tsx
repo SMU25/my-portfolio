@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import cn from "classnames";
-import { useSwiper } from "swiper/react";
+import { useSwiper, useSwiperSlide } from "swiper/react";
 import { Heading } from "src/components/Heading";
 import { TagsHeading } from "src/components/Heading/types";
 import { ImageAlbumItem } from "src/types/work";
@@ -17,7 +17,7 @@ export const SwiperItem: FC<Props> = ({
 }) => {
   const { thumbs } = useSwiper();
 
-  const isMainSliderItem = Boolean(thumbs);
+  const isMainSliderItem = Boolean(thumbs.swiper);
   const isActiveThumbItem = isActiveSlide && !isMainSliderItem;
   const shownDescription = description && isMainSliderItem;
 
