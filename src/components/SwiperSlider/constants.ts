@@ -47,9 +47,20 @@ export const DEFAULT_SETTINGS_GALLERY_MAIN_SWIPER: SwiperProps = {
 };
 
 export const DEFAULT_SETTINGS_GALLERY_THUMBS_SWIPER: SwiperProps = {
-  slidesPerView: 5,
+  slidesPerView: 3,
   spaceBetween: 12,
   slideToClickedSlide: true,
   watchSlidesProgress: true,
   modules: [FreeMode, Thumbs, Controller],
+  breakpoints: {
+    [SCREEN_BREAKPOINTS.DEFAULT]: {
+      slidesPerView: 3,
+    },
+    [SCREEN_BREAKPOINTS.LG]: {
+      slidesPerView: 4,
+    },
+    [SCREEN_BREAKPOINTS.XL]: {
+      slidesPerView: 5,
+    },
+  },
 };

@@ -1,7 +1,9 @@
 import React, { FC, ReactNode } from "react";
+import cn from "classnames";
 import { useTranslation } from "react-i18next";
 import { Heading } from "src/components/Heading";
 import { TagsHeading } from "src/components/Heading/types";
+import { DEFAULT_DESCRIPTION_CLASSNAME } from "./constants";
 
 const T_PREFIX = "work-description";
 
@@ -22,7 +24,9 @@ export const Description: FC<Props> = ({ children }) => {
       >
         {t(`${T_PREFIX} - ${HEADING}`)}
       </Heading>
-      <p className="mt-1 sm:mt-2.5 text-black-base leading-6">{children}</p>
+      <p className={cn("mt-0.5 sm:mt-2.5", DEFAULT_DESCRIPTION_CLASSNAME)}>
+        {children}
+      </p>
     </div>
   );
 };
