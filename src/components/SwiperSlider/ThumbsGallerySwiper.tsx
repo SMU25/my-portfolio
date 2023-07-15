@@ -1,5 +1,4 @@
-import React, { FC, useState, useEffect, useCallback, useRef } from "react";
-import cn from "classnames";
+import React, { FC, useState, useEffect } from "react";
 import SwiperCore from "swiper";
 import { SwiperProps } from "swiper/react";
 import "swiper/css/thumbs";
@@ -37,36 +36,11 @@ export const ThumbsGallerySwiper: FC<Props> = ({
 }) => {
   const [mainSwiper, setMainSwiper] = useState<SwiperCore>();
   const [thumbsSwiper, setThumbsSwiper] = useState<SwiperCore>();
-  // const controllerRef = useRef<SwiperCore>();
 
   const settingsMainSwiper =
     customSettingsMainSwiper || DEFAULT_SETTINGS_GALLERY_MAIN_SWIPER;
   const settingsThumbsSwiper =
     customSettingsThumbsSwiper || DEFAULT_SETTINGS_GALLERY_THUMBS_SWIPER;
-
-  // const handleSlideChange = useCallback(() => {
-  //   if (mainSwiper && thumbsSwiper) {
-  //     setActiveSlideIndex(mainSwiper.activeIndex);
-  //   }
-  // }, [mainSwiper, thumbsSwiper, setActiveSlideIndex]);
-
-  // const handleSlideChange = useCallback(() => {
-  //   if (controllerRef.current && mainSwiper && thumbsSwiper) {
-  //     const activeIndex = mainSwiper.activeIndex;
-  //     thumbsSwiper.slideTo(activeIndex);
-  //     controllerRef.current.update();
-  //   }
-  // }, [
-  //   mainSwiper,
-  //   thumbsSwiper,
-  //   controllerRef,
-  // ]);
-
-  // useEffect(() => {
-  //   if (mainSwiper && thumbsSwiper) {
-  //     controllerRef.current = mainSwiper;
-  //   }
-  // }, [mainSwiper, thumbsSwiper]);
 
   return (
     <div className={containerClassName}>
@@ -82,9 +56,6 @@ export const ThumbsGallerySwiper: FC<Props> = ({
         }}
         onSwiper={setMainSwiper}
         setActiveSlideIndex={setActiveSlideIndex}
-        // controller={{
-        //   control: controllerRef.current,
-        // }}
       />
       <SwiperSlider
         id="thumbs-slider"
@@ -94,9 +65,6 @@ export const ThumbsGallerySwiper: FC<Props> = ({
         items={items}
         customSettings={settingsThumbsSwiper}
         onSwiper={setThumbsSwiper}
-        // controller={{
-        //   control: controllerRef.current,
-        // }}
       />
     </div>
   );

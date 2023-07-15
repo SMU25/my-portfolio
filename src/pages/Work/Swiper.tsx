@@ -35,7 +35,8 @@ export const Swiper: FC<Props> = ({ imageAlbum }) => {
         {t(`${T_PREFIX} - ${HEADING}`)}
       </Heading>
       <ThumbsGallerySwiper
-        miniSwiperClassName="mt-2 xs:mt-3 sm:mt-4 md:mt-5"
+        mainSwiperClassName="rounded-10"
+        miniSwiperClassName="mt-2 xs:mt-3 sm:mt-4 md:mt-5 rounded-10"
         items={swiperItems}
         setActiveSlideIndex={setActiveSlideIndex}
         isShownNavBtnsMainSwiper
