@@ -32,7 +32,7 @@ const Work: FC = () => {
     work && (
       <>
         <Info {...work} />
-        <Swiper imageAlbum={imageAlbum}></Swiper>
+        <Swiper imageAlbum={imageAlbum} />
         <Video {...video} />
       </>
     )

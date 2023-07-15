@@ -83,7 +83,7 @@ export const Info: FC<IWorkItem> = ({
         </div>
       </div>
       <img
-        className="w-full max-h-125 object-cover mt-3 sm:mt-4 rounded-10"
+        className="w-full max-h-50 xs:max-h-56 sm:max-h-96 md:max-h-125 object-cover mt-3 sm:mt-4 rounded-10"
         src={screenSaver}
         alt={title}
       />

@@ -10,16 +10,14 @@ import { BlogCard } from "src/components/BlogPosts/BlogCard";
 import { ListTypeView } from "src/types";
 import { Preloader } from "./Preloader";
 
-interface Props {}
-
-const Post: FC<Props> = () => {
+const Post: FC = () => {
   const { id } = useParams();
 
   const dispatch = useAppDispatch();
 
   const isLoading = useAppSelector(selectIsLoading);
   const post = useAppSelector(selectPostById);
-  const { title, img } = post || {};
+  const { title } = post || {};
 
   useEffect(() => {
     dispatch(getPostByIdAsync(id));
@@ -34,10 +32,9 @@ const Post: FC<Props> = () => {
       <BlogCard
         containerClassName="border-b-0"
         listTypeView={ListTypeView.COLUMN}
+        isShownPostImg
         {...post}
-      >
-        {img && <img className="w-full" src={img.url} alt={img?.title} />}
-      </BlogCard>
+      />
     )
   );
 

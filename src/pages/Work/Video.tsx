@@ -23,7 +23,7 @@ export const Video: FC<VideoItem> = ({ title, description, poster, url }) => {
         </p>
       </div>
       <iframe
-        className="w-full h-60 sm:h-100 md:h-125 gl:h-150 xl:h-160 mt-7.5"
+        className="w-full h-60 sm:h-100 md:h-125 gl:h-150 xl:h-160 mt-3 sm:mt-5 md:mt-7.5"
         src={url}
         title="YouTube video player"
         frameBorder="0"

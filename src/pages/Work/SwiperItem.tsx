@@ -22,8 +22,8 @@ export const SwiperItem: FC<Props> = ({
   const [isMainSwiperItem, setIsMainSwiperItem] = useState<boolean>();
 
   const isThumbsSwiperItem = !isMainSwiperItem;
-  const isActiveThumbsSwiperItem = isActiveSlide && isThumbsSwiperItem;
-  const shownDescription = description && isMainSwiperItem;
+  const isActiveThumbsSwiperItem = isThumbsSwiperItem && isActiveSlide;
+  const shownDescription = isMainSwiperItem && description;
 
   useEffect(() => {
     if (slideRef.current) {

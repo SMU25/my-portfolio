@@ -5,10 +5,12 @@ import { getArrayNumbers } from "src/utils/getArrayNumbers";
 
 interface SkeletonBlogPostProps {
   isRowListTypeView?: boolean;
+  isPostPage?: boolean;
 }
 
 export const SkeletonBlogPost: FC<SkeletonBlogPostProps> = ({
   isRowListTypeView,
+  isPostPage,
 }) => (
   <div
     className={cn(
@@ -32,6 +34,9 @@ export const SkeletonBlogPost: FC<SkeletonBlogPostProps> = ({
       <Shimmer className="w-22.5" />
       <Shimmer className="w-22.5 ml-4" />
     </div>
+    {isPostPage && (
+      <Shimmer className="w-full h-50 xs:h-56 sm:h-96 md:h-125 mt-2.5 sm:mt-4 rounded-10" />
+    )}
     <div className="mt-3">
       {isRowListTypeView ? (
         <>
@@ -56,13 +61,15 @@ export const SkeletonBlogPost: FC<SkeletonBlogPostProps> = ({
         </>
       )}
     </div>
-    <Shimmer
-      className={cn("h-11 rounded-10", {
-        "w-full mt-3 sm:mt-5": isRowListTypeView,
-        "md:absolute md:top-8 md:right-0 w-full md:w-40 mt-3 sm:mt-5 md:mt-0":
-          !isRowListTypeView,
-      })}
-    />
+    {!isPostPage && (
+      <Shimmer
+        className={cn("h-11 rounded-10", {
+          "w-full mt-3 sm:mt-5": isRowListTypeView,
+          "md:absolute md:top-8 md:right-0 w-full md:w-40 mt-3 sm:mt-5 md:mt-0":
+            !isRowListTypeView,
+        })}
+      />
+    )}
   </div>
 );
 
