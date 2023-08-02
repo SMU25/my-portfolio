@@ -16,7 +16,7 @@ export const SkeletonBlogPost: FC<SkeletonBlogPostProps> = ({
     className={cn(
       "relative bg-white py-6 overflow-hidden transition-all duration-300",
       {
-        "min-h-75 pt-8 px-5 rounded": isRowListTypeView,
+        "min-h-75 pt-8 px-5 rounded shadow-light-white": isRowListTypeView,
         "pt-4.5 sm:pt-8 pb-6 sm:pb-7.5": !isRowListTypeView,
       }
     )}
