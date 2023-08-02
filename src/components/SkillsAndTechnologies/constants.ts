@@ -1,0 +1,17 @@
+export const CLASSNAMES_LIST = {
+  html: "bg-[#f44d14]",
+  css: "bg-[#0068ba]",
+  scss: "bg-gradient-to-r from-pink-500 to-pink-700",
+  javascript: "bg-gradient-to-r from-yellow-300 to-yellow-400",
+  typescript: "bg-[#0376c6]",
+  react: "bg-gradient-to-r from-cyan-500 to-[#087EA4]",
+  redux: "bg-gradient-to-r from-purple-600 to-[#593d88]",
+  tailwind: "bg-[#38bdf8]",
+  "resposive-design": "bg-gradient-to-r from-cyan-300 to-[#08b7d4]",
+  git: "bg-[#1f2328]",
+  figma: "bg-gradient-to-r from-[#ff7262] to-[#a259ff]",
+  "front-end": "bg-[#00d173]",
+  "back-end": "bg-[#0097fe]",
+  "web-app": "bg-gradient-to-r from-sky-500 to-violet-500",
+  website: "bg-gradient-to-tr from-sky-300 to-blue-light",
+};

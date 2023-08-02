@@ -1,0 +1,69 @@
+{
+  "button - show-more": "Show {{count}} more items",
+
+  "form-field - first-name": "First Name",
+  "form-field - last-name": "Last Name",
+  "form-field - phone": "Phone Number",
+  "form-field - email": "Email",
+  "form-field - message": "Message",
+
+  "error - required": "Required",
+  "error - include-symbol": "Must include special symbol (&,!,etc.)",
+  "error - passwords-must-match": "Passwords must match!",
+  "error - incorrect-email": "Enter the correct email",
+  "error - incorrect-phone-number": "Must contain only numbers, +()-. and x.",
+  "error - phone is invalid": "Invalid phone number",
+  "error - min-symbols": "Minimum is {{count}} symbols",
+  "error - max-symbols": "Maximum is {{count}} symbols",
+
+  "menu-item - home": "Home",
+  "menu-item - portfolio": "Portfolio",
+  "menu-item - blog": "Blog",
+  "menu-item - contacts": "Contacts",
+
+  "bread-crumbs - home": "Home",
+  "bread-crumbs - portfolio": "Portfolio",
+  "bread-crumbs - blog": "Blog",
+  "bread-crumbs - contacts": "Contacts",
+
+  "container-head - view-all-link": "View all",
+
+  "skills-and-technologies - title": "Technologies and skills used:",
+
+  "about-my-self - title": "Hi, I am John, Creative Technologist",
+  "about-my-self - description": "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.",
+  "about-my-self - view-resume-btn": "View resume",
+
+  "recent-posts - title": "Recent posts",
+
+  "featured-works - title": "Featured projects",
+
+  "footer - dev-info": "©2023 Developed by Oleksandr Myronchuk",
+
+  "not-found - title": "Error 404",
+  "not-found - subtitle": "Page {{page}} not found.",
+
+  "portfolio - title": "Portfolio",
+
+  "work-card - view-btn": "View project",
+
+  "work-description - title": "Description",
+
+  "work-swiper - title": "Project overview",
+
+  "blog - title": "Blog",
+
+  "blog-card - view-btn": "View post",
+
+  "contacts - title": "Contacts",
+
+  "contact-item - phone": "Phone number:",
+  "contact-item - email": "E-mail:",
+  "contact-item - linkedin": "Linkedin:",
+  "contact-item - github": "GitHub:",
+  "contact-item - facebook": "Facebook:",
+  "contact-item - instagram": "Instagram:",
+
+  "feedback - title": "Feedback",
+  "feedback - send-btn": "Send"
+}

@@ -1,40 +1,67 @@
-import React, { FC } from "react";
+import React, { FC, useMemo, memo } from "react";
 import cn from "classnames";
-import Cookies from "js-cookie";
-import { POST_TYPE_VIEW } from "src/constants/cookiesKeys";
+import { SwiperSlider } from "src/components/SwiperSlider";
+import { ListTypeView } from "src/types";
+import { IPostItem } from "src/types/post";
+import { renderPreloader } from "./Preloader";
 import { BlogCard } from "./BlogCard";
-import { ViewVariants, IBlogItem } from "./types";
+
+const MAX_LENGTH_DESCRIPTION = 220;
 
 interface Props {
   className?: string;
-  variant?: ViewVariants;
-  // items: IBlogItem[];
-  maxCountPosts?: number;
+  listTypeView?: ListTypeView;
+  isLoading: boolean;
+  items: IPostItem[];
+  countItemsPreloader?: number;
+  isSlider?: boolean;
 }
 
-export const BlogPosts: FC<Props> = ({ className, variant, maxCountPosts }) => {
-  const activeVariant = variant || Cookies.get(POST_TYPE_VIEW);
+export const BlogPosts: FC<Props> = memo(
+  ({
+    className,
+    listTypeView = ListTypeView.ROW,
+    isLoading,
+    items,
+    countItemsPreloader,
+    isSlider,
+  }) => {
+    const isRowListTypeView = ListTypeView.ROW === listTypeView;
 
-  //CHANGE - винести цю логіку в редакс
-  const slisedItems = [1, 2, 3, 4, 5].slice(0, maxCountPosts);
+    const renderedBlogPosts = useMemo(() => {
+      if (isLoading)
+        return renderPreloader(isRowListTypeView, countItemsPreloader);
 
-  return (
-    <div
-      className={cn(className, {
-        "flex flex-wrap": ViewVariants.ROW === activeVariant,
-      })}
-    >
-      {/* CHANGE */}
-      {slisedItems.map((item) => (
+      return items?.map((item) => (
         <BlogCard
-          key={item}
-          title="Making a design system from scratch"
-          message="Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet."
-          category="Design, design"
-          dateCreated={new Date()}
-          variant={activeVariant}
+          key={item.id}
+          listTypeView={listTypeView}
+          maxLengthDesciption={MAX_LENGTH_DESCRIPTION}
+          isLink
+          {...item}
         />
-      ))}
-    </div>
-  );
-};
+      ));
+    }, [
+      listTypeView,
+      isRowListTypeView,
+      isLoading,
+      items,
+      countItemsPreloader,
+    ]);
+
+    return isSlider ? (
+      <SwiperSlider
+        slideClassName="flex !h-initial"
+        items={renderedBlogPosts}
+      />
+    ) : (
+      <div
+        className={cn(className, {
+          "grid grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-5": isRowListTypeView,
+        })}
+      >
+        {renderedBlogPosts}
+      </div>
+    );
+  }
+);

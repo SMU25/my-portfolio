@@ -1,21 +1,80 @@
-import React, { FC } from "react";
+import React, { FC, useMemo, memo } from "react";
+import cn from "classnames";
+import { SwiperSlider } from "src/components/SwiperSlider";
+import { ListTypeView } from "src/types";
+import { IWorkItem } from "src/types/work";
+import { renderPreloader } from "./Preloader";
 import { WorkCard } from "./WorkCard";
+
+const MAX_LENGTH_DESCRIPTION = 175;
 
 interface Props {
   className?: string;
+  listTypeView?: ListTypeView;
+  isLoading: boolean;
+  items: IWorkItem[];
+  countItemsPreloader?: number;
+  isSlider?: boolean;
 }
 
-export const Works: FC<Props> = ({ className }) => (
-  <div className={className}>
-    {[1, 2, 3, 4].map((item) => (
-      <WorkCard
-        key={item}
-        imageUrl="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTk4gH5NGHUSQc73A5PzMfaGT4gkkQMepN9Cg&usqp=CAU"
-        title="Designing Dashboards"
-        dateCreated={new Date()}
-        category="Dashboard"
-        description="Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet."
+export const Works: FC<Props> = memo(
+  ({
+    className,
+    listTypeView = ListTypeView.ROW,
+    isLoading,
+    items,
+    countItemsPreloader,
+    isSlider,
+  }) => {
+    const isRowListTypeView = ListTypeView.ROW === listTypeView;
+
+    const renderedWorkItems = useMemo(() => {
+      if (isLoading)
+        return renderPreloader(
+          isRowListTypeView,
+          isSlider,
+          countItemsPreloader
+        );
+
+      return items?.map((item) => (
+        <WorkCard
+          key={item.id}
+          className={cn({
+            "default:shadow-light-white default:hover:scale-100 sm:hover:scale-105":
+              isSlider,
+          })}
+          listTypeView={listTypeView}
+          maxLengthDesciption={MAX_LENGTH_DESCRIPTION}
+          {...item}
+        />
+      ));
+    }, [
+      listTypeView,
+      isRowListTypeView,
+      isLoading,
+      items,
+      countItemsPreloader,
+      isSlider,
+    ]);
+
+    //CHANGE - Змінити ьрохи відображення тексту опису, щоб заповнювв до кінця блока
+
+    return isSlider ? (
+      <SwiperSlider
+        className="!pt-3.5 md:!pt-7 !pb-10 !overflow-visible"
+        slideClassName="flex"
+        items={renderedWorkItems}
+        isShownNavigationButtons
       />
-    ))}
-  </div>
+    ) : (
+      <div
+        className={cn(className, {
+          "grid grid-cols-2 lg:grid-cols-3 gap-y-6 sm:gap-y-8 xl:gap-y-10 gap-x-4 sm:gap-x-6 xl:gap-x-7":
+            isRowListTypeView,
+        })}
+      >
+        {renderedWorkItems}
+      </div>
+    );
+  }
 );

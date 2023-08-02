@@ -1,44 +1,48 @@
-import React, { FC } from "react";
+import React, { FC, ReactNode } from "react";
 import cn from "classnames";
-import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { Heading } from "src/components/Heading";
 import { TagsHeading } from "src/components/Heading/types";
+import { Link } from "src/components/Link";
 import { Button } from "src/components/Button";
 import { ButtonVariants } from "src/components/Button/types";
 
-//CHANGE - add translate
-const DEFAULT_LINK_LABEL = "View all";
+const T_PREFIX = "container-head";
+
+const DEFAULT_LINK_LABEL = "view-all-link";
 
 interface Props {
+  children?: ReactNode;
   title?: string;
   titleClassName?: string;
+  tagHeading?: TagsHeading;
   href?: string;
   linkLabel?: string;
 }
 
 export const ContainerHead: FC<Props> = ({
+  children,
   title,
   titleClassName,
+  tagHeading = TagsHeading.H3,
   href,
   linkLabel,
 }) => {
-  //CHANGE - тут буде перевоД, тому не постaвив параметр за замовчуванням
+  const { t } = useTranslation();
 
-  const label = linkLabel || DEFAULT_LINK_LABEL;
+  const label = linkLabel || t(`${T_PREFIX} - ${DEFAULT_LINK_LABEL}`);
 
   return (
-    <div className="flex justify-between items-baseline">
+    <div className="flex justify-between items-center">
       <Heading
-        className={cn(
-          "max-w-1/2 text-lg sm:text-22 font-medium leading-15 truncate",
-          titleClassName
-        )}
-        tagHeading={TagsHeading.H3}
+        className={cn("max-w-1/2 default:leading-15", titleClassName)}
+        tagHeading={tagHeading}
       >
         {title}
       </Heading>
+      {children}
       {href && (
-        <Link to={href} className="max-w-1/2 ml-10">
+        <Link href={href} className="max-w-1/2 ml-10">
           <Button variant={ButtonVariants.SIMPLE_SECONDARY}>{label}</Button>
         </Link>
       )}

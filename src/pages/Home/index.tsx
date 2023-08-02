@@ -1,19 +1,16 @@
 import React, { FC } from "react";
-import { SectionWrapper } from "src/components/Layouts/SectionWrapper";
+import { usePageTitle } from "src/hooks/usePageTitle";
+import { RenderSections } from "src/components/RenderSections";
 import { SECTIONS } from "./constants";
 
-const Home: FC = () => (
-  <div>
-    {SECTIONS.map(({ id, component, className }) => {
-      const Component = component;
+// CHANGE - виводити щось, коли елементів немає на головній і інших сторінках
+// Обновити стрілочки в слайдера
+// Додати слайдер для робіт та зробити для ROW типу норм вигляд
 
-      return (
-        <SectionWrapper key={id} className={className}>
-          <Component />
-        </SectionWrapper>
-      );
-    })}
-  </div>
-);
+const Home: FC = () => {
+  usePageTitle();
+
+  return <RenderSections sections={SECTIONS} />;
+};
 
 export default Home;

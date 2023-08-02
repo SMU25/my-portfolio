@@ -1,31 +1,44 @@
-import React, { FC, useState } from "react";
+import React, { FC, useState, useCallback } from "react";
 import cn from "classnames";
+import { useLocation } from "react-router-dom";
 import { BurgetButton } from "src/components/Button/BurgetButton";
+import { LANGUAGES } from "src/constants/languages";
+import { PATHNAMES } from "src/constants/routes";
 import MenuItem from "./MenuItem";
 import { MENU_ITEMS } from "./constants";
 
-export const Header: FC = () => {
-  const [isOpenMenu, setIsOpenMenu] = useState<boolean>(false);
+import { LanguageChooser } from "../LanguageChooser";
 
+export const Header: FC = () => {
+  const { pathname } = useLocation();
+
+  const [isOpenMenu, setIsOpenMenu] = useState(false);
+  const onCloseMenu = useCallback(
+    () => setIsOpenMenu(false),
+
+    []
+  );
+
+  const isHomePage = pathname === PATHNAMES.HOME;
+
+  // CHANGE - BurgetButton зробити хрестик, коли відкрите меню
+  // Header зникає на футері в сторінках де багато елементів (Blog, home etc. )
   return (
-    <header className="sticky top-0 bg-white">
-      <nav className="flex justify-end mr-4.5 sm:mr-15">
-        <BurgetButton
-          className="sm:hidden mt-3 mb-2 p-2.5"
-          setIsOpen={setIsOpenMenu}
-        />
+    <header
+      className={cn("sticky top-0 bg-white py-2 md:py-0 z-50", {
+        "shadow-light-bottom": isHomePage,
+        "border-gray-lighter-opacity border-b-2": !isHomePage,
+      })}
+    >
+      <nav className="flex justify-between mx-3 sm:mx-15">
+        <LanguageChooser languages={LANGUAGES} />
         <ul
           className={cn(
-            `invisible sm:visible fixed sm:static top-0 left-1/2 -translate-y-full sm:translate-y-0 -translate-x-1/2
-             sm:translate-x-0 flex flex-col items-center sm:flex-row w-full sm:w-auto h-screen sm:h-auto bg-white 
-             py-7 opacity-0 sm:opacity-100 transition-all sm:transition-none ease-in-out duration-300`,
-            {
-              "!visible translate-y-17.5 opacity-100": isOpenMenu,
-            }
+            "fixed left-0 -bottom-1 md:static flex justify-around sm:justify-center items-end md:items-center gap-x-4.5 sm:gap-x-20 md:gap-x-0 w-full md:w-auto bg-white md:bg-transparent pt-3 md:pt-4 pb-2.5 md:pb-4 px-5 xs:px-10 sm:px-0 shadow-light-top md:shadow-none"
           )}
         >
-          {MENU_ITEMS.map(({ id, name }) => (
-            <MenuItem key={id} name={name} />
+          {MENU_ITEMS.map(({ id, ...item }) => (
+            <MenuItem key={id} onCloseMenu={onCloseMenu} {...item} />
           ))}
         </ul>
       </nav>
