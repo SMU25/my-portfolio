@@ -49,6 +49,8 @@ export const BlogPosts: FC<Props> = memo(
       countItemsPreloader,
     ]);
 
+    if (!renderedBlogPosts?.length) return <p></p>;
+
     return isSlider ? (
       <SwiperSlider
         slideClassName="flex !h-initial"

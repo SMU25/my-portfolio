@@ -1,6 +1,6 @@
 import React, { FC, memo } from "react";
-import { useTranslation } from "react-i18next";
 import cn from "classnames";
+import { useTranslation } from "react-i18next";
 import format from "date-fns/format";
 import { activeLanguage } from "src/services/i18n";
 import { DATE_LOCALES } from "src/translate/locales";

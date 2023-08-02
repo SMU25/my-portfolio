@@ -7,6 +7,7 @@ import { renderPreloader } from "./Preloader";
 import { WorkCard } from "./WorkCard";
 
 const MAX_LENGTH_DESCRIPTION = 175;
+// якщо буде тільки 1 значення то змінити тут і в постах та перенести його в карточку елемента
 
 interface Props {
   className?: string;

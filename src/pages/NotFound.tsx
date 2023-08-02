@@ -8,7 +8,7 @@ import { SectionWrapper } from "src/components/Layouts/SectionWrapper";
 import { Heading } from "src/components/Heading";
 import { TagsHeading } from "src/components/Heading/types";
 import { PATHNAMES } from "src/constants/routes";
-import { DEFAULT_SECTION_CLASS_NAME } from "./constants";
+import { DEFAULT_SECTION_CLASSNAME } from "./constants";
 
 const T_PREFIX = "not-found";
 
@@ -35,7 +35,7 @@ const NotFound: FC = () => {
   return (
     <>
       <BreadCrumbs isShownSecondaryPage={false} />
-      <SectionWrapper className={cn("text-center", DEFAULT_SECTION_CLASS_NAME)}>
+      <SectionWrapper className={cn("text-center", DEFAULT_SECTION_CLASSNAME)}>
         <Heading className="text-red-dark" tagHeading={TagsHeading.H2}>
           {pageTitle}
         </Heading>

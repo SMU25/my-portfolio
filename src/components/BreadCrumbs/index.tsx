@@ -1,8 +1,8 @@
 import React, { FC, useMemo, memo } from "react";
 import { useTranslation } from "react-i18next";
 import { useLocation } from "react-router";
-import { HOMEPAGE_NAME, PATHNAMES } from "src/constants/routes";
 import { getPathName } from "src/utils/getPathName";
+import { HOMEPAGE_NAME, PATHNAMES } from "src/constants/routes";
 import { BreadCrumbsItem } from "./BreadCrumbsItem";
 import { BREAD_CRUMBS_ICONS } from "./constants";
 

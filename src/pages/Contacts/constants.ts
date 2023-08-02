@@ -4,16 +4,16 @@ import {
   EMAIL_VALIDATION_SCHEMA,
   NAME_VALIDATION_SCHEMA,
   PHONE_VALIDATION_SCHEMA,
-} from "src/constants/formConstants";
+} from "src/constants/formValidation";
 import { Contacts } from "./Contacts";
 import { FeedbackForm } from "./FeedbackForm";
-import { DEFAULT_SECTION_CLASS_NAME } from "../constants";
+import { DEFAULT_SECTION_CLASSNAME } from "../constants";
 
 export const SECTIONS = [
   {
     id: 1,
     component: Contacts,
-    className: DEFAULT_SECTION_CLASS_NAME,
+    className: DEFAULT_SECTION_CLASSNAME,
   },
   {
     id: 2,
@@ -39,20 +39,20 @@ export const CONTACTS_ITEMS = [
     id: 3,
     title: "linkedin",
     linkLabel: "oleksandr-myronchuk",
-    link: "https://www.linkedin.com/in/oleksandr-myronchuk-426598255/",
+    link: "https://www.linkedin.com/in/oleksandr-myronchuk/",
     isOpenNewTab: true,
   },
   {
     id: 4,
     title: "github",
-    linkLabel: "Myronchuk Oleksandr",
+    linkLabel: "SMU25",
     link: "https://github.com/SMU25",
     isOpenNewTab: true,
   },
   {
     id: 5,
     title: "facebook",
-    linkLabel: "oleksandr_myronchuk",
+    linkLabel: "Oleksandr Myronchuk",
     link: "https://www.facebook.com/profile.php?id=100009263917153",
     isOpenNewTab: true,
   },

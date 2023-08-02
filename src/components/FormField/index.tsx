@@ -1,6 +1,6 @@
 import React, { FC, ReactNode } from "react";
-import { useTranslation } from "react-i18next";
 import cn from "classnames";
+import { useTranslation } from "react-i18next";
 import { Error } from "../Error";
 
 const T_PREFIX = "form-field";

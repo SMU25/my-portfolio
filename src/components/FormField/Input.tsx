@@ -4,7 +4,7 @@ import { useField } from "formik";
 import { IFormField } from "src/types/form";
 import { FormField } from ".";
 import {
-  DEFAULT_CLASS_NAME_TEXT_FIELD,
+  DEFAULT_CLASSNAME_TEXT_FIELD,
   TEXT_FIELD_STYLE_VARIANTS,
 } from "./constants";
 import { TextFieldVariants } from "./types";
@@ -38,7 +38,7 @@ export const Input: FC<Props> = ({
     >
       <input
         className={cn(
-          DEFAULT_CLASS_NAME_TEXT_FIELD,
+          DEFAULT_CLASSNAME_TEXT_FIELD,
           TEXT_FIELD_STYLE_VARIANTS[variant],
           className,
           { "border-red-primary": showError }

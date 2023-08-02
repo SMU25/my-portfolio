@@ -13,10 +13,9 @@ const T_PREFIX = "menu-item";
 interface Props {
   name: string;
   icon?: FC<SVGProps<SVGSVGElement>>;
-  onCloseMenu: VoidFunction;
 }
 
-const MenuItem: FC<Props> = ({ name, icon: Icon, onCloseMenu }) => {
+const MenuItem: FC<Props> = ({ name, icon: Icon }) => {
   const { t } = useTranslation();
 
   const { pathname } = useLocation();
@@ -41,10 +40,7 @@ const MenuItem: FC<Props> = ({ name, icon: Icon, onCloseMenu }) => {
         }
       )}
     >
-      <li
-        className="flex items-center flex-col md:flex-row capitalize text-sm xs:text-base font-medium leading-7"
-        onClick={onCloseMenu}
-      >
+      <li className="flex items-center flex-col md:flex-row capitalize text-sm xs:text-base font-medium leading-7">
         {Icon && (
           <Icon
             width={ICON_SIZE}

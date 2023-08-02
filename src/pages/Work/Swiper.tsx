@@ -11,6 +11,7 @@ import { DEFAULT_HEADING_CLASSNAME } from "./constants";
 const T_PREFIX = "work-swiper";
 
 const HEADING = "title";
+
 interface Props {
   imageAlbum: ImageAlbumItem[];
 }

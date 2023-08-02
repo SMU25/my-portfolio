@@ -1,6 +1,6 @@
 import React, { FC, memo } from "react";
-import { useTranslation } from "react-i18next";
 import cn from "classnames";
+import { useTranslation } from "react-i18next";
 import format from "date-fns/format";
 import { activeLanguage } from "src/services/i18n";
 import { DATE_LOCALES } from "src/translate/locales";
@@ -64,8 +64,8 @@ export const BlogCard: FC<Props> = memo(
       <div
         className={cn(
           "relative flex flex-col justify-between w-full flex-1 overflow-hidden transition-all duration-300",
-          classNames.container,
-          containerClassName
+          containerClassName,
+          classNames.container
         )}
       >
         <div>

@@ -6,9 +6,10 @@ import { IPostItem } from "src/types/post";
 
 export const POSTS_SLICE_NAME = "posts";
 
-interface GetPostsAsyncParams {
+interface QueryParams {
   page?: number;
   limit?: number;
+  offset?: number;
 }
 
 // CHANGE - add env , додати ,щоб параметри функції були не обов'язкові, може просто зробити об'єект ,який я деструктурую в функції
@@ -16,7 +17,7 @@ interface GetPostsAsyncParams {
 
 export const getPostsAsync = createAsyncThunk(
   `${POSTS_SLICE_NAME}/fetchPosts`,
-  async ({ page = 1, limit }: GetPostsAsyncParams, { rejectWithValue }) => {
+  async ({ page = 1, limit }: QueryParams, { rejectWithValue }) => {
     try {
       const { data } = await instance.get<IPostItem[]>(
         `/posts?sortBy=createdAt&order=desc&page=${page}&limit=${limit}`

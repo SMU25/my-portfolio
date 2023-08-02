@@ -14,7 +14,7 @@ export const SPRITE_ITEMS = [
   {
     id: 2,
     name: "linkedin",
-    link: "https://www.linkedin.com/in/oleksandr-myronchuk-426598255/",
+    link: "https://www.linkedin.com/in/oleksandr-myronchuk/",
     icon: Linkedin,
   },
   {
