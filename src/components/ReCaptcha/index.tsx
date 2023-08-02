@@ -13,6 +13,8 @@ interface Props {
   formik: FormikProps<FormikValues>;
 }
 
+// CHANGE  - повиносити ключі в енв файл скрізь
+
 export const ReCaptcha: FC<Props> = ({
   className,
   sitekey = "6Leffy8lAAAAAHZAOyJH3f9yc5ibTFJ7C54JYl4D",

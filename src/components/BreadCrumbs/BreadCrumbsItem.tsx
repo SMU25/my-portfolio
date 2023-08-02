@@ -1,6 +1,5 @@
 import React, { FC, ReactNode, SVGProps } from "react";
 import cn from "classnames";
-
 import { ReactComponent as Chevron } from "src/assets/chevron-right.svg";
 import { Link } from "../Link";
 
@@ -51,8 +50,10 @@ export const BreadCrumbsItem: FC<Props> = ({
           )}
           href={path}
         >
-          {icon}
-          <span className="truncate">{children}</span>
+          <span className="flex items-center truncate">
+            {icon}
+            <span className="truncate">{children}</span>
+          </span>
           <Chevron
             className={cn(
               "mt-px sm:mt-0.5 md:mt-1 ml-0.5 sm:ml-1",

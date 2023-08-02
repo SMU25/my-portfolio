@@ -1,8 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 import Cookies from "js-cookie";
 import {
-  WORK_LIST_TYPE_VIEW,
-  POST_LIST_TYPE_VIEW,
+  WORK_LIST_TYPE_VIEW_KEY,
+  POST_LIST_TYPE_VIEW_KEY,
 } from "src/constants/cookiesKeys";
 import { ListTypeView } from "src/types";
 import { CONFIG_SLICE_NAME } from "./action";
@@ -11,8 +11,8 @@ import {
   togglePostListTypeReducer,
 } from "./reducers";
 
-const COOKIE_WORK_LIST_TYPE_VIEW = Cookies.get(WORK_LIST_TYPE_VIEW);
-const COOKIE_POST_LIST_TYPE_VIEW = Cookies.get(POST_LIST_TYPE_VIEW);
+const COOKIE_WORK_LIST_TYPE_VIEW = Cookies.get(WORK_LIST_TYPE_VIEW_KEY);
+const COOKIE_POST_LIST_TYPE_VIEW = Cookies.get(POST_LIST_TYPE_VIEW_KEY);
 
 interface ConfigState {
   workListTypeView: ListTypeView;

@@ -1,7 +1,6 @@
-import React, { FC, useState, useCallback } from "react";
+import React, { FC } from "react";
 import cn from "classnames";
 import { useLocation } from "react-router-dom";
-import { BurgetButton } from "src/components/Button/BurgetButton";
 import { LANGUAGES } from "src/constants/languages";
 import { PATHNAMES } from "src/constants/routes";
 import MenuItem from "./MenuItem";
@@ -12,16 +11,8 @@ import { LanguageChooser } from "../LanguageChooser";
 export const Header: FC = () => {
   const { pathname } = useLocation();
 
-  const [isOpenMenu, setIsOpenMenu] = useState(false);
-  const onCloseMenu = useCallback(
-    () => setIsOpenMenu(false),
-
-    []
-  );
-
   const isHomePage = pathname === PATHNAMES.HOME;
 
-  // CHANGE - BurgetButton зробити хрестик, коли відкрите меню
   // Header зникає на футері в сторінках де багато елементів (Blog, home etc. )
   return (
     <header
@@ -38,7 +29,7 @@ export const Header: FC = () => {
           )}
         >
           {MENU_ITEMS.map(({ id, ...item }) => (
-            <MenuItem key={id} onCloseMenu={onCloseMenu} {...item} />
+            <MenuItem key={id} {...item} />
           ))}
         </ul>
       </nav>

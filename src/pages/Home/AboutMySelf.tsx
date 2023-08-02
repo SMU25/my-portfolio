@@ -7,7 +7,6 @@ import { RESUME_LINKS } from "./constants";
 
 const PROFILE_IMG = {
   SRC: "https://scontent.frwn1-1.fna.fbcdn.net/v/t39.30808-6/228887766_3017452501906851_4381980517078749345_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=WRyaHDw0DPQAX_SdXZB&_nc_oc=AQmq-CASVDCnO9caMxm4tQIZT-WlCdkF0wRCN2wifpdMwMjWUiwfBVUjkvMwxVo4xuI&_nc_ht=scontent.frwn1-1.fna&oh=00_AfCSvSs-_BmhxnWsVYP8604DdbSO0YfaqoQb2Qe2Sca2dA&oe=639A5DF2",
-  SIZE: 450,
   ALT_TEXT: "Image of Oleksandr Myronchuk",
 };
 
@@ -46,8 +45,6 @@ export const AboutMySelf: FC = () => {
       <img
         className="w-45 h-45 xs:w-60.5 xs:h-60.5 xl:w-112.5 xl:h-112.5 sm:ml-10 lg:ml-28 rounded-full shadow-lining-lighter-blue"
         src={PROFILE_IMG.SRC}
-        width={PROFILE_IMG.SIZE}
-        height={PROFILE_IMG.SIZE}
         alt={PROFILE_IMG.ALT_TEXT}
       />
     </div>

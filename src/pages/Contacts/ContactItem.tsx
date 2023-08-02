@@ -25,7 +25,7 @@ export const ContactItem: FC<Props> = ({
       <a
         href={link}
         className="text-blue-light font-bold break-words transition-all hover:brightness-50"
-        target={isOpenNewTab ? "_blank" : ""}
+        target={isOpenNewTab ? "_blank" : "_self"}
         rel="noreferrer"
       >
         {linkLabel || link}

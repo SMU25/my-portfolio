@@ -6,11 +6,13 @@ const ARRAY_NUMBERS = getArrayNumbers();
 
 interface Props {
   className?: string;
-  setIsOpen: (isOpen: boolean | ((isOpen: boolean) => void)) => void;
+  setIsOpen: (isOpen: boolean | ((isOpen: boolean) => boolean)) => void;
 }
 
+// CHANGE - BurgetButton зробити хрестик, коли відкрите меню
+
 export const BurgetButton: FC<Props> = ({ className, setIsOpen }) => {
-  const toggleIsOpen: VoidFunction = () => setIsOpen((prev) => !prev);
+  const toggleIsOpen = () => setIsOpen((prev) => !prev);
 
   return (
     <button className={cn("p-2.5", className)} onClick={toggleIsOpen}>

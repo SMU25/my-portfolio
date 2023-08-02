@@ -8,10 +8,7 @@ interface Props {
   className?: string;
 }
 
-export const Loader: FC<Props> = ({
-  size = LOADER_SIZES[Sizes.M],
-  className,
-}) => (
+export const Loader: FC<Props> = ({ size = Sizes.M, className }) => (
   <div
     className={cn(
       "mx-auto border-2 border-gray-lighter border-t-black-dark rounded-full animate-spin",

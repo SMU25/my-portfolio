@@ -1,6 +1,6 @@
 interface PostImg {
-  url: "";
-  title?: "";
+  url: string;
+  title?: string;
 }
 
 export interface IPostItem {

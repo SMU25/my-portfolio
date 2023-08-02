@@ -15,8 +15,8 @@ import { ChangeViewButton } from "src/components/Button/ChangeViewButton";
 import { ShowMore } from "src/components/Button/ShowMore";
 import { TagsHeading } from "src/components/Heading/types";
 import {
-  DEFAULT_SECTION_CLASS_NAME,
-  DEFAULT_ITEMS_COMPONENT_CLASS_NAME,
+  DEFAULT_SECTION_CLASSNAME,
+  DEFAULT_ITEMS_COMPONENT_CLASSNAME,
 } from "./constants";
 
 const T_PREFIX = "blog";
@@ -61,7 +61,7 @@ const Blog: FC = () => {
 
     <>
       <BreadCrumbs />
-      <SectionWrapper className={DEFAULT_SECTION_CLASS_NAME}>
+      <SectionWrapper className={DEFAULT_SECTION_CLASSNAME}>
         <ContainerHead title={pageTitle} tagHeading={TagsHeading.H2}>
           <ChangeViewButton
             listTypeView={postListTypeView}
@@ -69,7 +69,7 @@ const Blog: FC = () => {
           />
         </ContainerHead>
         <BlogPosts
-          className={DEFAULT_ITEMS_COMPONENT_CLASS_NAME}
+          className={DEFAULT_ITEMS_COMPONENT_CLASSNAME}
           listTypeView={postListTypeView}
           isLoading={isLoading}
           items={posts}
@@ -78,7 +78,7 @@ const Blog: FC = () => {
         <div className="flex justify-center w-full mt-6">
           <ShowMore
             isLoading={isLoadingShowMore}
-            showMoreItemsCount={limitInitialValue}
+            buttonTitleCountLabel={limitInitialValue}
             onClick={incrementLimit}
           />
         </div>

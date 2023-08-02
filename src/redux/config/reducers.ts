@@ -1,7 +1,7 @@
 import Cookies from "js-cookie";
 import {
-  WORK_LIST_TYPE_VIEW,
-  POST_LIST_TYPE_VIEW,
+  WORK_LIST_TYPE_VIEW_KEY,
+  POST_LIST_TYPE_VIEW_KEY,
 } from "src/constants/cookiesKeys";
 import { ListTypeView } from "src/types";
 import { toggleWorkListTypeView, togglePostListTypeView } from "./action";
@@ -14,7 +14,7 @@ export const toggleWorkListTypeReducer = (builder) => {
         ? ListTypeView.ROW
         : ListTypeView.COLUMN;
 
-    Cookies.set(WORK_LIST_TYPE_VIEW, changedListTypeView);
+    Cookies.set(WORK_LIST_TYPE_VIEW_KEY, changedListTypeView);
 
     state.workListTypeView = changedListTypeView;
   });
@@ -28,7 +28,7 @@ export const togglePostListTypeReducer = (builder) => {
         ? ListTypeView.ROW
         : ListTypeView.COLUMN;
 
-    Cookies.set(POST_LIST_TYPE_VIEW, changedListTypeView);
+    Cookies.set(POST_LIST_TYPE_VIEW_KEY, changedListTypeView);
 
     state.postListTypeView = changedListTypeView;
   });

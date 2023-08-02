@@ -14,14 +14,10 @@ interface Props {
 
 export const RenderSections: FC<Props> = ({ sections, ...props }) => (
   <>
-    {sections.map(({ id, component, ...section }) => {
-      const Component = component;
-
-      return (
-        <SectionWrapper key={id} {...section} {...props}>
-          <Component />
-        </SectionWrapper>
-      );
-    })}
+    {sections.map(({ id, component: Component, ...section }) => (
+      <SectionWrapper key={id} {...section} {...props}>
+        <Component />
+      </SectionWrapper>
+    ))}
   </>
 );

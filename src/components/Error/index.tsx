@@ -1,16 +1,12 @@
 import React, { FC } from "react";
 import cn from "classnames";
 import { useTranslation } from "react-i18next";
+import { Ii18nInterpolationObject } from "src/types/i18next";
 
 const T_PREFIX = "error";
 
-interface Ii18nErrorObject {
-  i18nKey: string;
-  i18nParams: object;
-}
-
 interface Props {
-  children: string | Ii18nErrorObject;
+  children: string | Ii18nInterpolationObject;
   className?: string;
   showError: boolean;
 }
@@ -27,7 +23,7 @@ export const Error: FC<Props> = ({ children, className, showError }) => {
 
   return (
     <div className={cn("absolute -bottom-6 left-4 text-red-dark", className)}>
-      {String(errorText)}
+      {errorText}
     </div>
   );
 };

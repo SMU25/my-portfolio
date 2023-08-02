@@ -15,8 +15,8 @@ import { ChangeViewButton } from "src/components/Button/ChangeViewButton";
 import { ShowMore } from "src/components/Button/ShowMore";
 import { TagsHeading } from "src/components/Heading/types";
 import {
-  DEFAULT_SECTION_CLASS_NAME,
-  DEFAULT_ITEMS_COMPONENT_CLASS_NAME,
+  DEFAULT_SECTION_CLASSNAME,
+  DEFAULT_ITEMS_COMPONENT_CLASSNAME,
 } from "./constants";
 
 const T_PREFIX = "portfolio";
@@ -68,7 +68,7 @@ const Portfolio: FC = () => {
   return (
     <>
       <BreadCrumbs />
-      <SectionWrapper className={DEFAULT_SECTION_CLASS_NAME}>
+      <SectionWrapper className={DEFAULT_SECTION_CLASSNAME}>
         <ContainerHead title={pageTitle} tagHeading={TagsHeading.H2}>
           <ChangeViewButton
             listTypeView={workListTypeView}
@@ -76,7 +76,7 @@ const Portfolio: FC = () => {
           />
         </ContainerHead>
         <Works
-          className={DEFAULT_ITEMS_COMPONENT_CLASS_NAME}
+          className={DEFAULT_ITEMS_COMPONENT_CLASSNAME}
           isLoading={isLoading}
           items={works}
           countItemsPreloader={limit}
@@ -85,7 +85,7 @@ const Portfolio: FC = () => {
         <div className="flex justify-center w-full mt-6">
           <ShowMore
             isLoading={isLoadingShowMore}
-            showMoreItemsCount={limitInitialValue}
+            buttonTitleCountLabel={limitInitialValue}
             onClick={incrementLimit}
           />
         </div>

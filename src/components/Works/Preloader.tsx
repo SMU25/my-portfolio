@@ -107,9 +107,9 @@ export const renderPreloader = (
   isSlider: boolean,
   countItems: number = 3
 ) => {
-  const arrayEmptyItems = getArrayNumbers(countItems);
+  const arrayNumbers = getArrayNumbers(countItems);
 
-  return arrayEmptyItems.map((item) => (
+  return arrayNumbers.map((item) => (
     <SkeletonWorkCard
       key={item}
       isRowListTypeView={isRowListTypeView}

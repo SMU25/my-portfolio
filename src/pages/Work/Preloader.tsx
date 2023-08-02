@@ -1,7 +1,7 @@
-import React from "react";
+import React, { FC } from "react";
 import { Shimmer } from "src/components/Shimmer";
 
-export const Preloader = () => (
+export const Preloader: FC = () => (
   <div>
     <div className="pb-13.5">
       <Shimmer className="w-3/5 md:w-1/3 h-9 sm:h-12" />
@@ -38,7 +38,7 @@ export const Preloader = () => (
 
     <div>
       <Shimmer className="w-2/5 h-6 sm:h-8 mt-5 mb-4 sm:mb-6 ml-1" />
-      <div className="">
+      <div>
         <div className="flex flex-col h-87.5 xs:h-125 sm:h-150 lg:h-200">
           <Shimmer className="w-2/5 max-h-4.5 sm:max-h-6 h-full" />
           <div className="mt-0.5 sm:mt-3 mb-2 xs:mb-3 sm:mb-5 lg:mb-7.5">
