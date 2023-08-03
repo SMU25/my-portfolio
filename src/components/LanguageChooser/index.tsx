@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { ILanguage } from "src/types/language";
+import { ILanguage } from "src/types/i18next";
 import { Language } from "./Language";
 
 interface Props {
@@ -8,8 +8,8 @@ interface Props {
 
 export const LanguageChooser: FC<Props> = ({ languages }) => (
   <ul className="flex items-center">
-    {languages.map(({ language }) => (
-      <Language key={language} language={language} />
+    {languages.map((language) => (
+      <Language key={language.key} language={language} />
     ))}
   </ul>
 );

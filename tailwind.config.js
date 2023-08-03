@@ -83,9 +83,12 @@ module.exports = {
         200: "800px",
         "11/20": "55%",
         "calc-full-minus-54": "calc(100% - 216px)",
+        "height-screen": "100vh",
       },
       minWidth: {
         4: "16px",
+        5: "20px",
+        11: "44px",
         17: "68px",
         61.5: "246px",
       },

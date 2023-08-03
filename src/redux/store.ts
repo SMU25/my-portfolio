@@ -3,6 +3,7 @@ import { posts } from "./posts/slice";
 import { works } from "./works/slice";
 import { feedbackForm } from "./feedbackForm/slice";
 import { config } from "./config/slice";
+import { sharedModal } from "./sharedModal/slice";
 
 export const store = configureStore({
   reducer: combineReducers({
@@ -10,6 +11,7 @@ export const store = configureStore({
     works,
     feedbackForm,
     config,
+    sharedModal,
   }),
 });
 

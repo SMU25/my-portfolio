@@ -55,6 +55,8 @@ export const BlogPosts: FC<Props> = memo(
       <SwiperSlider
         slideClassName="flex !h-initial"
         items={renderedBlogPosts}
+        isShownNavigationButtons
+        isShownKeyboardInfoPopUp
       />
     ) : (
       <div

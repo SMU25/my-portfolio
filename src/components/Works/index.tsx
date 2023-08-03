@@ -66,6 +66,7 @@ export const Works: FC<Props> = memo(
         slideClassName="flex"
         items={renderedWorkItems}
         isShownNavigationButtons
+        isShownKeyboardInfoPopUp
       />
     ) : (
       <div

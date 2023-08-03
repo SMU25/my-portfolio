@@ -4,9 +4,12 @@ import { Swiper, SwiperProps, SwiperSlide } from "swiper/react";
 import SwiperClass from "swiper/types/swiper-class";
 import "swiper/css";
 import "swiper/css/pagination";
+import { KeyboardInfoPopUp } from "./KeyboardInfoPopUp";
 import { DEFAULT_SETTINGS } from "./constants";
 import { setActiveIndex } from "./types";
 import { NavigationButton } from "../Button/NavigationButton";
+
+const COOKIES_KEY_KEYBOARD_POPUP = "IS_SHOWN_KEYBOARD_INFO_SLIDER_POPUP";
 
 const DEFAULT_CLASSNAME_NAVIGATION_BUTTON = "absolute top-1/2 -translate-y-1/2";
 
@@ -17,6 +20,7 @@ export interface CustomSwiperProps extends SwiperProps {
   slideClassName?: string;
   customSettings?: SwiperProps;
   isShownNavigationButtons?: boolean;
+  isShownKeyboardInfoPopUp?: boolean;
   swiperState?: SwiperClass;
   setActiveSlideIndex?: setActiveIndex;
   handleSlideChange?: VoidFunction;
@@ -32,6 +36,7 @@ export const SwiperSlider: FC<CustomSwiperProps> = ({
   slideClassName,
   customSettings,
   isShownNavigationButtons,
+  isShownKeyboardInfoPopUp,
   swiperState,
   setActiveSlideIndex,
   handleSlideChange,
@@ -95,6 +100,11 @@ export const SwiperSlider: FC<CustomSwiperProps> = ({
           />
         </>
       )}
+      <KeyboardInfoPopUp
+        className="!top-20"
+        isShown={isShownKeyboardInfoPopUp}
+        cookiesKeyPopUp={COOKIES_KEY_KEYBOARD_POPUP}
+      />
     </div>
   );
 };

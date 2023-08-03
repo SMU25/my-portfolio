@@ -41,6 +41,7 @@ export const Swiper: FC<Props> = ({ imageAlbum }) => {
         items={swiperItems}
         setActiveSlideIndex={setActiveSlideIndex}
         isShownNavBtnsMainSwiper
+        isShownKeyboardInfoPopUp
       />
     </div>
   );

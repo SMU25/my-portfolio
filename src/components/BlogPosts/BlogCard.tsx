@@ -71,7 +71,7 @@ export const BlogCard: FC<Props> = memo(
         <div>
           <Link
             href={pathname}
-            className="hover:underline hover:underline-offset-8"
+            className="transition-all duration-200 hover:text-blue-light"
             isDisabled={!isLink}
           >
             <Heading className={classNames.title} tagHeading={TagsHeading.H4}>

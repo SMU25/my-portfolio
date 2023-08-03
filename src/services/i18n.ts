@@ -10,7 +10,7 @@ export const resources = {
   en: {
     translation: en,
   },
-  ua: {
+  uk: {
     translation: uk,
   },
 } as const;

@@ -1,16 +1,20 @@
 import React, { FC } from "react";
 import cn from "classnames";
 import { useTranslation } from "react-i18next";
-import { ILanguage } from "src/types/language";
+import { ILanguage } from "src/types/i18next";
 
-export const Language: FC<ILanguage> = ({ language }) => {
+interface Props {
+  language: ILanguage;
+}
+
+export const Language: FC<Props> = ({ language }) => {
   const { i18n } = useTranslation();
 
-  const isCurrentLanguage = language === i18n.language;
+  const isCurrentLanguage = language.key === i18n.language;
 
   const chooseLanguage = () => {
     if (!isCurrentLanguage) {
-      i18n.changeLanguage(language);
+      i18n.changeLanguage(language.key);
     }
   };
 
@@ -30,7 +34,7 @@ export const Language: FC<ILanguage> = ({ language }) => {
           }
         )}
       >
-        {language}
+        {language.title || language.key}
       </span>
     </li>
   );

@@ -95,7 +95,7 @@ export const WorkCard: FC<Props> = memo(
           <div className={classNames.infoContainer}>
             <Link
               href={pathname}
-              className="hover:underline hover:underline-offset-8"
+              className="transition-all duration-200 hover:text-blue-light"
             >
               <Heading
                 className={cn(

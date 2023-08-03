@@ -11,8 +11,8 @@ import {
   togglePostListTypeReducer,
 } from "./reducers";
 
-const COOKIE_WORK_LIST_TYPE_VIEW = Cookies.get(WORK_LIST_TYPE_VIEW_KEY);
-const COOKIE_POST_LIST_TYPE_VIEW = Cookies.get(POST_LIST_TYPE_VIEW_KEY);
+const COOKIES_WORK_LIST_TYPE_VIEW = Cookies.get(WORK_LIST_TYPE_VIEW_KEY);
+const COOKIES_POST_LIST_TYPE_VIEW = Cookies.get(POST_LIST_TYPE_VIEW_KEY);
 
 interface ConfigState {
   workListTypeView: ListTypeView;
@@ -20,8 +20,8 @@ interface ConfigState {
 }
 
 const initialState: ConfigState = {
-  workListTypeView: COOKIE_WORK_LIST_TYPE_VIEW || ListTypeView.ROW,
-  postListTypeView: COOKIE_POST_LIST_TYPE_VIEW || ListTypeView.COLUMN,
+  workListTypeView: COOKIES_WORK_LIST_TYPE_VIEW || ListTypeView.ROW,
+  postListTypeView: COOKIES_POST_LIST_TYPE_VIEW || ListTypeView.COLUMN,
 };
 
 export const { reducer: config } = createSlice({
