@@ -25,7 +25,7 @@ export const Input: FC<Props> = ({
   const fieldId = id || props.name;
 
   const [{ value, ...field }, { error, touched }] = useField(fieldId);
-  const showError = Boolean((touched || value) && error);
+  const isShownError = Boolean((touched || value) && error);
 
   return (
     <FormField
@@ -33,7 +33,7 @@ export const Input: FC<Props> = ({
       labelClassName={labelClassName}
       label={label}
       labelFor={fieldId}
-      showError={showError}
+      isShownError={isShownError}
       error={error}
     >
       <input
@@ -41,7 +41,7 @@ export const Input: FC<Props> = ({
           DEFAULT_CLASSNAME_TEXT_FIELD,
           TEXT_FIELD_STYLE_VARIANTS[variant],
           className,
-          { "border-red-primary": showError }
+          { "border-red-primary": isShownError }
         )}
         id={fieldId}
         {...props}

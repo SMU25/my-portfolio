@@ -1,5 +1,6 @@
 import React, { FC, useMemo, memo } from "react";
 import cn from "classnames";
+import { useTranslation } from "react-i18next";
 import { SwiperSlider } from "src/components/SwiperSlider";
 import { ListTypeView } from "src/types";
 import { IWorkItem } from "src/types/work";
@@ -8,6 +9,10 @@ import { WorkCard } from "./WorkCard";
 
 const MAX_LENGTH_DESCRIPTION = 175;
 // якщо буде тільки 1 значення то змінити тут і в постах та перенести його в карточку елемента
+
+const T_PREFIX = "works";
+
+const DATA_MISSING_TEXT = "data-missing-text";
 
 interface Props {
   className?: string;
@@ -27,6 +32,8 @@ export const Works: FC<Props> = memo(
     countItemsPreloader,
     isSlider,
   }) => {
+    const { t } = useTranslation();
+
     const isRowListTypeView = ListTypeView.ROW === listTypeView;
 
     const renderedWorkItems = useMemo(() => {
@@ -59,6 +66,13 @@ export const Works: FC<Props> = memo(
     ]);
 
     //CHANGE - Змінити ьрохи відображення тексту опису, щоб заповнювв до кінця блока
+
+    if (!renderedWorkItems?.length)
+      return (
+        <p className="mt-1 sm:mt-3 mb-5 text-red-dark text-xl sm:text-3xl font-bold">
+          {t(`${T_PREFIX} - ${DATA_MISSING_TEXT}`)}
+        </p>
+      );
 
     return isSlider ? (
       <SwiperSlider

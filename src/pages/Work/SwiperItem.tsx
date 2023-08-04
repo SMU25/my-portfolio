@@ -23,7 +23,7 @@ export const SwiperItem: FC<Props> = ({
 
   const isThumbsSwiperItem = !isMainSwiperItem;
   const isActiveThumbsSwiperItem = isThumbsSwiperItem && isActiveSlide;
-  const shownDescription = isMainSwiperItem && description;
+  const isShownDescription = isMainSwiperItem && description;
 
   useEffect(() => {
     if (slideRef.current) {
@@ -54,7 +54,7 @@ export const SwiperItem: FC<Props> = ({
         >
           {title}
         </Heading>
-        {shownDescription && (
+        {isShownDescription && (
           <p className="max-h-20 xs:max-h-28 sm:max-h-36 md:max-h-44 mt-0.5 sm:mt-0 mb-2 xs:mb-3 sm:mb-5 lg:mb-7.5 text-black-base text-xs xs:text-sm sm:text-base leading-4 xs:leading-4.5 sm:leading-6 overflow-auto">
             {description}
           </p>

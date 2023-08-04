@@ -11,7 +11,7 @@ interface Props {
   labelClassName?: string;
   label?: string;
   labelFor: string;
-  showError?: boolean;
+  isShownError?: boolean;
   error?: string;
 }
 
@@ -21,7 +21,7 @@ export const FormField: FC<Props> = ({
   labelClassName,
   label,
   labelFor,
-  showError,
+  isShownError,
   error,
 }) => {
   const { t } = useTranslation();
@@ -37,7 +37,7 @@ export const FormField: FC<Props> = ({
         </label>
       )}
       {children}
-      <Error showError={showError}>{error}</Error>
+      <Error isShownError={isShownError}>{error}</Error>
     </div>
   );
 };

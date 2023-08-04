@@ -61,6 +61,10 @@ const Portfolio: FC = () => {
 
   usePageTitle(pageTitle);
 
+  const isDataMissing = !isLoading && !works?.length;
+  //CHANGE - тут буде ще 1 значення (!isDataMissing && countPages > 1). Якщо кількість сторінок не більше 1, то не показувати пагінацію
+  const isShownPagination = !isDataMissing;
+
   // CHANGE - add preloader for ROW items
   // add animation for toggle view type list
   // на головній перша секції з бека отримання можна зробити, і потім залежно від мови, щоб отримувати переклад роботи або посту із API (по ід та lang)
@@ -82,14 +86,18 @@ const Portfolio: FC = () => {
           countItemsPreloader={limit}
           listTypeView={workListTypeView}
         />
-        <div className="flex justify-center w-full mt-6">
-          <ShowMore
-            isLoading={isLoadingShowMore}
-            buttonTitleCountLabel={limitInitialValue}
-            onClick={incrementLimit}
-          />
-        </div>
-        pagination
+        {isShownPagination && (
+          <>
+            <div className="flex justify-center w-full mt-6">
+              <ShowMore
+                isLoading={isLoadingShowMore}
+                buttonTitleCountLabel={limitInitialValue}
+                onClick={incrementLimit}
+              />
+            </div>
+            pagination
+          </>
+        )}
       </SectionWrapper>
     </>
   );

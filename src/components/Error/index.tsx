@@ -8,13 +8,13 @@ const T_PREFIX = "error";
 interface Props {
   children: string | Ii18nInterpolationObject;
   className?: string;
-  showError: boolean;
+  isShownError: boolean;
 }
 
-export const Error: FC<Props> = ({ children, className, showError }) => {
+export const Error: FC<Props> = ({ children, className, isShownError }) => {
   const { t } = useTranslation();
 
-  if (!showError) return null;
+  if (!isShownError) return null;
 
   const errorText =
     typeof children === "string"

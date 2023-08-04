@@ -54,7 +54,9 @@ const Blog: FC = () => {
 
   usePageTitle(pageTitle);
 
-  // не обертати усю карточку в лінк,а тільки текст і картинку
+  const isDataMissing = !isLoading && !posts?.length;
+  //CHANGE - тут буде ще 1 значення (!isDataMissing && countPages > 1). Якщо кількість сторінок не більше 1, то не показувати пагінацію
+  const isShownPagination = !isDataMissing;
 
   return (
     //CHANGE - Додати до цекції ContainerHead і через флаг контролити чи рендерити його
@@ -75,14 +77,18 @@ const Blog: FC = () => {
           items={posts}
           countItemsPreloader={limit}
         />
-        <div className="flex justify-center w-full mt-6">
-          <ShowMore
-            isLoading={isLoadingShowMore}
-            buttonTitleCountLabel={limitInitialValue}
-            onClick={incrementLimit}
-          />
-        </div>
-        pagination
+        {isShownPagination && (
+          <>
+            <div className="flex justify-center w-full mt-6">
+              <ShowMore
+                isLoading={isLoadingShowMore}
+                buttonTitleCountLabel={limitInitialValue}
+                onClick={incrementLimit}
+              />
+            </div>
+            pagination
+          </>
+        )}
       </SectionWrapper>
     </>
   );
