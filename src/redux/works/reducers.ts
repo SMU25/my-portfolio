@@ -17,7 +17,7 @@ export const getWorksReducer = (builder) => {
 
   builder.addCase(getWorksAsync.rejected, (state) => {
     state.isLoading = false;
-    state.works = [];
+    state.works = null;
   });
 };
 
