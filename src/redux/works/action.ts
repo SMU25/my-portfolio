@@ -12,8 +12,6 @@ interface QueryParams {
   offset?: number;
 }
 
-// CHANGE - add env
-
 export const getWorksAsync = createAsyncThunk(
   `${WORKS_SLICE_NAME}/fetchWorks`,
   async ({ page = 1, limit }: QueryParams, { rejectWithValue }) => {
@@ -36,10 +34,10 @@ export const getWorkByIdAsync = createAsyncThunk(
       const { data } = await instance.get<IWorkItem>(`/portfolio/${id}`);
 
       return data;
-    } catch (e) {
+    } catch ({ message }) {
       history.push(PATHNAMES.NOT_FOUND);
 
-      return rejectWithValue(e);
+      return rejectWithValue(message);
     }
   }
 );

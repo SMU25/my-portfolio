@@ -37,10 +37,10 @@ export const getPostByIdAsync = createAsyncThunk(
       const { data } = await instance.get<IPostItem>(`/posts/${id}`);
 
       return data;
-    } catch (e) {
+    } catch ({ message }) {
       history.push(PATHNAMES.NOT_FOUND);
 
-      return rejectWithValue(e);
+      return rejectWithValue(message);
     }
   }
 );
