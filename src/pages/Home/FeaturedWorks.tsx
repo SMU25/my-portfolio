@@ -21,11 +21,8 @@ export const FeaturedWorks: FC = () => {
   const allWorks = useAppSelector(selectWorks);
 
   // буде змінено, коли напишу власну API
-  const featuredWorks = (() => {
-    if (allWorks?.length) {
-      return allWorks.filter((work) => work.isFeatured);
-    }
-  })();
+  const featuredWorks =
+    allWorks?.length && allWorks.filter((work) => work.isFeatured);
 
   const works = featuredWorks?.length ? featuredWorks : allWorks;
 
