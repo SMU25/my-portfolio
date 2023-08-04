@@ -75,6 +75,7 @@ export const ThumbsGallerySwiper: FC<Props> = ({
         onSwiper={setThumbsSwiper}
       />
       <KeyboardInfoPopUp
+        className="!top-70"
         isShown={isShownKeyboardInfoPopUp}
         cookiesKeyPopUp={COOKIES_KEY_KEYBOARD_POPUP}
       />

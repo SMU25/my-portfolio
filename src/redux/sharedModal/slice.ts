@@ -7,10 +7,8 @@ export const initialState: IModalState = {
   isOpen: false,
   isShownOverlay: true,
   isActiveCloseClickOutside: true,
-  className: "",
   title: "",
   text: "",
-  children: null,
 };
 
 export const { reducer: sharedModal } = createSlice({

@@ -13,5 +13,7 @@ export const SharedModalWindow: FC = () => {
     if (isOpen) dispatch(hideSharedModal());
   };
 
-  return <ModalWindow isOpen={isOpen} onClose={onClose} {...sharedModal} />;
+  return (
+    <ModalWindow isOpen={isOpen} onCloseModal={onClose} {...sharedModal} />
+  );
 };

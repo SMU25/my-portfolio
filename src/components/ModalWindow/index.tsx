@@ -1,5 +1,6 @@
 import React, { FC, useRef } from "react";
 import cn from "classnames";
+import Cookies from "js-cookie";
 import { useClickOutside } from "src/hooks/useClickOutside";
 import { Button } from "src/components/Button";
 import { IModalState } from "src/types/modal";
@@ -9,29 +10,40 @@ import { ButtonVariants } from "../Button/types";
 const ICON_CLOSE_SIZE = 30;
 
 interface Props extends IModalState {
-  onClose: VoidFunction;
+  onCloseModal: VoidFunction;
 }
 
 export const ModalWindow: FC<Props> = ({
   children,
   className,
   isOpen,
+  cookiesKeyModal,
   isShownOverlay,
   isActiveCloseClickOutside,
   title,
   text,
-  onClose,
+  onCloseModal,
 }) => {
   const modalRef = useRef();
+
+  const cookiesIsShownModal = Cookies.get(cookiesKeyModal);
+  const isOpenModal = cookiesIsShownModal !== "false" && isOpen;
+
+  const onClose = () => {
+    onCloseModal();
+
+    if (cookiesKeyModal) {
+      Cookies.set(cookiesKeyModal, "false");
+    }
+  };
 
   useClickOutside(modalRef, onClose, isActiveCloseClickOutside);
 
   return (
     <div
-      className={cn("invisible opacity-50 z-40", {
-        "!visible opacity-100": isOpen,
-        "fixed left-0 top-0 w-full h-full bg-gray-lighter-opacity":
-          isShownOverlay,
+      className={cn("invisible absolute top-0 left-0 w-full opacity-50 z-40", {
+        "!visible opacity-100": isOpenModal,
+        "!fixed h-full bg-gray-lighter-opacity": isShownOverlay,
       })}
     >
       <div
@@ -40,7 +52,7 @@ export const ModalWindow: FC<Props> = ({
           "invisible fixed top-1/4 translate-y-height-screen left-1/2 -translate-x-1/2 bg-white p-7 opacity-50 rounded-10 shadow-card-hard-gray z-40 transition-all duration-500",
           className,
           {
-            "!visible !translate-y-0 !opacity-100": isOpen,
+            "!visible !translate-y-0 !opacity-100": isOpenModal,
           }
         )}
       >

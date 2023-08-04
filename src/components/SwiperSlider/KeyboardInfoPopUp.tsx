@@ -1,7 +1,6 @@
 import React, { FC, useState } from "react";
 import cn from "classnames";
 import { useTranslation } from "react-i18next";
-import Cookies from "js-cookie";
 import { ReactComponent as KeyboardArrows } from "src/assets/keyboard-arrows.svg";
 import { ModalWindow } from "../ModalWindow";
 
@@ -22,13 +21,10 @@ export const KeyboardInfoPopUp: FC<Props> = ({
 }) => {
   const { t } = useTranslation();
 
-  const cookiesIsShownPopUp = Cookies.get(cookiesKeyPopUp);
-
-  const [isOpen, setIsOpen] = useState(cookiesIsShownPopUp !== "false");
+  const [isOpen, setIsOpen] = useState(isShown);
 
   const onClose = () => {
-    setIsOpen(false);
-    Cookies.set(cookiesKeyPopUp, "false");
+    if (isOpen) setIsOpen(false);
   };
 
   if (!isShown) return null;
@@ -37,7 +33,8 @@ export const KeyboardInfoPopUp: FC<Props> = ({
     <ModalWindow
       className={cn("!absolute hidden sm:block", className)}
       isOpen={isOpen}
-      onClose={onClose}
+      onCloseModal={onClose}
+      cookiesKeyModal={cookiesKeyPopUp}
       isActiveCloseClickOutside={false}
     >
       <div className="flex justify-center items-center w-112.5 px-6">
