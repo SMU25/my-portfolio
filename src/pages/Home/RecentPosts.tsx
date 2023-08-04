@@ -37,11 +37,11 @@ export const RecentPosts: FC = () => {
         title={t(`${T_PREFIX} - ${HEADING}`)}
         href={PATHNAMES.BLOG}
       />
-      {/* <BlogPosts
+      <BlogPosts
         listTypeView={ListTypeView.COLUMN}
         isLoading={isLoading}
         items={posts}
-      /> */}
+      />
     </SectionWrapper>
   );
 };
