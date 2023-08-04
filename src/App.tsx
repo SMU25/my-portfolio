@@ -9,6 +9,8 @@ import { Footer } from "./components/Footer";
 
 //CHANGE - додати перевірку ,якщо є значення в редаксі, то запит не кидати знову
 
+console.log(process.env);
+
 function App(): ReactElement {
   return (
     <CustomHistoryRouter history={history}>
