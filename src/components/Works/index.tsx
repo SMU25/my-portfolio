@@ -36,26 +36,27 @@ export const Works: FC<Props> = memo(
 
     const isRowListTypeView = ListTypeView.ROW === listTypeView;
 
-    const renderedWorkItems = useMemo(() => {
-      if (isLoading)
+    const renderedWorks = useMemo(() => {
+      if (isLoading) {
         return renderPreloader(
           isRowListTypeView,
           isSlider,
           countItemsPreloader
         );
-
-      return items?.map((item) => (
-        <WorkCard
-          key={item.id}
-          className={cn({
-            "default:shadow-light-white default:hover:scale-100 sm:hover:scale-105":
-              isSlider,
-          })}
-          listTypeView={listTypeView}
-          maxLengthDesciption={MAX_LENGTH_DESCRIPTION}
-          {...item}
-        />
-      ));
+      } else if (items?.length) {
+        return items.map((item) => (
+          <WorkCard
+            key={item.id}
+            className={cn({
+              "default:shadow-light-white default:hover:scale-100 sm:hover:scale-105":
+                isSlider,
+            })}
+            listTypeView={listTypeView}
+            maxLengthDesciption={MAX_LENGTH_DESCRIPTION}
+            {...item}
+          />
+        ));
+      }
     }, [
       listTypeView,
       isRowListTypeView,
@@ -67,7 +68,7 @@ export const Works: FC<Props> = memo(
 
     //CHANGE - Змінити ьрохи відображення тексту опису, щоб заповнювв до кінця блока
 
-    if (!renderedWorkItems?.length)
+    if (!renderedWorks)
       return (
         <p className="mt-1 sm:mt-3 mb-5 text-red-dark text-xl sm:text-3xl font-bold">
           {t(`${T_PREFIX} - ${DATA_MISSING_TEXT}`)}
@@ -78,7 +79,7 @@ export const Works: FC<Props> = memo(
       <SwiperSlider
         className="!pt-3.5 md:!pt-7 !pb-10 !overflow-visible"
         slideClassName="flex"
-        items={renderedWorkItems}
+        items={renderedWorks}
         isShownNavigationButtons
         isShownKeyboardInfoPopUp
       />
@@ -89,7 +90,7 @@ export const Works: FC<Props> = memo(
             isRowListTypeView,
         })}
       >
-        {renderedWorkItems}
+        {renderedWorks}
       </div>
     );
   }

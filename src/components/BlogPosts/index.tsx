@@ -36,18 +36,19 @@ export const BlogPosts: FC<Props> = memo(
     const isRowListTypeView = ListTypeView.ROW === listTypeView;
 
     const renderedBlogPosts = useMemo(() => {
-      if (isLoading)
+      if (isLoading) {
         return renderPreloader(isRowListTypeView, countItemsPreloader);
-
-      return items?.map((item) => (
-        <BlogCard
-          key={item.id}
-          listTypeView={listTypeView}
-          maxLengthDesciption={MAX_LENGTH_DESCRIPTION}
-          isLink
-          {...item}
-        />
-      ));
+      } else if (items?.length) {
+        return items.map((item) => (
+          <BlogCard
+            key={item.id}
+            listTypeView={listTypeView}
+            maxLengthDesciption={MAX_LENGTH_DESCRIPTION}
+            isLink
+            {...item}
+          />
+        ));
+      }
     }, [
       listTypeView,
       isRowListTypeView,
@@ -56,7 +57,7 @@ export const BlogPosts: FC<Props> = memo(
       countItemsPreloader,
     ]);
 
-    if (!renderedBlogPosts?.length)
+    if (!renderedBlogPosts)
       return (
         <p className="mt-1 sm:mt-3 mb-5 text-red-dark text-xl sm:text-3xl font-bold">
           {t(`${T_PREFIX} - ${DATA_MISSING_TEXT}`)}
