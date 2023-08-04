@@ -26,7 +26,7 @@ export const NavigationButton: FC<Props> = ({
     {children || (
       <Chevron
         className={cn("w-6 xs:w-8 sm:w-12 h-6 xs:h-8 sm:h-12", {
-          "opacity-50": isDisabled,
+          "hidden sm:block sm:opacity-50": isDisabled,
         })}
       />
     )}
