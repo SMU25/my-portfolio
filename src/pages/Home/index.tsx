@@ -11,7 +11,7 @@ const Home: FC = () => {
     <>
       <AboutMySelf />
       <FeaturedWorks />
-      {/* <RecentPosts /> */}
+      <RecentPosts />
     </>
   );
 };

@@ -11,7 +11,7 @@ interface WorksState {
 
 const initialState: WorksState = {
   isLoading: true,
-  works: null,
+  works: [],
   workById: null,
 };
 

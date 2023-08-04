@@ -17,7 +17,7 @@ export const getPostsReducer = (builder) => {
 
   builder.addCase(getPostsAsync.rejected, (state) => {
     state.isLoading = false;
-    state.posts = null;
+    state.posts = [];
   });
 };
 
