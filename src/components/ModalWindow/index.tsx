@@ -42,7 +42,7 @@ export const ModalWindow: FC<Props> = ({
   return (
     <div
       className={cn("invisible absolute top-0 left-0 w-full opacity-50 z-40", {
-        "!visible opacity-100": isOpenModal,
+        "!visible !opacity-100": isOpenModal,
         "!fixed h-full bg-gray-lighter-opacity": isShownOverlay,
       })}
     >
