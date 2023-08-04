@@ -97,5 +97,5 @@ export const FEEDBACK_VALIDATION_SCHEMA = yup.object().shape({
   lastName: NAME_VALIDATION_SCHEMA,
   phone: PHONE_VALIDATION_SCHEMA,
   email: EMAIL_VALIDATION_SCHEMA,
-  message: yup.string().required("required"),
+  message: yup.string(),
 });

@@ -36,7 +36,7 @@ export const ShowMore: FC<Props> = ({
 
   return (
     <Button
-      className="flex items-center px-10 hover:underline hover:brightness-100"
+      className="flex items-center bg-white px-10 rounded-10 shadow-card-hard-gray hover:underline hover:brightness-100"
       variant={variant}
       isDisabled={isDisabled}
       onClick={onClick}

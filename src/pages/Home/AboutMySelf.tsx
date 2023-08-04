@@ -1,9 +1,14 @@
 import React, { FC } from "react";
 import { useTranslation } from "react-i18next";
+import { SectionWrapper } from "src/components/Layouts/SectionWrapper";
 import { Heading } from "src/components/Heading";
 import { TagsHeading } from "src/components/Heading/types";
 import { Button } from "src/components/Button";
-import { RESUME_LINKS } from "./constants";
+
+export const RESUME_LINKS = {
+  uk: "https://drive.google.com/file/d/1KiR48q0TXmkTbfWYx1XEIouv8Gb8BVvB/view?usp=sharing",
+  en: "https://drive.google.com/file/d/1hFDbpfM57Uac9yJVEnsY8PnrUK67shWC/view?usp=sharing",
+};
 
 const PROFILE_IMG = {
   SRC: "https://scontent.frwn1-1.fna.fbcdn.net/v/t39.30808-6/228887766_3017452501906851_4381980517078749345_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=WRyaHDw0DPQAX_SdXZB&_nc_oc=AQmq-CASVDCnO9caMxm4tQIZT-WlCdkF0wRCN2wifpdMwMjWUiwfBVUjkvMwxVo4xuI&_nc_ht=scontent.frwn1-1.fna&oh=00_AfCSvSs-_BmhxnWsVYP8604DdbSO0YfaqoQb2Qe2Sca2dA&oe=639A5DF2",
@@ -22,7 +27,10 @@ export const AboutMySelf: FC = () => {
   const resumeLink = RESUME_LINKS[i18n.language];
 
   return (
-    <div className="flex flex-col-reverse sm:flex-row justify-center sm:justify-between items-center sm:items-start xl:items-center">
+    <SectionWrapper
+      className="pt-8.5 sm:pt-35 pb-15 sm:pb-17"
+      innerContainerClassName="flex flex-col-reverse sm:flex-row justify-center sm:justify-between items-center sm:items-start xl:items-center"
+    >
       <div className="sm:max-w-118 xl:max-w-161 w-full text-center sm:text-left">
         <Heading
           className="mt-8.5 sm:mt-4.5 capitalize text-3xl md:text-44 xl:text-6xl default:leading-10 sm:leading-11 xl:leading-17"
@@ -47,6 +55,6 @@ export const AboutMySelf: FC = () => {
         src={PROFILE_IMG.SRC}
         alt={PROFILE_IMG.ALT_TEXT}
       />
-    </div>
+    </SectionWrapper>
   );
 };

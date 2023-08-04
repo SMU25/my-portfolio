@@ -1,8 +1,8 @@
 {
   "button - show-more": "Показати ще {{count}} елементів",
 
-  "form-field - first-name": "Прізвище",
-  "form-field - last-name": "Ім'я",
+  "form-field - first-name": "Ім'я",
+  "form-field - last-name": "Прізвище",
   "form-field - phone": "Номер телефону",
   "form-field - email": "Електронна адреса",
   "form-field - message": "Повідомлення",
@@ -67,5 +67,6 @@
   "contact-item - email": "Електронна адреса:",
 
   "feedback - title": "Зворотній зв'язок",
+  "feedback - message-field-placeholder": "Ваше повідомлення...",
   "feedback - send-btn": "Надіслати"
 }

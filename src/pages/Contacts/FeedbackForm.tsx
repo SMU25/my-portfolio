@@ -20,6 +20,8 @@ import { FEEDBACK_FIELDS, FEEDBACK_VALIDATION_SCHEMA } from "./constants";
 const T_PREFIX = "feedback";
 
 const HEADING = "title";
+const MESSAGE_FIELD_NAME = "message";
+const MESSAGE_FIELD_PLACEHOLDER = "message-field-placeholder";
 const SEND_BUTTON_NAME = "send-btn";
 
 export const FeedbackForm: FC = () => {
@@ -49,7 +51,7 @@ export const FeedbackForm: FC = () => {
   return (
     <>
       <Heading
-        className="sm:text-4xl font-extrabold default:max-w-none"
+        className="default:text-2xl sm:text-4xl font-extrabold default:max-w-none"
         tagHeading={TagsHeading.H3}
       >
         {t(`${T_PREFIX} - ${HEADING}`)}
@@ -61,8 +63,9 @@ export const FeedbackForm: FC = () => {
           </div>
           <Textarea
             containerClassName="mt-7.5"
-            name="message"
-            label="message"
+            name={MESSAGE_FIELD_NAME}
+            label={MESSAGE_FIELD_NAME}
+            placeholder={t(`${T_PREFIX} - ${MESSAGE_FIELD_PLACEHOLDER}`)}
           />
           {/* <ReCaptcha className="mt-10" formik={formik} /> */}
           <Button

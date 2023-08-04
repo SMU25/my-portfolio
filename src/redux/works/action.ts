@@ -23,8 +23,8 @@ export const getWorksAsync = createAsyncThunk(
       );
 
       return data;
-    } catch (e) {
-      return rejectWithValue(e);
+    } catch ({ message }) {
+      return rejectWithValue(message);
     }
   }
 );

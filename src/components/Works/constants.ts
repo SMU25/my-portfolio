@@ -24,7 +24,7 @@ export const CARD_VIEW_VARIANTS_STYLES = {
     infoContainerCenter: "mt-4",
     date: "",
     category: "",
-    description: "max-h-25.5 mt-6 sm:mt-2 md:mt-5.5",
+    description: "sm:max-h-25.5 mt-6 sm:mt-2 md:mt-5.5",
     viewButton:
       "md:absolute md:top-8 md:right-0 w-full md:w-auto mt-3 sm:mt-5 md:mt-0",
   },

@@ -88,7 +88,7 @@ const Portfolio: FC = () => {
         />
         {isShownPagination && (
           <>
-            <div className="flex justify-center w-full mt-6">
+            <div className="sticky bottom-20 flex justify-center w-full mt-6">
               <ShowMore
                 isLoading={isLoadingShowMore}
                 buttonTitleCountLabel={limitInitialValue}

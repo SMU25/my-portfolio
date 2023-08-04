@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import { useAppDispatch, useAppSelector } from "src/hooks/redux";
 import { getPostsAsync } from "src/redux/posts/action";
 import { selectIsLoading, selectPosts } from "src/redux/posts/selectors";
+import { SectionWrapper } from "src/components/Layouts/SectionWrapper";
 import { ContainerHead } from "src/components/Layouts/ContainerHead";
 import { BlogPosts } from "src/components/BlogPosts";
 import { PATHNAMES } from "src/constants/routes";
@@ -26,10 +27,12 @@ export const RecentPosts: FC = () => {
     dispatch(getPostsAsync({ limit: MAX_COUNT_POSTS_LIMIT }));
   }, [dispatch]);
 
-  if (!posts?.length && !isLoading) return null;
+  const isDataMissing = !isLoading && !posts?.length;
+
+  if (isDataMissing) return null;
 
   return (
-    <>
+    <SectionWrapper className="sm:pt-4 pb-37.5 sm:pb-21">
       <ContainerHead
         title={t(`${T_PREFIX} - ${HEADING}`)}
         href={PATHNAMES.BLOG}
@@ -40,6 +43,6 @@ export const RecentPosts: FC = () => {
         isLoading={isLoading}
         items={posts}
       />
-    </>
+    </SectionWrapper>
   );
 };

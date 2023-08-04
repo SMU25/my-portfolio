@@ -12,7 +12,7 @@ interface FeedbackFormAsyncParams extends HTMLFormElement {
   lastName?: string;
   phone: string;
   email: string;
-  message: string;
+  message?: string;
 }
 
 export const sendFeedbackForm = createAsyncThunk(
@@ -29,8 +29,8 @@ export const sendFeedbackForm = createAsyncThunk(
       // return data;
 
       console.log(formData);
-    } catch (e) {
-      return rejectWithValue(e);
+    } catch ({ message }) {
+      return rejectWithValue(message);
     }
   }
 );

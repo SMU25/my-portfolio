@@ -24,8 +24,8 @@ export const getPostsAsync = createAsyncThunk(
       );
 
       return data;
-    } catch (e) {
-      return rejectWithValue(e);
+    } catch ({ message }) {
+      return rejectWithValue(message);
     }
   }
 );
