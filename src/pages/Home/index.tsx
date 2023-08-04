@@ -10,8 +10,8 @@ const Home: FC = () => {
   return (
     <>
       <AboutMySelf />
-      <FeaturedWorks />
-      <RecentPosts />
+      {/* <FeaturedWorks />
+      <RecentPosts /> */}
     </>
   );
 };
