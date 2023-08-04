@@ -21,11 +21,11 @@ export const FeaturedWorks: FC = () => {
   const allWorks = useAppSelector(selectWorks);
 
   // буде змінено, коли напишу власну API
-  const featuredWorks = () => {
+  const featuredWorks = (() => {
     if (allWorks?.length) {
       return allWorks.filter((work) => work.isFeatured);
     }
-  };
+  })();
 
   const works = featuredWorks?.length ? featuredWorks : allWorks;
 
