@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react";
+import React, { FC, useState, useMemo } from "react";
 import cn from "classnames";
 import { useTranslation } from "react-i18next";
 import { Heading } from "src/components/Heading";
@@ -21,11 +21,18 @@ export const Swiper: FC<Props> = ({ imageAlbum }) => {
 
   const [activeSlideIndex, setActiveSlideIndex] = useState(0);
 
-  const swiperItems = imageAlbum?.map(({ id, ...item }, index) => (
-    <SwiperItem key={id} isActiveSlide={index === activeSlideIndex} {...item} />
-  ));
+  const swiperItems = useMemo(() => {
+    if (imageAlbum?.length)
+      return imageAlbum.map(({ id, ...item }, index) => (
+        <SwiperItem
+          key={id}
+          isActiveSlide={index === activeSlideIndex}
+          {...item}
+        />
+      ));
+  }, [imageAlbum, activeSlideIndex]);
 
-  if (!imageAlbum?.length) return null;
+  if (!swiperItems) return null;
 
   return (
     <div>

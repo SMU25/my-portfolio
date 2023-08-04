@@ -62,6 +62,8 @@ export const SwiperSlider: FC<CustomSwiperProps> = ({
     }
   }, [swiperObj, setActiveSlideIndex, handleSlideChange]);
 
+  if (!items?.length) return null;
+
   return (
     <div className={cn("relative", containerClassName)}>
       <Swiper
@@ -71,7 +73,7 @@ export const SwiperSlider: FC<CustomSwiperProps> = ({
         {...settings}
         {...props}
       >
-        {items?.map((item) => (
+        {items.map((item) => (
           <SwiperSlide
             className={cn("!h-initial", slideClassName)}
             key={item.key}
