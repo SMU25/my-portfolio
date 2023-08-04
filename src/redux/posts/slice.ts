@@ -11,7 +11,7 @@ interface PostsState {
 
 const initialState: PostsState = {
   isLoading: true,
-  posts: [],
+  posts: null,
   postById: null,
 };
 
