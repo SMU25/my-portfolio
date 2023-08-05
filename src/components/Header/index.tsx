@@ -18,7 +18,6 @@ export const Header: FC = () => {
     <header
       className={cn("sticky top-0 bg-white py-2 md:py-0 z-50", {
         "shadow-light-bottom": isHomePage,
-        "border-gray-lighter-opacity border-b-2": !isHomePage,
       })}
     >
       <nav className="flex justify-between mx-3 sm:mx-15">

@@ -55,7 +55,7 @@ export const BreadCrumbs: FC<Props> = memo(
     );
 
     return (
-      <div className="sticky top-10.5 md:top-14.5 bg-white py-1 sm:py-1.5 md:py-2 gl:py-3 px-2.5 sm:px-15 gl:px-40 shadow-light-bottom z-50">
+      <div className="sticky top-10 md:top-14 bg-white py-1 sm:py-1.5 md:py-2 gl:py-3 px-2.5 sm:px-15 gl:px-40 border-gray-lighter-opacity border-t-2 shadow-light-bottom z-50">
         <ul className="flex items-center gap-y-2 container">
           {breadCrumbsItems.map(
             ({ pageName, path, isShown, ...props }, index) =>

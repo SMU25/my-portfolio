@@ -17,6 +17,7 @@ import { TagsHeading } from "src/components/Heading/types";
 import {
   DEFAULT_SECTION_CLASSNAME,
   DEFAULT_ITEMS_COMPONENT_CLASSNAME,
+  DEFAULT_SHOW_MORE_BTN_CONTAINER_CLASSNAME,
 } from "./constants";
 
 const T_PREFIX = "portfolio";
@@ -88,7 +89,7 @@ const Portfolio: FC = () => {
         />
         {isShownPagination && (
           <>
-            <div className="sticky bottom-20 flex justify-center w-full mt-6">
+            <div className={DEFAULT_SHOW_MORE_BTN_CONTAINER_CLASSNAME}>
               <ShowMore
                 isLoading={isLoadingShowMore}
                 buttonTitleCountLabel={limitInitialValue}

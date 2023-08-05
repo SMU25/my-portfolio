@@ -24,7 +24,7 @@ export const Button: FC<Props> = memo(
   }) => (
     <button
       className={cn(
-        "max-w-full truncate rounded-10 transition ease-in-out duration-200 active:duration-150 disabled:bg-gray-light disabled:active:translate-y-0",
+        "max-w-full truncate rounded-10 outline-0 transition ease-in-out duration-200 active:duration-150 disabled:bg-gray-light disabled:active:translate-y-0",
         BUTTON_STYLE_VARIANTS[variant],
         className
       )}
