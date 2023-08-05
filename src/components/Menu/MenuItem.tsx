@@ -1,21 +1,17 @@
-import React, { FC, SVGProps } from "react";
+import React, { FC } from "react";
 import cn from "classnames";
 import { useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { Link } from "src/components/Link";
 import { getPathName } from "src/utils/getPathName";
 import { HOMEPAGE_NAME, PATHNAMES } from "src/constants/routes";
+import { IMenuItem } from "./types";
 
 const ICON_SIZE = 24;
 
 const T_PREFIX = "menu-item";
 
-interface Props {
-  name: string;
-  icon?: FC<SVGProps<SVGSVGElement>>;
-}
-
-const MenuItem: FC<Props> = ({ name, icon: Icon }) => {
+const MenuItem: FC<Omit<IMenuItem, "id">> = ({ name, icon: Icon }) => {
   const { t } = useTranslation();
 
   const { pathname } = useLocation();
