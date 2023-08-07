@@ -1,8 +1,11 @@
 import React, { FC, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useAppDispatch, useAppSelector } from "src/hooks/redux";
-import { getWorksAsync } from "src/redux/works/action";
-import { selectIsLoading, selectWorks } from "src/redux/works/selectors";
+import { getFeaturedWorksAsync } from "src/redux/works/action";
+import {
+  selectIsLoading,
+  selectFeaturedWorks,
+} from "src/redux/works/selectors";
 import { SectionWrapper } from "src/components/Layouts/SectionWrapper";
 import { ContainerHead } from "src/components/Layouts/ContainerHead";
 import { Works } from "src/components/Works";
@@ -18,21 +21,18 @@ export const FeaturedWorks: FC = () => {
   const { t } = useTranslation();
 
   const isLoading = useAppSelector(selectIsLoading);
-  const allWorks = useAppSelector(selectWorks);
-
+  const featuredWorks = useAppSelector(selectFeaturedWorks);
   // буде змінено, коли напишу власну API
-  const featuredWorks =
-    allWorks?.length && allWorks.filter((work) => work.isFeatured);
-
-  const works = featuredWorks?.length ? featuredWorks : allWorks;
 
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    dispatch(getWorksAsync({ limit: MAX_COUNT_WORKS_LIMIT }));
-  }, [dispatch]);
+    if (!featuredWorks) {
+      dispatch(getFeaturedWorksAsync({ limit: MAX_COUNT_WORKS_LIMIT }));
+    }
+  }, [dispatch, featuredWorks]);
 
-  const isDataMissing = !isLoading && !works?.length;
+  const isDataMissing = !isLoading && !featuredWorks?.length;
 
   if (isDataMissing) return null;
 
@@ -50,7 +50,7 @@ export const FeaturedWorks: FC = () => {
       <Works
         className="border-t border-gray-lighter"
         isLoading={isLoading}
-        items={works}
+        items={featuredWorks}
         isSlider
       />
     </SectionWrapper>

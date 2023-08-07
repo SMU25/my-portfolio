@@ -16,8 +16,9 @@ const SkeletonWorkCard: FC<SkeletonWorkCardProps> = ({
     className={cn(
       "relative flex flex-col justify-between w-full bg-white transition-all duration-300",
       {
-        "py-4 px-3 rounded-lg shadow-card-hard-gray": isRowListTypeView,
-        "py-4.5 sm:py-8": !isRowListTypeView,
+        "pt-2 xs:pt-4 pb-3 xs:pb-4 px-2 xs:px-3 rounded-lg shadow-card-hard-gray":
+          isRowListTypeView,
+        "py-4.5 sm:py-8 border-gray-lighter border-b": !isRowListTypeView,
         "default:shadow-light-white": isSlider,
       }
     )}

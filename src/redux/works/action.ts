@@ -16,8 +16,33 @@ export const getWorksAsync = createAsyncThunk(
   `${WORKS_SLICE_NAME}/fetchWorks`,
   async ({ page = 1, limit }: QueryParams, { rejectWithValue }) => {
     try {
+      // буде змінено, коли напишу власну API
+      // const { data } = await instance.get<IWorkItem[]>(
+      //   `/works?page=${page}&limit=${limit}`
+      // );
+
       const { data } = await instance.get<IWorkItem[]>(
         `/portfolio?page=${page}&limit=${limit}`
+      );
+
+      return data;
+    } catch ({ message }) {
+      return rejectWithValue(message);
+    }
+  }
+);
+
+export const getFeaturedWorksAsync = createAsyncThunk(
+  `${WORKS_SLICE_NAME}/fetchFeaturedWorks`,
+  async ({ limit }: Pick<QueryParams, "limit">, { rejectWithValue }) => {
+    try {
+      // буде змінено, коли напишу власну API
+      // const { data } = await instance.get<IWorkItem[]>(
+      //   `/featuredWorks?limit=${limit}`
+      // );
+
+      const { data } = await instance.get<IWorkItem[]>(
+        `/portfolio?isFeatured=true&limit=${limit}`
       );
 
       return data;

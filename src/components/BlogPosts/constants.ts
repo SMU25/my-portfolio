@@ -3,7 +3,7 @@ import { ListTypeView } from "src/types";
 export const CARD_VIEW_VARIANTS_STYLES = {
   [ListTypeView.ROW]: {
     container:
-      "h-full bg-white pt-2 sm:pt-3 sm:pt-6 px-3 sm:px-5 sm:px-6 pb-3 sm:pb-5 shadow-light-white rounded hover:scale-105",
+      "h-full bg-white pt-2 xs:pt-4 pb-3 xs:pb-4 sm:pt-5 sm:pb-5 px-2 xs:px-3 sm:px-5 shadow-light-white rounded hover:scale-105",
     title:
       "text-sm sm:text-xl md:text-26 font-bold leading-5 sm:leading-6.5 md:leading-9.5",
     infoContainer:

@@ -30,6 +30,21 @@ export const getPostsAsync = createAsyncThunk(
   }
 );
 
+export const getRecentPostsAsync = createAsyncThunk(
+  `${POSTS_SLICE_NAME}/fetchRecentPosts`,
+  async ({ limit }: Pick<QueryParams, "limit">, { rejectWithValue }) => {
+    try {
+      const { data } = await instance.get<IPostItem[]>(
+        `/posts?sortBy=createdAt&order=desc&page=1&limit=${limit}`
+      );
+
+      return data;
+    } catch ({ message }) {
+      return rejectWithValue(message);
+    }
+  }
+);
+
 export const getPostByIdAsync = createAsyncThunk(
   `${POSTS_SLICE_NAME}/fetchPostById`,
   async (id: string, { rejectWithValue }) => {

@@ -43,6 +43,7 @@ const Portfolio: FC = () => {
     limit,
     offset,
     isChangedLimit,
+    isChangedQueryParams,
     incrementLimit,
   } = useQueryParams();
 
@@ -57,8 +58,10 @@ const Portfolio: FC = () => {
   }, [dispatch]);
 
   useEffect(() => {
-    dispatch(getWorksAsync({ limit, page }));
-  }, [page, limit, dispatch]);
+    if (!works || isChangedQueryParams) {
+      dispatch(getWorksAsync({ limit, page }));
+    }
+  }, [dispatch, works, page, limit, isChangedQueryParams]);
 
   usePageTitle(pageTitle);
 

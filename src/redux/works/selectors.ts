@@ -13,6 +13,11 @@ export const selectWorks = createSelector(
   (worksState) => worksState.works
 );
 
+export const selectFeaturedWorks = createSelector(
+  selectWorksState,
+  (worksState) => worksState.featuredWorks
+);
+
 export const selectWorkById = createSelector(
   selectWorksState,
   (worksState) => worksState.workById

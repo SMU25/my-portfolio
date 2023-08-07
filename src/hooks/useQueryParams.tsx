@@ -23,9 +23,12 @@ export const useQueryParams = (initialValues?: InitialValues) => {
   const [page, setPage] = useState(pageInitialValue);
   const [limit, setLimit] = useState(limitInitialValue);
   const [offset, setOffset] = useState(offsetInitialValue);
+  const [isChangedPage, setIsChangedPage] = useState(false);
+  const [isChangedLimit, setIsChangedLimit] = useState(false);
+  const [isChangedOffset, setIsChangedOffset] = useState(false);
 
-
-  const isChangedLimit = limitInitialValue !== limit;
+  const isChangedQueryParams =
+    isChangedPage || isChangedLimit || isChangedOffset;
 
   const setQueryParamPage = (page: number) =>
     setQueryParams(`${PAGE_QUERY_PARAM_KEY}=${page}`);
@@ -39,16 +42,25 @@ export const useQueryParams = (initialValues?: InitialValues) => {
   const incrementLimit = () => setQueryParamLimit(limit + limitInitialValue);
 
   useEffect(() => {
-    const page = Number(queryParams.get(PAGE_QUERY_PARAM_KEY));
-    const limit = Number(queryParams.get(LIMIT_QUERY_PARAM_KEY));
-    const offset = Number(queryParams.get(OFFSET_QUERY_PARAM_KEY));
+    const pageQueryParam = Number(queryParams.get(PAGE_QUERY_PARAM_KEY));
+    const limitQueryParam = Number(queryParams.get(LIMIT_QUERY_PARAM_KEY));
+    const offsetQueryParam = Number(queryParams.get(OFFSET_QUERY_PARAM_KEY));
 
-    if (page) setPage(page);
+    if (pageQueryParam) {
+      setIsChangedPage(pageQueryParam !== page);
+      setPage(pageQueryParam);
+    }
 
-    if (limit) setLimit(limit);
+    if (limitQueryParam) {
+      setIsChangedLimit(limitQueryParam !== limit);
+      setLimit(limitQueryParam);
+    }
 
-    if (offset) setOffset(offset);
-  }, [queryParams]);
+    if (offsetQueryParam) {
+      setIsChangedOffset(offsetQueryParam !== offset);
+      setOffset(offsetQueryParam);
+    }
+  }, [queryParams, page, limit, offset]);
 
   return {
     pageInitialValue,
@@ -57,7 +69,10 @@ export const useQueryParams = (initialValues?: InitialValues) => {
     page,
     limit,
     offset,
+    isChangedPage,
     isChangedLimit,
+    isChangedOffset,
+    isChangedQueryParams,
     setQueryParamPage,
     setQueryParamLimit,
     setQueryParamOffset,

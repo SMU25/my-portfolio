@@ -13,6 +13,11 @@ export const selectPosts = createSelector(
   (postsState) => postsState.posts
 );
 
+export const selectRecentPosts = createSelector(
+  selectPostsState,
+  (postsState) => postsState.recentPosts
+);
+
 export const selectPostById = createSelector(
   selectPostsState,
   (postsState) => postsState.postById

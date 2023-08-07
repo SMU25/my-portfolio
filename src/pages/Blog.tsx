@@ -37,6 +37,7 @@ const Blog: FC = () => {
     limit,
     offset,
     isChangedLimit,
+    isChangedQueryParams,
     incrementLimit,
   } = useQueryParams();
 
@@ -50,8 +51,10 @@ const Blog: FC = () => {
   }, [dispatch]);
 
   useEffect(() => {
-    dispatch(getPostsAsync({ page, limit }));
-  }, [page, limit, dispatch]);
+    if (!posts || isChangedQueryParams) {
+      dispatch(getPostsAsync({ page, limit }));
+    }
+  }, [dispatch, posts, page, limit, isChangedQueryParams]);
 
   usePageTitle(pageTitle);
 
