@@ -1,7 +1,7 @@
 import React, { FC, useState } from "react";
 import cn from "classnames";
 import { useTranslation } from "react-i18next";
-import { ReactComponent as KeyboardArrows } from "src/assets/keyboard-arrows.svg";
+import { ReactComponent as KeyboardArrows } from "src/assets/icons/keyboard-arrows.svg";
 import { ModalWindow } from "../ModalWindow";
 
 const T_PREFIX = "swiper-keyboard-control-info";

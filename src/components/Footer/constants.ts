@@ -1,8 +1,8 @@
-import { ReactComponent as Facebook } from "src/assets/fb.svg";
-import { ReactComponent as Instagram } from "src/assets/insta.svg";
-import { ReactComponent as Linkedin } from "src/assets/linkedin.svg";
-import { ReactComponent as Github } from "src/assets/github.svg";
-import { ReactComponent as Twitter } from "src/assets/twitter.svg";
+import { ReactComponent as Facebook } from "src/assets/icons/fb.svg";
+import { ReactComponent as Instagram } from "src/assets/icons/insta.svg";
+import { ReactComponent as Linkedin } from "src/assets/icons/linkedin.svg";
+import { ReactComponent as Github } from "src/assets/icons/github.svg";
+import { ReactComponent as Twitter } from "src/assets/icons/twitter.svg";
 
 export const SPRITE_ITEMS = [
   {

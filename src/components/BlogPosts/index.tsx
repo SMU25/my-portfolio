@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next";
 import { SwiperSlider } from "src/components/SwiperSlider";
 import { ListTypeView } from "src/types";
 import { IPostItem } from "src/types/post";
+import { ReactComponent as DataMissing } from "src/assets/icons/data-missing.svg";
 import { renderPreloader } from "./Preloader";
 import { BlogCard } from "./BlogCard";
 
@@ -56,9 +57,12 @@ export const BlogPosts: FC<Props> = memo(
 
     if (!renderedBlogPosts)
       return (
-        <p className="mt-1 sm:mt-3 mb-5 text-red-dark text-xl sm:text-3xl font-bold">
-          {t(`${T_PREFIX} - ${DATA_MISSING_TEXT}`)}
-        </p>
+        <div className="flex flex-col items-center justify-center mt-3 xs:mt-4 sm:mt-7">
+          <DataMissing className="fill-g-red-primary w-16 xs:w-24 sm:w-32 h-16 xs:h-24 sm:h-32" />
+          <p className="mt-1 xs:mt-2 sm:mt-5 mb-5 text-center text-red-primary text-xl sm:text-3xl font-bold">
+            {t(`${T_PREFIX} - ${DATA_MISSING_TEXT}`)}
+          </p>
+        </div>
       );
 
     return isSlider ? (

@@ -4,11 +4,9 @@ import { useTranslation } from "react-i18next";
 import { SwiperSlider } from "src/components/SwiperSlider";
 import { ListTypeView } from "src/types";
 import { IWorkItem } from "src/types/work";
+import { ReactComponent as DataMissing } from "src/assets/icons/data-missing.svg";
 import { renderPreloader } from "./Preloader";
 import { WorkCard } from "./WorkCard";
-
-const MAX_LENGTH_DESCRIPTION = 175;
-// якщо буде тільки 1 значення то змінити тут і в постах та перенести його в карточку елемента
 
 const T_PREFIX = "works";
 
@@ -52,7 +50,6 @@ export const Works: FC<Props> = memo(
                 isSlider,
             })}
             listTypeView={listTypeView}
-            maxLengthDesciption={MAX_LENGTH_DESCRIPTION}
             {...item}
           />
         ));
@@ -70,9 +67,12 @@ export const Works: FC<Props> = memo(
 
     if (!renderedWorks)
       return (
-        <p className="mt-1 sm:mt-3 mb-5 text-red-dark text-xl sm:text-3xl font-bold">
-          {t(`${T_PREFIX} - ${DATA_MISSING_TEXT}`)}
-        </p>
+        <div className="flex flex-col items-center justify-center mt-3 xs:mt-4 sm:mt-7">
+          <DataMissing className="fill-g-red-primary w-16 xs:w-24 sm:w-32 h-16 xs:h-24 sm:h-32" />
+          <p className="mt-1 xs:mt-2 sm:mt-5 mb-5 text-center text-red-primary text-xl sm:text-3xl font-bold">
+            {t(`${T_PREFIX} - ${DATA_MISSING_TEXT}`)}
+          </p>
+        </div>
       );
 
     return isSlider ? (

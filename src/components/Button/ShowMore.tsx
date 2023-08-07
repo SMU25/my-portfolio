@@ -2,7 +2,7 @@ import React, { FC } from "react";
 import { useTranslation } from "react-i18next";
 import { Loader } from "src/components/Loader";
 import { Sizes } from "src/types/sizes";
-import { ReactComponent as ArrowRotate } from "src/assets/arrow-rotate.svg";
+import { ReactComponent as ArrowRotate } from "src/assets/icons/arrow-rotate.svg";
 import { Button } from ".";
 import { ButtonVariants } from "./types";
 import { T_PREFIX } from "./constants";

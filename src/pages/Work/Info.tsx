@@ -7,7 +7,7 @@ import { TagsHeading } from "src/components/Heading/types";
 import { MarkLabel } from "src/components/MarkLabel";
 import { SkillsAndTechnologies } from "src/components/SkillsAndTechnologies";
 import { IWorkItem } from "src/types/work";
-import { ReactComponent as GitHubIcon } from "src/assets/github.svg";
+import { ReactComponent as GitHubIcon } from "src/assets/icons/github.svg";
 import { Description } from "./Description";
 
 const LINK_TEXT_CLASSNAME =

@@ -21,8 +21,8 @@ const Post: FC = () => {
   const { title } = post || {};
 
   useEffect(() => {
-    dispatch(getPostByIdAsync(id));
-  }, [id, dispatch]);
+    if (!post) dispatch(getPostByIdAsync(id));
+  }, [dispatch, id, post]);
 
   usePageTitle(title);
 
@@ -34,6 +34,7 @@ const Post: FC = () => {
         containerClassName="border-b-0"
         listTypeView={ListTypeView.COLUMN}
         isShownPostImg
+        isDisabledTruncateDescription
         {...post}
       />
     )

@@ -47,7 +47,7 @@
 
   "portfolio - title": "Portfolio",
 
-  "works - data-missing-text": "The data could not be obtained or is missing.",
+  "works - data-missing-text": "The data could not be obtained or is missing!",
 
   "work-card - view-btn": "View project",
 
@@ -57,7 +57,7 @@
 
   "blog - title": "Blog",
 
-  "posts - data-missing-text": "The posts could not be obtained or is missing.",
+  "posts - data-missing-text": "The posts could not be obtained or is missing!",
 
   "blog-card - view-btn": "View post",
 

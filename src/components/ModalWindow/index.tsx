@@ -4,7 +4,7 @@ import Cookies from "js-cookie";
 import { useClickOutside } from "src/hooks/useClickOutside";
 import { Button } from "src/components/Button";
 import { IModalState } from "src/types/modal";
-import { ReactComponent as Close } from "src/assets/circle-xmark.svg";
+import { ReactComponent as Close } from "src/assets/icons/circle-xmark.svg";
 import { ButtonVariants } from "../Button/types";
 
 const ICON_CLOSE_SIZE = 30;

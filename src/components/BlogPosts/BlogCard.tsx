@@ -27,6 +27,7 @@ interface Props extends IPostItem {
   isLink?: boolean;
   isShownPostImg?: boolean;
   maxLengthDesciption?: number;
+  isDisabledTruncateDescription?: boolean;
 }
 
 export const BlogCard: FC<Props> = memo(
@@ -37,6 +38,7 @@ export const BlogCard: FC<Props> = memo(
     isLink,
     isShownPostImg,
     maxLengthDesciption = MAX_LENGTH_DESCRIPTION[listTypeView],
+    isDisabledTruncateDescription,
     id,
     title,
     createdAt,
@@ -57,7 +59,8 @@ export const BlogCard: FC<Props> = memo(
 
     const truncateDescription = getTruncateString(
       description,
-      maxLengthDesciption
+      maxLengthDesciption,
+      isDisabledTruncateDescription
     );
 
     return (

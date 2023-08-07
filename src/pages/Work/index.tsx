@@ -3,7 +3,6 @@ import { useParams } from "react-router";
 import { useAppDispatch, useAppSelector } from "src/hooks/redux";
 import { usePageTitle } from "src/hooks/usePageTitle";
 import { getWorkByIdAsync } from "src/redux/works/action";
-// import { selectIsLoading, selectWorkById } from "src/redux/works/selectors";
 import { selectIsLoading, selectWorksById } from "src/redux/works/selectors";
 import { SectionWrapper } from "src/components/Layouts/SectionWrapper";
 import { BreadCrumbs } from "src/components/BreadCrumbs";

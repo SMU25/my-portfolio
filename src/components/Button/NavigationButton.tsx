@@ -1,6 +1,6 @@
 import React, { FC, ReactNode } from "react";
 import cn from "classnames";
-import { ReactComponent as Chevron } from "src/assets/chevron-right.svg";
+import { ReactComponent as Chevron } from "src/assets/icons/chevron-right.svg";
 
 interface Props {
   children?: ReactNode;

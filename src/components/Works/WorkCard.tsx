@@ -49,7 +49,7 @@ export const WorkCard: FC<Props> = memo(
   ({
     className,
     listTypeView = ListTypeView.COLUMN,
-    maxLengthDesciption,
+    maxLengthDesciption = 175,
     id,
     title,
     description,

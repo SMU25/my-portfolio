@@ -47,7 +47,7 @@
 
   "portfolio - title": "Портфоліо",
 
-  "works - data-missing-text": "Не вдалося отримати дані або вони відсутні.",
+  "works - data-missing-text": "Не вдалося отримати дані або вони відсутні!",
 
   "work-card - view-btn": "Переглянути проєкт",
 
@@ -57,7 +57,7 @@
 
   "blog - title": "Блог",
 
-  "posts - data-missing-text": "Не вдалося отримати дописи або вони відсутні.",
+  "posts - data-missing-text": "Не вдалося отримати дописи або вони відсутні!",
 
   "blog-card - view-btn": "Переглянути допис",
 
