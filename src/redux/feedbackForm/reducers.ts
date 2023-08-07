@@ -1,6 +1,13 @@
+import { ActionReducerMapBuilder } from "@reduxjs/toolkit";
 import { sendFeedbackForm } from "./action";
+import { FeedbackFormState } from "./slice";
 
-export const sendFeedbackFormReducer = (builder) => {
+type ActionReducerMapBuilderWithFormState =
+  ActionReducerMapBuilder<FeedbackFormState>;
+
+export const sendFeedbackFormReducer = (
+  builder: ActionReducerMapBuilderWithFormState
+) => {
   builder.addCase(sendFeedbackForm.pending, (state) => {
     state.isLoading = true;
   });

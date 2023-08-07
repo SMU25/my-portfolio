@@ -7,8 +7,6 @@ import { IPostItem } from "src/types/post";
 import { renderPreloader } from "./Preloader";
 import { BlogCard } from "./BlogCard";
 
-const MAX_LENGTH_DESCRIPTION = 220;
-
 const T_PREFIX = "posts";
 
 const DATA_MISSING_TEXT = "data-missing-text";
@@ -43,7 +41,6 @@ export const BlogPosts: FC<Props> = memo(
           <BlogCard
             key={item.id}
             listTypeView={listTypeView}
-            maxLengthDesciption={MAX_LENGTH_DESCRIPTION}
             isLink
             {...item}
           />

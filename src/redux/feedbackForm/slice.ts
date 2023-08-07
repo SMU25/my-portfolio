@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { FEEDBACK_FORM_SLICE_NAME } from "./action";
 import { sendFeedbackFormReducer } from "./reducers";
 
-interface FeedbackFormState {
+export interface FeedbackFormState {
   isLoading: boolean;
 }
 

@@ -11,7 +11,7 @@ import { getTruncateString } from "src/utils/getTruncateString";
 import { PATHNAMES } from "src/constants/routes";
 import { ListTypeView } from "src/types";
 import { IPostItem } from "src/types/post";
-import { CARD_VIEW_VARIANTS_STYLES } from "./constants";
+import { MAX_LENGTH_DESCRIPTION, CARD_VIEW_VARIANTS_STYLES } from "./constants";
 import { Button } from "../Button";
 import { ButtonVariants } from "../Button/types";
 import { Link } from "../Link";
@@ -36,7 +36,7 @@ export const BlogCard: FC<Props> = memo(
     containerClassName,
     isLink,
     isShownPostImg,
-    maxLengthDesciption,
+    maxLengthDesciption = MAX_LENGTH_DESCRIPTION[listTypeView],
     id,
     title,
     createdAt,

@@ -14,7 +14,7 @@ import {
 const COOKIES_WORK_LIST_TYPE_VIEW = Cookies.get(WORK_LIST_TYPE_VIEW_KEY);
 const COOKIES_POST_LIST_TYPE_VIEW = Cookies.get(POST_LIST_TYPE_VIEW_KEY);
 
-interface ConfigState {
+export interface ConfigState {
   workListTypeView: ListTypeView;
   postListTypeView: ListTypeView;
 }

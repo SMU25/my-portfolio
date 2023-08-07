@@ -7,18 +7,18 @@ import {
   getPostByIdReducer,
 } from "./reducers";
 
-interface PostsState {
+export interface PostsState {
   isLoading: boolean;
   posts: IPostItem[];
   recentPosts: IPostItem[];
-  postById: IPostItem;
+  postsById: Record<string, IPostItem>;
 }
 
 const initialState: PostsState = {
   isLoading: true,
   posts: null,
   recentPosts: null,
-  postById: null,
+  postsById: {},
 };
 
 export const { reducer: posts } = createSlice({

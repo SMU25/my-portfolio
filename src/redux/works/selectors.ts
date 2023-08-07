@@ -18,7 +18,7 @@ export const selectFeaturedWorks = createSelector(
   (worksState) => worksState.featuredWorks
 );
 
-export const selectWorkById = createSelector(
+export const selectWorksById = createSelector(
   selectWorksState,
-  (worksState) => worksState.workById
+  (worksState) => worksState.worksById
 );

@@ -18,7 +18,7 @@ export const selectRecentPosts = createSelector(
   (postsState) => postsState.recentPosts
 );
 
-export const selectPostById = createSelector(
+export const selectPostsById = createSelector(
   selectPostsState,
-  (postsState) => postsState.postById
+  (postsState) => postsState.postsById
 );

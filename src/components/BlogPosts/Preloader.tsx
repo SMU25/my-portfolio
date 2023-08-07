@@ -59,6 +59,10 @@ export const SkeletonBlogPost: FC<SkeletonBlogPostProps> = ({
             <Shimmer className="h-3 mt-1.5" />
             <Shimmer className="w-10/12 h-3 mt-1.5" />
             <Shimmer className="w-11/12 h-3 mt-1.5" />
+            <Shimmer className="xs:hidden h-3 mt-1.5" />
+            <Shimmer className="xs:hidden w-11/12 h-3 mt-1.5" />
+            <Shimmer className="sm:hidden h-3 mt-1.5" />
+            <Shimmer className="sm:hidden w-11/12 h-3 mt-1.5" />
             <Shimmer className="h-3 mt-1.5" />
             <Shimmer className="w-1/4 h-3 mt-1.5" />
           </>

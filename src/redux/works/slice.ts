@@ -5,13 +5,15 @@ import {
   getWorksReducer,
   getFeaturedWorksReducer,
   getWorkByIdReducer,
+  // getWorksByIdReducer,
 } from "./reducers";
 
-interface WorksState {
+export interface WorksState {
   isLoading: boolean;
   works: IWorkItem[];
   featuredWorks: IWorkItem[];
   workById: IWorkItem;
+  worksById: Record<string, IWorkItem>;
 }
 
 const initialState: WorksState = {
@@ -19,6 +21,7 @@ const initialState: WorksState = {
   works: null,
   featuredWorks: null,
   workById: null,
+  worksById: {},
 };
 
 export const { reducer: works } = createSlice({
@@ -27,7 +30,7 @@ export const { reducer: works } = createSlice({
   reducers: {},
   extraReducers(builder) {
     getWorksReducer(builder);
-    getWorkByIdReducer(builder);
     getFeaturedWorksReducer(builder);
+    getWorkByIdReducer(builder);
   },
 });

@@ -1,8 +1,14 @@
-import { PayloadAction } from "@reduxjs/toolkit";
+import { PayloadAction, ActionReducerMapBuilder } from "@reduxjs/toolkit";
 import { IPostItem } from "src/types/post";
 import { getPostsAsync, getRecentPostsAsync, getPostByIdAsync } from "./action";
+import { PostsState } from "./slice";
 
-export const getPostsReducer = (builder) => {
+type ActionReducerMapBuilderWithPostsState =
+  ActionReducerMapBuilder<PostsState>;
+
+export const getPostsReducer = (
+  builder: ActionReducerMapBuilderWithPostsState
+) => {
   builder.addCase(getPostsAsync.pending, (state) => {
     state.isLoading = true;
   });
@@ -21,7 +27,9 @@ export const getPostsReducer = (builder) => {
   });
 };
 
-export const getRecentPostsReducer = (builder) => {
+export const getRecentPostsReducer = (
+  builder: ActionReducerMapBuilderWithPostsState
+) => {
   builder.addCase(getRecentPostsAsync.pending, (state) => {
     state.isLoading = true;
   });
@@ -40,7 +48,9 @@ export const getRecentPostsReducer = (builder) => {
   });
 };
 
-export const getPostByIdReducer = (builder) => {
+export const getPostByIdReducer = (
+  builder: ActionReducerMapBuilderWithPostsState
+) => {
   builder.addCase(getPostByIdAsync.pending, (state) => {
     state.isLoading = true;
   });
@@ -48,13 +58,14 @@ export const getPostByIdReducer = (builder) => {
   builder.addCase(
     getPostByIdAsync.fulfilled,
     (state, action: PayloadAction<IPostItem>) => {
+      const post = action.payload;
+
       state.isLoading = false;
-      state.postById = action.payload;
+      state.postsById = { ...state.postsById, [post.id]: post };
     }
   );
 
   builder.addCase(getPostByIdAsync.rejected, (state) => {
     state.isLoading = false;
-    state.postById = null;
   });
 };

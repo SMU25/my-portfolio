@@ -1,12 +1,18 @@
-import { PayloadAction } from "@reduxjs/toolkit";
+import { PayloadAction, ActionReducerMapBuilder } from "@reduxjs/toolkit";
 import { IWorkItem } from "src/types/work";
 import {
   getWorksAsync,
   getFeaturedWorksAsync,
   getWorkByIdAsync,
 } from "./action";
+import { WorksState } from "./slice";
 
-export const getWorksReducer = (builder) => {
+type ActionReducerMapBuilderWithWorksState =
+  ActionReducerMapBuilder<WorksState>;
+
+export const getWorksReducer = (
+  builder: ActionReducerMapBuilderWithWorksState
+) => {
   builder.addCase(getWorksAsync.pending, (state) => {
     state.isLoading = true;
   });
@@ -25,7 +31,9 @@ export const getWorksReducer = (builder) => {
   });
 };
 
-export const getFeaturedWorksReducer = (builder) => {
+export const getFeaturedWorksReducer = (
+  builder: ActionReducerMapBuilderWithWorksState
+) => {
   builder.addCase(getFeaturedWorksAsync.pending, (state) => {
     state.isLoading = true;
   });
@@ -44,7 +52,9 @@ export const getFeaturedWorksReducer = (builder) => {
   });
 };
 
-export const getWorkByIdReducer = (builder) => {
+export const getWorkByIdReducer = (
+  builder: ActionReducerMapBuilderWithWorksState
+) => {
   builder.addCase(getWorkByIdAsync.pending, (state) => {
     state.isLoading = true;
   });
@@ -52,13 +62,14 @@ export const getWorkByIdReducer = (builder) => {
   builder.addCase(
     getWorkByIdAsync.fulfilled,
     (state, action: PayloadAction<IWorkItem>) => {
+      const work = action.payload;
+
       state.isLoading = false;
-      state.workById = action.payload;
+      state.worksById = { ...state.worksById, [work.id]: work };
     }
   );
 
   builder.addCase(getWorkByIdAsync.rejected, (state) => {
     state.isLoading = false;
-    state.workById = null;
   });
 };

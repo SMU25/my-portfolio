@@ -3,7 +3,7 @@ import { useParams } from "react-router";
 import { useAppDispatch, useAppSelector } from "src/hooks/redux";
 import { usePageTitle } from "src/hooks/usePageTitle";
 import { getPostByIdAsync } from "src/redux/posts/action";
-import { selectIsLoading, selectPostById } from "src/redux/posts/selectors";
+import { selectIsLoading, selectPostsById } from "src/redux/posts/selectors";
 import { SectionWrapper } from "src/components/Layouts/SectionWrapper";
 import { BreadCrumbs } from "src/components/BreadCrumbs";
 import { BlogCard } from "src/components/BlogPosts/BlogCard";
@@ -16,7 +16,8 @@ const Post: FC = () => {
   const dispatch = useAppDispatch();
 
   const isLoading = useAppSelector(selectIsLoading);
-  const post = useAppSelector(selectPostById);
+  const posts = useAppSelector(selectPostsById);
+  const post = posts[id];
   const { title } = post || {};
 
   useEffect(() => {

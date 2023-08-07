@@ -1,5 +1,10 @@
 import { ListTypeView } from "src/types";
 
+export const MAX_LENGTH_DESCRIPTION = {
+  [ListTypeView.ROW]: 220,
+  [ListTypeView.COLUMN]: 350,
+};
+
 export const CARD_VIEW_VARIANTS_STYLES = {
   [ListTypeView.ROW]: {
     container:

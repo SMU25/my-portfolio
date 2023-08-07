@@ -1,3 +1,4 @@
+import { ActionReducerMapBuilder } from "@reduxjs/toolkit";
 import Cookies from "js-cookie";
 import {
   WORK_LIST_TYPE_VIEW_KEY,
@@ -5,8 +6,14 @@ import {
 } from "src/constants/cookiesKeys";
 import { ListTypeView } from "src/types";
 import { toggleWorkListTypeView, togglePostListTypeView } from "./action";
+import { ConfigState } from "./slice";
 
-export const toggleWorkListTypeReducer = (builder) => {
+type ActionReducerMapBuilderWithConfigState =
+  ActionReducerMapBuilder<ConfigState>;
+
+export const toggleWorkListTypeReducer = (
+  builder: ActionReducerMapBuilderWithConfigState
+) => {
   builder.addCase(toggleWorkListTypeView, (state) => {
     const activeListTypeView = state.workListTypeView;
     const changedListTypeView =
@@ -20,7 +27,9 @@ export const toggleWorkListTypeReducer = (builder) => {
   });
 };
 
-export const togglePostListTypeReducer = (builder) => {
+export const togglePostListTypeReducer = (
+  builder: ActionReducerMapBuilderWithConfigState
+) => {
   builder.addCase(togglePostListTypeView, (state) => {
     const activeListTypeView = state.postListTypeView;
     const changedListTypeView =

@@ -1,9 +1,14 @@
-import { PayloadAction } from "@reduxjs/toolkit";
+import { PayloadAction, ActionReducerMapBuilder } from "@reduxjs/toolkit";
 import { IModalState } from "src/types/modal";
 import { showSharedModal, hideSharedModal } from "./actions";
 import { initialState } from "./slice";
 
-export const showSharedModalReducer = (builder) => {
+type ActionReducerMapBuilderWithModalState =
+  ActionReducerMapBuilder<IModalState>;
+
+export const showSharedModalReducer = (
+  builder: ActionReducerMapBuilderWithModalState
+) => {
   builder.addCase(
     showSharedModal,
     (state, action: PayloadAction<Omit<IModalState, "isOpen">>) => {
@@ -18,6 +23,8 @@ export const showSharedModalReducer = (builder) => {
   );
 };
 
-export const hideSharedModalReducer = (builder) => {
+export const hideSharedModalReducer = (
+  builder: ActionReducerMapBuilderWithModalState
+) => {
   builder.addCase(hideSharedModal, (state) => (state = initialState));
 };
