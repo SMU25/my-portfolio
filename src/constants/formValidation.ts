@@ -1,5 +1,5 @@
 import * as yup from "yup";
-import { isValidPhoneNumber } from "libphonenumber-js";
+// import { isValidPhoneNumber, parsePhoneNumber } from "libphonenumber-js";
 
 export const NAME_VALIDATION_SCHEMA = yup.string().min(2, {
   i18nKey: "min-symbols",
@@ -18,16 +18,16 @@ export const PHONE_VALIDATION_SCHEMA = yup
     i18nParams: { count: 15 },
   })
   .matches(
-    /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/,
+    /^((\+[1-9]{1,4}[ -]*)|(\([0-9]{2,3}\)[ -]*)|([0-9]{2,4})[ -]*)*?[0-9]{3,4}[ -]*[0-9]{3,4}([ -]*x[0-9]+)?$/,
     "incorrect-phone-number"
-  )
-  .test("error", (phone) => {
-    if (phone) {
-      return isValidPhoneNumber(phone, "UA");
-    }
+  );
+// .test("error", (phone) => {
+//   if (phone) {
+//     return isValidPhoneNumber(phone, "UA");
+//   }
 
-    return true;
-  });
+//   return true;
+// });
 
 export const EMAIL_VALIDATION_SCHEMA = yup
   .string()

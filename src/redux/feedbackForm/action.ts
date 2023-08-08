@@ -7,7 +7,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 
 export const FEEDBACK_FORM_SLICE_NAME = "feedbackForm";
 
-interface FeedbackFormAsyncParams extends HTMLFormElement {
+interface IFeedbackFormData extends HTMLFormElement {
   userName: string;
   lastName?: string;
   phone: string;
@@ -17,7 +17,7 @@ interface FeedbackFormAsyncParams extends HTMLFormElement {
 
 export const sendFeedbackForm = createAsyncThunk(
   `${FEEDBACK_FORM_SLICE_NAME}/fetchFeedbackForm`,
-  async (formData: FeedbackFormAsyncParams, { rejectWithValue }) => {
+  async (formData: IFeedbackFormData, { rejectWithValue }) => {
     try {
       // const data = await emailjs.send(
       //   SERVICE_ID,

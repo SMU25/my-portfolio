@@ -94,7 +94,7 @@ export const FEEDBACK_FIELDS = [
   {
     name: "phone",
     label: "phone",
-    type: "phone",
+    type: "tel",
     component: Input,
   },
   {

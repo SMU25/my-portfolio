@@ -9,6 +9,7 @@ interface Props {
   isLoading?: boolean;
   variant?: ButtonVariants;
   className?: string;
+  type?: "button" | "submit" | "reset";
   onClick?: VoidFunction;
   isDisabled?: boolean;
 }
@@ -19,6 +20,7 @@ export const Button: FC<Props> = memo(
     isLoading,
     variant = ButtonVariants.PRIMARY,
     className,
+    type,
     onClick,
     isDisabled,
   }) => (
@@ -28,6 +30,7 @@ export const Button: FC<Props> = memo(
         BUTTON_STYLE_VARIANTS[variant],
         className
       )}
+      type={type}
       onClick={onClick}
       disabled={isDisabled}
     >

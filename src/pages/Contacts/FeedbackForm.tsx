@@ -1,10 +1,10 @@
-import React, { FC, FormEvent } from "react";
+import React, { FC, useEffect } from "react";
 import cn from "classnames";
 import { useTranslation } from "react-i18next";
 import { FormikProvider, useFormik } from "formik";
 import { useAppDispatch, useAppSelector } from "src/hooks/redux";
 import { sendFeedbackForm } from "src/redux/feedbackForm/action";
-import { selectIsLoading } from "src/redux/feedbackForm/selectors";
+import { selectFeedbackFormState } from "src/redux/feedbackForm/selectors";
 import { Heading } from "src/components/Heading";
 import { TagsHeading } from "src/components/Heading/types";
 import { RenderFormField } from "src/components/RenderFormField";
@@ -26,26 +26,26 @@ const SEND_BUTTON_NAME = "send-btn";
 export const FeedbackForm: FC = () => {
   const { t } = useTranslation();
 
-  const isLoading = useAppSelector(selectIsLoading);
-
   const dispatch = useAppDispatch();
+
+  const { isLoading, success } = useAppSelector(selectFeedbackFormState);
 
   const formikProps = {
     initialValues: {
       ...getFormikInitialValues(FEEDBACK_FIELDS),
       [MESSAGE_FIELD_NAME]: "",
     },
-    onSubmit: (values) => dispatch(sendFeedbackForm(values)),
     validationSchema: FEEDBACK_VALIDATION_SCHEMA,
+    onSubmit: (values) => dispatch(sendFeedbackForm(values)),
   };
 
   const formik = useFormik(formikProps);
-  const { isValid, handleSubmit, handleReset } = formik;
+  const { isValid, handleSubmit } = formik;
 
-  const onSubmitForm = (e: FormEvent<HTMLFormElement>) => {
-    handleSubmit(e);
-    handleReset(e);
-  };
+  // useEffect(() => {
+  //   if (success) {
+  //   }
+  // }, [success]);
 
   return (
     <>
@@ -56,7 +56,7 @@ export const FeedbackForm: FC = () => {
         {t(`${T_PREFIX} - ${HEADING}`)}
       </Heading>
       <FormikProvider value={formik}>
-        <form onSubmit={onSubmitForm}>
+        <form onSubmit={handleSubmit}>
           <div className="grid grid-cols-1 xs:grid-cols-2 gap-y-4.5 sm:gap-y-5.5 md:gap-y-6 gap-x-6 md:gap-x-8 lg:gap-x-13.5 mt-3.5 xs:mt-4 sm:mt-6 md:mt-7.5">
             <RenderFormField fields={FEEDBACK_FIELDS} />
           </div>
@@ -67,6 +67,7 @@ export const FeedbackForm: FC = () => {
           />
           {/* <ReCaptcha className="mt-10" formik={formik} /> */}
           <Button
+            type="submit"
             className={cn(
               "max-w-none xs:max-w-61.5 w-full mt-4.5 xs:mt-6 sm:mt-8 md:mt-10 md:py-4.5 text-2xl leading-6 md:leading-7",
               { "!py-3.5": isLoading }

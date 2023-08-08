@@ -4,10 +4,12 @@ import { sendFeedbackFormReducer } from "./reducers";
 
 export interface FeedbackFormState {
   isLoading: boolean;
+  success: boolean;
 }
 
 const initialState: FeedbackFormState = {
   isLoading: false,
+  success: null,
 };
 
 export const { reducer: feedbackForm } = createSlice({

@@ -20,11 +20,11 @@ const HEADING = "title";
 export const FeaturedWorks: FC = () => {
   const { t } = useTranslation();
 
+  const dispatch = useAppDispatch();
+
   const isLoading = useAppSelector(selectIsLoading);
   const featuredWorks = useAppSelector(selectFeaturedWorks);
   // буде змінено, коли напишу власну API
-
-  const dispatch = useAppDispatch();
 
   useEffect(() => {
     if (!featuredWorks) {

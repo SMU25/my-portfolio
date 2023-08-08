@@ -14,9 +14,11 @@ export const sendFeedbackFormReducer = (
 
   builder.addCase(sendFeedbackForm.fulfilled, (state) => {
     state.isLoading = false;
+    state.success = true;
   });
 
   builder.addCase(sendFeedbackForm.rejected, (state) => {
     state.isLoading = false;
+    state.success = false;
   });
 };
