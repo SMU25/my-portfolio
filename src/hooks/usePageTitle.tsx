@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 
 const DEFAULT_PAGE_TITLE = "My Portfolio";
 
