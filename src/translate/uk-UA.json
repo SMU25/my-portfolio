@@ -7,6 +7,12 @@
   "form-field - email": "Електронна адреса",
   "form-field - message": "Повідомлення",
 
+  "form-field-placeholder - first-name": "Джон",
+  "form-field-placeholder - last-name": "Сміт",
+  "form-field-placeholder - phone": "+380 (98) 777-77-77",
+  "form-field-placeholder - email": "johnsmith77@gmail.com",
+  "form-field-placeholder - message": "Ваше повідомлення...",
+
   "error - required": "Обов'язкове поле",
   "error - include-symbol": "Має містити спеціальний символ (&,!,etc.)",
   "error - passwords-must-match": "Паролі мають збігатися!",
@@ -67,6 +73,5 @@
   "contact-item - email": "Електронна адреса:",
 
   "feedback - title": "Зворотній зв'язок",
-  "feedback - message-field-placeholder": "Ваше повідомлення...",
   "feedback - send-btn": "Надіслати"
 }

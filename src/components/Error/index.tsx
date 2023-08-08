@@ -22,7 +22,12 @@ export const Error: FC<Props> = ({ children, className, isShownError }) => {
       : t(`${T_PREFIX} - ${children.i18nKey}`, children.i18nParams);
 
   return (
-    <div className={cn("absolute -bottom-6 left-4 text-red-dark", className)}>
+    <div
+      className={cn(
+        "absolute -bottom-4 sm:-bottom-5 md:-bottom-6 left-3 md:left-4 text-red-dark text-xs sm:text-sm md:text-base",
+        className
+      )}
+    >
       {errorText}
     </div>
   );

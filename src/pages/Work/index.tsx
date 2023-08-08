@@ -42,7 +42,9 @@ const Work: FC = () => {
   return (
     <>
       <BreadCrumbs tertiaryPageName={title} />
-      <SectionWrapper className="pt-19.5">{sectionContent}</SectionWrapper>
+      <SectionWrapper className="pt-6 sm:pt-10 md:pt-12 gl:pt-19.5">
+        {sectionContent}
+      </SectionWrapper>
     </>
   );
 };

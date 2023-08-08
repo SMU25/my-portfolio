@@ -68,7 +68,11 @@ const Blog: FC = () => {
     <>
       <BreadCrumbs />
       <SectionWrapper className={DEFAULT_SECTION_CLASSNAME}>
-        <ContainerHead title={pageTitle} tagHeading={TagsHeading.H2}>
+        <ContainerHead
+          titleClassName="!py-1.5"
+          title={pageTitle}
+          tagHeading={TagsHeading.H2}
+        >
           <ChangeViewButton
             listTypeView={postListTypeView}
             toogleListTypeView={tooglePostView}

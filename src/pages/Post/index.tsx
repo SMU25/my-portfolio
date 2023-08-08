@@ -43,7 +43,9 @@ const Post: FC = () => {
   return (
     <>
       <BreadCrumbs tertiaryPageName={title} />
-      <SectionWrapper className="pt-13.5 pb-7">{sectionContent}</SectionWrapper>
+      <SectionWrapper className="pt-1.5 sm:pt-2 md:pt-4 gl:pt-11.5 pb-7">
+        {sectionContent}
+      </SectionWrapper>
     </>
   );
 };

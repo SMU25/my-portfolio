@@ -21,7 +21,6 @@ const T_PREFIX = "feedback";
 
 const HEADING = "title";
 const MESSAGE_FIELD_NAME = "message";
-const MESSAGE_FIELD_PLACEHOLDER = "message-field-placeholder";
 const SEND_BUTTON_NAME = "send-btn";
 
 export const FeedbackForm: FC = () => {
@@ -34,7 +33,7 @@ export const FeedbackForm: FC = () => {
   const formikProps = {
     initialValues: {
       ...getFormikInitialValues(FEEDBACK_FIELDS),
-      message: "",
+      [MESSAGE_FIELD_NAME]: "",
     },
     onSubmit: (values) => dispatch(sendFeedbackForm(values)),
     validationSchema: FEEDBACK_VALIDATION_SCHEMA,
@@ -58,19 +57,18 @@ export const FeedbackForm: FC = () => {
       </Heading>
       <FormikProvider value={formik}>
         <form onSubmit={onSubmitForm}>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-y-6 gap-x-13.5 mt-7.5">
+          <div className="grid grid-cols-1 xs:grid-cols-2 gap-y-4.5 sm:gap-y-5.5 md:gap-y-6 gap-x-6 md:gap-x-8 lg:gap-x-13.5 mt-3.5 xs:mt-4 sm:mt-6 md:mt-7.5">
             <RenderFormField fields={FEEDBACK_FIELDS} />
           </div>
           <Textarea
-            containerClassName="mt-7.5"
+            containerClassName="mt-6 sm:mt-7 md:mt-7.5"
             name={MESSAGE_FIELD_NAME}
             label={MESSAGE_FIELD_NAME}
-            placeholder={t(`${T_PREFIX} - ${MESSAGE_FIELD_PLACEHOLDER}`)}
           />
           {/* <ReCaptcha className="mt-10" formik={formik} /> */}
           <Button
             className={cn(
-              "max-w-none xs:max-w-61.5 w-full mt-10 py-4.5 text-2xl leading-7",
+              "max-w-none xs:max-w-61.5 w-full mt-4.5 xs:mt-6 sm:mt-8 md:mt-10 md:py-4.5 text-2xl leading-6 md:leading-7",
               { "!py-3.5": isLoading }
             )}
             variant={ButtonVariants.SECONDARY}

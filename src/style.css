@@ -16,7 +16,8 @@ code {
     monospace;
 }
 
-g {
+g,
+path {
   @apply transition-all duration-200;
 }
 
