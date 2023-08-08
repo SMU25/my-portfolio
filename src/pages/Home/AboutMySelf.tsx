@@ -11,7 +11,7 @@ export const RESUME_LINKS = {
 };
 
 const PROFILE_IMG = {
-  SRC: "https://scontent.frwn1-1.fna.fbcdn.net/v/t39.30808-6/228887766_3017452501906851_4381980517078749345_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=WRyaHDw0DPQAX_SdXZB&_nc_oc=AQmq-CASVDCnO9caMxm4tQIZT-WlCdkF0wRCN2wifpdMwMjWUiwfBVUjkvMwxVo4xuI&_nc_ht=scontent.frwn1-1.fna&oh=00_AfCSvSs-_BmhxnWsVYP8604DdbSO0YfaqoQb2Qe2Sca2dA&oe=639A5DF2",
+  SRC: "https://lh3.googleusercontent.com/a/AAcHTteSC1NOcktlHaJMM7gjdTAzc_FNG60x6ujublZ_n1CAyKaH=s288-c-no",
   ALT_TEXT: "Image of Oleksandr Myronchuk",
 };
 

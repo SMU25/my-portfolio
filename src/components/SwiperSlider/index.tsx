@@ -1,6 +1,13 @@
-import React, { FC, ReactElement, useCallback, useRef } from "react";
+import React, {
+  FC,
+  ReactElement,
+  useState,
+  useCallback,
+  useEffect,
+} from "react";
 import cn from "classnames";
-import { Swiper, SwiperProps, SwiperSlide } from "swiper/react";
+import { Swiper, SwiperSlide, SwiperProps } from "swiper/react";
+import SwiperCore from "swiper";
 import SwiperClass from "swiper/types/swiper-class";
 import "swiper/css";
 import "swiper/css/pagination";
@@ -42,25 +49,28 @@ export const SwiperSlider: FC<CustomSwiperProps> = ({
   handleSlideChange,
   ...props
 }) => {
-  const swiperRef = useRef<SwiperClass>(null);
-
-  const swiperObj = swiperState || swiperRef.current;
-
-  const slidePrev = useCallback(() => swiperObj?.slidePrev(), [swiperObj]);
-
-  const slideNext = useCallback(() => swiperObj?.slideNext(), [swiperObj]);
+  const [swiper, setSwiper] = useState<SwiperCore>(null);
 
   const settings = customSettings || DEFAULT_SETTINGS;
 
+  const slidePrev = useCallback(() => swiper?.slidePrev(), [swiper]);
+  const slideNext = useCallback(() => swiper?.slideNext(), [swiper]);
+
   const onSlideChange = useCallback(() => {
-    if (setActiveSlideIndex && swiperObj) {
-      setActiveSlideIndex(swiperObj.activeIndex);
+    if (setActiveSlideIndex && swiper) {
+      setActiveSlideIndex(swiper.activeIndex);
     }
 
     if (handleSlideChange) {
       handleSlideChange();
     }
-  }, [swiperObj, setActiveSlideIndex, handleSlideChange]);
+  }, [swiper, setActiveSlideIndex, handleSlideChange]);
+
+  useEffect(() => {
+    if (swiperState) {
+      setSwiper(swiperState);
+    }
+  }, [swiperState]);
 
   if (!items?.length) return null;
 
@@ -68,7 +78,11 @@ export const SwiperSlider: FC<CustomSwiperProps> = ({
     <div className={cn("relative", containerClassName)}>
       <Swiper
         className={className}
-        onSwiper={(swiper) => (swiperRef.current = swiper)}
+        onSwiper={(swiper) => {
+          if (swiper && !swiperState) {
+            setSwiper(swiper);
+          }
+        }}
         onSlideChange={onSlideChange}
         {...settings}
         {...props}
@@ -90,7 +104,7 @@ export const SwiperSlider: FC<CustomSwiperProps> = ({
               DEFAULT_CLASSNAME_NAVIGATION_BUTTON
             )}
             onClick={slidePrev}
-            isDisabled={swiperObj?.isBeginning}
+            isDisabled={swiper?.isBeginning}
           />
           <NavigationButton
             className={cn(
@@ -98,7 +112,7 @@ export const SwiperSlider: FC<CustomSwiperProps> = ({
               DEFAULT_CLASSNAME_NAVIGATION_BUTTON
             )}
             onClick={slideNext}
-            isDisabled={swiperObj?.isEnd}
+            isDisabled={swiper?.isEnd}
           />
         </>
       )}
