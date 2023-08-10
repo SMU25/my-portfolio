@@ -1,9 +1,10 @@
-import React, { FC, useEffect } from "react";
+import React, { FC, FormEvent, useEffect, useCallback } from "react";
 import cn from "classnames";
 import { useTranslation } from "react-i18next";
 import { FormikProvider, useFormik } from "formik";
 import { useAppDispatch, useAppSelector } from "src/hooks/redux";
 import { sendFeedbackForm } from "src/redux/feedbackForm/action";
+import { showSharedModal } from "src/redux/sharedModal/actions";
 import { selectFeedbackFormState } from "src/redux/feedbackForm/selectors";
 import { Heading } from "src/components/Heading";
 import { TagsHeading } from "src/components/Heading/types";
@@ -11,17 +12,20 @@ import { RenderFormField } from "src/components/RenderFormField";
 import { Textarea } from "src/components/FormField/Textarea";
 import { Button } from "src/components/Button";
 import { ButtonVariants } from "src/components/Button/types";
-import { getFormikInitialValues } from "src/utils/getFormikInitialValues";
+import { getFormikDefaultInitialValues } from "src/utils/getFormikDefaultInitialValues";
+import { IFeedbackFormValues } from "src/types/form";
 import { FEEDBACK_FIELDS, FEEDBACK_VALIDATION_SCHEMA } from "./constants";
 // import { ReCaptcha } from "src/components/ReCaptcha";
 
-// CHANGE - модалку виводити після відправки форми
+const DEFAULT_BUTTON_CLASSNAME =
+  "max-w-none xs:max-w-61.5 w-full text-2xl leading-6 md:leading-7";
 
 const T_PREFIX = "feedback";
 
 const HEADING = "title";
 const MESSAGE_FIELD_NAME = "message";
 const SEND_BUTTON_NAME = "send-btn";
+const CLEAR_BUTTON_NAME = "clear-btn";
 
 export const FeedbackForm: FC = () => {
   const { t } = useTranslation();
@@ -31,21 +35,58 @@ export const FeedbackForm: FC = () => {
   const { isLoading, success } = useAppSelector(selectFeedbackFormState);
 
   const formikProps = {
-    initialValues: {
-      ...getFormikInitialValues(FEEDBACK_FIELDS),
-      [MESSAGE_FIELD_NAME]: "",
-    },
+    initialValues: getFormikDefaultInitialValues<IFeedbackFormValues>(
+      FEEDBACK_FIELDS,
+      MESSAGE_FIELD_NAME
+    ),
     validationSchema: FEEDBACK_VALIDATION_SCHEMA,
-    onSubmit: (values) => dispatch(sendFeedbackForm(values)),
+    onSubmit: (values: IFeedbackFormValues) =>
+      dispatch(sendFeedbackForm(values)),
   };
 
-  const formik = useFormik(formikProps);
-  const { isValid, handleSubmit } = formik;
+  const formik = useFormik<IFeedbackFormValues>(formikProps);
+  const { isValid, submitForm, resetForm } = formik;
 
-  // useEffect(() => {
-  //   if (success) {
-  //   }
-  // }, [success]);
+  const showClearFormModal = useCallback(
+    () =>
+      dispatch(
+        showSharedModal({
+          title: "Ваше повідомлення досталене!" || "Очистити форму ?",
+          text: "Очистити форму ?",
+          confirmation: {
+            onConfirm: resetForm,
+          },
+        })
+      ),
+    [dispatch, resetForm]
+  );
+
+  const showErrorModal = useCallback(
+    () =>
+      dispatch(
+        showSharedModal({
+          title: "Помилка при відправці повідомлення!",
+          alert: {},
+        })
+      ),
+    [dispatch]
+  );
+
+  const onSubmitForm = useCallback(
+    (e: FormEvent) => {
+      e.preventDefault();
+      submitForm();
+    },
+    [submitForm]
+  );
+
+  useEffect(() => {
+    if (success) {
+      showClearFormModal();
+    } else if (success !== null) {
+      showErrorModal();
+    }
+  }, [showClearFormModal, showErrorModal, success]);
 
   return (
     <>
@@ -56,7 +97,7 @@ export const FeedbackForm: FC = () => {
         {t(`${T_PREFIX} - ${HEADING}`)}
       </Heading>
       <FormikProvider value={formik}>
-        <form onSubmit={handleSubmit}>
+        <form>
           <div className="grid grid-cols-1 xs:grid-cols-2 gap-y-4.5 sm:gap-y-5.5 md:gap-y-6 gap-x-6 md:gap-x-8 lg:gap-x-13.5 mt-3.5 xs:mt-4 sm:mt-6 md:mt-7.5">
             <RenderFormField fields={FEEDBACK_FIELDS} />
           </div>
@@ -65,19 +106,33 @@ export const FeedbackForm: FC = () => {
             name={MESSAGE_FIELD_NAME}
             label={MESSAGE_FIELD_NAME}
           />
-          {/* <ReCaptcha className="mt-10" formik={formik} /> */}
-          <Button
-            type="submit"
-            className={cn(
-              "max-w-none xs:max-w-61.5 w-full mt-4.5 xs:mt-6 sm:mt-8 md:mt-10 md:py-4.5 text-2xl leading-6 md:leading-7",
-              { "!py-3.5": isLoading }
-            )}
-            variant={ButtonVariants.SECONDARY}
-            isDisabled={!isValid}
-            isLoading={isLoading}
-          >
-            {t(`${T_PREFIX} - ${SEND_BUTTON_NAME}`)}
-          </Button>
+          {/* <ReCaptcha className="mt-4.5 xs:mt-6 sm:mt-8 md:mt-10" formik={formik} /> */}
+          <div className="flex flex-col xs:flex-row mt-4.5 xs:mt-6 sm:mt-8 md:mt-10">
+            <Button
+              type="submit"
+              className={cn("md:py-4.5", DEFAULT_BUTTON_CLASSNAME, {
+                "!py-3.5": isLoading,
+              })}
+              variant={ButtonVariants.PRIMARY}
+              isDisabled={!isValid}
+              isLoading={isLoading}
+              onClick={onSubmitForm}
+            >
+              {t(`${T_PREFIX} - ${SEND_BUTTON_NAME}`)}
+            </Button>
+
+            <Button
+              type="reset"
+              className={cn(
+                "mt-3.5 xs:mt-0 xs:ml-5 default:py-3 md:py-4",
+                DEFAULT_BUTTON_CLASSNAME
+              )}
+              variant={ButtonVariants.BORDERED_BLACK_DARK}
+              onClick={showClearFormModal}
+            >
+              {t(`${T_PREFIX} - ${CLEAR_BUTTON_NAME}`)}
+            </Button>
+          </div>
         </form>
       </FormikProvider>
     </>

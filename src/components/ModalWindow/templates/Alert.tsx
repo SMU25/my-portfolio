@@ -1,18 +1,18 @@
-import React, { FC, ReactNode } from "react";
+import React, { FC } from "react";
 import { useTranslation } from "react-i18next";
 import { Button } from "src/components/Button";
 import { ButtonVariants } from "src/components/Button/types";
+import { IAlert } from "src/types/modal";
 
 const T_PREFIX = "modal-alert";
+
 const DEFAULT_APPROVAL_BUTTON_NAME = "ok";
 
-interface Props {
-  children?: ReactNode;
-  approvalButtonName?: string;
-  onClose: VoidFunction;
-}
-
-export const Alert: FC<Props> = ({ children, approvalButtonName, onClose }) => {
+export const Alert: FC<IAlert> = ({
+  children,
+  approvalButtonName,
+  onClose,
+}) => {
   const { t } = useTranslation();
 
   const approval =

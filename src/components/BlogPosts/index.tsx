@@ -42,7 +42,7 @@ export const BlogPosts: FC<Props> = memo(
           <BlogCard
             key={item.id}
             listTypeView={listTypeView}
-            isLink
+            isActiveLink
             {...item}
           />
         ));

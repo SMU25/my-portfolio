@@ -5,6 +5,8 @@ import { useClickOutside } from "src/hooks/useClickOutside";
 import { Button } from "src/components/Button";
 import { IModalState } from "src/types/modal";
 import { ReactComponent as Close } from "src/assets/icons/circle-xmark.svg";
+import { Alert } from "./templates/Alert";
+import { Confirmation } from "./templates/Confirmation";
 import { ButtonVariants } from "../Button/types";
 
 const ICON_CLOSE_SIZE = 30;
@@ -23,6 +25,8 @@ export const ModalWindow: FC<Props> = ({
   title,
   text,
   onCloseModal,
+  alert,
+  confirmation,
 }) => {
   const modalRef = useRef();
 
@@ -41,7 +45,7 @@ export const ModalWindow: FC<Props> = ({
 
   return (
     <div
-      className={cn("invisible absolute top-0 left-0 w-full opacity-50 z-40", {
+      className={cn("invisible absolute top-0 left-0 w-full opacity-50 z-50", {
         "!visible !opacity-100": isOpenModal,
         "!fixed h-full bg-gray-lighter-opacity": isShownOverlay,
       })}
@@ -66,6 +70,8 @@ export const ModalWindow: FC<Props> = ({
         {title && <h3 className="truncate">{title}</h3>}
         {text && <p>{text}</p>}
         {children}
+        {alert && <Alert onClose={onClose} {...alert} />}
+        {confirmation && <Confirmation onClose={onClose} {...confirmation} />}
       </div>
     </div>
   );

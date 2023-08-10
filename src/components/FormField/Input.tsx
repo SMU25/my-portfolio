@@ -49,6 +49,7 @@ export const Input: FC<IFormField> = ({
           className,
           { "border-red-primary": isShownError }
         )}
+        value={value}
         placeholder={placeholder || defaultPlaceholder}
         {...props}
         {...field}

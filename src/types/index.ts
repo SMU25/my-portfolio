@@ -1,4 +1,4 @@
 export enum ListTypeView {
-  COLUMN = "COLUMN",
-  ROW = "ROW",
+  COLUMN = "column",
+  ROW = "row",
 }

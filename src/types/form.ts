@@ -23,3 +23,11 @@ export interface IFormField {
 export interface IRenderFormField extends IFormField {
   component: FC<IFormField>;
 }
+
+export interface IFeedbackFormValues {
+  userName: string;
+  lastName: string;
+  phone: string;
+  email: string;
+  message: string;
+}

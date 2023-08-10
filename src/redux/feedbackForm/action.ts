@@ -1,4 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
+import { IFeedbackFormValues } from "src/types/form";
 // import emailjs from "@emailjs/browser";
 
 // const SERVICE_ID = "service_ubqvgia";
@@ -7,28 +8,20 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 
 export const FEEDBACK_FORM_SLICE_NAME = "feedbackForm";
 
-interface IFeedbackFormData extends HTMLFormElement {
-  userName: string;
-  lastName?: string;
-  phone: string;
-  email: string;
-  message?: string;
-}
-
 export const sendFeedbackForm = createAsyncThunk(
   `${FEEDBACK_FORM_SLICE_NAME}/fetchFeedbackForm`,
-  async (formData: IFeedbackFormData, { rejectWithValue }) => {
+  async (values: IFeedbackFormValues, { rejectWithValue }) => {
     try {
       // const data = await emailjs.send(
       //   SERVICE_ID,
       //   TEMPLATE_ID,
-      //   formData,
+      //   { ...values },
       //   PUBLIC_ID
       // );
 
       // return data;
 
-      console.log(formData);
+      console.log(values);
     } catch ({ message }) {
       return rejectWithValue(message);
     }

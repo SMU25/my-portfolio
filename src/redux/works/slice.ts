@@ -5,7 +5,6 @@ import {
   getWorksReducer,
   getFeaturedWorksReducer,
   getWorkByIdReducer,
-  // getWorksByIdReducer,
 } from "./reducers";
 
 export interface WorksState {

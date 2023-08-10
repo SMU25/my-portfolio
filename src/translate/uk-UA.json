@@ -73,5 +73,6 @@
   "contact-item - email": "Електронна адреса:",
 
   "feedback - title": "Зворотній зв'язок",
-  "feedback - send-btn": "Надіслати"
+  "feedback - send-btn": "Надіслати",
+  "feedback - clear-btn": "Очистити"
 }

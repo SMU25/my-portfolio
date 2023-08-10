@@ -50,6 +50,7 @@ export const Textarea: FC<Omit<IFormField, "type">> = ({
           className,
           { "border-red-primary": isShownError }
         )}
+        value={value}
         placeholder={placeholder || defaultPlaceholder}
         {...props}
         {...field}

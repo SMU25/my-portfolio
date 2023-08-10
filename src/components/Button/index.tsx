@@ -1,4 +1,4 @@
-import React, { FC, ReactNode, memo } from "react";
+import React, { FC, ReactNode, MouseEventHandler, memo } from "react";
 import cn from "classnames";
 import { BUTTON_STYLE_VARIANTS } from "./constants";
 import { ButtonVariants } from "./types";
@@ -10,7 +10,7 @@ interface Props {
   variant?: ButtonVariants;
   className?: string;
   type?: "button" | "submit" | "reset";
-  onClick?: VoidFunction;
+  onClick?: MouseEventHandler<HTMLButtonElement>;
   isDisabled?: boolean;
 }
 

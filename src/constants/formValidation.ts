@@ -1,10 +1,16 @@
 import * as yup from "yup";
 // import { isValidPhoneNumber, parsePhoneNumber } from "libphonenumber-js";
 
-export const NAME_VALIDATION_SCHEMA = yup.string().min(2, {
-  i18nKey: "min-symbols",
-  i18nParams: { count: 2 },
-});
+export const NAME_VALIDATION_SCHEMA = yup
+  .string()
+  .min(2, {
+    i18nKey: "min-symbols",
+    i18nParams: { count: 2 },
+  })
+  .max(50, {
+    i18nKey: "max-symbols",
+    i18nParams: { count: 50 },
+  });
 
 export const PHONE_VALIDATION_SCHEMA = yup
   .string()

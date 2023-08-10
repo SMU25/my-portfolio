@@ -24,7 +24,7 @@ const VIEW_BUTTON_NAME = "view-btn";
 interface Props extends IPostItem {
   containerClassName?: string;
   listTypeView?: ListTypeView;
-  isLink?: boolean;
+  isActiveLink?: boolean;
   isShownPostImg?: boolean;
   maxLengthDesciption?: number;
   isDisabledTruncateDescription?: boolean;
@@ -35,7 +35,7 @@ export const BlogCard: FC<Props> = memo(
     listTypeView = ListTypeView.ROW,
     img,
     containerClassName,
-    isLink,
+    isActiveLink,
     isShownPostImg,
     maxLengthDesciption = MAX_LENGTH_DESCRIPTION[listTypeView],
     isDisabledTruncateDescription,
@@ -75,7 +75,7 @@ export const BlogCard: FC<Props> = memo(
           <Link
             href={pathname}
             className="transition-all duration-200 hover:text-blue-light"
-            isDisabled={!isLink}
+            isDisabled={!isActiveLink}
           >
             <Heading className={classNames.title} tagHeading={TagsHeading.H4}>
               {title}
@@ -106,7 +106,7 @@ export const BlogCard: FC<Props> = memo(
           )}
           <p className={cn(classNames.description)}>{truncateDescription}</p>
         </div>
-        {isLink && (
+        {isActiveLink && (
           <Link href={pathname}>
             <Button
               className={classNames.viewButton}
