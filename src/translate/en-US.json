@@ -32,6 +32,12 @@
   "bread-crumbs - blog": "Blog",
   "bread-crumbs - contacts": "Contacts",
 
+  "modal - ok-btn": "Ok",
+  "modal - yes-btn": "Yes",
+  "modal - confirm-btn": "Confirm",
+  "modal - no-btn": "No",
+  "modal - cancel-btn": "Cancel",
+
   "container-head - view-all-link": "View all",
 
   "skills-and-technologies - title": "Technologies and skills used:",

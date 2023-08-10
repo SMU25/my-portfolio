@@ -1,11 +1,13 @@
-import React, { FC, FormEvent, useEffect, useCallback } from "react";
+import React, { FC, FormEvent, useState, useEffect, useCallback } from "react";
 import cn from "classnames";
 import { useTranslation } from "react-i18next";
 import { FormikProvider, useFormik } from "formik";
 import { useAppDispatch, useAppSelector } from "src/hooks/redux";
 import { sendFeedbackForm } from "src/redux/feedbackForm/action";
-import { showSharedModal } from "src/redux/sharedModal/actions";
 import { selectFeedbackFormState } from "src/redux/feedbackForm/selectors";
+import { ModalWindow } from "src/components/ModalWindow";
+import { Confirmation } from "src/components/ModalWindow/templates/Confirmation";
+import { Alert } from "src/components/ModalWindow/templates/Alert";
 import { Heading } from "src/components/Heading";
 import { TagsHeading } from "src/components/Heading/types";
 import { RenderFormField } from "src/components/RenderFormField";
@@ -30,6 +32,11 @@ const CLEAR_BUTTON_NAME = "clear-btn";
 export const FeedbackForm: FC = () => {
   const { t } = useTranslation();
 
+  const [isOpenModal, setIsOpenModal] = useState(false);
+
+  const showModal = () => setIsOpenModal(true);
+  const closeModal = () => setIsOpenModal(false);
+
   const dispatch = useAppDispatch();
 
   const { isLoading, success } = useAppSelector(selectFeedbackFormState);
@@ -47,30 +54,27 @@ export const FeedbackForm: FC = () => {
   const formik = useFormik<IFeedbackFormValues>(formikProps);
   const { isValid, submitForm, resetForm } = formik;
 
-  const showClearFormModal = useCallback(
-    () =>
-      dispatch(
-        showSharedModal({
-          title: "Ваше повідомлення досталене!" || "Очистити форму ?",
-          text: "Очистити форму ?",
-          confirmation: {
-            onConfirm: resetForm,
-          },
-        })
-      ),
-    [dispatch, resetForm]
-  );
+  const showClearFormModal = useCallback(() => {
+    showModal();
 
-  const showErrorModal = useCallback(
-    () =>
-      dispatch(
-        showSharedModal({
-          title: "Помилка при відправці повідомлення!",
-          alert: {},
-        })
-      ),
-    [dispatch]
-  );
+    // showSharedModal({
+    //   title: "Ваше повідомлення успішно досталено!" || "Очищення форми",
+    //   text: "Очистити форму ?" || "Ві дійсно хочете очистити форму ?",
+    //   confirmation: {
+    //     onConfirm: resetForm,
+    //   },
+    // }),
+  }, [resetForm]);
+
+  const showErrorModal = useCallback(() => {
+    showModal();
+
+    // showSharedModal({
+    //   title: "Сталася помилка при відправці повідомлення!",
+    //   text: "Повторіть спробу знову.",
+    //   alert: {},
+    // })
+  }, []);
 
   const onSubmitForm = useCallback(
     (e: FormEvent) => {
@@ -90,6 +94,10 @@ export const FeedbackForm: FC = () => {
 
   return (
     <>
+      <ModalWindow isOpen={isOpenModal} onClose={closeModal} isActivePortal>
+        <Confirmation onConfirm={showModal} onClose={closeModal}></Confirmation>
+        {/* <Alert onClose={closeModal}/> */}
+      </ModalWindow>
       <Heading
         className="default:text-2xl sm:text-4xl font-extrabold default:max-w-none"
         tagHeading={TagsHeading.H3}

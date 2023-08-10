@@ -1,28 +1,35 @@
-import React, { FC, useCallback } from "react";
+import React, { FC, ReactNode, useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { Button } from "src/components/Button";
 import { ButtonVariants } from "src/components/Button/types";
-import { IConfirmation } from "src/types/modal";
+import { T_PREFIX } from "..";
+import { MODAL_BUTTON_NAMES } from "../constants";
 
-const T_PREFIX = "modal-confirmation";
+export interface Props {
+  children?: ReactNode;
+  confirmButtonName?: string;
+  cancelButtonName?: string;
+  onConfirm: VoidFunction;
+  onClose: VoidFunction;
+}
 
-const DEFAULT_CONFIRM_BUTTON_NAME = "yes";
-const DEFAULT_CANCEL_BUTTON_NAME = "no";
-
-export const Confirmation: FC<IConfirmation> = ({
+export const Confirmation: FC<Props> = ({
   children,
-  confirmButtonName,
-  cancelButtonName,
+  confirmButtonName = MODAL_BUTTON_NAMES.YES,
+  cancelButtonName = MODAL_BUTTON_NAMES.NO,
   onConfirm,
   onClose,
 }) => {
   const { t } = useTranslation();
 
-  const confirm =
-    confirmButtonName || t(`${T_PREFIX} - ${DEFAULT_CONFIRM_BUTTON_NAME}`);
+  const confirmBtnTrnsKey = `${T_PREFIX} - ${confirmButtonName}`;
+  const cancelBtnTrnsKey = `${T_PREFIX} - ${cancelButtonName}`;
 
-  const cancel =
-    cancelButtonName || t(`${T_PREFIX} - ${DEFAULT_CANCEL_BUTTON_NAME}`);
+  const trnsConfirmBtn = t(confirmBtnTrnsKey);
+  const trnsCancelBtn = t(cancelBtnTrnsKey);
+
+  const trnsExistsConfirmBtn = trnsConfirmBtn !== confirmBtnTrnsKey;
+  const trnsExistsCancelBtn = trnsCancelBtn !== cancelBtnTrnsKey;
 
   const onApprove = useCallback(() => {
     onConfirm();
@@ -32,12 +39,16 @@ export const Confirmation: FC<IConfirmation> = ({
   return (
     <div>
       {children}
-      <div>
+      <div className="flex items-center">
         <Button variant={ButtonVariants.PRIMARY} onClick={onApprove}>
-          {confirm}
+          {trnsExistsConfirmBtn ? trnsConfirmBtn : confirmButtonName}
         </Button>
-        <Button variant={ButtonVariants.BORDERED_GRAY} onClick={onClose}>
-          {cancel}
+        <Button
+          className="ml-3"
+          variant={ButtonVariants.BORDERED_GRAY}
+          onClick={onClose}
+        >
+          {trnsExistsCancelBtn ? trnsCancelBtn : cancelButtonName}
         </Button>
       </div>
     </div>

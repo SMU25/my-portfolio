@@ -33,7 +33,7 @@ export const KeyboardInfoPopUp: FC<Props> = ({
     <ModalWindow
       className={cn("!absolute hidden sm:block", className)}
       isOpen={isOpen}
-      onCloseModal={onClose}
+      onClose={onClose}
       cookiesKeyModal={cookiesKeyPopUp}
       isActiveCloseClickOutside={false}
     >

@@ -32,6 +32,12 @@
   "bread-crumbs - blog": "Блог",
   "bread-crumbs - contacts": "Контакти",
 
+  "modal - ok-btn": "Ок",
+  "modal - yes-btn": "Так",
+  "modal - confirm-btn": "Підтвердити",
+  "modal - no-btn": "Ні",
+  "modal - cancel-btn": "Скасувати",
+
   "container-head - view-all-link": "Дивитися усі",
 
   "skills-and-technologies - title": "Використані технології та навички:",

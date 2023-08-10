@@ -1,28 +1,32 @@
-import React, { FC } from "react";
+import React, { FC, ReactNode } from "react";
 import { useTranslation } from "react-i18next";
 import { Button } from "src/components/Button";
 import { ButtonVariants } from "src/components/Button/types";
-import { IAlert } from "src/types/modal";
+import { T_PREFIX } from "..";
+import { MODAL_BUTTON_NAMES } from "../constants";
 
-const T_PREFIX = "modal-alert";
+export interface Props {
+  children?: ReactNode;
+  approvalButtonName?: string;
+  onClose: VoidFunction;
+}
 
-const DEFAULT_APPROVAL_BUTTON_NAME = "ok";
-
-export const Alert: FC<IAlert> = ({
+export const Alert: FC<Props> = ({
   children,
-  approvalButtonName,
+  approvalButtonName = MODAL_BUTTON_NAMES.OK,
   onClose,
 }) => {
   const { t } = useTranslation();
 
-  const approval =
-    approvalButtonName || t(`${T_PREFIX} - ${DEFAULT_APPROVAL_BUTTON_NAME}`);
+  const approvalBtnTrnsKey = `${T_PREFIX} - ${approvalButtonName}`;
+  const trnsApprovalBtn = t(approvalBtnTrnsKey);
+  const trnsExistsApprovalBtn = trnsApprovalBtn !== approvalBtnTrnsKey;
 
   return (
     <div>
       {children}
       <Button variant={ButtonVariants.PRIMARY} onClick={onClose}>
-        {approval}
+        {trnsExistsApprovalBtn ? trnsApprovalBtn : approvalButtonName}
       </Button>
     </div>
   );

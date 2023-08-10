@@ -1,78 +1,89 @@
-import React, { FC, useRef } from "react";
+import React, { FC, ReactNode, useRef } from "react";
+import { createPortal } from "react-dom";
 import cn from "classnames";
 import Cookies from "js-cookie";
 import { useClickOutside } from "src/hooks/useClickOutside";
 import { Button } from "src/components/Button";
-import { IModalState } from "src/types/modal";
 import { ReactComponent as Close } from "src/assets/icons/circle-xmark.svg";
-import { Alert } from "./templates/Alert";
-import { Confirmation } from "./templates/Confirmation";
 import { ButtonVariants } from "../Button/types";
 
 const ICON_CLOSE_SIZE = 30;
 
-interface Props extends IModalState {
-  onCloseModal: VoidFunction;
+const MODAL_ROOT = document.getElementById("modal-root");
+
+export const T_PREFIX = "modal";
+interface Props {
+  children?: ReactNode;
+  isOpen?: boolean;
+  isActivePortal?: boolean;
+  isShownOverlay?: boolean;
+  isActiveCloseClickOutside?: boolean;
+  cookiesKeyModal?: string;
+  className?: string;
+  title?: string;
+  text?: string;
+  onClose: VoidFunction;
 }
 
 export const ModalWindow: FC<Props> = ({
   children,
   className,
   isOpen,
+  isActivePortal,
   cookiesKeyModal,
-  isShownOverlay,
-  isActiveCloseClickOutside,
+  isShownOverlay = true,
+  isActiveCloseClickOutside = true,
   title,
   text,
-  onCloseModal,
-  alert,
-  confirmation,
+  onClose,
 }) => {
   const modalRef = useRef();
 
   const cookiesIsShownModal = Cookies.get(cookiesKeyModal);
   const isOpenModal = cookiesIsShownModal !== "false" && isOpen;
 
-  const onClose = () => {
-    onCloseModal();
+  const closeModal = () => {
+    onClose();
 
     if (cookiesKeyModal) {
       Cookies.set(cookiesKeyModal, "false");
     }
   };
 
-  useClickOutside(modalRef, onClose, isActiveCloseClickOutside);
+  useClickOutside(modalRef, closeModal, isActiveCloseClickOutside);
 
-  return (
+  const component = (
     <div
-      className={cn("invisible absolute top-0 left-0 w-full opacity-50 z-50", {
+      className={cn("invisible absolute top-0 left-0 w-full opacity-50 z-10", {
         "!visible !opacity-100": isOpenModal,
         "!fixed h-full bg-gray-lighter-opacity": isShownOverlay,
+        "!z-50": isActivePortal,
       })}
     >
       <div
         ref={modalRef}
         className={cn(
-          "invisible fixed top-1/4 translate-y-height-screen left-1/2 -translate-x-1/2 bg-white p-7 opacity-50 rounded-10 shadow-card-hard-gray z-40 transition-all duration-500",
+          "invisible fixed top-1/4 translate-y-height-screen left-1/2 -translate-x-1/2 bg-white p-7 opacity-50 rounded-10 shadow-card-hard-gray transition-all duration-500 z-10",
           className,
           {
             "!visible !translate-y-0 !opacity-100": isOpenModal,
+            "!z-50": isActivePortal,
           }
         )}
       >
         <Button
           className="absolute top-1 right-2"
           variant={ButtonVariants.SIMPLE_SECONDARY}
-          onClick={onClose}
+          onClick={closeModal}
         >
           <Close width={ICON_CLOSE_SIZE} height={ICON_CLOSE_SIZE} />
         </Button>
         {title && <h3 className="truncate">{title}</h3>}
         {text && <p>{text}</p>}
         {children}
-        {alert && <Alert onClose={onClose} {...alert} />}
-        {confirmation && <Confirmation onClose={onClose} {...confirmation} />}
       </div>
     </div>
   );
+
+  return isActivePortal ? createPortal(component, MODAL_ROOT) : component;
 };
