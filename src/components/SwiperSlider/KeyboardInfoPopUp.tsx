@@ -1,8 +1,11 @@
-import React, { FC, useState } from "react";
+import React, { FC } from "react";
 import cn from "classnames";
 import { useTranslation } from "react-i18next";
+import { useModal } from "src/hooks/useModal";
 import { ReactComponent as KeyboardArrows } from "src/assets/icons/keyboard-arrows.svg";
 import { ModalWindow } from "../ModalWindow";
+import { Alert } from "../ModalWindow/templates/Alert";
+import { ButtonVariants } from "../Button/types";
 
 const T_PREFIX = "swiper-keyboard-control-info";
 
@@ -21,29 +24,30 @@ export const KeyboardInfoPopUp: FC<Props> = ({
 }) => {
   const { t } = useTranslation();
 
-  const [isOpen, setIsOpen] = useState(isShown);
-
-  const onClose = () => {
-    if (isOpen) setIsOpen(false);
-  };
+  const { isOpenModal, closeModal } = useModal(isShown, cookiesKeyPopUp);
 
   if (!isShown) return null;
 
   return (
     <ModalWindow
       className={cn("!absolute hidden sm:block", className)}
-      isOpen={isOpen}
-      onClose={onClose}
-      cookiesKeyModal={cookiesKeyPopUp}
+      isOpen={isOpenModal}
+      onClose={closeModal}
+      isShownOverlay={false}
       isActiveCloseClickOutside={false}
     >
-      <div className="flex justify-center items-center w-112.5 px-6">
-        <KeyboardArrows className="min-w-11 w-11 h-11" />
-        <div className="min-w-5 w-5 h-0.5 bg-blue-light mx-4" />
-        <p className="text-blue-dark text-lg leading-6 font-bold">
-          {t(`${T_PREFIX} - ${INFO_TEXT}`)}
-        </p>
-      </div>
+      <Alert
+        approvalButtonVariant={ButtonVariants.SECONDARY}
+        onClose={closeModal}
+      >
+        <div className="flex justify-center items-center w-112.5 px-6">
+          <KeyboardArrows className="min-w-11 w-11 h-11" />
+          <div className="min-w-5 w-5 h-0.5 bg-blue-light mx-4" />
+          <p className="text-blue-dark text-lg leading-6 font-bold">
+            {t(`${T_PREFIX} - ${INFO_TEXT}`)}
+          </p>
+        </div>
+      </Alert>
     </ModalWindow>
   );
 };

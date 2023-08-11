@@ -9,6 +9,9 @@ export interface Props {
   children?: ReactNode;
   confirmButtonName?: string;
   cancelButtonName?: string;
+  confirmButtonVariant?: ButtonVariants;
+  cancelButtonVariant?: ButtonVariants;
+  isCloseAfterConfirm?: boolean;
   onConfirm: VoidFunction;
   onClose: VoidFunction;
 }
@@ -17,6 +20,9 @@ export const Confirmation: FC<Props> = ({
   children,
   confirmButtonName = MODAL_BUTTON_NAMES.YES,
   cancelButtonName = MODAL_BUTTON_NAMES.NO,
+  confirmButtonVariant = ButtonVariants.PRIMARY,
+  cancelButtonVariant = ButtonVariants.BORDERED_GRAY,
+  isCloseAfterConfirm = true,
   onConfirm,
   onClose,
 }) => {
@@ -33,19 +39,22 @@ export const Confirmation: FC<Props> = ({
 
   const onApprove = useCallback(() => {
     onConfirm();
-    onClose();
-  }, [onConfirm, onClose]);
+
+    if (isCloseAfterConfirm) {
+      onClose();
+    }
+  }, [onConfirm, onClose, isCloseAfterConfirm]);
 
   return (
     <div>
       {children}
       <div className="flex items-center">
-        <Button variant={ButtonVariants.PRIMARY} onClick={onApprove}>
+        <Button variant={confirmButtonVariant} onClick={onApprove}>
           {trnsExistsConfirmBtn ? trnsConfirmBtn : confirmButtonName}
         </Button>
         <Button
           className="ml-3"
-          variant={ButtonVariants.BORDERED_GRAY}
+          variant={cancelButtonVariant}
           onClick={onClose}
         >
           {trnsExistsCancelBtn ? trnsCancelBtn : cancelButtonName}

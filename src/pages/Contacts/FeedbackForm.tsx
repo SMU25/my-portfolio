@@ -3,6 +3,7 @@ import cn from "classnames";
 import { useTranslation } from "react-i18next";
 import { FormikProvider, useFormik } from "formik";
 import { useAppDispatch, useAppSelector } from "src/hooks/redux";
+import { useModal } from "src/hooks/useModal";
 import { sendFeedbackForm } from "src/redux/feedbackForm/action";
 import { selectFeedbackFormState } from "src/redux/feedbackForm/selectors";
 import { ModalWindow } from "src/components/ModalWindow";
@@ -32,10 +33,7 @@ const CLEAR_BUTTON_NAME = "clear-btn";
 export const FeedbackForm: FC = () => {
   const { t } = useTranslation();
 
-  const [isOpenModal, setIsOpenModal] = useState(false);
-
-  const showModal = () => setIsOpenModal(true);
-  const closeModal = () => setIsOpenModal(false);
+  const { isOpenModal, closeModal, openModal } = useModal();
 
   const dispatch = useAppDispatch();
 
@@ -55,7 +53,7 @@ export const FeedbackForm: FC = () => {
   const { isValid, submitForm, resetForm } = formik;
 
   const showClearFormModal = useCallback(() => {
-    showModal();
+    openModal();
 
     // showSharedModal({
     //   title: "Ваше повідомлення успішно досталено!" || "Очищення форми",
@@ -64,17 +62,17 @@ export const FeedbackForm: FC = () => {
     //     onConfirm: resetForm,
     //   },
     // }),
-  }, [resetForm]);
+  }, [openModal]);
 
   const showErrorModal = useCallback(() => {
-    showModal();
+    openModal();
 
     // showSharedModal({
     //   title: "Сталася помилка при відправці повідомлення!",
     //   text: "Повторіть спробу знову.",
     //   alert: {},
     // })
-  }, []);
+  }, [openModal]);
 
   const onSubmitForm = useCallback(
     (e: FormEvent) => {
@@ -84,18 +82,25 @@ export const FeedbackForm: FC = () => {
     [submitForm]
   );
 
-  useEffect(() => {
-    if (success) {
-      showClearFormModal();
-    } else if (success !== null) {
-      showErrorModal();
-    }
-  }, [showClearFormModal, showErrorModal, success]);
+  // useEffect(() => {
+  //   if (success) {
+  //     showClearFormModal();
+  //   } else if (success !== null) {
+  //     showErrorModal();
+  //   }
+  // }, [showClearFormModal, showErrorModal, success]);
 
   return (
     <>
-      <ModalWindow isOpen={isOpenModal} onClose={closeModal} isActivePortal>
-        <Confirmation onConfirm={showModal} onClose={closeModal}></Confirmation>
+      <ModalWindow
+        // change
+        // isShownOverlay={false}
+        //
+        isOpen={isOpenModal}
+        onClose={closeModal}
+        isActivePortal
+      >
+        <Confirmation onConfirm={resetForm} onClose={closeModal}></Confirmation>
         {/* <Alert onClose={closeModal}/> */}
       </ModalWindow>
       <Heading

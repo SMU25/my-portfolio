@@ -1,13 +1,14 @@
 import { useEffect, useCallback, RefObject } from "react";
+import { ROOT_ELEMENT, MODAL_ROOT_ELEMENT } from "src/constants/rootElements";
 
 export const useClickOutside = (
-  ref: RefObject<any>,
+  ref: RefObject<HTMLElement>,
   callback: VoidFunction,
   isActive: boolean = true
 ) => {
   const handleClick: EventListener = useCallback(
     ({ target }) => {
-      if (ref.current && !ref.current.contains(target)) {
+      if (ref.current && !ref.current.contains(target as Node)) {
         callback();
       }
     },
@@ -16,11 +17,12 @@ export const useClickOutside = (
 
   useEffect(() => {
     if (isActive) {
-      document.getElementById("root").addEventListener("click", handleClick);
+      ROOT_ELEMENT.addEventListener("click", handleClick);
+      MODAL_ROOT_ELEMENT.addEventListener("click", handleClick);
+
       return () => {
-        document
-          .getElementById("root")
-          .removeEventListener("click", handleClick);
+        ROOT_ELEMENT.removeEventListener("click", handleClick);
+        MODAL_ROOT_ELEMENT.removeEventListener("click", handleClick);
       };
     }
   }, [isActive, handleClick]);

@@ -17,12 +17,11 @@ const HEADING = "title";
 
 export const RecentPosts: FC = () => {
   const { t } = useTranslation();
-  
+
   const dispatch = useAppDispatch();
 
   const isLoading = useAppSelector(selectIsLoading);
   const recentPosts = useAppSelector(selectRecentPosts);
-
 
   useEffect(() => {
     if (!recentPosts) {

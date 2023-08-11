@@ -8,12 +8,14 @@ import { MODAL_BUTTON_NAMES } from "../constants";
 export interface Props {
   children?: ReactNode;
   approvalButtonName?: string;
+  approvalButtonVariant?: ButtonVariants;
   onClose: VoidFunction;
 }
 
 export const Alert: FC<Props> = ({
   children,
   approvalButtonName = MODAL_BUTTON_NAMES.OK,
+  approvalButtonVariant = ButtonVariants.PRIMARY,
   onClose,
 }) => {
   const { t } = useTranslation();
@@ -23,9 +25,13 @@ export const Alert: FC<Props> = ({
   const trnsExistsApprovalBtn = trnsApprovalBtn !== approvalBtnTrnsKey;
 
   return (
-    <div>
+    <div className="flex flex-col items-center justify-center">
       {children}
-      <Button variant={ButtonVariants.PRIMARY} onClick={onClose}>
+      <Button
+        className="md:min-w-30 mt-3 default:py-1 md:py-2.5"
+        variant={approvalButtonVariant}
+        onClick={onClose}
+      >
         {trnsExistsApprovalBtn ? trnsApprovalBtn : approvalButtonName}
       </Button>
     </div>
