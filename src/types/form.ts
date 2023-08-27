@@ -10,7 +10,7 @@ export interface IFormField {
   id?: string;
   name: string;
   label?: string;
-  type: string;
+  type?: string;
   placeholder?: string;
   isShownDefaultPlaceholder?: boolean;
   className?: string;
@@ -25,7 +25,7 @@ export interface IRenderFormField extends IFormField {
 }
 
 export interface IFeedbackFormValues {
-  userName: string;
+  firstName: string;
   lastName: string;
   phone: string;
   email: string;

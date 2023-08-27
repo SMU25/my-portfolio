@@ -1,5 +1,6 @@
 import * as yup from "yup";
 import { Input } from "src/components/FormField/Input";
+import { Textarea } from "src/components/FormField/Textarea";
 import {
   EMAIL_VALIDATION_SCHEMA,
   NAME_VALIDATION_SCHEMA,
@@ -102,6 +103,12 @@ export const FEEDBACK_FIELDS = [
     label: "email",
     type: "email",
     component: Input,
+  },
+  {
+    name: "message",
+    label: "message",
+    component: Textarea,
+    containerClassName: "col-span-2",
   },
 ];
 

@@ -12,7 +12,6 @@ import { Alert } from "src/components/ModalWindow/templates/Alert";
 import { Heading } from "src/components/Heading";
 import { TagsHeading } from "src/components/Heading/types";
 import { RenderFormField } from "src/components/RenderFormField";
-import { Textarea } from "src/components/FormField/Textarea";
 import { Button } from "src/components/Button";
 import { ButtonVariants } from "src/components/Button/types";
 import { getFormikDefaultInitialValues } from "src/utils/getFormikDefaultInitialValues";
@@ -26,7 +25,6 @@ const DEFAULT_BUTTON_CLASSNAME =
 const T_PREFIX = "feedback";
 
 const HEADING = "title";
-const MESSAGE_FIELD_NAME = "message";
 const SEND_BUTTON_NAME = "send-btn";
 const CLEAR_BUTTON_NAME = "clear-btn";
 const SUCCESSFUL_SEND_FORM_MODAL_TITLE = "successful-send-form-modal-title";
@@ -47,10 +45,8 @@ export const FeedbackForm: FC = () => {
   const { isLoading, success } = useAppSelector(selectFeedbackFormState);
 
   const formikProps = {
-    initialValues: getFormikDefaultInitialValues<IFeedbackFormValues>(
-      FEEDBACK_FIELDS,
-      MESSAGE_FIELD_NAME
-    ),
+    initialValues:
+      getFormikDefaultInitialValues<IFeedbackFormValues>(FEEDBACK_FIELDS),
     validationSchema: FEEDBACK_VALIDATION_SCHEMA,
     onSubmit: (values: IFeedbackFormValues) =>
       dispatch(
@@ -118,11 +114,6 @@ export const FeedbackForm: FC = () => {
           <div className="grid grid-cols-1 xs:grid-cols-2 gap-y-4.5 sm:gap-y-5.5 md:gap-y-6 gap-x-6 md:gap-x-8 lg:gap-x-13.5 mt-3.5 xs:mt-4 sm:mt-6 md:mt-7.5">
             <RenderFormField fields={FEEDBACK_FIELDS} />
           </div>
-          <Textarea
-            containerClassName="mt-6 sm:mt-7 md:mt-7.5"
-            name={MESSAGE_FIELD_NAME}
-            label={MESSAGE_FIELD_NAME}
-          />
           {/* <ReCaptcha className="mt-4.5 xs:mt-6 sm:mt-8 md:mt-10" formik={formik} /> */}
           <div className="flex flex-col xs:flex-row mt-4.5 xs:mt-6 sm:mt-8 md:mt-10">
             <Button
