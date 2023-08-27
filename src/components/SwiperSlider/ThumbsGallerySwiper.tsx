@@ -23,8 +23,8 @@ interface Props
   > {
   mainSwiperClassName?: string;
   miniSwiperClassName?: string;
-  customSettingsMainSwiper?: SwiperProps;
-  customSettingsThumbsSwiper?: SwiperProps;
+  customMainSwiperSettings?: SwiperProps;
+  customThumbsSwiperSettings?: SwiperProps;
   isShownNavBtnsMainSwiper?: boolean;
   isShownNavBtnsThumbsSwiper?: boolean;
   setActiveSlideIndex?: setActiveIndex;
@@ -35,8 +35,8 @@ export const ThumbsGallerySwiper: FC<Props> = ({
   containerClassName,
   mainSwiperClassName,
   miniSwiperClassName,
-  customSettingsMainSwiper,
-  customSettingsThumbsSwiper,
+  customMainSwiperSettings,
+  customThumbsSwiperSettings,
   isShownNavBtnsMainSwiper,
   isShownNavBtnsThumbsSwiper,
   isShownKeyboardInfoPopUp,
@@ -46,9 +46,9 @@ export const ThumbsGallerySwiper: FC<Props> = ({
   const [thumbsSwiper, setThumbsSwiper] = useState<SwiperCore>();
 
   const settingsMainSwiper =
-    customSettingsMainSwiper || DEFAULT_GALLERY_MAIN_SWIPER_SETTINGS;
+    customMainSwiperSettings || DEFAULT_GALLERY_MAIN_SWIPER_SETTINGS;
   const settingsThumbsSwiper =
-    customSettingsThumbsSwiper || DEFAULT_GALLERY_THUMBS_SWIPER_SETTINGS;
+    customThumbsSwiperSettings || DEFAULT_GALLERY_THUMBS_SWIPER_SETTINGS;
 
   return (
     <div className={cn("relative", containerClassName)}>
