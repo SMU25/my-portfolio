@@ -1,19 +1,26 @@
-import React, { FC, ReactNode } from "react";
+import React, { FC } from "react";
+import cn from "classnames";
 import { useTranslation } from "react-i18next";
 import { Button } from "src/components/Button";
 import { ButtonVariants } from "src/components/Button/types";
 import { T_PREFIX } from "..";
-import { MODAL_BUTTON_NAMES } from "../constants";
+import {
+  DEFAULT_CONTAINER_BUTTONS_CLASSNAME,
+  DEFAULT_MODAL_BUTTON_CLASSNAME,
+  MODAL_BUTTON_NAMES,
+} from "../constants";
 
 export interface Props {
-  children?: ReactNode;
+  className?: string;
+  approvalButtonClassName?: string;
   approvalButtonName?: string;
   approvalButtonVariant?: ButtonVariants;
   onClose: VoidFunction;
 }
 
 export const Alert: FC<Props> = ({
-  children,
+  className,
+  approvalButtonClassName,
   approvalButtonName = MODAL_BUTTON_NAMES.OK,
   approvalButtonVariant = ButtonVariants.PRIMARY,
   onClose,
@@ -25,10 +32,11 @@ export const Alert: FC<Props> = ({
   const trnsExistsApprovalBtn = trnsApprovalBtn !== approvalBtnTrnsKey;
 
   return (
-    <div className="flex flex-col items-center justify-center">
-      {children}
+    <div
+      className={cn("flex-col", DEFAULT_CONTAINER_BUTTONS_CLASSNAME, className)}
+    >
       <Button
-        className="md:min-w-30 mt-3 default:py-1 md:py-2.5"
+        className={cn(DEFAULT_MODAL_BUTTON_CLASSNAME, approvalButtonClassName)}
         variant={approvalButtonVariant}
         onClick={onClose}
       >

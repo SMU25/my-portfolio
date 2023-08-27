@@ -30,18 +30,18 @@ const MenuItem: FC<Omit<IMenuItem, "id">> = ({ name, icon: Icon }) => {
     <Link
       href={path}
       className={cn(
-        "md:ml-8 first:ml-0 transition ease-in-out duration-200 hover:scale-110",
+        "md:ml-8 first:ml-0 transition ease-in-out duration-200 xs:hover:scale-110",
         {
           "text-red-primary": isActiveLink,
         }
       )}
     >
-      <li className="flex items-center flex-col md:flex-row capitalize text-sm xs:text-base font-medium leading-7">
+      <li className="flex items-center flex-col md:flex-row uppercase text-sm xs:text-base font-medium leading-7">
         {Icon && (
           <Icon
             width={ICON_SIZE}
             height={ICON_SIZE}
-            className={cn("md:mr-1.5", {
+            className={cn("mb-0.5 xs:mb-1 md:mb-0 md:mr-1.5", {
               "fill-g-red-primary": isActiveLink,
             })}
           />

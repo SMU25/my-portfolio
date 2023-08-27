@@ -2,9 +2,11 @@ import React, { FC, ReactNode, useRef } from "react";
 import { createPortal } from "react-dom";
 import cn from "classnames";
 import { useClickOutside } from "src/hooks/useClickOutside";
-import { Button } from "src/components/Button";
 import { ReactComponent as Close } from "src/assets/icons/circle-xmark.svg";
 import { MODAL_ROOT_ELEMENT } from "src/constants/rootElements";
+import { Heading } from "../Heading";
+import { TagsHeading } from "../Heading/types";
+import { Button } from "../Button";
 import { ButtonVariants } from "../Button/types";
 
 const ICON_CLOSE_SIZE = 30;
@@ -35,7 +37,8 @@ export const ModalWindow: FC<Props> = ({
 }) => {
   const modalRef = useRef(null);
 
-  useClickOutside(modalRef, onClose, isActiveCloseClickOutside);
+  const isActiveClickOutside = isOpen && isActiveCloseClickOutside;
+  useClickOutside(modalRef, onClose, isActiveClickOutside);
 
   const component = (
     <div
@@ -48,24 +51,39 @@ export const ModalWindow: FC<Props> = ({
       <div
         ref={modalRef}
         className={cn(
-          "invisible fixed top-1/4 translate-y-height-screen left-1/2 -translate-x-1/2 bg-white p-7 opacity-50 rounded-10 shadow-card-hard-gray transition-all duration-500 z-10",
+          "invisible fixed top-1/4 translate-y-height-screen left-1/2 -translate-x-1/2 scale-0 min-w-9/10 xs:min-w-4/5 md:min-w-2/3 gl:min-w-1/2 bg-white pt-2.5 pb-5 xs:pb-7 sm:pb-8 px-3 opacity-50 rounded-10 shadow-card-hard-gray transition-all duration-500 z-10",
           className,
           {
-            "!visible !translate-y-0 !opacity-100": isOpen,
+            "!visible !translate-y-0 !scale-100 !opacity-100": isOpen,
             "!z-50": isActivePortal,
           }
         )}
       >
-        <Button
-          className="absolute top-1 right-2"
-          variant={ButtonVariants.SIMPLE_SECONDARY}
-          onClick={onClose}
-        >
-          <Close width={ICON_CLOSE_SIZE} height={ICON_CLOSE_SIZE} />
-        </Button>
-        {title && <h3 className="truncate">{title}</h3>}
-        {text && <p>{text}</p>}
-        {children}
+        <div className="w-full flex justify-end">
+          <Button
+            className="default:p-0"
+            variant={ButtonVariants.SIMPLE_SECONDARY}
+            onClick={onClose}
+          >
+            <Close width={ICON_CLOSE_SIZE} height={ICON_CLOSE_SIZE} />
+          </Button>
+        </div>
+        <div className="mt-1 xs:mt-2 lg:mt-1 px-5 lg:px-10 text-center">
+          {title && (
+            <Heading
+              className="text-lg xs:text-xl sm:text-2xl md:text-28 leading-6 xs:leading-7 sm:leading-8 md:leading-8.5"
+              tagHeading={TagsHeading.H4}
+            >
+              {title}
+            </Heading>
+          )}
+          {text && (
+            <p className="mt-1 xs:mt-1.5 md:mt-2 sm:text-lg md:text-xl leading-6.5">
+              {text}
+            </p>
+          )}
+          {children}
+        </div>
       </div>
     </div>
   );

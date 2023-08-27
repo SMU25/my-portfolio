@@ -1,4 +1,4 @@
-import React, { FC, FormEvent, useState, useEffect, useCallback } from "react";
+import React, { FC, FormEvent, useCallback } from "react";
 import cn from "classnames";
 import { useTranslation } from "react-i18next";
 import { FormikProvider, useFormik } from "formik";
@@ -29,11 +29,18 @@ const HEADING = "title";
 const MESSAGE_FIELD_NAME = "message";
 const SEND_BUTTON_NAME = "send-btn";
 const CLEAR_BUTTON_NAME = "clear-btn";
+const SUCCESSFUL_SEND_FORM_MODAL_TITLE = "successful-send-form-modal-title";
+const SUCCESSFUL_SEND_FORM_MODAL_TEXT = "successful-send-form-modal-text";
+const ERROR_SEND_FORM_MODAL_TITLE = "error-send-form-modal-title";
+const ERROR_SEND_FORM_MODAL_TEXT = "error-send-form-modal-text";
+const CLEAR_FORM_MODAL_TITLE = "clear-form-modal-title";
+const CLEAR_FORM_MODAL_TEXT = "clear-form-modal-text";
 
 export const FeedbackForm: FC = () => {
   const { t } = useTranslation();
 
-  const { isOpenModal, closeModal, openModal } = useModal();
+  const sendFormModal = useModal();
+  const clearFormModal = useModal();
 
   const dispatch = useAppDispatch();
 
@@ -46,33 +53,13 @@ export const FeedbackForm: FC = () => {
     ),
     validationSchema: FEEDBACK_VALIDATION_SCHEMA,
     onSubmit: (values: IFeedbackFormValues) =>
-      dispatch(sendFeedbackForm(values)),
+      dispatch(
+        sendFeedbackForm({ values, onFinally: sendFormModal.openModal })
+      ),
   };
 
   const formik = useFormik<IFeedbackFormValues>(formikProps);
   const { isValid, submitForm, resetForm } = formik;
-
-  const showClearFormModal = useCallback(() => {
-    openModal();
-
-    // showSharedModal({
-    //   title: "Ваше повідомлення успішно досталено!" || "Очищення форми",
-    //   text: "Очистити форму ?" || "Ві дійсно хочете очистити форму ?",
-    //   confirmation: {
-    //     onConfirm: resetForm,
-    //   },
-    // }),
-  }, [openModal]);
-
-  const showErrorModal = useCallback(() => {
-    openModal();
-
-    // showSharedModal({
-    //   title: "Сталася помилка при відправці повідомлення!",
-    //   text: "Повторіть спробу знову.",
-    //   alert: {},
-    // })
-  }, [openModal]);
 
   const onSubmitForm = useCallback(
     (e: FormEvent) => {
@@ -82,29 +69,46 @@ export const FeedbackForm: FC = () => {
     [submitForm]
   );
 
-  // useEffect(() => {
-  //   if (success) {
-  //     showClearFormModal();
-  //   } else if (success !== null) {
-  //     showErrorModal();
-  //   }
-  // }, [showClearFormModal, showErrorModal, success]);
+  const sendFormModalTitle = success
+    ? SUCCESSFUL_SEND_FORM_MODAL_TITLE
+    : ERROR_SEND_FORM_MODAL_TITLE;
+
+  const sendFormModalText = success
+    ? SUCCESSFUL_SEND_FORM_MODAL_TEXT
+    : ERROR_SEND_FORM_MODAL_TEXT;
 
   return (
     <>
       <ModalWindow
-        // change
-        // isShownOverlay={false}
-        //
-        isOpen={isOpenModal}
-        onClose={closeModal}
+        title={t(`${T_PREFIX} - ${sendFormModalTitle}`)}
+        text={t(`${T_PREFIX} - ${sendFormModalText}`)}
+        isOpen={sendFormModal.isOpenModal}
+        onClose={sendFormModal.closeModal}
         isActivePortal
       >
-        <Confirmation onConfirm={resetForm} onClose={closeModal}></Confirmation>
-        {/* <Alert onClose={closeModal}/> */}
+        {success ? (
+          <Confirmation
+            onConfirm={resetForm}
+            onClose={sendFormModal.closeModal}
+          />
+        ) : (
+          <Alert onClose={sendFormModal.closeModal} />
+        )}
+      </ModalWindow>
+      <ModalWindow
+        title={t(`${T_PREFIX} - ${CLEAR_FORM_MODAL_TITLE}`)}
+        text={t(`${T_PREFIX} - ${CLEAR_FORM_MODAL_TEXT}`)}
+        isOpen={clearFormModal.isOpenModal}
+        onClose={clearFormModal.closeModal}
+        isActivePortal
+      >
+        <Confirmation
+          onConfirm={resetForm}
+          onClose={clearFormModal.closeModal}
+        />
       </ModalWindow>
       <Heading
-        className="default:text-2xl sm:text-4xl font-extrabold default:max-w-none"
+        className="default:text-2xl sm:text-4xl default:font-bold default:max-w-none"
         tagHeading={TagsHeading.H3}
       >
         {t(`${T_PREFIX} - ${HEADING}`)}
@@ -141,7 +145,7 @@ export const FeedbackForm: FC = () => {
                 DEFAULT_BUTTON_CLASSNAME
               )}
               variant={ButtonVariants.BORDERED_BLACK_DARK}
-              onClick={showClearFormModal}
+              onClick={clearFormModal.openModal}
             >
               {t(`${T_PREFIX} - ${CLEAR_BUTTON_NAME}`)}
             </Button>

@@ -6,7 +6,7 @@ import { IFormField } from "src/types/form";
 import { FormField } from ".";
 import {
   FORM_FIELD_PLACEHOLDER,
-  DEFAULT_CLASSNAME_TEXT_FIELD,
+  DEFAULT_TEXT_FIELD_CLASSNAME,
   TEXT_FIELD_STYLE_VARIANTS,
 } from "./constants";
 import { TextFieldVariants } from "./types";
@@ -44,7 +44,7 @@ export const Input: FC<IFormField> = ({
       <input
         id={fieldId}
         className={cn(
-          DEFAULT_CLASSNAME_TEXT_FIELD,
+          DEFAULT_TEXT_FIELD_CLASSNAME,
           TEXT_FIELD_STYLE_VARIANTS[variant],
           className,
           { "border-red-primary": isShownError }

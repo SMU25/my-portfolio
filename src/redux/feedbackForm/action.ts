@@ -8,9 +8,14 @@ import { IFeedbackFormValues } from "src/types/form";
 
 export const FEEDBACK_FORM_SLICE_NAME = "feedbackForm";
 
+interface FeedbackFormParams {
+  values: IFeedbackFormValues;
+  onFinally: VoidFunction;
+}
+
 export const sendFeedbackForm = createAsyncThunk(
   `${FEEDBACK_FORM_SLICE_NAME}/fetchFeedbackForm`,
-  async (values: IFeedbackFormValues, { rejectWithValue }) => {
+  async ({ values, onFinally }: FeedbackFormParams, { rejectWithValue }) => {
     try {
       // const data = await emailjs.send(
       //   SERVICE_ID,
@@ -24,6 +29,8 @@ export const sendFeedbackForm = createAsyncThunk(
       console.log(values);
     } catch ({ message }) {
       return rejectWithValue(message);
+    } finally {
+      onFinally();
     }
   }
 );

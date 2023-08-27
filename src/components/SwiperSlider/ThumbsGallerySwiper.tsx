@@ -7,8 +7,8 @@ import "swiper/css/free-mode";
 import { KeyboardInfoPopUp } from "./KeyboardInfoPopUp";
 import { CustomSwiperProps, SwiperSlider } from ".";
 import {
-  DEFAULT_SETTINGS_GALLERY_MAIN_SWIPER,
-  DEFAULT_SETTINGS_GALLERY_THUMBS_SWIPER,
+  DEFAULT_GALLERY_MAIN_SWIPER_SETTINGS,
+  DEFAULT_GALLERY_THUMBS_SWIPER_SETTINGS,
 } from "./constants";
 import { setActiveIndex } from "./types";
 
@@ -46,9 +46,9 @@ export const ThumbsGallerySwiper: FC<Props> = ({
   const [thumbsSwiper, setThumbsSwiper] = useState<SwiperCore>();
 
   const settingsMainSwiper =
-    customSettingsMainSwiper || DEFAULT_SETTINGS_GALLERY_MAIN_SWIPER;
+    customSettingsMainSwiper || DEFAULT_GALLERY_MAIN_SWIPER_SETTINGS;
   const settingsThumbsSwiper =
-    customSettingsThumbsSwiper || DEFAULT_SETTINGS_GALLERY_THUMBS_SWIPER;
+    customSettingsThumbsSwiper || DEFAULT_GALLERY_THUMBS_SWIPER_SETTINGS;
 
   return (
     <div className={cn("relative", containerClassName)}>

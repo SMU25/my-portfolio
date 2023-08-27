@@ -80,5 +80,11 @@
 
   "feedback - title": "Зворотній зв'язок",
   "feedback - send-btn": "Надіслати",
-  "feedback - clear-btn": "Очистити"
+  "feedback - clear-btn": "Очистити",
+  "feedback - successful-send-form-modal-title": "Ваше повідомлення успішно надіслане 😎",
+  "feedback - successful-send-form-modal-text": "Бажаєте очистити форму ?",
+  "feedback - error-send-form-modal-title": "Ой... Виникла помилка при відправці повідомлення 😔",
+  "feedback - error-send-form-modal-text": "Повторіть, будь ласка, спробу знову!",
+  "feedback - clear-form-modal-title": "Очищення форми",
+  "feedback - clear-form-modal-text": "Ви дійсно бажаєте очистити форму ?"
 }

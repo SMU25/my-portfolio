@@ -1,12 +1,17 @@
-import React, { FC, ReactNode, useCallback } from "react";
+import React, { FC, useCallback } from "react";
+import cn from "classnames";
 import { useTranslation } from "react-i18next";
 import { Button } from "src/components/Button";
 import { ButtonVariants } from "src/components/Button/types";
 import { T_PREFIX } from "..";
-import { MODAL_BUTTON_NAMES } from "../constants";
+import {
+  DEFAULT_CONTAINER_BUTTONS_CLASSNAME,
+  DEFAULT_MODAL_BUTTON_CLASSNAME,
+  MODAL_BUTTON_NAMES,
+} from "../constants";
 
 export interface Props {
-  children?: ReactNode;
+  className?: string;
   confirmButtonName?: string;
   cancelButtonName?: string;
   confirmButtonVariant?: ButtonVariants;
@@ -17,7 +22,7 @@ export interface Props {
 }
 
 export const Confirmation: FC<Props> = ({
-  children,
+  className,
   confirmButtonName = MODAL_BUTTON_NAMES.YES,
   cancelButtonName = MODAL_BUTTON_NAMES.NO,
   confirmButtonVariant = ButtonVariants.PRIMARY,
@@ -46,20 +51,21 @@ export const Confirmation: FC<Props> = ({
   }, [onConfirm, onClose, isCloseAfterConfirm]);
 
   return (
-    <div>
-      {children}
-      <div className="flex items-center">
-        <Button variant={confirmButtonVariant} onClick={onApprove}>
-          {trnsExistsConfirmBtn ? trnsConfirmBtn : confirmButtonName}
-        </Button>
-        <Button
-          className="ml-3"
-          variant={cancelButtonVariant}
-          onClick={onClose}
-        >
-          {trnsExistsCancelBtn ? trnsCancelBtn : cancelButtonName}
-        </Button>
-      </div>
+    <div className={cn(DEFAULT_CONTAINER_BUTTONS_CLASSNAME, className)}>
+      <Button
+        className={DEFAULT_MODAL_BUTTON_CLASSNAME}
+        variant={confirmButtonVariant}
+        onClick={onApprove}
+      >
+        {trnsExistsConfirmBtn ? trnsConfirmBtn : confirmButtonName}
+      </Button>
+      <Button
+        className={cn("ml-4 !py-2 md:!py-3", DEFAULT_MODAL_BUTTON_CLASSNAME)}
+        variant={cancelButtonVariant}
+        onClick={onClose}
+      >
+        {trnsExistsCancelBtn ? trnsCancelBtn : cancelButtonName}
+      </Button>
     </div>
   );
 };

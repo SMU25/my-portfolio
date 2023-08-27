@@ -38,7 +38,7 @@ export const DEFAULT_SETTINGS: SwiperProps = {
   },
 };
 
-export const DEFAULT_SETTINGS_GALLERY_MAIN_SWIPER: SwiperProps = {
+export const DEFAULT_GALLERY_MAIN_SWIPER_SETTINGS: SwiperProps = {
   slidesPerView: 1,
   spaceBetween: 16,
   keyboard: true,
@@ -47,7 +47,7 @@ export const DEFAULT_SETTINGS_GALLERY_MAIN_SWIPER: SwiperProps = {
   modules: [Autoplay, Keyboard, FreeMode, Thumbs, Controller, Pagination],
 };
 
-export const DEFAULT_SETTINGS_GALLERY_THUMBS_SWIPER: SwiperProps = {
+export const DEFAULT_GALLERY_THUMBS_SWIPER_SETTINGS: SwiperProps = {
   slidesPerView: 5,
   spaceBetween: 12,
   slideToClickedSlide: true,

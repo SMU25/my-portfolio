@@ -9,14 +9,12 @@ export const useModal = (isOpen: boolean = false, cookiesKeyModal?: string) => {
   );
 
   const closeModal = useCallback(() => {
-    if (isOpenModal) {
-      setIsOpenModal(false);
+    setIsOpenModal(false);
 
-      if (cookiesKeyModal) {
-        Cookies.set(cookiesKeyModal, "false");
-      }
+    if (cookiesKeyModal) {
+      Cookies.set(cookiesKeyModal, "false");
     }
-  }, [isOpenModal, cookiesKeyModal]);
+  }, [cookiesKeyModal]);
 
   const openModal = () => setIsOpenModal(true);
 

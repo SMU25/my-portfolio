@@ -18,7 +18,7 @@ import { NavigationButton } from "../Button/NavigationButton";
 
 const COOKIES_KEY_KEYBOARD_POPUP = "IS_SHOWN_KEYBOARD_INFO_SLIDER_POPUP";
 
-const DEFAULT_CLASSNAME_NAVIGATION_BUTTON = "absolute top-1/2 -translate-y-1/2";
+const DEFAULT_NAVIGATION_BUTTON_CLASSNAME = "absolute top-1/2 -translate-y-1/2";
 
 export interface CustomSwiperProps extends SwiperProps {
   items: ReactElement[];
@@ -101,7 +101,7 @@ export const SwiperSlider: FC<CustomSwiperProps> = ({
           <NavigationButton
             className={cn(
               "rotate-180 -left-1 xs:-left-4 sm:-left-10",
-              DEFAULT_CLASSNAME_NAVIGATION_BUTTON
+              DEFAULT_NAVIGATION_BUTTON_CLASSNAME
             )}
             onClick={slidePrev}
             isDisabled={swiper?.isBeginning}
@@ -109,7 +109,7 @@ export const SwiperSlider: FC<CustomSwiperProps> = ({
           <NavigationButton
             className={cn(
               "-right-1 xs:-right-4 sm:-right-10",
-              DEFAULT_CLASSNAME_NAVIGATION_BUTTON
+              DEFAULT_NAVIGATION_BUTTON_CLASSNAME
             )}
             onClick={slideNext}
             isDisabled={swiper?.isEnd}

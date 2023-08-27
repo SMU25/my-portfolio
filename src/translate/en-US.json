@@ -84,5 +84,11 @@
 
   "feedback - title": "Feedback",
   "feedback - send-btn": "Send",
-  "feedback - clear-btn": "Clear"
+  "feedback - clear-btn": "Clear",
+  "feedback - successful-send-form-modal-title": "Your message has been successfully sent 😎",
+  "feedback - successful-send-form-modal-text": "Do you want to clear the form?",
+  "feedback - error-send-form-modal-title": "Oops... An error occurred while sending the message 😔",
+  "feedback - error-send-form-modal-text": "Please try again!",
+  "feedback - clear-form-modal-title": "Clearing the form",
+  "feedback - clear-form-modal-text": "Are you sure you want to clear the form ?"
 }
