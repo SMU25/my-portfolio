@@ -19,7 +19,7 @@ export const Heading: FC<Props> = ({
   return (
     <Heading
       className={cn(
-        "font-bold",
+        "font-e-Ukraine font-bold",
         DEFAULT_HEADING_CLASSNAMES[tagHeading],
         className
       )}

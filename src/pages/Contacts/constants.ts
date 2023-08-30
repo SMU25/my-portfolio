@@ -30,7 +30,7 @@ export const SECTIONS = [
   },
 ];
 
-export const CONTACTS_ITEMS = [
+export const CONTACT_ITEMS = [
   {
     id: 1,
     title: "phone",
@@ -108,7 +108,7 @@ export const FEEDBACK_FIELDS = [
     name: "message",
     label: "message",
     component: Textarea,
-    containerClassName: "col-span-2",
+    containerClassName: "xs:col-span-2",
   },
 ];
 

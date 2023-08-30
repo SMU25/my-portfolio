@@ -12,7 +12,7 @@ export const RESUME_LINKS = {
 
 const PROFILE_IMG = {
   SRC: "https://lh3.googleusercontent.com/a/AAcHTteSC1NOcktlHaJMM7gjdTAzc_FNG60x6ujublZ_n1CAyKaH=s288-c-no",
-  ALT_TEXT: "Image of Oleksandr Myronchuk",
+  ALT_TEXT: "Oleksandr Myronchuk",
 };
 
 const T_PREFIX = "about-my-self";
@@ -45,7 +45,7 @@ export const AboutMySelf: FC = () => {
         {/* В залежності від мови, таке і резюме повинно завантажуватися
          */}
         <a href={resumeLink} target="_blank" rel="noreferrer">
-          <Button className="mt-6.5 sm:mt-9.5 text-xl !rounded-full">
+          <Button className="max-w-72.5 w-full mt-6.5 sm:mt-9.5 text-xl !rounded-full">
             {t(`${T_PREFIX} - ${VIEW_RESUME_BUTTON_NAME}`)}
           </Button>
         </a>

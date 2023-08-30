@@ -19,9 +19,9 @@ export const PHONE_VALIDATION_SCHEMA = yup
     i18nKey: "min-symbols",
     i18nParams: { count: 9 },
   })
-  .max(15, {
+  .max(19, {
     i18nKey: "max-symbols",
-    i18nParams: { count: 15 },
+    i18nParams: { count: 19 },
   })
   .matches(
     /^((\+[1-9]{1,4}[ -]*)|(\([0-9]{2,3}\)[ -]*)|([0-9]{2,4})[ -]*)*?[0-9]{3,4}[ -]*[0-9]{3,4}([ -]*x[0-9]+)?$/,

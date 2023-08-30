@@ -25,6 +25,9 @@ module.exports = {
           dark: "#21243D",
         },
       },
+      fontFamily: {
+        "e-Ukraine": "e-Ukraine",
+      },
       fontSize: {
         10: "10px",
         22: "22px",

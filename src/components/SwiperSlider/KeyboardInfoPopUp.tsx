@@ -30,7 +30,7 @@ export const KeyboardInfoPopUp: FC<Props> = ({
 
   return (
     <ModalWindow
-      className={cn("!absolute hidden sm:block", className)}
+      className={cn("!absolute hidden sm:block !pb-5", className)}
       isOpen={isOpenModal}
       onClose={closeModal}
       isShownOverlay={false}

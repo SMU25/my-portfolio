@@ -1,0 +1,51 @@
+@font-face {
+  font-family: "e-Ukraine";
+  src: url("src/assets/fonts/e-Ukraine-Light.eot");
+  src: local("src/assets/fonts/e-Ukraine-Light"), local("e-Ukraine-Light"),
+    url("src/assets/fonts/e-Ukraine-Light.eot?#iefix")
+      format("embedded-opentype"),
+    url("src/assets/fonts/e-Ukraine-Light.woff") format("woff"),
+    url("src/assets/fonts/e-Ukraine-Light.woff2") format("woff2"),
+    url("src/assets/fonts/e-Ukraine-Light.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "e-Ukraine";
+  src: url("src/assets/fonts/e-Ukraine-Regular.eot");
+  src: local("src/assets/fonts/e-Ukraine-Regular"), local("e-Ukraine-Regular"),
+    url("src/assets/fonts/e-Ukraine-Regular.eot?#iefix")
+      format("embedded-opentype"),
+    url("src/assets/fonts/e-Ukraine-Regular.woff") format("woff"),
+    url("src/assets/fonts/e-Ukraine-Regular.woff2") format("woff2"),
+    url("src/assets/fonts/e-Ukraine-Regular.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "e-Ukraine";
+  src: url("src/assets/fonts/e-Ukraine-Medium.eot");
+  src: local("src/assets/fonts/e-Ukraine-Medium"), local("e-Ukraine-Medium"),
+    url("src/assets/fonts/e-Ukraine-Medium.eot?#iefix")
+      format("embedded-opentype"),
+    url("src/assets/fonts/e-Ukraine-Medium.woff") format("woff"),
+    url("src/assets/fonts/e-Ukraine-Medium.woff2") format("woff2"),
+    url("src/assets/fonts/e-Ukraine-Medium.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "e-Ukraine";
+  src: url("src/assets/fonts/e-Ukraine-Bold.eot");
+  src: local("src/assets/fonts/e-Ukraine-Bold"), local("e-Ukraine-Bold"),
+    url("src/assets/fonts/e-Ukraine-Bold.eot?#iefix")
+      format("embedded-opentype"),
+    url("src/assets/fonts/e-Ukraine-Bold.woff") format("woff"),
+    url("src/assets/fonts/e-Ukraine-Bold.woff2") format("woff2"),
+    url("src/assets/fonts/e-Ukraine-Bold.ttf") format("truetype");
+  font-weight: 900;
+  font-style: normal;
+}

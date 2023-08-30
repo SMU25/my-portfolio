@@ -34,7 +34,7 @@ export const RecentPosts: FC = () => {
   if (isDataMissing) return null;
 
   return (
-    <SectionWrapper className="sm:pt-4 pb-37.5 sm:pb-21">
+    <SectionWrapper className="sm:pt-4 pb-7 sm:pb-21">
       <ContainerHead
         title={t(`${T_PREFIX} - ${HEADING}`)}
         href={PATHNAMES.BLOG}

@@ -26,7 +26,7 @@ export const Button: FC<Props> = memo(
   }) => (
     <button
       className={cn(
-        "truncate rounded-10 outline-0 transition ease-in-out duration-200 active:duration-150 disabled:bg-gray-light disabled:active:translate-y-0",
+        "font-e-Ukraine truncate rounded-10 outline-0 transition ease-in-out duration-200 active:duration-150 disabled:bg-gray-light disabled:active:translate-y-0",
         BUTTON_STYLE_VARIANTS[variant],
         className
       )}
