@@ -36,9 +36,9 @@ export const ShowMore: FC<Props> = ({
 
   return (
     <Button
-      className="flex items-center bg-white px-5 sm:px-10 font-medium rounded-10 shadow-card-hard-gray hover:bg-gray-lighter hover:underline hover:underline-offset-4 hover:!brightness-100"
+      className="flex items-center bg-white px-5 sm:px-10 font-medium rounded-10 shadow-card-hard-gray hover:bg-gray-lighter hover:!text-blue-dark hover:underline hover:underline-offset-4 hover:!brightness-100 disabled:!text-white disabled:no-underline"
       variant={variant}
-      isDisabled={isDisabled}
+      isDisabled={isDisabled || isLoading}
       onClick={onClick}
     >
       {isLoading ? (
@@ -50,7 +50,7 @@ export const ShowMore: FC<Props> = ({
           height={ARROW_ROTATE_ICON_SIZE}
         />
       )}
-      <span className="ml-4 hover:text-blue-dark">{title}</span>
+      <span className="ml-4">{title}</span>
     </Button>
   );
 };

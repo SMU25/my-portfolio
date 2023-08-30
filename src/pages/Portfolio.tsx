@@ -42,13 +42,11 @@ const Portfolio: FC = () => {
     page,
     limit,
     offset,
-    isChangedLimit,
     isChangedQueryParams,
     incrementLimit,
   } = useQueryParams();
 
   const isLoading = useAppSelector(selectIsLoading);
-  const isLoadingShowMore = isLoading && isChangedLimit;
   const works = useAppSelector(selectWorks);
 
   const workListTypeView = useAppSelector(selectWorkListTypeView);
@@ -73,6 +71,8 @@ const Portfolio: FC = () => {
   // add animation for toggle view type list
   // на головній перша секції з бека отримання можна зробити, і потім залежно від мови, щоб отримувати переклад роботи або посту із API (по ід та lang)
 
+  const isLoadingShowMore = isLoading && Boolean(works);
+
   return (
     <>
       <BreadCrumbs />
@@ -82,10 +82,12 @@ const Portfolio: FC = () => {
           title={pageTitle}
           tagHeading={TagsHeading.H2}
         >
-          <ChangeViewButton
-            listTypeView={workListTypeView}
-            toogleListTypeView={toogleWorkView}
-          />
+          {!isDataMissing && (
+            <ChangeViewButton
+              listTypeView={workListTypeView}
+              toogleListTypeView={toogleWorkView}
+            />
+          )}
         </ContainerHead>
         <Works
           className={DEFAULT_ITEMS_COMPONENT_CLASSNAME}

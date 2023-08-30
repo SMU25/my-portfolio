@@ -36,13 +36,11 @@ const Blog: FC = () => {
     page,
     limit,
     offset,
-    isChangedLimit,
     isChangedQueryParams,
     incrementLimit,
   } = useQueryParams();
 
   const isLoading = useAppSelector(selectIsLoading);
-  const isLoadingShowMore = isLoading && isChangedLimit;
   const posts = useAppSelector(selectPosts);
   const postListTypeView = useAppSelector(selectPostListTypeView);
 
@@ -59,8 +57,10 @@ const Blog: FC = () => {
   usePageTitle(pageTitle);
 
   const isDataMissing = !isLoading && !posts?.length;
-  //CHANGE - тут буде ще 1 значення (!isDataMissing && countPages > 1). Якщо кількість сторінок не більше 1, то не показувати пагінацію
   const isShownPagination = !isDataMissing;
+  //CHANGE - тут буде ще 1 значення ^ (!isDataMissing && countPages > 1). Якщо кількість сторінок не більше 1, то не показувати пагінацію
+
+  const isLoadingShowMore = isLoading && Boolean(posts);
 
   return (
     //CHANGE - Додати до цекції ContainerHead і через флаг контролити чи рендерити його
@@ -73,10 +73,12 @@ const Blog: FC = () => {
           title={pageTitle}
           tagHeading={TagsHeading.H2}
         >
-          <ChangeViewButton
-            listTypeView={postListTypeView}
-            toogleListTypeView={tooglePostView}
-          />
+          {!isDataMissing && (
+            <ChangeViewButton
+              listTypeView={postListTypeView}
+              toogleListTypeView={tooglePostView}
+            />
+          )}
         </ContainerHead>
         <BlogPosts
           className={DEFAULT_ITEMS_COMPONENT_CLASSNAME}
