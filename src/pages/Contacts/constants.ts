@@ -1,5 +1,6 @@
 import * as yup from "yup";
 import { Input } from "src/components/FormField/Input";
+import { PhoneNumberInput } from "src/components/FormField/PhoneNumberInput";
 import { Textarea } from "src/components/FormField/Textarea";
 import {
   EMAIL_VALIDATION_SCHEMA,
@@ -96,7 +97,7 @@ export const FEEDBACK_FIELDS = [
     name: "phone",
     label: "phone",
     type: "tel",
-    component: Input,
+    component: PhoneNumberInput,
   },
   {
     name: "email",

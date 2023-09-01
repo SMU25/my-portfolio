@@ -9,15 +9,15 @@
 
   "form-field-placeholder - first-name": "John",
   "form-field-placeholder - last-name": "Smith",
-  "form-field-placeholder - phone": "+380 (98) 555-02-02",
+  "form-field-placeholder - phone": "+380 98 555 0202",
   "form-field-placeholder - email": "johnsmith77@gmail.com",
   "form-field-placeholder - message": "Your message...",
 
-  "error - required": "Required",
+  "error - required": "Required field",
   "error - include-symbol": "Must include special symbol (&,!,etc.)",
   "error - passwords-must-match": "Passwords must match!",
   "error - incorrect-email": "Enter the correct email",
-  "error - incorrect-phone-number": "Must contain only numbers, +()-. and x.",
+  "error - incorrect-phone-number": "Must contain only numbers, + and be in the correct format",
   "error - phone is invalid": "Invalid phone number",
   "error - min-symbols": "Minimum is {{count}} symbols",
   "error - max-symbols": "Maximum is {{count}} symbols",

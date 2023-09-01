@@ -9,7 +9,7 @@
 
   "form-field-placeholder - first-name": "Джон",
   "form-field-placeholder - last-name": "Сміт",
-  "form-field-placeholder - phone": "+380 (98) 555-02-02",
+  "form-field-placeholder - phone": "+380 98 555 0202",
   "form-field-placeholder - email": "johnsmith77@gmail.com",
   "form-field-placeholder - message": "Ваше повідомлення...",
 
@@ -17,7 +17,7 @@
   "error - include-symbol": "Має містити спеціальний символ (&,!,etc.)",
   "error - passwords-must-match": "Паролі мають збігатися!",
   "error - incorrect-email": "Введіть коректну електронну адресу",
-  "error - incorrect-phone-number": "Має містити лише цифри, +()-. та x.",
+  "error - incorrect-phone-number": "Має містити лише цифри, + та мати вірний формат",
   "error - phone is invalid": "Недійсний номер телефону",
   "error - min-symbols": "Мінімальна кількість {{count}} символів",
   "error - max-symbols": "Максимальна кількість {{count}} символів",
