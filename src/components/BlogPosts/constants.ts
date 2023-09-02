@@ -23,7 +23,7 @@ export const CARD_VIEW_VARIANTS_STYLES = {
   [ListTypeView.COLUMN]: {
     container: "pt-4.5 sm:pt-8 pb-6 sm:pb-7.5 border-b border-gray-lighter",
     title:
-      "md:w-calc-full-minus-54 text-26 sm:text-3xl font-medium leading-9.5 sm:leading-11",
+      "md:w-calc-full-minus-62 text-26 sm:text-3xl font-medium leading-9.5 sm:leading-11",
     infoContainer: "mt-1.5 sm:mt-4 text-base sm:text-xl leading-7",
     date: "mr-3.5 sm:mr-5",
     category: "pl-3.5 sm:pl-5 text-gray-light",

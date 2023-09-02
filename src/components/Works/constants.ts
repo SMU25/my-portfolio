@@ -21,7 +21,7 @@ export const CARD_VIEW_VARIANTS_STYLES = {
     wrapper: "flex flex-col sm:flex-row",
     img: "sm:min-w-61.5 sm:max-w-61.5 max-h-55 xs:max-h-70 sm:max-h-45 h-full",
     infoContainer: "mt-4.5 sm:mt-0 sm:ml-4.5",
-    title: "md:w-calc-full-minus-54 text-2xl",
+    title: "md:w-calc-full-minus-62 text-2xl",
     infoContainerCenter: "mt-4",
     date: "",
     category: "",

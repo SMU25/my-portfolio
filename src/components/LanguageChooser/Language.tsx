@@ -20,7 +20,7 @@ export const Language: FC<Props> = ({ language }) => {
 
   return (
     <li
-      className={cn("rounded transition-all", {
+      className={cn("font-e-Ukraine rounded transition-all", {
         "bg-blue-lighter": isCurrentLanguage,
         "cursor-pointer": !isCurrentLanguage,
       })}
