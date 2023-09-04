@@ -1,4 +1,5 @@
 import React, { FC, useEffect, useCallback } from "react";
+import cn from "classnames";
 import { useTranslation } from "react-i18next";
 import { useAppDispatch, useAppSelector } from "src/hooks/redux";
 import { useQueryParams } from "src/hooks/useQueryParams";
@@ -67,7 +68,9 @@ const Blog: FC = () => {
 
     <>
       <BreadCrumbs />
-      <SectionWrapper className={DEFAULT_SECTION_CLASSNAME}>
+      <SectionWrapper
+        className={cn("bg-gradient-blue-sky", DEFAULT_SECTION_CLASSNAME)}
+      >
         <ContainerHead
           titleClassName="!py-1.5"
           title={pageTitle}

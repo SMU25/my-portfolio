@@ -41,6 +41,9 @@ export const BlogPosts: FC<Props> = memo(
         return items.map((item) => (
           <BlogCard
             key={item.id}
+            className={cn({
+              "default:shadow-light-white": isSlider,
+            })}
             listTypeView={listTypeView}
             isActiveLink
             {...item}
@@ -53,6 +56,7 @@ export const BlogPosts: FC<Props> = memo(
       isLoading,
       items,
       countItemsPreloader,
+      isSlider,
     ]);
 
     if (!renderedBlogPosts)

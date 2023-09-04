@@ -31,7 +31,6 @@ const Post: FC = () => {
   ) : (
     post && (
       <BlogCard
-        containerClassName="border-b-0"
         listTypeView={ListTypeView.COLUMN}
         isShownPostImg
         isDisabledTruncateDescription

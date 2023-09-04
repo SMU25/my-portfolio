@@ -27,6 +27,10 @@ path {
   @apply max-w-none md:max-w-195 lg:max-w-none xl:max-w-323.5 w-full mx-auto;
 }
 
+.bg-gradient-blue-sky {
+  @apply bg-gradient-to-b from-blue-lighter via-sky-100 to-blue-lighter;
+}
+
 .fill-g-red-medium g {
   @apply fill-red-medium;
 }

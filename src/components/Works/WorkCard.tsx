@@ -77,7 +77,7 @@ export const WorkCard: FC<Props> = memo(
     return (
       <div
         className={cn(
-          "relative flex flex-col justify-between bg-white overflow-hidden border-gray-lighter transition-all duration-300",
+          "relative flex flex-col justify-between bg-white rounded-10 shadow-card-hard-gray overflow-hidden transition-all duration-300",
           classNames.container,
           className
         )}

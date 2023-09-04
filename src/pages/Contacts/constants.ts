@@ -21,13 +21,13 @@ export const SECTIONS = [
   {
     id: 1,
     component: Contacts,
-    className: DEFAULT_SECTION_CLASSNAME,
+    className:  DEFAULT_SECTION_CLASSNAME,
   },
   {
     id: 2,
     component: FeedbackForm,
     className:
-      "bg-blue-lighter pt-5 sm:pt-10 md:pt-15 gl:pt-22.5 pb-8 xs:pb-10 sm:pb-20 lg:pb-32 gl:pb-40",
+      "pt-5 sm:pt-10 md:pt-15 gl:pt-22.5 pb-8 xs:pb-10 sm:pb-20 lg:pb-32 gl:pb-40",
   },
 ];
 

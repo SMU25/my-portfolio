@@ -14,11 +14,11 @@ export const SkeletonBlogPost: FC<SkeletonBlogPostProps> = ({
 }) => (
   <div
     className={cn(
-      "relative flex flex-col justify-between bg-white overflow-hidden transition-all duration-300",
+      "relative flex flex-col justify-between bg-white rounded-10 shadow-card-hard-gray overflow-hidden transition-all duration-300",
       {
-        "sm:min-h-75 pt-2 xs:pt-4 pb-3 xs:pb-4 sm:pt-5 sm:pb-5 px-2 xs:px-3 sm:px-5 rounded shadow-light-white":
+        "sm:min-h-75 pt-2 xs:pt-4 pb-3 xs:pb-4 sm:pt-5 sm:pb-5 px-2 xs:px-3 sm:px-5":
           isRowListTypeView,
-        "pt-4.5 sm:pt-8 pb-6 sm:pb-7.5 border-gray-lighter border-b":
+        "first:mt-0 mt-5 pt-4.5 sm:pt-8 pb-6 sm:pb-7.5 px-4":
           !isRowListTypeView,
       }
     )}
@@ -73,7 +73,7 @@ export const SkeletonBlogPost: FC<SkeletonBlogPostProps> = ({
       <Shimmer
         className={cn("h-11 rounded-10", {
           "w-full mt-3 sm:mt-5": isRowListTypeView,
-          "md:absolute md:top-8 md:right-0 w-full md:w-40 mt-3 sm:mt-5 md:mt-0":
+          "md:absolute md:top-8 md:right-4 w-full md:w-40 mt-3 sm:mt-5 md:mt-0":
             !isRowListTypeView,
         })}
       />

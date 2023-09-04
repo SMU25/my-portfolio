@@ -14,11 +14,10 @@ const SkeletonWorkCard: FC<SkeletonWorkCardProps> = ({
 }) => (
   <div
     className={cn(
-      "relative flex flex-col justify-between w-full bg-white transition-all duration-300",
+      "relative flex flex-col justify-between w-full bg-white rounded-10 shadow-card-hard-gray transition-all duration-300",
       {
-        "pt-2 xs:pt-4 pb-3 xs:pb-4 px-2 xs:px-3 rounded-lg shadow-card-hard-gray":
-          isRowListTypeView,
-        "py-4.5 sm:py-8 border-gray-lighter border-b": !isRowListTypeView,
+        "pt-2 xs:pt-4 pb-3 xs:pb-4 px-2 xs:px-3": isRowListTypeView,
+        "first:mt-0 mt-5 py-4.5 sm:py-8 px-3": !isRowListTypeView,
         "default:shadow-light-white": isSlider,
       }
     )}
@@ -96,7 +95,7 @@ const SkeletonWorkCard: FC<SkeletonWorkCardProps> = ({
     <Shimmer
       className={cn("h-11 rounded-10", {
         "w-full mt-3 sm:mt-5": isRowListTypeView,
-        "md:absolute md:top-8 md:right-0 w-full md:w-40 mt-3 sm:mt-5 md:mt-0":
+        "md:absolute md:top-8 md:right-3 w-full md:w-40 mt-3 sm:mt-5 md:mt-0":
           !isRowListTypeView,
       })}
     />

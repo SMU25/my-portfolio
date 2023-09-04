@@ -22,7 +22,7 @@ const T_PREFIX = "blog-card";
 
 const VIEW_BUTTON_NAME = "view-btn";
 interface Props extends IPostItem {
-  containerClassName?: string;
+  className?: string;
   listTypeView?: ListTypeView;
   isActiveLink?: boolean;
   isShownPostImg?: boolean;
@@ -32,9 +32,9 @@ interface Props extends IPostItem {
 
 export const BlogCard: FC<Props> = memo(
   ({
+    className,
     listTypeView = ListTypeView.ROW,
     img,
-    containerClassName,
     isActiveLink,
     isShownPostImg,
     maxLengthDesciption = MAX_LENGTH_DESCRIPTION[listTypeView],
@@ -66,8 +66,8 @@ export const BlogCard: FC<Props> = memo(
     return (
       <div
         className={cn(
-          "relative flex flex-col justify-between w-full flex-1 overflow-hidden transition-all duration-300",
-          containerClassName,
+          "relative flex flex-col justify-between w-full flex-1 bg-white rounded-10 shadow-card-hard-gray overflow-hidden transition-all duration-300",
+          className,
           classNames.container
         )}
       >
