@@ -1,5 +1,5 @@
 export const COLORS_LIST = [
-  "bg-red-primary",
+  "bg-red-medium",
   "bg-red-dark",
   "bg-blue-light",
   "bg-blue-darken",

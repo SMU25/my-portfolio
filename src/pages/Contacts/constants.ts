@@ -35,7 +35,7 @@ export const CONTACT_ITEMS = [
   {
     id: 1,
     title: "phone",
-    linkLabel: "+380 (98) 032-87-06",
+    linkLabel: "+380 98 032 8706",
     link: "tel:380980328706",
     icon: Call,
   },

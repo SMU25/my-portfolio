@@ -11,7 +11,7 @@ const DEFAULT_BORDERED_BTN_CLASSNAME =
 
 export const BUTTON_STYLE_VARIANTS = {
   [ButtonVariants.PRIMARY]: cn(
-    "bg-red-primary hover:bg-red-dark",
+    "bg-red-medium hover:bg-red-dark",
     DEFAULT_BTN_CLASSNAME
   ),
   [ButtonVariants.SECONDARY]: cn(

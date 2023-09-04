@@ -32,7 +32,7 @@ const MenuItem: FC<Omit<IMenuItem, "id">> = ({ name, icon: Icon }) => {
       className={cn(
         "md:ml-8 first:ml-0 transition ease-in-out duration-200 xs:hover:scale-110",
         {
-          "text-red-primary": isActiveLink,
+          "text-red-medium": isActiveLink,
         }
       )}
     >
@@ -42,7 +42,7 @@ const MenuItem: FC<Omit<IMenuItem, "id">> = ({ name, icon: Icon }) => {
             width={ICON_SIZE}
             height={ICON_SIZE}
             className={cn("mb-0.5 xs:mb-1 md:mb-0 md:mr-1.5", {
-              "fill-g-red-primary": isActiveLink,
+              "fill-g-red-medium": isActiveLink,
             })}
           />
         )}

@@ -50,7 +50,7 @@ const NotFound: FC = () => {
           alt={IMG_WARNING_ALT_TEXT}
         />
         <Heading
-          className="my-0 sm:my-3 text-red-primary"
+          className="my-0 sm:my-3 text-red-medium"
           tagHeading={TagsHeading.H2}
         >
           {pageTitle}

@@ -48,7 +48,7 @@ export const Textarea: FC<Omit<IFormField, "type">> = ({
           DEFAULT_TEXT_FIELD_CLASSNAME,
           TEXT_FIELD_STYLE_VARIANTS[variant],
           className,
-          { "border-red-primary": isShownError }
+          { "border-red-medium": isShownError }
         )}
         value={value}
         placeholder={placeholder || defaultPlaceholder}
