@@ -1,19 +1,12 @@
-import React, { FC, SVGProps } from "react";
+import React, { FC } from "react";
 import { useTranslation } from "react-i18next";
 import { Heading } from "src/components/Heading";
 import { TagsHeading } from "src/components/Heading/types";
-
-interface Props {
-  title?: string;
-  linkLabel?: string;
-  link: string;
-  icon?: FC<SVGProps<SVGSVGElement>>;
-  isOpenNewTab?: boolean;
-}
+import { IContactItem } from "src/types/contacts";
 
 const T_PREFIX = "contact-item";
 
-export const ContactItem: FC<Props> = ({
+export const ContactItem: FC<Omit<IContactItem, "id">> = ({
   title,
   linkLabel,
   link,

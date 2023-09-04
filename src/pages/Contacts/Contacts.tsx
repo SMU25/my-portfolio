@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import { usePageTitle } from "src/hooks/usePageTitle";
 import { Heading } from "src/components/Heading";
 import { TagsHeading } from "src/components/Heading/types";
-import { CONTACT_ITEMS } from "./constants";
+import { CONTACT_ITEMS } from "src/constants/contacts";
 import { ContactItem } from "./ContactItem";
 
 const T_PREFIX = "contacts";

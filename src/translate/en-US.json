@@ -77,10 +77,12 @@
 
   "contact-item - phone": "Phone number:",
   "contact-item - email": "E-mail:",
-  "contact-item - linkedin": "Linkedin:",
-  "contact-item - github": "GitHub:",
-  "contact-item - facebook": "Facebook:",
-  "contact-item - instagram": "Instagram:",
+  "contact-item - telegram": "Telegram",
+  "contact-item - linkedin": "Linkedin",
+  "contact-item - github": "GitHub",
+  "contact-item - facebook": "Facebook",
+  "contact-item - instagram": "Instagram",
+  "contact-item - twitter": "Twitter",
 
   "feedback - title": "Feedback",
   "feedback - send-btn": "Send",
