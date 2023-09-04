@@ -40,7 +40,7 @@ export const FeaturedWorks: FC = () => {
 
   return (
     <SectionWrapper
-      className="bg-gradient-blue-sky !px-0 sm:pt-2 pb-7 sm:pb-10"
+      className="!px-0 sm:pt-2 pb-7 sm:pb-10"
       innerContainerClassName="default:max-w-calc-full-minus-5 xs:max-w-calc-full-minus-10 sm:max-w-calc-full-minus-30 md:!max-w-195 lg:!max-w-calc-full-minus-30 gl:!max-w-calc-full-minus-80 xl:!max-w-323.5"
     >
       <ContainerHead

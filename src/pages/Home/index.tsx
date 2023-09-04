@@ -10,8 +10,10 @@ const Home: FC = () => {
   return (
     <>
       <AboutMySelf />
-      <FeaturedWorks />
-      <RecentPosts />
+      <div className="bg-gradient-blue-sky">
+        <FeaturedWorks />
+        <RecentPosts />
+      </div>
     </>
   );
 };

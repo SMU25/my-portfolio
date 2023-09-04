@@ -11,7 +11,7 @@ export const CARD_VIEW_VARIANTS_STYLES = {
     date: "text-xs sm:text-base",
     category: "text-xs sm:text-base",
     description:
-      "mt-1 sm:mt-4 text-10 xs:text-xs default:leading-3.5 xs:leading-4 sm:leading-6 sm:text-base",
+      "mt-1 sm:mt-4 text-xs sm:text-base default:leading-4 sm:leading-6",
     viewButton: "w-full mt-3 sm:mt-5",
   },
 
