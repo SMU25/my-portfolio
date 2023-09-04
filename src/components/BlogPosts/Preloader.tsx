@@ -30,7 +30,7 @@ export const SkeletonBlogPost: FC<SkeletonBlogPostProps> = ({
         })}
       />
       <div
-        className={cn("flex h-5 mt-3", {
+        className={cn("flex h-5 mt-3 sm:mt-4", {
           "default:h-3 sm:h-5": isRowListTypeView,
         })}
       >
