@@ -44,7 +44,7 @@ export const DEFAULT_GALLERY_MAIN_SWIPER_SETTINGS: SwiperProps = {
   keyboard: true,
   centeredSlides: false,
   grabCursor: true,
-  modules: [Autoplay, Keyboard, FreeMode, Thumbs, Controller, Pagination],
+  modules: [Keyboard, FreeMode, Thumbs, Controller],
 };
 
 export const DEFAULT_GALLERY_THUMBS_SWIPER_SETTINGS: SwiperProps = {
