@@ -14,6 +14,7 @@ import { ContainerHead } from "src/components/Layouts/ContainerHead";
 import { Works } from "src/components/Works";
 import { ChangeViewButton } from "src/components/Button/ChangeViewButton";
 import { ShowMore } from "src/components/Button/ShowMore";
+import { Pagination } from "src/components/Pagination";
 import { TagsHeading } from "src/components/Heading/types";
 import {
   DEFAULT_SECTION_CLASSNAME,
@@ -108,7 +109,7 @@ const Portfolio: FC = () => {
                 onClick={incrementLimit}
               />
             </div>
-            pagination
+            <Pagination />
           </>
         )}
       </SectionWrapper>

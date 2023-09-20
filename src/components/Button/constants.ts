@@ -7,7 +7,7 @@ const DEFAULT_BTN_CLASSNAME =
   "py-3.5 px-5 text-white font-medium active:translate-y-1 active:brightness-95";
 
 const DEFAULT_BORDERED_BTN_CLASSNAME =
-  "px-5 py-2 font-medium border-2 active:translate-y-1";
+  "py-2 px-5 font-medium border-2 active:translate-y-1 disabled:py-2.5 disabled:px-5.5";
 
 export const BUTTON_STYLE_VARIANTS = {
   [ButtonVariants.PRIMARY]: cn(
@@ -19,7 +19,7 @@ export const BUTTON_STYLE_VARIANTS = {
     DEFAULT_BTN_CLASSNAME
   ),
   [ButtonVariants.BORDERED_SECONDARY]: cn(
-    "text-blue-dark border-blue-light hover:text-white hover:bg-blue-light",
+    "text-blue-dark border-blue-light hover:text-white hover:bg-blue-light disabled:text-white disabled:border-0",
     DEFAULT_BORDERED_BTN_CLASSNAME
   ),
   [ButtonVariants.SIMPLE_SECONDARY]:
