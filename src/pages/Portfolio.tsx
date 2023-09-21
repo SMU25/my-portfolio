@@ -46,6 +46,7 @@ const Portfolio: FC = () => {
     offset,
     isChangedQueryParams,
     incrementLimit,
+    setQueryParamPage,
   } = useQueryParams();
 
   const isLoading = useAppSelector(selectIsLoading);
@@ -109,7 +110,20 @@ const Portfolio: FC = () => {
                 onClick={incrementLimit}
               />
             </div>
-            <Pagination pageCount={10} selectedPagesArray={[3, 4]} />
+            <Pagination
+              pageCount={10}
+              // тут буде братися значення з АПІ і буде передаватися кількість сторінок
+              selectedPagesArray={[page]}
+              // потім тут буде просто pages передаватися, уже готовий масив
+
+              // Також зберігати поточну сторінку або сторінки в редаксі,
+              //  щоб коли я перехожу назад на неї, то показувало її або їх, а не першу(1)
+              // і щоб це додавало в query params , і звідти буде брати це значення для пагінації
+
+              // АБО зберігати і додавати одразу силку на цю сторінку,
+              // щоб поверталося на цю сторінку вірну + також зберігати інші параметри (limit , offset)
+              setQueryParamPage={setQueryParamPage}
+            />
           </>
         )}
       </SectionWrapper>

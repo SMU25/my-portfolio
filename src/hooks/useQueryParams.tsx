@@ -5,6 +5,8 @@ const PAGE_QUERY_PARAM_KEY = "page";
 const LIMIT_QUERY_PARAM_KEY = "limit";
 const OFFSET_QUERY_PARAM_KEY = "offset";
 
+export type SetQueryParam = (value: number) => void;
+
 interface InitialValues {
   pageInitialValue?: number;
   limitInitialValue?: number;
@@ -30,13 +32,13 @@ export const useQueryParams = (initialValues?: InitialValues) => {
   const isChangedQueryParams =
     isChangedPage || isChangedLimit || isChangedOffset;
 
-  const setQueryParamPage = (page: number) =>
+  const setQueryParamPage: SetQueryParam = (page) =>
     setQueryParams(`${PAGE_QUERY_PARAM_KEY}=${page}`);
 
-  const setQueryParamLimit = (limit: number) =>
+  const setQueryParamLimit: SetQueryParam = (limit) =>
     setQueryParams(`${LIMIT_QUERY_PARAM_KEY}=${limit}`);
 
-  const setQueryParamOffset = (offset: number) =>
+  const setQueryParamOffset: SetQueryParam = (offset) =>
     setQueryParams(`${OFFSET_QUERY_PARAM_KEY}=${offset}`);
 
   const incrementLimit = () => setQueryParamLimit(limit + limitInitialValue);

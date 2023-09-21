@@ -1,6 +1,7 @@
 import React, { FC, useState, useEffect, useCallback, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import ReactPaginate, { ReactPaginateProps } from "react-paginate";
+import { SetQueryParam } from "src/hooks/useQueryParams";
 import { PaginationItem } from "./PaginationItem";
 import { ButtonVariants } from "../Button/types";
 
@@ -15,6 +16,7 @@ interface Props {
   selectedPagesArray: number[];
   pageRangeDisplayed?: number;
   marginPagesDisplayed?: number;
+  setQueryParamPage: SetQueryParam;
 }
 
 export const Pagination: FC<Props> = ({
@@ -22,6 +24,7 @@ export const Pagination: FC<Props> = ({
   selectedPagesArray,
   pageRangeDisplayed = 5,
   marginPagesDisplayed = 3,
+  setQueryParamPage,
 }) => {
   const { t } = useTranslation();
 
@@ -36,6 +39,7 @@ export const Pagination: FC<Props> = ({
   useEffect(() => {
     if (currentPage !== defaultCurrentPage) {
       setSelectedPages([currentPage]);
+      setQueryParamPage(currentPage);
     }
     // When adding defaultCurrentPage in the dependencies, the pagination does not work correctly.
     // It updates every time, when selectedPages changes, so this value is not added in them!
