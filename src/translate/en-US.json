@@ -38,6 +38,10 @@
   "modal - no-btn": "No",
   "modal - cancel-btn": "Cancel",
 
+  "pagination - previous-label": "Previous",
+  "pagination - next-label": "Next",
+  "pagination - break-label": "...",
+
   "container-head - view-all-link": "View all",
 
   "skills-and-technologies - title": "Technologies and skills used:",

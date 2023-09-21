@@ -38,6 +38,9 @@
   "modal - no-btn": "Ні",
   "modal - cancel-btn": "Скасувати",
 
+  "pagination - previous-label": "Назад",
+  "pagination - next-label": "Вперед",
+
   "container-head - view-all-link": "Дивитися усі",
 
   "skills-and-technologies - title": "Використані технології та навички:",

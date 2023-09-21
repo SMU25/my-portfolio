@@ -13,16 +13,14 @@ export const PaginationItem: FC<Props> = ({
   children,
   variant = ButtonVariants.BORDERED_SECONDARY,
   isDisabled,
-}) => {
-  return (
-    <Button
-      className={cn(
-        "default:py-2.5 default:px-4.5 default:disabled:py-3 default:disabled:px-5"
-      )}
-      variant={variant}
-      isDisabled={isDisabled}
-    >
-      {children}
-    </Button>
-  );
-};
+}) => (
+  <Button
+    className={cn(
+      "default:py-2.5 default:px-4.5 default:disabled:py-3 default:disabled:px-5"
+    )}
+    variant={variant}
+    isDisabled={isDisabled}
+  >
+    {children}
+  </Button>
+);

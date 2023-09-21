@@ -1,163 +1,129 @@
-// import React, { FC, useState, useEffect } from "react";
-// import { PaginationItem } from "./PaginationItem";
-// import { ButtonVariants } from "../Button/types";
-// import ReactPaginate from "react-paginate";
-
-// interface Props {}
-
-// // лишні return, перевод для арія лейбел та просто для некст і прев, скоротити елемент пагінації + числа повиносити в пропси чи тіпа того
-// // компоненти краще структуризувати,а то є дублювання тут в PaginationItem
-
-// // якщо що, то можна просто стилі вставити і не тикати ці еомпоненти, і так теж буде норм
-// export const Pagination: FC<Props> = () => {
-//   const [forcePage, setForcePage] = useState<number>(null);
-//   const [selectedPages, setSelectedPages] = useState([8, 9, 10, 11, 12, 13]);
-
-//   const countSelectedPages = selectedPages.length - 1;
-//   const defaultForcePage = selectedPages[Math.round(countSelectedPages / 2)];
-
-//   console.log(defaultForcePage);
-
-//   useEffect(() => {
-//     if (forcePage) {
-//       setSelectedPages([forcePage]);
-//     }
-//   }, [forcePage]);
-
-//   return (
-//     <div className="flex justify-center items-center mt-10">
-//       <ReactPaginate
-//         onClick={(state) => {
-//           if (state.isPrevious) {
-//             const prevPage = selectedPages[0] - 1;
-
-//             setForcePage(prevPage);
-//           }
-
-//           if (state.isNext) {
-//             const nextPage = selectedPages[countSelectedPages] + 1;
-
-//             setForcePage(nextPage);
-//           }
-//         }}
-//         onPageChange={({ selected }) => {
-//           const currentPage = selected + 1;
-
-//           if (!selectedPages.includes(currentPage)) {
-//             setSelectedPages([currentPage]);
-//           }
-//         }}
-//         containerClassName="flex flex items-center gap-x-2"
-//         forcePage={forcePage || defaultForcePage}
-//         pageRangeDisplayed={5}
-//         marginPagesDisplayed={3}
-//         pageCount={100}
-//         previousLabel={
-//           <PaginationItem
-//             variant={ButtonVariants.SECONDARY}
-//             isDisabled={selectedPages.includes(1)}
-//           >
-//             prev
-//           </PaginationItem>
-//         }
-//         nextLabel={
-//           <PaginationItem
-//             variant={ButtonVariants.SECONDARY}
-//             isDisabled={selectedPages.includes(100)}
-//           >
-//             next
-//           </PaginationItem>
-//         }
-//         breakLabel={<PaginationItem>...</PaginationItem>}
-//         // змінити ^
-//         pageLabelBuilder={(page) => (
-//           <PaginationItem isDisabled={selectedPages.includes(page)}>
-//             {page}
-//           </PaginationItem>
-//         )}
-//       />
-//     </div>
-//   );
-// };
-
-import React, { FC, useState, useEffect } from "react";
+import React, { FC, useState, useEffect, useCallback, useMemo } from "react";
+import { useTranslation } from "react-i18next";
+import ReactPaginate, { ReactPaginateProps } from "react-paginate";
 import { PaginationItem } from "./PaginationItem";
 import { ButtonVariants } from "../Button/types";
-import ReactPaginate from "react-paginate";
 
-interface Props {}
+const T_PREFIX = "pagination";
 
-// лишні return, перевод для арія лейбел та просто для некст і прев, скоротити елемент пагінації + числа повиносити в пропси чи тіпа того
-// компоненти краще структуризувати,а то є дублювання тут в PaginationItem
-// повиносити в функції, в значення (пропси), компонент придумати, як не дублювати , РЕФАКТОРИНГ
+const PREVIOUS_LABEL_NAME = "previous-label";
+const NEXT_LABEL_NAME = "next-label";
+const BREAK_LABEL_NAME = "break-label";
 
-export const Pagination: FC<Props> = () => {
-  const [selectedPages, setSelectedPages] = useState([8, 9, 10, 11, 12, 13]);
+interface Props {
+  pageCount: number;
+  selectedPagesArray: number[];
+  pageRangeDisplayed?: number;
+  marginPagesDisplayed?: number;
+}
+
+export const Pagination: FC<Props> = ({
+  pageCount,
+  selectedPagesArray,
+  pageRangeDisplayed = 5,
+  marginPagesDisplayed = 3,
+}) => {
+  const { t } = useTranslation();
+
+  const [selectedPages, setSelectedPages] = useState(selectedPagesArray);
   const countSelectedPages = selectedPages.length - 1;
 
-  const defaultForcePage = selectedPages[Math.round(countSelectedPages / 2)];
-  const [forcePage, setForcePage] = useState(defaultForcePage);
+  const defaultCurrentPage = selectedPages[Math.round(countSelectedPages / 2)];
+  const [currentPage, setCurrentPage] = useState(defaultCurrentPage);
+
+  const forcePage = currentPage - 1;
 
   useEffect(() => {
-    if (forcePage !== defaultForcePage) {
-      setSelectedPages([forcePage]);
+    if (currentPage !== defaultCurrentPage) {
+      setSelectedPages([currentPage]);
     }
-    // When adding defaultForcePage in the dependencies, the pagination does not work correctly.
+    // When adding defaultCurrentPage in the dependencies, the pagination does not work correctly.
     // It updates every time, when selectedPages changes, so this value is not added in them!
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [forcePage]);
+  }, [currentPage]);
+
+  const checkIsSelectedPage = useCallback(
+    (page: number) => selectedPages.includes(page),
+    [selectedPages]
+  );
+
+  const isSelectedFirstPage = checkIsSelectedPage(1);
+  const isSelectedLastPage = checkIsSelectedPage(pageCount);
+
+  const paginationLabels = useMemo(
+    () => ({
+      previousLabel: (
+        <PaginationItem
+          variant={ButtonVariants.SECONDARY}
+          isDisabled={isSelectedFirstPage}
+        >
+          {t(`${T_PREFIX} - ${PREVIOUS_LABEL_NAME}`)}
+        </PaginationItem>
+      ),
+
+      nextLabel: (
+        <PaginationItem
+          variant={ButtonVariants.SECONDARY}
+          isDisabled={isSelectedLastPage}
+        >
+          {t(`${T_PREFIX} - ${NEXT_LABEL_NAME}`)}
+        </PaginationItem>
+      ),
+
+      breakLabel: (
+        <PaginationItem>
+          {t(`${T_PREFIX} - ${BREAK_LABEL_NAME}`)}
+        </PaginationItem>
+      ),
+
+      pageLabelBuilder: (page: number) => (
+        <PaginationItem isDisabled={checkIsSelectedPage(page)}>
+          {page}
+        </PaginationItem>
+      ),
+    }),
+    [t, checkIsSelectedPage, isSelectedFirstPage, isSelectedLastPage]
+  );
+
+  const onClickPage: ReactPaginateProps["onClick"] = useCallback(
+    ({ isPrevious, isNext }) => {
+      if (isPrevious) {
+        const prevPage = selectedPages[0] - 1;
+
+        setCurrentPage(prevPage);
+      }
+
+      if (isNext) {
+        const nextPage = selectedPages[countSelectedPages] + 1;
+
+        setCurrentPage(nextPage);
+      }
+    },
+    [selectedPages, countSelectedPages]
+  );
+
+  const onPageChange: ReactPaginateProps["onPageChange"] = useCallback(
+    ({ selected }) => {
+      const currentPage = selected + 1;
+
+      if (!checkIsSelectedPage(currentPage)) {
+        setCurrentPage(currentPage);
+      }
+    },
+    [checkIsSelectedPage]
+  );
 
   return (
     <div className="flex justify-center items-center mt-10">
       <ReactPaginate
-        onClick={(state) => {
-          if (state.isPrevious) {
-            const prevPage = selectedPages[0] - 1;
-
-            setForcePage(prevPage);
-          }
-
-          if (state.isNext) {
-            const nextPage = selectedPages[countSelectedPages] + 1;
-
-            setForcePage(nextPage);
-          }
-        }}
-        onPageChange={({ selected }) => {
-          const currentPage = selected + 1;
-
-          if (!selectedPages.includes(currentPage)) {
-            setSelectedPages([currentPage]);
-          }
-        }}
-        containerClassName="flex flex items-center gap-x-2"
+        containerClassName="flex items-center gap-x-2"
         forcePage={forcePage}
-        pageRangeDisplayed={5}
-        marginPagesDisplayed={3}
-        pageCount={100}
-        previousLabel={
-          <PaginationItem
-            variant={ButtonVariants.SECONDARY}
-            isDisabled={selectedPages.includes(1)}
-          >
-            prev
-          </PaginationItem>
-        }
-        nextLabel={
-          <PaginationItem
-            variant={ButtonVariants.SECONDARY}
-            isDisabled={selectedPages.includes(100)}
-          >
-            next
-          </PaginationItem>
-        }
-        breakLabel={<PaginationItem>...</PaginationItem>}
-        // змінити ^
-        pageLabelBuilder={(page) => (
-          <PaginationItem isDisabled={selectedPages.includes(page)}>
-            {page}
-          </PaginationItem>
-        )}
+        pageRangeDisplayed={pageRangeDisplayed}
+        marginPagesDisplayed={marginPagesDisplayed}
+        pageCount={pageCount}
+        onClick={onClickPage}
+        onPageChange={onPageChange}
+        {...paginationLabels}
       />
     </div>
   );

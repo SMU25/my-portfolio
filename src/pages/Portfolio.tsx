@@ -109,7 +109,7 @@ const Portfolio: FC = () => {
                 onClick={incrementLimit}
               />
             </div>
-            <Pagination />
+            <Pagination pageCount={10} selectedPagesArray={[3, 4]} />
           </>
         )}
       </SectionWrapper>
