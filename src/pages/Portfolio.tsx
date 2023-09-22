@@ -4,7 +4,8 @@ import { useTranslation } from "react-i18next";
 import { useAppDispatch, useAppSelector } from "src/hooks/redux";
 import { useQueryParams } from "src/hooks/useQueryParams";
 import { usePageTitle } from "src/hooks/usePageTitle";
-import { getWorksAsync } from "src/redux/works/action";
+import { useOnLoadPage } from "src/hooks/useOnLoadPage";
+import { getWorksAsync, GetWorksQueryParams } from "src/redux/works/action";
 import { toggleWorkListTypeView } from "src/redux/config/action";
 import { selectIsLoading, selectWorks } from "src/redux/works/selectors";
 import { selectWorkListTypeView } from "src/redux/config/selectors";
@@ -29,11 +30,12 @@ const HEADING = "title";
 // CHANGE - Додати ліміт , оффсет та номер сторінки в редакс і в ньому додавати в query параметри і звідти брати дані + пагінацію додати
 // Додати,якщо ліміт = 5 , то не відображає загрузку на кнопці
 
-// додати відключену кнопку і стилі її
 // прокрутити до того місця, де з'являться нові пости
 
 const Portfolio: FC = () => {
   const { t } = useTranslation();
+
+  const { isLoadingPage, setIsLoadingPage } = useOnLoadPage();
 
   const pageTitle = t(`${T_PREFIX} - ${HEADING}`);
 
@@ -44,37 +46,57 @@ const Portfolio: FC = () => {
     page,
     limit,
     offset,
-    isChangedQueryParams,
-    incrementLimit,
-    setQueryParamPage,
+    setPage,
+    // incrementLimit,
   } = useQueryParams();
 
   const isLoading = useAppSelector(selectIsLoading);
   const works = useAppSelector(selectWorks);
-
   const workListTypeView = useAppSelector(selectWorkListTypeView);
 
   const toogleWorkView = useCallback(() => {
     dispatch(toggleWorkListTypeView());
   }, [dispatch]);
 
+  const getWorks = useCallback(
+    (queryParams: GetWorksQueryParams = {}) =>
+      dispatch(getWorksAsync({ page, limit, ...queryParams })),
+    [dispatch, page, limit]
+  );
+
   useEffect(() => {
-    if (!works || isChangedQueryParams) {
-      dispatch(getWorksAsync({ limit, page }));
+    if (!works || !isLoadingPage) {
+      getWorks();
     }
-  }, [dispatch, works, page, limit, isChangedQueryParams]);
+  }, [getWorks, isLoadingPage, works]);
 
   usePageTitle(pageTitle);
 
   const isDataMissing = !isLoading && !works?.length;
   //CHANGE - тут буде ще 1 значення (!isDataMissing && countPages > 1). Якщо кількість сторінок не більше 1, то не показувати пагінацію
   const isShownPagination = !isDataMissing;
+  // зміню тут , щоб пагінацію показувалоЮ тільки коли countPages > 1 , а інші умовив видалити, і скривати тільки show more,Ю о коли елементи не завантажило, щоб було відображення піганації для переходу на іншу сторінку
 
   // CHANGE - add preloader for ROW items
   // add animation for toggle view type list
   // на головній перша секції з бека отримання можна зробити, і потім залежно від мови, щоб отримувати переклад роботи або посту із API (по ід та lang)
 
-  const isLoadingShowMore = isLoading && Boolean(works);
+  // const isLoadingShowMore = isLoading && Boolean(works);
+  const isLoadingShowMore = isLoading && [page].length > 1;
+  // потім тут буде просто pages замість page - уже готовий масив
+  // Вертаи з бекенда кількість вибраних сторінок ([page].length)
+
+  const updatePage = useCallback(
+    (page: GetWorksQueryParams["page"]) => {
+      setPage(page);
+      getWorks({ page });
+    },
+    [setPage, getWorks]
+  );
+
+  useEffect(() => {
+    setIsLoadingPage(true);
+  }, [setIsLoadingPage]);
 
   return (
     <>
@@ -107,13 +129,13 @@ const Portfolio: FC = () => {
               <ShowMore
                 isLoading={isLoadingShowMore}
                 buttonTitleCountLabel={limitInitialValue}
-                onClick={incrementLimit}
+                // onClick={incrementLimit}
               />
             </div>
             <Pagination
               pageCount={10}
               // тут буде братися значення з АПІ і буде передаватися кількість сторінок
-              selectedPagesArray={[page]}
+              selectedPagesArray={[Number(page)]}
               // потім тут буде просто pages передаватися, уже готовий масив
 
               // Також зберігати поточну сторінку або сторінки в редаксі,
@@ -122,7 +144,8 @@ const Portfolio: FC = () => {
 
               // АБО зберігати і додавати одразу силку на цю сторінку,
               // щоб поверталося на цю сторінку вірну + також зберігати інші параметри (limit , offset)
-              setQueryParamPage={setQueryParamPage}
+              // limit може вже і не потрібен
+              updatePage={updatePage}
             />
           </>
         )}

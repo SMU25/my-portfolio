@@ -7,7 +7,7 @@ import { IPostItem } from "src/types/post";
 export const POSTS_SLICE_NAME = "posts";
 
 interface QueryParams {
-  page?: number;
+  page?: number | string;
   limit?: number;
   offset?: number;
 }

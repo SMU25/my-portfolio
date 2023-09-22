@@ -37,8 +37,8 @@ const Blog: FC = () => {
     page,
     limit,
     offset,
-    isChangedQueryParams,
-    incrementLimit,
+    // isChangedQueryParams,
+    // incrementLimit,
   } = useQueryParams();
 
   const isLoading = useAppSelector(selectIsLoading);
@@ -50,10 +50,10 @@ const Blog: FC = () => {
   }, [dispatch]);
 
   useEffect(() => {
-    if (!posts || isChangedQueryParams) {
+    if (!posts) {
       dispatch(getPostsAsync({ page, limit }));
     }
-  }, [dispatch, posts, page, limit, isChangedQueryParams]);
+  }, [dispatch, posts, page, limit]);
 
   usePageTitle(pageTitle);
 
@@ -96,7 +96,7 @@ const Blog: FC = () => {
               <ShowMore
                 isLoading={isLoadingShowMore}
                 buttonTitleCountLabel={limitInitialValue}
-                onClick={incrementLimit}
+                // onClick={incrementLimit}
               />
             </div>
             pagination

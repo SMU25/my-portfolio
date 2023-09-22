@@ -6,15 +6,15 @@ import { IWorkItem } from "src/types/work";
 
 export const WORKS_SLICE_NAME = "works";
 
-interface QueryParams {
-  page?: number;
+export interface GetWorksQueryParams {
+  page?: number | string;
   limit?: number;
   offset?: number;
 }
 
 export const getWorksAsync = createAsyncThunk(
   `${WORKS_SLICE_NAME}/fetchWorks`,
-  async ({ page = 1, limit }: QueryParams, { rejectWithValue }) => {
+  async ({ page, limit }: GetWorksQueryParams, { rejectWithValue }) => {
     try {
       // буде змінено, коли напишу власну API
       // const { data } = await instance.get<IWorkItem[]>(
@@ -34,7 +34,10 @@ export const getWorksAsync = createAsyncThunk(
 
 export const getFeaturedWorksAsync = createAsyncThunk(
   `${WORKS_SLICE_NAME}/fetchFeaturedWorks`,
-  async ({ limit }: Pick<QueryParams, "limit">, { rejectWithValue }) => {
+  async (
+    { limit }: Pick<GetWorksQueryParams, "limit">,
+    { rejectWithValue }
+  ) => {
     try {
       // буде змінено, коли напишу власну API
       // const { data } = await instance.get<IWorkItem[]>(
@@ -70,7 +73,7 @@ export const getWorkByIdAsync = createAsyncThunk(
 // буде використано, коли напишу власну API
 // export const getFeaturedWorksAsync = createAsyncThunk(
 //   `${WORKS_SLICE_NAME}/fetchFeaturedWorks`,
-//   async ({ page = 1, limit }: QueryParams, { rejectWithValue }) => {
+//   async ({ page = 1, limit }: GetWorksQueryParams, { rejectWithValue }) => {
 //     try {
 //       const { data } = await instance.get<IWorkItem[]>(
 //         `/featured-works?page=${page}&limit=${limit}`
