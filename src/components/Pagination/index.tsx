@@ -8,7 +8,6 @@ import React, {
 } from "react";
 import { useTranslation } from "react-i18next";
 import ReactPaginate, { ReactPaginateProps } from "react-paginate";
-import { SetQueryParamPage } from "src/hooks/useQueryParams";
 import { PaginationItem } from "./PaginationItem";
 import { ButtonVariants } from "../Button/types";
 
@@ -23,7 +22,7 @@ interface Props {
   selectedPagesArray: number[];
   pageRangeDisplayed?: number;
   marginPagesDisplayed?: number;
-  updatePage: SetQueryParamPage;
+  updatePage: (value: number | string) => void;
 }
 
 export const Pagination: FC<Props> = memo(
