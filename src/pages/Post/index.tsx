@@ -20,11 +20,11 @@ const Post: FC = () => {
   const post = posts[id];
   const { title } = post || {};
 
+  usePageTitle(title);
+
   useEffect(() => {
     if (!post) dispatch(getPostByIdAsync(id));
   }, [dispatch, id, post]);
-
-  usePageTitle(title);
 
   const sectionContent = isLoading ? (
     <Preloader />

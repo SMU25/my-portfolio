@@ -30,6 +30,8 @@ const Blog: FC = () => {
 
   const pageTitle = t(`${T_PREFIX} - ${HEADING}`);
 
+  usePageTitle(pageTitle);
+
   const dispatch = useAppDispatch();
 
   const {
@@ -54,8 +56,6 @@ const Blog: FC = () => {
       dispatch(getPostsAsync({ page, limit }));
     }
   }, [dispatch, posts, page, limit]);
-
-  usePageTitle(pageTitle);
 
   const isDataMissing = !isLoading && !posts?.length;
   const isShownPagination = !isDataMissing;

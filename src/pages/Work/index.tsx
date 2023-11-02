@@ -21,11 +21,11 @@ const Work: FC = () => {
   const work = works[id];
   const { title, imageAlbum, video } = work || {};
 
+  usePageTitle(title);
+
   useEffect(() => {
     if (!work) dispatch(getWorkByIdAsync(id));
   }, [dispatch, id, work]);
-
-  usePageTitle(title);
 
   const sectionContent = isLoading ? (
     <Preloader />

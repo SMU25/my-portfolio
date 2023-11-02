@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useCallback } from "react";
+import React, { FC, useState, useEffect, useCallback } from "react";
 import cn from "classnames";
 import { useTranslation } from "react-i18next";
 import { useAppDispatch, useAppSelector } from "src/hooks/redux";
@@ -35,23 +35,21 @@ const HEADING = "title";
 const Portfolio: FC = () => {
   const { t } = useTranslation();
 
-  const { isLoadingPage, setIsLoadingPage } = useOnLoadPage();
-
   const pageTitle = t(`${T_PREFIX} - ${HEADING}`);
+
+  usePageTitle(pageTitle);
+
+  const { isLoadingPage, setIsLoadingPage } = useOnLoadPage();
 
   const dispatch = useAppDispatch();
 
-  const {
-    limitInitialValue,
-    page,
-    limit,
-    offset,
-    setPage,
-    // incrementLimit,
-  } = useQueryParams();
+  const { limitInitialValue, page, limit, setPage } = useQueryParams();
 
   const isLoading = useAppSelector(selectIsLoading);
   const works = useAppSelector(selectWorks);
+  // CHANGE - буде змінено,коли буде АПІ
+  // const {pageCount} = useAppSelector(selectWorks);
+  const pageCount = 2;
   const workListTypeView = useAppSelector(selectWorkListTypeView);
 
   const toogleWorkView = useCallback(() => {
@@ -65,12 +63,12 @@ const Portfolio: FC = () => {
   );
 
   useEffect(() => {
-    if (!works || !isLoadingPage) {
+    if (!works?.length && !isLoadingPage) {
       getWorks();
     }
-  }, [getWorks, isLoadingPage, works]);
+  }, [getWorks, works, isLoadingPage]);
 
-  usePageTitle(pageTitle);
+  const [selectedPages, setSelectedPages] = useState([page]);
 
   const isDataMissing = !isLoading && !works?.length;
   //CHANGE - тут буде ще 1 значення (!isDataMissing && countPages > 1). Якщо кількість сторінок не більше 1, то не показувати пагінацію
@@ -81,10 +79,17 @@ const Portfolio: FC = () => {
   // add animation for toggle view type list
   // на головній перша секції з бека отримання можна зробити, і потім залежно від мови, щоб отримувати переклад роботи або посту із API (по ід та lang)
 
-  // const isLoadingShowMore = isLoading && Boolean(works);
-  const isLoadingShowMore = isLoading && [page].length > 1;
-  // потім тут буде просто pages замість page - уже готовий масив
-  // Вертаи з бекенда кількість вибраних сторінок ([page].length)
+  const isLoadingShowMore = isLoading && selectedPages.length > 1;
+
+  const onLoadMoreItems = useCallback(() => {
+    if (page < pageCount) {
+      const nextPage = page + 1;
+
+      setPage(nextPage);
+      setSelectedPages((prevPagesArray) => [...prevPagesArray, nextPage]);
+      getWorks({ page: nextPage });
+    }
+  }, [setPage, getWorks, page]);
 
   const updatePage = useCallback(
     (page: GetWorksQueryParams["page"]) => {
@@ -128,16 +133,18 @@ const Portfolio: FC = () => {
             <div className={DEFAULT_SHOW_MORE_BTN_CONTAINER_CLASSNAME}>
               <ShowMore
                 isLoading={isLoadingShowMore}
+                isDisabled={page >= pageCount}
                 buttonTitleCountLabel={limitInitialValue}
-                // onClick={incrementLimit}
+                onClick={onLoadMoreItems}
               />
             </div>
             <Pagination
-              pageCount={10}
               // тут буде братися значення з АПІ і буде передаватися кількість сторінок
-              selectedPagesArray={[Number(page)]}
-              // потім тут буде просто pages передаватися, уже готовий масив
-
+              currentPage={page}
+              selectedPages={selectedPages}
+              setCurrentPage={setPage}
+              setSelectedPages={setSelectedPages}
+              pageCount={pageCount}
               // Також зберігати поточну сторінку або сторінки в редаксі,
               //  щоб коли я перехожу назад на неї, то показувало її або їх, а не першу(1)
               // і щоб це додавало в query params , і звідти буде брати це значення для пагінації

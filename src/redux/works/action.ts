@@ -7,7 +7,7 @@ import { IWorkItem } from "src/types/work";
 export const WORKS_SLICE_NAME = "works";
 
 export interface GetWorksQueryParams {
-  page?: number | string;
+  page?: number;
   limit?: number;
   offset?: number;
 }

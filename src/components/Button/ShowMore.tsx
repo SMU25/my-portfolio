@@ -1,4 +1,5 @@
 import React, { FC } from "react";
+import cn from "classnames";
 import { useTranslation } from "react-i18next";
 import { Loader } from "src/components/Loader";
 import { Sizes } from "src/types/sizes";
@@ -45,7 +46,7 @@ export const ShowMore: FC<Props> = ({
         <Loader size={Sizes.S} />
       ) : (
         <ArrowRotate
-          className="rotate-12"
+          className={cn("rotate-12", { "fill-g-gray-light": isDisabled })}
           width={ARROW_ROTATE_ICON_SIZE}
           height={ARROW_ROTATE_ICON_SIZE}
         />

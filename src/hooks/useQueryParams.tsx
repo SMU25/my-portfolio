@@ -8,7 +8,7 @@ const OFFSET_QUERY_PARAM_KEY = "offset";
 export type SetQueryParam = (key: string, value: number | string) => void;
 
 interface InitialValues {
-  pageInitialValue?: number | string;
+  pageInitialValue?: number;
   limitInitialValue?: number;
   offsetInitialValue?: number;
 }
@@ -18,18 +18,15 @@ export const useQueryParams = (initialValues?: InitialValues) => {
     pageInitialValue = 1,
     limitInitialValue = 6,
     offsetInitialValue,
-    // якщо буду міняти і видаляти incrementLimit, то перйеменувати limit на onPageLimit
   } = initialValues || {};
 
   const [queryParams, setQueryParams] = useSearchParams();
 
-  const pageQueryParam = queryParams.get(PAGE_QUERY_PARAM_KEY);
+  const pageQueryParam = Number(queryParams.get(PAGE_QUERY_PARAM_KEY));
   const limitQueryParam = Number(queryParams.get(LIMIT_QUERY_PARAM_KEY));
   const offsetQueryParam = Number(queryParams.get(OFFSET_QUERY_PARAM_KEY));
 
-  const [page, setPage] = useState<number | string>(
-    pageQueryParam || pageInitialValue
-  );
+  const [page, setPage] = useState(pageQueryParam || pageInitialValue);
   const [limit, setLimit] = useState(limitQueryParam || limitInitialValue);
   const [offset, setOffset] = useState(offsetQueryParam || offsetInitialValue);
 
@@ -40,8 +37,6 @@ export const useQueryParams = (initialValues?: InitialValues) => {
     },
     [setQueryParams, queryParams]
   );
-
-  // const incrementLimit = () => setLimit((prev) => prev + limitInitialValue);
 
   useEffect(() => {
     if (page) {

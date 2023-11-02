@@ -42,3 +42,7 @@ path {
 .fill-g-gray-light g {
   @apply fill-gray-light;
 }
+
+.fill-g-gray-light g {
+  @apply fill-white;
+}
