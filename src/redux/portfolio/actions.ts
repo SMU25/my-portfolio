@@ -75,7 +75,7 @@ export const getPortfolioProjectByIdAsync = createAsyncThunk(
 //   async ({ page = 1, limit }: QueryParams, { rejectWithValue }) => {
 //     try {
 //       const { data } = await instance.get<IPortfolioProject[]>(
-//         `/featured-works?page=${page}&limit=${limit}`
+//         `/featured-projects?page=${page}&limit=${limit}`
 //       );
 
 //       return data;

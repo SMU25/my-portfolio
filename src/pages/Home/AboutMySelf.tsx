@@ -51,6 +51,7 @@ export const AboutMySelf: FC = () => {
         <img
           className="w-full h-full shadow-lining-lighter-blue rounded-full"
           {...PROFILE_IMG}
+          // CHANGE - змінитися коли буду тянути із АПІ ці дані
         />
       </div>
     </SectionWrapper>
