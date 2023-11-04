@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import { FormikProvider, useFormik } from "formik";
 import { useAppDispatch, useAppSelector } from "src/hooks/redux";
 import { useModal } from "src/hooks/useModal";
-import { sendFeedbackForm } from "src/redux/feedbackForm/action";
+import { sendFeedbackForm } from "src/redux/feedbackForm/actions";
 import { selectFeedbackFormState } from "src/redux/feedbackForm/selectors";
 import { ModalWindow } from "src/components/ModalWindow";
 import { Confirmation } from "src/components/ModalWindow/templates/Confirmation";

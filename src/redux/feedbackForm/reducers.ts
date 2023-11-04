@@ -1,5 +1,5 @@
 import { ActionReducerMapBuilder } from "@reduxjs/toolkit";
-import { sendFeedbackForm } from "./action";
+import { sendFeedbackForm } from "./actions";
 import { FeedbackFormState } from "./slice";
 
 type ActionReducerMapBuilderWithFormState =

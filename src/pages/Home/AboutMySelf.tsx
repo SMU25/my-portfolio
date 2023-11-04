@@ -11,8 +11,8 @@ export const RESUME_LINKS = {
 };
 
 const PROFILE_IMG = {
-  SRC: "https://lh3.googleusercontent.com/a/AAcHTteSC1NOcktlHaJMM7gjdTAzc_FNG60x6ujublZ_n1CAyKaH=s288-c-no",
-  ALT_TEXT: "Oleksandr Myronchuk",
+  src: "https://lh3.googleusercontent.com/a/AAcHTteSC1NOcktlHaJMM7gjdTAzc_FNG60x6ujublZ_n1CAyKaH=s288-c-no",
+  alt: "Oleksandr Myronchuk",
 };
 
 const T_PREFIX = "about-my-self";
@@ -50,8 +50,7 @@ export const AboutMySelf: FC = () => {
       <div className="w-full max-w-50 xs:max-w-75 sm:max-w-100 lg:max-w-125 lg:xl:max-w-150 h-full max-h-50 xs:max-h-75 sm:max-h-100 lg:max-h-125 xl:max-h-150 lg:ml-28">
         <img
           className="w-full h-full shadow-lining-lighter-blue rounded-full"
-          src={PROFILE_IMG.SRC}
-          alt={PROFILE_IMG.ALT_TEXT}
+          {...PROFILE_IMG}
         />
       </div>
     </SectionWrapper>

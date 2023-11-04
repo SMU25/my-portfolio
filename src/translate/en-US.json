@@ -52,9 +52,9 @@
   "about-my-self - description": "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.",
   "about-my-self - view-resume-btn": "View resume",
 
-  "recent-posts - title": "Recent posts",
+  "featured-portfolio-projects - title": "Featured projects",
 
-  "featured-works - title": "Featured projects",
+  "recent-blog-posts - title": "Recent posts",
 
   "footer - dev-info": "©2023 Developed by Oleksandr Myronchuk",
 
@@ -63,17 +63,17 @@
 
   "portfolio - title": "Portfolio",
 
-  "works - data-missing-text": "The data could not be obtained or is missing!",
+  "portfolio-items - data-missing-text": "The data could not be obtained or is missing!",
 
-  "work-card - view-btn": "View project",
+  "portfolio-card - view-btn": "View project",
 
-  "work-description - title": "Description",
+  "portfolio-project-description - title": "Description",
 
-  "work-swiper - title": "Project overview",
+  "portfolio-project-swiper - title": "Project overview",
 
   "blog - title": "Blog",
 
-  "posts - data-missing-text": "The posts could not be obtained or is missing!",
+  "blog-items - data-missing-text": "The posts could not be obtained or is missing!",
 
   "blog-card - view-btn": "View post",
 

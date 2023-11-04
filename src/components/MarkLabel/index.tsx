@@ -18,7 +18,7 @@ export const MarkLabel: FC<Props> = ({
   return (
     <span
       className={cn(
-        "px-2.5 md:px-3.5 text-white text-base md:text-lg font-black rounded-2xl",
+        "py-1 px-2.5 md:px-3.5 text-white text-base md:text-lg font-black rounded-2xl",
         className,
         randomColor
       )}

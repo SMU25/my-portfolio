@@ -5,14 +5,20 @@ import { useAppDispatch, useAppSelector } from "src/hooks/redux";
 import { useQueryParams } from "src/hooks/useQueryParams";
 import { usePageTitle } from "src/hooks/usePageTitle";
 import { useOnLoadPage } from "src/hooks/useOnLoadPage";
-import { getWorksAsync, GetWorksQueryParams } from "src/redux/works/action";
-import { toggleWorkListTypeView } from "src/redux/config/action";
-import { selectIsLoading, selectWorks } from "src/redux/works/selectors";
-import { selectWorkListTypeView } from "src/redux/config/selectors";
+import {
+  getPortfolioProjectsAsync,
+  QueryParams,
+} from "src/redux/portfolio/actions";
+import { togglePortfolioListTypeView } from "src/redux/config/actions";
+import {
+  selectIsLoading,
+  selectPortfolioProjects,
+} from "src/redux/portfolio/selectors";
+import { selectPortfolioListTypeView } from "src/redux/config/selectors";
 import { SectionWrapper } from "src/components/Layouts/SectionWrapper";
 import { BreadCrumbs } from "src/components/BreadCrumbs";
 import { ContainerHead } from "src/components/Layouts/ContainerHead";
-import { Works } from "src/components/Works";
+import { PortfolioItems } from "src/components/PortfolioItems";
 import { ChangeViewButton } from "src/components/Button/ChangeViewButton";
 import { ShowMore } from "src/components/Button/ShowMore";
 import { Pagination } from "src/components/Pagination";
@@ -46,31 +52,31 @@ const Portfolio: FC = () => {
   const { limitInitialValue, page, limit, setPage } = useQueryParams();
 
   const isLoading = useAppSelector(selectIsLoading);
-  const works = useAppSelector(selectWorks);
+  const projects = useAppSelector(selectPortfolioProjects);
   // CHANGE - буде змінено,коли буде АПІ
-  // const {pageCount} = useAppSelector(selectWorks);
+  // const {pageCount} = useAppSelector(selectPortfolioProjects);
   const pageCount = 2;
-  const workListTypeView = useAppSelector(selectWorkListTypeView);
+  const portfolioListTypeView = useAppSelector(selectPortfolioListTypeView);
 
-  const toogleWorkView = useCallback(() => {
-    dispatch(toggleWorkListTypeView());
+  const tooglePortfolioListView = useCallback(() => {
+    dispatch(togglePortfolioListTypeView());
   }, [dispatch]);
 
-  const getWorks = useCallback(
-    (queryParams: GetWorksQueryParams = {}) =>
-      dispatch(getWorksAsync({ page, limit, ...queryParams })),
+  const getProjects = useCallback(
+    (queryParams: QueryParams = {}) =>
+      dispatch(getPortfolioProjectsAsync({ page, limit, ...queryParams })),
     [dispatch, page, limit]
   );
 
   useEffect(() => {
-    if (!works?.length && !isLoadingPage) {
-      getWorks();
+    if (!projects?.length && !isLoadingPage) {
+      getProjects();
     }
-  }, [getWorks, works, isLoadingPage]);
+  }, [getProjects, projects, isLoadingPage]);
 
   const [selectedPages, setSelectedPages] = useState([page]);
 
-  const isDataMissing = !isLoading && !works?.length;
+  const isDataMissing = !isLoading && !projects?.length;
   //CHANGE - тут буде ще 1 значення (!isDataMissing && countPages > 1). Якщо кількість сторінок не більше 1, то не показувати пагінацію
   const isShownPagination = !isDataMissing;
   // зміню тут , щоб пагінацію показувалоЮ тільки коли countPages > 1 , а інші умовив видалити, і скривати тільки show more,Ю о коли елементи не завантажило, щоб було відображення піганації для переходу на іншу сторінку
@@ -87,16 +93,16 @@ const Portfolio: FC = () => {
 
       setPage(nextPage);
       setSelectedPages((prevPagesArray) => [...prevPagesArray, nextPage]);
-      getWorks({ page: nextPage });
+      getProjects({ page: nextPage });
     }
-  }, [setPage, getWorks, page]);
+  }, [setPage, getProjects, page]);
 
   const updatePage = useCallback(
-    (page: GetWorksQueryParams["page"]) => {
+    (page: QueryParams["page"]) => {
       setPage(page);
-      getWorks({ page });
+      getProjects({ page });
     },
-    [setPage, getWorks]
+    [setPage, getProjects]
   );
 
   useEffect(() => {
@@ -116,17 +122,17 @@ const Portfolio: FC = () => {
         >
           {!isDataMissing && (
             <ChangeViewButton
-              listTypeView={workListTypeView}
-              toogleListTypeView={toogleWorkView}
+              listTypeView={portfolioListTypeView}
+              toogleListTypeView={tooglePortfolioListView}
             />
           )}
         </ContainerHead>
-        <Works
+        <PortfolioItems
           className={DEFAULT_ITEMS_COMPONENT_CLASSNAME}
           isLoading={isLoading}
-          items={works}
-          countItemsPreloader={limit}
-          listTypeView={workListTypeView}
+          listTypeView={portfolioListTypeView}
+          preloaderItemCount={limit}
+          items={projects}
         />
         {isShownPagination && (
           <>
@@ -134,7 +140,7 @@ const Portfolio: FC = () => {
               <ShowMore
                 isLoading={isLoadingShowMore}
                 isDisabled={page >= pageCount}
-                buttonTitleCountLabel={limitInitialValue}
+                loadableItemCountLabel={limitInitialValue}
                 onClick={onLoadMoreItems}
               />
             </div>

@@ -1,8 +1,8 @@
 import React, { FC } from "react";
 import { usePageTitle } from "src/hooks/usePageTitle";
 import { AboutMySelf } from "./AboutMySelf";
-import { FeaturedWorks } from "./FeaturedWorks";
-import { RecentPosts } from "./RecentPosts";
+import { FeaturedPortfolioProjects } from "./FeaturedPortfolioProjects";
+import { RecentBlogPosts } from "./RecentBlogPosts";
 
 const Home: FC = () => {
   usePageTitle();
@@ -11,8 +11,8 @@ const Home: FC = () => {
     <>
       <AboutMySelf />
       <div className="bg-gradient-blue-sky">
-        <FeaturedWorks />
-        <RecentPosts />
+        <FeaturedPortfolioProjects />
+        <RecentBlogPosts />
       </div>
     </>
   );

@@ -4,14 +4,14 @@ import { useTranslation } from "react-i18next";
 import { useAppDispatch, useAppSelector } from "src/hooks/redux";
 import { useQueryParams } from "src/hooks/useQueryParams";
 import { usePageTitle } from "src/hooks/usePageTitle";
-import { getPostsAsync } from "src/redux/posts/action";
-import { togglePostListTypeView } from "src/redux/config/action";
-import { selectIsLoading, selectPosts } from "src/redux/posts/selectors";
-import { selectPostListTypeView } from "src/redux/config/selectors";
+import { getBlogPostsAsync } from "src/redux/blog/actions";
+import { toggleBlogListTypeView } from "src/redux/config/actions";
+import { selectIsLoading, selectBlogPosts } from "src/redux/blog/selectors";
+import { selectBlogListTypeView } from "src/redux/config/selectors";
 import { SectionWrapper } from "src/components/Layouts/SectionWrapper";
 import { BreadCrumbs } from "src/components/BreadCrumbs";
 import { ContainerHead } from "src/components/Layouts/ContainerHead";
-import { BlogPosts } from "src/components/BlogPosts";
+import { BlogItems } from "src/components/BlogItems";
 import { ChangeViewButton } from "src/components/Button/ChangeViewButton";
 import { ShowMore } from "src/components/Button/ShowMore";
 import { TagsHeading } from "src/components/Heading/types";
@@ -34,26 +34,19 @@ const Blog: FC = () => {
 
   const dispatch = useAppDispatch();
 
-  const {
-    limitInitialValue,
-    page,
-    limit,
-    offset,
-    // isChangedQueryParams,
-    // incrementLimit,
-  } = useQueryParams();
+  const { limitInitialValue, page, limit } = useQueryParams();
 
   const isLoading = useAppSelector(selectIsLoading);
-  const posts = useAppSelector(selectPosts);
-  const postListTypeView = useAppSelector(selectPostListTypeView);
+  const posts = useAppSelector(selectBlogPosts);
+  const blogListTypeView = useAppSelector(selectBlogListTypeView);
 
-  const tooglePostView = useCallback(() => {
-    dispatch(togglePostListTypeView());
+  const toogleBlogListView = useCallback(() => {
+    dispatch(toggleBlogListTypeView());
   }, [dispatch]);
 
   useEffect(() => {
     if (!posts) {
-      dispatch(getPostsAsync({ page, limit }));
+      dispatch(getBlogPostsAsync({ page, limit }));
     }
   }, [dispatch, posts, page, limit]);
 
@@ -78,25 +71,24 @@ const Blog: FC = () => {
         >
           {!isDataMissing && (
             <ChangeViewButton
-              listTypeView={postListTypeView}
-              toogleListTypeView={tooglePostView}
+              listTypeView={blogListTypeView}
+              toogleListTypeView={toogleBlogListView}
             />
           )}
         </ContainerHead>
-        <BlogPosts
+        <BlogItems
           className={DEFAULT_ITEMS_COMPONENT_CLASSNAME}
-          listTypeView={postListTypeView}
+          listTypeView={blogListTypeView}
           isLoading={isLoading}
           items={posts}
-          countItemsPreloader={limit}
+          preloaderItemCount={limit}
         />
         {isShownPagination && (
           <>
             <div className={DEFAULT_SHOW_MORE_BTN_CONTAINER_CLASSNAME}>
               <ShowMore
                 isLoading={isLoadingShowMore}
-                buttonTitleCountLabel={limitInitialValue}
-                // onClick={incrementLimit}
+                loadableItemCountLabel={limitInitialValue}
               />
             </div>
             pagination

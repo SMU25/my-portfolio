@@ -2,8 +2,8 @@ import React, { FC } from "react";
 import cn from "classnames";
 import { useTranslation } from "react-i18next";
 import { MarkLabel } from "src/components/MarkLabel";
-import { SkillsAndTechnologiesItem } from "src/types/work";
 import { CLASSNAMES_LIST } from "./constants";
+import { SkillsAndTechnologiesItem } from "./types";
 import { Heading } from "../Heading";
 import { TagsHeading } from "../Heading/types";
 

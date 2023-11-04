@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { FEEDBACK_FORM_SLICE_NAME } from "./action";
+import { FEEDBACK_FORM_SLICE_NAME } from "./actions";
 import { sendFeedbackFormReducer } from "./reducers";
 
 export interface FeedbackFormState {

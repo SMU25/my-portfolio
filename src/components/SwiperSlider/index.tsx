@@ -27,7 +27,7 @@ export interface CustomSwiperProps extends SwiperProps {
   slideClassName?: string;
   customSettings?: SwiperProps;
   isShownNavigationButtons?: boolean;
-  isShownKeyboardInfoPopUp?: boolean;
+  isShownKeyboardInfoPopup?: boolean;
   swiperState?: SwiperClass;
   setActiveSlideIndex?: setActiveIndex;
   handleSlideChange?: VoidFunction;
@@ -43,7 +43,7 @@ export const SwiperSlider: FC<CustomSwiperProps> = ({
   slideClassName,
   customSettings,
   isShownNavigationButtons,
-  isShownKeyboardInfoPopUp,
+  isShownKeyboardInfoPopup,
   swiperState,
   setActiveSlideIndex,
   handleSlideChange,
@@ -118,7 +118,7 @@ export const SwiperSlider: FC<CustomSwiperProps> = ({
       )}
       <KeyboardInfoPopUp
         className="!top-20"
-        isShown={isShownKeyboardInfoPopUp}
+        isShown={isShownKeyboardInfoPopup}
         cookiesKeyPopUp={COOKIES_KEY_KEYBOARD_POPUP}
       />
     </div>

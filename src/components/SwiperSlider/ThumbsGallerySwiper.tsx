@@ -19,7 +19,7 @@ export const THUMBS_MAIN_SWIPER_ID = "main-swiper";
 interface Props
   extends Pick<
     CustomSwiperProps,
-    "items" | "containerClassName" | "isShownKeyboardInfoPopUp"
+    "items" | "containerClassName" | "isShownKeyboardInfoPopup"
   > {
   mainSwiperClassName?: string;
   miniSwiperClassName?: string;
@@ -39,7 +39,7 @@ export const ThumbsGallerySwiper: FC<Props> = ({
   customThumbsSwiperSettings,
   isShownNavBtnsMainSwiper,
   isShownNavBtnsThumbsSwiper,
-  isShownKeyboardInfoPopUp,
+  isShownKeyboardInfoPopup,
   setActiveSlideIndex,
 }) => {
   const [mainSwiper, setMainSwiper] = useState<SwiperCore>();
@@ -76,7 +76,7 @@ export const ThumbsGallerySwiper: FC<Props> = ({
       />
       <KeyboardInfoPopUp
         className="!top-70"
-        isShown={isShownKeyboardInfoPopUp}
+        isShown={isShownKeyboardInfoPopup}
         cookiesKeyPopUp={COOKIES_KEY_KEYBOARD_POPUP}
       />
     </div>

@@ -3,12 +3,12 @@ import { RootState } from "../store";
 
 export const selectConfigState = (state: RootState) => state.config;
 
-export const selectWorkListTypeView = createSelector(
+export const selectPortfolioListTypeView = createSelector(
   selectConfigState,
-  (configState) => configState.workListTypeView
+  (configState) => configState.portfolioListTypeView
 );
 
-export const selectPostListTypeView = createSelector(
+export const selectBlogListTypeView = createSelector(
   selectConfigState,
-  (configState) => configState.postListTypeView
+  (configState) => configState.blogListTypeView
 );

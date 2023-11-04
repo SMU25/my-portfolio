@@ -17,7 +17,7 @@ interface Props {
   isLoading?: boolean;
   isDisabled?: boolean;
   buttonTitle?: string;
-  buttonTitleCountLabel: number;
+  loadableItemCountLabel: number;
   onClick?: VoidFunction;
 }
 
@@ -26,14 +26,16 @@ export const ShowMore: FC<Props> = ({
   isLoading,
   isDisabled,
   buttonTitle,
-  buttonTitleCountLabel,
+  loadableItemCountLabel,
   onClick,
 }) => {
   const { t } = useTranslation();
 
   const title =
     buttonTitle ||
-    t(`${T_PREFIX} - ${DEFAULT_BUTTON_NAME}`, { count: buttonTitleCountLabel });
+    t(`${T_PREFIX} - ${DEFAULT_BUTTON_NAME}`, {
+      count: loadableItemCountLabel,
+    });
 
   return (
     <Button
