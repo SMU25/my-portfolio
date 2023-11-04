@@ -3,14 +3,9 @@ import { instance } from "src/services/api-client";
 import { history } from "src/services/history";
 import { PATHNAMES } from "src/constants/routes";
 import { IBlogPost } from "src/types/blog";
+import { QueryParams } from "src/types";
 
 export const BLOG_SLICE_NAME = "blog";
-
-interface QueryParams {
-  page?: number | string;
-  limit?: number;
-  offset?: number;
-}
 
 // CHANGE - add env , додати ,щоб параметри функції були не обов'язкові, може просто зробити об'єект ,який я деструктурую в функції
 //перейменувати action => actions

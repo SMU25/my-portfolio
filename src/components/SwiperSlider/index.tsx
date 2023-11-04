@@ -11,7 +11,7 @@ import SwiperCore from "swiper";
 import SwiperClass from "swiper/types/swiper-class";
 import "swiper/css";
 import "swiper/css/pagination";
-import { KeyboardInfoPopUp } from "./KeyboardInfoPopUp";
+import { KeyboardInfoPopup } from "./KeyboardInfoPopup";
 import { DEFAULT_SETTINGS } from "./constants";
 import { setActiveIndex } from "./types";
 import { NavigationButton } from "../Button/NavigationButton";
@@ -116,10 +116,10 @@ export const SwiperSlider: FC<CustomSwiperProps> = ({
           />
         </>
       )}
-      <KeyboardInfoPopUp
+      <KeyboardInfoPopup
         className="!top-20"
         isShown={isShownKeyboardInfoPopup}
-        cookiesKeyPopUp={COOKIES_KEY_KEYBOARD_POPUP}
+        cookiesKeyPopup={COOKIES_KEY_KEYBOARD_POPUP}
       />
     </div>
   );

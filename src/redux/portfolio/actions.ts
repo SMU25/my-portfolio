@@ -3,14 +3,9 @@ import { instance } from "src/services/api-client";
 import { history } from "src/services/history";
 import { PATHNAMES } from "src/constants/routes";
 import { IPortfolioProject } from "src/types/portfolio";
+import { QueryParams } from "src/types";
 
 export const PORTFOLIO_SLICE_NAME = "portfolio";
-
-export interface QueryParams {
-  page?: number;
-  limit?: number;
-  offset?: number;
-}
 
 export const getPortfolioProjectsAsync = createAsyncThunk(
   `${PORTFOLIO_SLICE_NAME}/fetchPortfolioProjects`,

@@ -14,17 +14,17 @@ const INFO_TEXT = "text";
 interface Props {
   className?: string;
   isShown?: boolean;
-  cookiesKeyPopUp?: string;
+  cookiesKeyPopup?: string;
 }
 
-export const KeyboardInfoPopUp: FC<Props> = ({
+export const KeyboardInfoPopup: FC<Props> = ({
   className,
   isShown,
-  cookiesKeyPopUp,
+  cookiesKeyPopup,
 }) => {
   const { t } = useTranslation();
 
-  const { isOpenModal, closeModal } = useModal(isShown, cookiesKeyPopUp);
+  const { isOpenModal, closeModal } = useModal(isShown, cookiesKeyPopup);
 
   if (!isShown) return null;
 

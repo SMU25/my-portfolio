@@ -5,10 +5,7 @@ import { useAppDispatch, useAppSelector } from "src/hooks/redux";
 import { useQueryParams } from "src/hooks/useQueryParams";
 import { usePageTitle } from "src/hooks/usePageTitle";
 import { useOnLoadPage } from "src/hooks/useOnLoadPage";
-import {
-  getPortfolioProjectsAsync,
-  QueryParams,
-} from "src/redux/portfolio/actions";
+import { getPortfolioProjectsAsync } from "src/redux/portfolio/actions";
 import { togglePortfolioListTypeView } from "src/redux/config/actions";
 import {
   selectIsLoading,
@@ -23,6 +20,7 @@ import { ChangeViewButton } from "src/components/Button/ChangeViewButton";
 import { ShowMore } from "src/components/Button/ShowMore";
 import { Pagination } from "src/components/Pagination";
 import { TagsHeading } from "src/components/Heading/types";
+import { QueryParams } from "src/types";
 import {
   DEFAULT_SECTION_CLASSNAME,
   DEFAULT_ITEMS_COMPONENT_CLASSNAME,

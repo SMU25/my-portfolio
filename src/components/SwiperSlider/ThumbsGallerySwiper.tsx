@@ -4,7 +4,7 @@ import SwiperCore from "swiper";
 import { SwiperProps } from "swiper/react";
 import "swiper/css/thumbs";
 import "swiper/css/free-mode";
-import { KeyboardInfoPopUp } from "./KeyboardInfoPopUp";
+import { KeyboardInfoPopup } from "./KeyboardInfoPopup";
 import { CustomSwiperProps, SwiperSlider } from ".";
 import {
   DEFAULT_GALLERY_MAIN_SWIPER_SETTINGS,
@@ -74,10 +74,10 @@ export const ThumbsGallerySwiper: FC<Props> = ({
         customSettings={settingsThumbsSwiper}
         onSwiper={setThumbsSwiper}
       />
-      <KeyboardInfoPopUp
+      <KeyboardInfoPopup
         className="!top-70"
         isShown={isShownKeyboardInfoPopup}
-        cookiesKeyPopUp={COOKIES_KEY_KEYBOARD_POPUP}
+        cookiesKeyPopup={COOKIES_KEY_KEYBOARD_POPUP}
       />
     </div>
   );
