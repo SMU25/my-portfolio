@@ -13,7 +13,7 @@ export const getPortfolioProjectsAsync = createAsyncThunk(
     try {
       // буде змінено, коли напишу власну API
       // const { data } = await instance.get<IPortfolioProject[]>(
-      //   `/portfolioProjects?page=${page}&limit=${limit}`
+      //   `/portfolio/projects?page=${page}&limit=${limit}`
       // );
 
       const { data } = await instance.get<IPortfolioProject[]>(
@@ -33,7 +33,7 @@ export const getFeaturedPortfolioProjectsAsync = createAsyncThunk(
     try {
       // буде змінено, коли напишу власну API
       // const { data } = await instance.get<IPortfolioProject[]>(
-      //   `/portfolioProjects/featured?limit=${limit}`
+      //   `/portfolio/projects/featured?limit=${limit}`
       // );
 
       const { data } = await instance.get<IPortfolioProject[]>(
@@ -53,7 +53,7 @@ export const getPortfolioProjectByIdAsync = createAsyncThunk(
     try {
       // буде змінено, коли напишу власну API
       // const { data } = await instance.get<IPortfolioProject[]>(
-      //   `/portfolioProjects/${id}`
+      //   `/portfolio/projects/${id}`
       // );
 
       const { data } = await instance.get<IPortfolioProject>(
