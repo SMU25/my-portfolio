@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
+import { useLocation } from "react-router-dom";
 import { useSearchParams } from "react-router-dom";
 
 const PAGE_QUERY_PARAM_KEY = "page";
@@ -20,6 +21,8 @@ export const useQueryParams = (initialValues?: InitialValues) => {
     offsetInitialValue,
   } = initialValues || {};
 
+  const location = useLocation();
+
   const [queryParams, setQueryParams] = useSearchParams();
 
   const pageQueryParam = Number(queryParams.get(PAGE_QUERY_PARAM_KEY));
@@ -36,6 +39,26 @@ export const useQueryParams = (initialValues?: InitialValues) => {
       setQueryParams(queryParams);
     },
     [setQueryParams, queryParams]
+  );
+
+  const createQueryString = useCallback(
+    (key: string, value: number | string): string =>
+      location.search.includes(key) ? `&${key}=${value}` : "",
+    [location]
+  );
+
+  const generatePagePathName = useCallback(
+    (pageNumber: number) => {
+      const pageQueryString = `?${PAGE_QUERY_PARAM_KEY}=${pageNumber}`;
+      const limitQueryString = createQueryString(LIMIT_QUERY_PARAM_KEY, limit);
+      const offsetQueryString = createQueryString(
+        OFFSET_QUERY_PARAM_KEY,
+        offset
+      );
+
+      return `${location.pathname}${pageQueryString}${limitQueryString}${offsetQueryString}`;
+    },
+    [createQueryString, location, limit, offset]
   );
 
   useEffect(() => {
@@ -66,5 +89,6 @@ export const useQueryParams = (initialValues?: InitialValues) => {
     setPage,
     setLimit,
     setOffset,
+    generatePagePathName,
   };
 };

@@ -1,6 +1,7 @@
 import React, { FC, useEffect, useCallback, useMemo, memo } from "react";
 import { useTranslation } from "react-i18next";
 import ReactPaginate, { ReactPaginateProps } from "react-paginate";
+import { useQueryParams } from "src/hooks/useQueryParams";
 import { PaginationItem } from "./PaginationItem";
 import { ButtonVariants } from "../Button/types";
 
@@ -33,6 +34,8 @@ export const Pagination: FC<Props> = memo(
     updatePage,
   }) => {
     const { t } = useTranslation();
+
+    const { generatePagePathName } = useQueryParams();
 
     const firstPageInSelectedPages = selectedPages[0];
     const lastPageInSelectedPages = selectedPages[selectedPages.length - 1];
@@ -85,8 +88,16 @@ export const Pagination: FC<Props> = memo(
             {page}
           </PaginationItem>
         ),
+
+        hrefBuilder: generatePagePathName,
       }),
-      [t, checkIsSelectedPage, isSelectedFirstPage, isSelectedLastPage]
+      [
+        t,
+        checkIsSelectedPage,
+        generatePagePathName,
+        isSelectedFirstPage,
+        isSelectedLastPage,
+      ]
     );
 
     const onClickPage: ReactPaginateProps["onClick"] = useCallback(
