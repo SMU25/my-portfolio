@@ -53,7 +53,7 @@ const Portfolio: FC = () => {
   const projects = useAppSelector(selectPortfolioProjects);
   // CHANGE - буде змінено,коли буде АПІ
   // const {pageCount} = useAppSelector(selectPortfolioProjects);
-  const pageCount = 2;
+  const pageCount = 5;
   const portfolioListTypeView = useAppSelector(selectPortfolioListTypeView);
 
   const tooglePortfolioListView = useCallback(() => {
@@ -95,14 +95,6 @@ const Portfolio: FC = () => {
     }
   }, [setPage, getProjects, page]);
 
-  const updatePage = useCallback(
-    (page: QueryParams["page"]) => {
-      setPage(page);
-      getProjects({ page });
-    },
-    [setPage, getProjects]
-  );
-
   useEffect(() => {
     setIsLoadingPage(true);
   }, [setIsLoadingPage]);
@@ -131,6 +123,7 @@ const Portfolio: FC = () => {
           listTypeView={portfolioListTypeView}
           preloaderItemCount={limit}
           items={projects}
+          getPortfolioItems={getProjects}
         />
         {isShownPagination && (
           <>
@@ -156,7 +149,7 @@ const Portfolio: FC = () => {
               // АБО зберігати і додавати одразу силку на цю сторінку,
               // щоб поверталося на цю сторінку вірну + також зберігати інші параметри (limit , offset)
               // limit може вже і не потрібен
-              updatePage={updatePage}
+              getItems={getProjects}
             />
           </>
         )}

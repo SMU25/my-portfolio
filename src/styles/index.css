@@ -39,10 +39,14 @@ path {
   @apply fill-blue-light;
 }
 
+.fill-g-blue-darken g {
+  @apply fill-blue-darken;
+}
+
 .fill-g-gray-light g {
   @apply fill-gray-light;
 }
 
-.fill-g-gray-light g {
+.fill-g-white g {
   @apply fill-white;
 }

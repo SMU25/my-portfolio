@@ -48,7 +48,7 @@ export const ShowMore: FC<Props> = ({
         <Loader size={Sizes.S} />
       ) : (
         <ArrowRotate
-          className={cn("rotate-12", { "fill-g-gray-light": isDisabled })}
+          className={cn("rotate-12", { "fill-g-white": isDisabled })}
           width={ARROW_ROTATE_ICON_SIZE}
           height={ARROW_ROTATE_ICON_SIZE}
         />

@@ -4,9 +4,9 @@ import { useTranslation } from "react-i18next";
 import { SwiperSlider } from "src/components/SwiperSlider";
 import { ListTypeView } from "src/types";
 import { IPortfolioProject } from "src/types/portfolio";
-import { ReactComponent as DataMissing } from "src/assets/icons/data-missing.svg";
 import { renderPreloader } from "./Preloader";
 import { PortfolioCard } from "./PortfolioCard";
+import { DataMissing } from "../DataMissing";
 
 const T_PREFIX = "portfolio-items";
 
@@ -19,6 +19,7 @@ interface Props {
   items: IPortfolioProject[];
   preloaderItemCount?: number;
   isSlider?: boolean;
+  getPortfolioItems: VoidFunction;
 }
 
 export const PortfolioItems: FC<Props> = memo(
@@ -29,6 +30,7 @@ export const PortfolioItems: FC<Props> = memo(
     items,
     preloaderItemCount,
     isSlider,
+    getPortfolioItems,
   }) => {
     const { t } = useTranslation();
 
@@ -63,12 +65,10 @@ export const PortfolioItems: FC<Props> = memo(
 
     if (!renderedPortfolioItems)
       return (
-        <div className="flex flex-col items-center justify-center mt-5 xs:mt-8 sm:mt-15">
-          <DataMissing className="fill-g-red-medium w-16 xs:w-24 sm:w-32 h-16 xs:h-24 sm:h-32" />
-          <p className="mt-1 xs:mt-2 sm:mt-5 mb-5 text-center text-red-medium text-xl sm:text-3xl font-bold">
-            {t(`${T_PREFIX} - ${DATA_MISSING_TEXT}`)}
-          </p>
-        </div>
+        <DataMissing
+          dataMissingText={t(`${T_PREFIX} - ${DATA_MISSING_TEXT}`)}
+          fetchMissingData={getPortfolioItems}
+        />
       );
 
     return isSlider ? (

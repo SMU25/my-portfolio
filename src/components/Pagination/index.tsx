@@ -19,7 +19,7 @@ interface Props {
   marginPagesDisplayed?: number;
   setCurrentPage: (value: number) => void;
   setSelectedPages: (value: number[]) => void;
-  updatePage: (value: number | string) => void;
+  getItems: VoidFunction;
 }
 
 export const Pagination: FC<Props> = memo(
@@ -31,7 +31,7 @@ export const Pagination: FC<Props> = memo(
     marginPagesDisplayed = 3,
     setCurrentPage,
     setSelectedPages,
-    updatePage,
+    getItems,
   }) => {
     const { t } = useTranslation();
 
@@ -50,12 +50,13 @@ export const Pagination: FC<Props> = memo(
     const isSelectedFirstPage = checkIsSelectedPage(1);
     const isSelectedLastPage = checkIsSelectedPage(pageCount);
 
+    // CHANGE - додати, щоб був 1 запит, тобто якщо дані відсутні, то далі не підгружає
     useEffect(() => {
       if (!checkIsSelectedPage(currentPage)) {
         setSelectedPages([currentPage]);
-        updatePage(currentPage);
+        getItems();
       }
-    }, [checkIsSelectedPage, setSelectedPages, updatePage, currentPage]);
+    }, [checkIsSelectedPage, setSelectedPages, getItems, currentPage]);
 
     const paginationLabels = useMemo(
       () => ({

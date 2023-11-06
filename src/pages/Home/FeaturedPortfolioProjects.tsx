@@ -1,4 +1,4 @@
-import React, { FC, useEffect } from "react";
+import React, { FC, useCallback, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useAppDispatch, useAppSelector } from "src/hooks/redux";
 import { getFeaturedPortfolioProjectsAsync } from "src/redux/portfolio/actions";
@@ -26,13 +26,19 @@ export const FeaturedPortfolioProjects: FC = () => {
   const featuredProjects = useAppSelector(selectFeaturedPortfolioProjects);
   // буде змінено, коли напишу власну API
 
-  useEffect(() => {
-    if (!featuredProjects) {
+  const getFeaturedProjects = useCallback(
+    () =>
       dispatch(
         getFeaturedPortfolioProjectsAsync({ limit: PROJECTS_COUNT_LIMIT })
-      );
+      ),
+    [dispatch]
+  );
+
+  useEffect(() => {
+    if (!featuredProjects) {
+      getFeaturedProjects();
     }
-  }, [dispatch, featuredProjects]);
+  }, [getFeaturedProjects, featuredProjects]);
 
   const isDataMissing = !isLoading && !featuredProjects?.length;
 
@@ -53,6 +59,7 @@ export const FeaturedPortfolioProjects: FC = () => {
         className="border-t border-gray-lighter"
         isLoading={isLoading}
         items={featuredProjects}
+        getPortfolioItems={getFeaturedProjects}
         isSlider
       />
     </SectionWrapper>

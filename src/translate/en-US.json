@@ -48,6 +48,10 @@
 
   "swiper-keyboard-control-info - text": "Slider control with navigation keys is available!",
 
+  "data-missing - default-text": "The data could not be retrieved or is missing!",
+  "data-missing - try-again-btn": "Try again",
+  "data-missing - prev-page-btn": "Previous page",
+
   "about-my-self - title": "Hi, I am John, Creative Technologist",
   "about-my-self - description": "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.",
   "about-my-self - view-resume-btn": "View resume",

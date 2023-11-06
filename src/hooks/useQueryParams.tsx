@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from "react";
+import { useCallback } from "react";
 import { useLocation } from "react-router-dom";
 import { useSearchParams } from "react-router-dom";
 
@@ -25,13 +25,12 @@ export const useQueryParams = (initialValues?: InitialValues) => {
 
   const [queryParams, setQueryParams] = useSearchParams();
 
-  const pageQueryParam = Number(queryParams.get(PAGE_QUERY_PARAM_KEY));
-  const limitQueryParam = Number(queryParams.get(LIMIT_QUERY_PARAM_KEY));
-  const offsetQueryParam = Number(queryParams.get(OFFSET_QUERY_PARAM_KEY));
-
-  const [page, setPage] = useState(pageQueryParam || pageInitialValue);
-  const [limit, setLimit] = useState(limitQueryParam || limitInitialValue);
-  const [offset, setOffset] = useState(offsetQueryParam || offsetInitialValue);
+  const page =
+    Number(queryParams.get(PAGE_QUERY_PARAM_KEY)) || pageInitialValue;
+  const limit =
+    Number(queryParams.get(LIMIT_QUERY_PARAM_KEY)) || limitInitialValue;
+  const offset =
+    Number(queryParams.get(OFFSET_QUERY_PARAM_KEY)) || offsetInitialValue;
 
   const setQueryParam: SetQueryParam = useCallback(
     (key, value) => {
@@ -39,6 +38,19 @@ export const useQueryParams = (initialValues?: InitialValues) => {
       setQueryParams(queryParams);
     },
     [setQueryParams, queryParams]
+  );
+
+  const setPage = useCallback(
+    (page: number) => setQueryParam(PAGE_QUERY_PARAM_KEY, page),
+    [setQueryParam]
+  );
+  const setLimit = useCallback(
+    (limit: number) => setQueryParam(LIMIT_QUERY_PARAM_KEY, limit),
+    [setQueryParam]
+  );
+  const setOffset = useCallback(
+    (offset: number) => setQueryParam(OFFSET_QUERY_PARAM_KEY, offset),
+    [setQueryParam]
   );
 
   const createQueryString = useCallback(
@@ -60,24 +72,6 @@ export const useQueryParams = (initialValues?: InitialValues) => {
     },
     [createQueryString, location, limit, offset]
   );
-
-  useEffect(() => {
-    if (page) {
-      setQueryParam(PAGE_QUERY_PARAM_KEY, page);
-    }
-  }, [setQueryParam, page]);
-
-  useEffect(() => {
-    if (limit && limit !== limitInitialValue) {
-      setQueryParam(LIMIT_QUERY_PARAM_KEY, limit);
-    }
-  }, [setQueryParam, limit, limitInitialValue]);
-
-  useEffect(() => {
-    if (offset && offset !== offsetInitialValue) {
-      setQueryParam(OFFSET_QUERY_PARAM_KEY, offset);
-    }
-  }, [setQueryParam, offset, offsetInitialValue]);
 
   return {
     pageInitialValue,
