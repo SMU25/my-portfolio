@@ -8,7 +8,10 @@ import { SectionWrapper } from "src/components/Layouts/SectionWrapper";
 import { Heading } from "src/components/Heading";
 import { TagsHeading } from "src/components/Heading/types";
 import { PATHNAMES } from "src/constants/routes";
+import warning from "src/assets/images/warning.png";
 import { DEFAULT_SECTION_CLASSNAME } from "./constants";
+
+const IMG_WARNING_ALT_TEXT = "warning";
 
 const T_PREFIX = "not-found";
 
@@ -35,12 +38,25 @@ const NotFound: FC = () => {
   return (
     <>
       <BreadCrumbs isShownSecondaryPage={false} />
-      <SectionWrapper className={cn("text-center", DEFAULT_SECTION_CLASSNAME)}>
-        <Heading className="text-red-dark" tagHeading={TagsHeading.H2}>
+      <SectionWrapper
+        className={cn(
+          "flex flex-col items-center text-center",
+          DEFAULT_SECTION_CLASSNAME
+        )}
+      >
+        <img
+          className="w-16 xs:w-24 sm:w-32 h-16 xs:h-24 sm:h-32 mx-auto"
+          src={warning}
+          alt={IMG_WARNING_ALT_TEXT}
+        />
+        <Heading
+          className="my-0 sm:my-3 text-red-medium"
+          tagHeading={TagsHeading.H2}
+        >
           {pageTitle}
         </Heading>
         <Heading
-          className="mt-4 sm:mt-8 default:text-xl sm:!text-4xl"
+          className="default:text-xl sm:!text-3xl"
           tagHeading={TagsHeading.H3}
         >
           {t(`${T_PREFIX} - ${SUBHEADING}`, {

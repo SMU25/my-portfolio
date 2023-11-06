@@ -42,7 +42,7 @@ export const ReCaptcha: FC<Props> = ({
         onloadCallback={onloadCallback}
         verifyCallback={verifyCallback}
       />
-      {/* <Error showError={Boolean(error)}>{error}</Error> */}
+      {/* <Error isShownError={Boolean(error)}>{error}</Error> */}
     </div>
   );
 };

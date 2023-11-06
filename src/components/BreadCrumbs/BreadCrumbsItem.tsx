@@ -1,6 +1,6 @@
 import React, { FC, ReactNode, SVGProps } from "react";
 import cn from "classnames";
-import { ReactComponent as Chevron } from "src/assets/chevron-right.svg";
+import { ReactComponent as Chevron } from "src/assets/icons/chevron-right.svg";
 import { Link } from "../Link";
 
 const ICON_CLASSNAME = "min-w-4 w-4 sm:w-4.5 md:w-5 h-4 sm:h-4.5 md:h-5";

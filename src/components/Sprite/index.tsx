@@ -1,9 +1,9 @@
 import React, { FC } from "react";
+import { IContactItem } from "src/types/contacts";
 import { SpriteItem } from "./SpriteItem";
-import { ISpriteItem } from "./types";
 
 interface Props {
-  items: ISpriteItem[];
+  items: IContactItem[];
 }
 
 export const Sprite: FC<Props> = ({ items }) => (

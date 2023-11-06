@@ -1,1 +1,4 @@
-export const LANGUAGES = [{ language: "ua" }, { language: "en" }];
+export const LANGUAGES = [
+  { key: "uk", title: "укр" },
+  { key: "en", title: "eng" },
+];

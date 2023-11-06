@@ -7,8 +7,6 @@ import { store } from "./redux/store";
 import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
 
-//CHANGE - додати перевірку ,якщо є значення в редаксі, то запит не кидати знову
-
 function App(): ReactElement {
   return (
     <CustomHistoryRouter history={history}>

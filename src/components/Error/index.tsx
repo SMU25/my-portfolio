@@ -8,13 +8,13 @@ const T_PREFIX = "error";
 interface Props {
   children: string | Ii18nInterpolationObject;
   className?: string;
-  showError: boolean;
+  isShownError: boolean;
 }
 
-export const Error: FC<Props> = ({ children, className, showError }) => {
+export const Error: FC<Props> = ({ children, className, isShownError }) => {
   const { t } = useTranslation();
 
-  if (!showError) return null;
+  if (!isShownError) return null;
 
   const errorText =
     typeof children === "string"
@@ -22,7 +22,12 @@ export const Error: FC<Props> = ({ children, className, showError }) => {
       : t(`${T_PREFIX} - ${children.i18nKey}`, children.i18nParams);
 
   return (
-    <div className={cn("absolute -bottom-6 left-4 text-red-dark", className)}>
+    <div
+      className={cn(
+        "absolute -bottom-4 sm:-bottom-5 md:-bottom-6 left-3 md:left-4 text-red-dark text-xs sm:text-sm md:text-base",
+        className
+      )}
+    >
       {errorText}
     </div>
   );

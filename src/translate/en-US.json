@@ -7,11 +7,17 @@
   "form-field - email": "Email",
   "form-field - message": "Message",
 
-  "error - required": "Required",
+  "form-field-placeholder - first-name": "John",
+  "form-field-placeholder - last-name": "Smith",
+  "form-field-placeholder - phone": "+380 98 555 0202",
+  "form-field-placeholder - email": "johnsmith77@gmail.com",
+  "form-field-placeholder - message": "Your message...",
+
+  "error - required": "Required field",
   "error - include-symbol": "Must include special symbol (&,!,etc.)",
   "error - passwords-must-match": "Passwords must match!",
   "error - incorrect-email": "Enter the correct email",
-  "error - incorrect-phone-number": "Must contain only numbers, +()-. and x.",
+  "error - incorrect-phone-number": "Must contain only numbers, + and be in the correct format",
   "error - phone is invalid": "Invalid phone number",
   "error - min-symbols": "Minimum is {{count}} symbols",
   "error - max-symbols": "Maximum is {{count}} symbols",
@@ -26,17 +32,33 @@
   "bread-crumbs - blog": "Blog",
   "bread-crumbs - contacts": "Contacts",
 
+  "modal - ok-btn": "Ok",
+  "modal - yes-btn": "Yes",
+  "modal - confirm-btn": "Confirm",
+  "modal - no-btn": "No",
+  "modal - cancel-btn": "Cancel",
+
+  "pagination - previous-label": "Previous",
+  "pagination - next-label": "Next",
+  "pagination - break-label": "...",
+
   "container-head - view-all-link": "View all",
 
   "skills-and-technologies - title": "Technologies and skills used:",
+
+  "swiper-keyboard-control-info - text": "Slider control with navigation keys is available!",
+
+  "data-missing - default-text": "The data could not be retrieved or is missing!",
+  "data-missing - try-again-btn": "Try again",
+  "data-missing - prev-page-btn": "Previous page",
 
   "about-my-self - title": "Hi, I am John, Creative Technologist",
   "about-my-self - description": "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.",
   "about-my-self - view-resume-btn": "View resume",
 
-  "recent-posts - title": "Recent posts",
+  "featured-portfolio-projects - title": "Featured projects",
 
-  "featured-works - title": "Featured projects",
+  "recent-blog-posts - title": "Recent posts",
 
   "footer - dev-info": "©2023 Developed by Oleksandr Myronchuk",
 
@@ -45,13 +67,17 @@
 
   "portfolio - title": "Portfolio",
 
-  "work-card - view-btn": "View project",
+  "portfolio-items - data-missing-text": "Project data could not be retrieved or is missing!",
 
-  "work-description - title": "Description",
+  "portfolio-card - view-btn": "View project",
 
-  "work-swiper - title": "Project overview",
+  "portfolio-project-description - title": "Description",
+
+  "portfolio-project-swiper - title": "Project overview",
 
   "blog - title": "Blog",
+
+  "blog-items - data-missing-text": "The posts could not be obtained or is missing!",
 
   "blog-card - view-btn": "View post",
 
@@ -59,11 +85,20 @@
 
   "contact-item - phone": "Phone number:",
   "contact-item - email": "E-mail:",
-  "contact-item - linkedin": "Linkedin:",
-  "contact-item - github": "GitHub:",
-  "contact-item - facebook": "Facebook:",
-  "contact-item - instagram": "Instagram:",
+  "contact-item - telegram": "Telegram",
+  "contact-item - linkedin": "Linkedin",
+  "contact-item - github": "GitHub",
+  "contact-item - facebook": "Facebook",
+  "contact-item - instagram": "Instagram",
+  "contact-item - twitter": "Twitter",
 
   "feedback - title": "Feedback",
-  "feedback - send-btn": "Send"
+  "feedback - send-btn": "Send",
+  "feedback - clear-btn": "Clear",
+  "feedback - successful-send-form-modal-title": "Your message has been successfully sent 😎",
+  "feedback - successful-send-form-modal-text": "Do you want to clear the form?",
+  "feedback - error-send-form-modal-title": "Oops... An error occurred while sending the message 😔",
+  "feedback - error-send-form-modal-text": "Please try again!",
+  "feedback - clear-form-modal-title": "Clearing the form",
+  "feedback - clear-form-modal-text": "Are you sure you want to clear the form ?"
 }

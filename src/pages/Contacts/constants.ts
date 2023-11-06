@@ -1,5 +1,7 @@
 import * as yup from "yup";
 import { Input } from "src/components/FormField/Input";
+import { PhoneNumberInput } from "src/components/FormField/PhoneNumberInput";
+import { Textarea } from "src/components/FormField/Textarea";
 import {
   EMAIL_VALIDATION_SCHEMA,
   NAME_VALIDATION_SCHEMA,
@@ -18,50 +20,8 @@ export const SECTIONS = [
   {
     id: 2,
     component: FeedbackForm,
-    className: "bg-blue-lighter pt-22.5 pb-40",
-  },
-];
-
-export const CONTACTS_ITEMS = [
-  {
-    id: 1,
-    title: "phone",
-    linkLabel: "+380 98-032-87-06",
-    link: "tel:380980328706",
-  },
-  {
-    id: 2,
-    title: "email",
-    linkLabel: "smironcuk35@gmail.com",
-    link: "mailto:smironcuk35@gmail.com",
-  },
-  {
-    id: 3,
-    title: "linkedin",
-    linkLabel: "oleksandr-myronchuk",
-    link: "https://www.linkedin.com/in/oleksandr-myronchuk/",
-    isOpenNewTab: true,
-  },
-  {
-    id: 4,
-    title: "github",
-    linkLabel: "SMU25",
-    link: "https://github.com/SMU25",
-    isOpenNewTab: true,
-  },
-  {
-    id: 5,
-    title: "facebook",
-    linkLabel: "Oleksandr Myronchuk",
-    link: "https://www.facebook.com/profile.php?id=100009263917153",
-    isOpenNewTab: true,
-  },
-  {
-    id: 6,
-    title: "instagram",
-    linkLabel: "@sanchos_mironchuk",
-    link: "https://www.instagram.com/sanchos_mironchuk/",
-    isOpenNewTab: true,
+    className:
+      "pt-5 sm:pt-10 md:pt-15 gl:pt-22.5 pb-8 xs:pb-10 sm:pb-20 lg:pb-32 gl:pb-40",
   },
 ];
 
@@ -81,14 +41,20 @@ export const FEEDBACK_FIELDS = [
   {
     name: "phone",
     label: "phone",
-    type: "phone",
-    component: Input,
+    type: "tel",
+    component: PhoneNumberInput,
   },
   {
     name: "email",
     label: "email",
     type: "email",
     component: Input,
+  },
+  {
+    name: "message",
+    label: "message",
+    component: Textarea,
+    containerClassName: "xs:col-span-2",
   },
 ];
 
@@ -97,5 +63,5 @@ export const FEEDBACK_VALIDATION_SCHEMA = yup.object().shape({
   lastName: NAME_VALIDATION_SCHEMA,
   phone: PHONE_VALIDATION_SCHEMA,
   email: EMAIL_VALIDATION_SCHEMA,
-  message: yup.string().required("required"),
+  message: yup.string(),
 });

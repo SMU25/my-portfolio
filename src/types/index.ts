@@ -1,4 +1,10 @@
 export enum ListTypeView {
-  COLUMN = "COLUMN",
-  ROW = "ROW",
+  COLUMN = "column",
+  ROW = "row",
+}
+
+export interface QueryParams {
+  page?: number;
+  limit?: number;
+  offset?: number;
 }

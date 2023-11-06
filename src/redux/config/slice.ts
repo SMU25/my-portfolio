@@ -1,27 +1,29 @@
 import { createSlice } from "@reduxjs/toolkit";
 import Cookies from "js-cookie";
 import {
-  WORK_LIST_TYPE_VIEW_KEY,
-  POST_LIST_TYPE_VIEW_KEY,
+  PORTFOLIO_LIST_TYPE_VIEW_KEY,
+  BLOG_LIST_TYPE_VIEW_KEY,
 } from "src/constants/cookiesKeys";
 import { ListTypeView } from "src/types";
-import { CONFIG_SLICE_NAME } from "./action";
+import { CONFIG_SLICE_NAME } from "./actions";
 import {
-  toggleWorkListTypeReducer,
-  togglePostListTypeReducer,
+  togglePortfolioListTypeReducer,
+  toggleBlogListTypeReducer,
 } from "./reducers";
 
-const COOKIE_WORK_LIST_TYPE_VIEW = Cookies.get(WORK_LIST_TYPE_VIEW_KEY);
-const COOKIE_POST_LIST_TYPE_VIEW = Cookies.get(POST_LIST_TYPE_VIEW_KEY);
+const PORTFOLIO_LIST_TYPE_VIEW_COOKIES = Cookies.get(
+  PORTFOLIO_LIST_TYPE_VIEW_KEY
+);
+const BLOG_LIST_TYPE_VIEW_COOKIES = Cookies.get(BLOG_LIST_TYPE_VIEW_KEY);
 
-interface ConfigState {
-  workListTypeView: ListTypeView;
-  postListTypeView: ListTypeView;
+export interface ConfigState {
+  portfolioListTypeView: ListTypeView;
+  blogListTypeView: ListTypeView;
 }
 
 const initialState: ConfigState = {
-  workListTypeView: COOKIE_WORK_LIST_TYPE_VIEW || ListTypeView.ROW,
-  postListTypeView: COOKIE_POST_LIST_TYPE_VIEW || ListTypeView.COLUMN,
+  portfolioListTypeView: PORTFOLIO_LIST_TYPE_VIEW_COOKIES || ListTypeView.ROW,
+  blogListTypeView: BLOG_LIST_TYPE_VIEW_COOKIES || ListTypeView.COLUMN,
 };
 
 export const { reducer: config } = createSlice({
@@ -29,7 +31,7 @@ export const { reducer: config } = createSlice({
   initialState,
   reducers: {},
   extraReducers(builder) {
-    togglePostListTypeReducer(builder);
-    toggleWorkListTypeReducer(builder);
+    togglePortfolioListTypeReducer(builder);
+    toggleBlogListTypeReducer(builder);
   },
 });

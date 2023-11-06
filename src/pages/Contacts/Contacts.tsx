@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import { usePageTitle } from "src/hooks/usePageTitle";
 import { Heading } from "src/components/Heading";
 import { TagsHeading } from "src/components/Heading/types";
-import { CONTACTS_ITEMS } from "./constants";
+import { CONTACT_ITEMS } from "src/constants/contacts";
 import { ContactItem } from "./ContactItem";
 
 const T_PREFIX = "contacts";
@@ -22,11 +22,11 @@ export const Contacts: FC = () => {
       <Heading className="default:max-w-none" tagHeading={TagsHeading.H2}>
         {pageTitle}
       </Heading>
-      <div className="grid grid-cols-1 md:grid-cols-2">
-        {CONTACTS_ITEMS.map(({ id, ...contact }) => (
+      <ul className="grid grid-cols-1 xs:grid-cols-2 gap-y-2 md:gap-y-5 lg:gap-y-6 gap-x-5 mt-2.5 sm:mt-5 lg:mt-6">
+        {CONTACT_ITEMS.map(({ id, ...contact }) => (
           <ContactItem key={id} {...contact} />
         ))}
-      </div>
+      </ul>
     </>
   );
 };

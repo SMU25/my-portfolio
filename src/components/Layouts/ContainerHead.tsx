@@ -35,14 +35,14 @@ export const ContainerHead: FC<Props> = ({
   return (
     <div className="flex justify-between items-center">
       <Heading
-        className={cn("max-w-1/2 default:leading-15", titleClassName)}
+        className={cn("max-w-6/10 py-4.5 default:leading-6", titleClassName)}
         tagHeading={tagHeading}
       >
         {title}
       </Heading>
       {children}
       {href && (
-        <Link href={href} className="max-w-1/2 ml-10">
+        <Link href={href} className="max-w-4/10 ml-10">
           <Button variant={ButtonVariants.SIMPLE_SECONDARY}>{label}</Button>
         </Link>
       )}

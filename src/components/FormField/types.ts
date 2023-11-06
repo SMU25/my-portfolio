@@ -1,3 +1,3 @@
 export enum TextFieldVariants {
-  PRIMARY = "PRIMARY",
+  PRIMARY = "primary",
 }

@@ -11,7 +11,7 @@ interface Props {
   labelClassName?: string;
   label?: string;
   labelFor: string;
-  showError?: boolean;
+  isShownError?: boolean;
   error?: string;
 }
 
@@ -21,7 +21,7 @@ export const FormField: FC<Props> = ({
   labelClassName,
   label,
   labelFor,
-  showError,
+  isShownError,
   error,
 }) => {
   const { t } = useTranslation();
@@ -31,13 +31,16 @@ export const FormField: FC<Props> = ({
       {Boolean(label) && (
         <label
           htmlFor={labelFor}
-          className={cn("ml-4 text-xl leading-7", labelClassName)}
+          className={cn(
+            "ml-3 md:ml-4 sm:text-lg md:text-xl leading-5 sm:leading-6 md:leading-7",
+            labelClassName
+          )}
         >
           {t(`${T_PREFIX} - ${label}`)}
         </label>
       )}
       {children}
-      <Error showError={showError}>{error}</Error>
+      <Error isShownError={isShownError}>{error}</Error>
     </div>
   );
 };

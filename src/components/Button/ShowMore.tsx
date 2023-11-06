@@ -1,8 +1,9 @@
 import React, { FC } from "react";
+import cn from "classnames";
 import { useTranslation } from "react-i18next";
 import { Loader } from "src/components/Loader";
 import { Sizes } from "src/types/sizes";
-import { ReactComponent as ArrowRotate } from "src/assets/arrow-rotate.svg";
+import { ReactComponent as ArrowRotate } from "src/assets/icons/arrow-rotate.svg";
 import { Button } from ".";
 import { ButtonVariants } from "./types";
 import { T_PREFIX } from "./constants";
@@ -16,7 +17,7 @@ interface Props {
   isLoading?: boolean;
   isDisabled?: boolean;
   buttonTitle?: string;
-  buttonTitleCountLabel: number;
+  loadableItemCountLabel: number;
   onClick?: VoidFunction;
 }
 
@@ -25,32 +26,34 @@ export const ShowMore: FC<Props> = ({
   isLoading,
   isDisabled,
   buttonTitle,
-  buttonTitleCountLabel,
+  loadableItemCountLabel,
   onClick,
 }) => {
   const { t } = useTranslation();
 
   const title =
     buttonTitle ||
-    t(`${T_PREFIX} - ${DEFAULT_BUTTON_NAME}`, { count: buttonTitleCountLabel });
+    t(`${T_PREFIX} - ${DEFAULT_BUTTON_NAME}`, {
+      count: loadableItemCountLabel,
+    });
 
   return (
     <Button
-      className="flex items-center px-10 hover:underline hover:brightness-100"
+      className="flex items-center bg-white px-5 sm:px-10 font-medium rounded-10 shadow-card-hard-gray hover:bg-gray-lighter hover:!text-blue-dark hover:underline hover:underline-offset-4 hover:!brightness-100 disabled:!text-white disabled:no-underline"
       variant={variant}
-      isDisabled={isDisabled}
+      isDisabled={isDisabled || isLoading}
       onClick={onClick}
     >
       {isLoading ? (
         <Loader size={Sizes.S} />
       ) : (
         <ArrowRotate
-          className="rotate-12"
+          className={cn("rotate-12", { "fill-g-white": isDisabled })}
           width={ARROW_ROTATE_ICON_SIZE}
           height={ARROW_ROTATE_ICON_SIZE}
         />
       )}
-      <span className="ml-4 hover:text-blue-dark">{title}</span>
+      <span className="ml-4">{title}</span>
     </Button>
   );
 };

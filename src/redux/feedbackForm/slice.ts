@@ -1,13 +1,15 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { FEEDBACK_FORM_SLICE_NAME } from "./action";
+import { FEEDBACK_FORM_SLICE_NAME } from "./actions";
 import { sendFeedbackFormReducer } from "./reducers";
 
-interface FeedbackFormState {
+export interface FeedbackFormState {
   isLoading: boolean;
+  success: boolean;
 }
 
 const initialState: FeedbackFormState = {
   isLoading: false,
+  success: null,
 };
 
 export const { reducer: feedbackForm } = createSlice({

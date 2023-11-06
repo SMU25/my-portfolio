@@ -1,5 +1,8 @@
 export const getTruncateString = (
   str: string,
-  maxCountSymbols: number
-): string =>
-  str?.length > maxCountSymbols ? `${str.slice(0, maxCountSymbols)}...` : str;
+  maxLength: number,
+  isDisabled?: boolean
+) =>
+  !isDisabled && str?.length > maxLength
+    ? `${str.slice(0, maxLength)}...`
+    : str;

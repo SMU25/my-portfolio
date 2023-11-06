@@ -10,7 +10,7 @@ export const resources = {
   en: {
     translation: en,
   },
-  ua: {
+  uk: {
     translation: uk,
   },
 } as const;
@@ -24,9 +24,7 @@ i18n
     interpolation: {
       escapeValue: false,
     },
-
-    //CHANGE - del on prod.
-    debug: true,
+    debug: process.env.NODE_ENV === "development",
   });
 
 export default i18n;

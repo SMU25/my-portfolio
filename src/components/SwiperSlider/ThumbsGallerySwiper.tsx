@@ -1,23 +1,30 @@
-import React, { FC, useState, useEffect } from "react";
+import React, { FC, useState } from "react";
+import cn from "classnames";
 import SwiperCore from "swiper";
 import { SwiperProps } from "swiper/react";
 import "swiper/css/thumbs";
 import "swiper/css/free-mode";
+import { KeyboardInfoPopup } from "./KeyboardInfoPopup";
 import { CustomSwiperProps, SwiperSlider } from ".";
 import {
-  DEFAULT_SETTINGS_GALLERY_MAIN_SWIPER,
-  DEFAULT_SETTINGS_GALLERY_THUMBS_SWIPER,
+  DEFAULT_GALLERY_MAIN_SWIPER_SETTINGS,
+  DEFAULT_GALLERY_THUMBS_SWIPER_SETTINGS,
 } from "./constants";
 import { setActiveIndex } from "./types";
+
+const COOKIES_KEY_KEYBOARD_POPUP = "IS_SHOWN_KEYBOARD_INFO_GALLERY_POPUP";
 
 export const THUMBS_MAIN_SWIPER_ID = "main-swiper";
 
 interface Props
-  extends Pick<CustomSwiperProps, "items" | "containerClassName"> {
+  extends Pick<
+    CustomSwiperProps,
+    "items" | "containerClassName" | "isShownKeyboardInfoPopup"
+  > {
   mainSwiperClassName?: string;
   miniSwiperClassName?: string;
-  customSettingsMainSwiper?: SwiperProps;
-  customSettingsThumbsSwiper?: SwiperProps;
+  customMainSwiperSettings?: SwiperProps;
+  customThumbsSwiperSettings?: SwiperProps;
   isShownNavBtnsMainSwiper?: boolean;
   isShownNavBtnsThumbsSwiper?: boolean;
   setActiveSlideIndex?: setActiveIndex;
@@ -28,22 +35,23 @@ export const ThumbsGallerySwiper: FC<Props> = ({
   containerClassName,
   mainSwiperClassName,
   miniSwiperClassName,
-  customSettingsMainSwiper,
-  customSettingsThumbsSwiper,
+  customMainSwiperSettings,
+  customThumbsSwiperSettings,
   isShownNavBtnsMainSwiper,
   isShownNavBtnsThumbsSwiper,
+  isShownKeyboardInfoPopup,
   setActiveSlideIndex,
 }) => {
   const [mainSwiper, setMainSwiper] = useState<SwiperCore>();
   const [thumbsSwiper, setThumbsSwiper] = useState<SwiperCore>();
 
   const settingsMainSwiper =
-    customSettingsMainSwiper || DEFAULT_SETTINGS_GALLERY_MAIN_SWIPER;
+    customMainSwiperSettings || DEFAULT_GALLERY_MAIN_SWIPER_SETTINGS;
   const settingsThumbsSwiper =
-    customSettingsThumbsSwiper || DEFAULT_SETTINGS_GALLERY_THUMBS_SWIPER;
+    customThumbsSwiperSettings || DEFAULT_GALLERY_THUMBS_SWIPER_SETTINGS;
 
   return (
-    <div className={containerClassName}>
+    <div className={cn("relative", containerClassName)}>
       <SwiperSlider
         id={THUMBS_MAIN_SWIPER_ID}
         className={mainSwiperClassName}
@@ -65,6 +73,11 @@ export const ThumbsGallerySwiper: FC<Props> = ({
         items={items}
         customSettings={settingsThumbsSwiper}
         onSwiper={setThumbsSwiper}
+      />
+      <KeyboardInfoPopup
+        className="!top-70"
+        isShown={isShownKeyboardInfoPopup}
+        cookiesKeyPopup={COOKIES_KEY_KEYBOARD_POPUP}
       />
     </div>
   );

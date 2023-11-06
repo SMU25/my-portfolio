@@ -1,15 +1,15 @@
-import { combineReducers, configureStore } from "@reduxjs/toolkit";
-import { posts } from "./posts/slice";
-import { works } from "./works/slice";
-import { feedbackForm } from "./feedbackForm/slice";
+import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import { config } from "./config/slice";
+import { portfolio } from "./portfolio/slice";
+import { blog } from "./blog/slice";
+import { feedbackForm } from "./feedbackForm/slice";
 
 export const store = configureStore({
   reducer: combineReducers({
-    posts,
-    works,
-    feedbackForm,
     config,
+    portfolio,
+    blog,
+    feedbackForm,
   }),
 });
 

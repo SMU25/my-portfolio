@@ -4,9 +4,9 @@ import {
   NotFound,
   Home,
   Blog,
-  Post,
+  BlogPost,
   Portfolio,
-  Work,
+  PortfolioProject,
   Contacts,
 } from "src/pages";
 import { PATHNAMES } from "src/constants/routes";
@@ -25,7 +25,7 @@ const ROUTES = [
     path: PATHNAMES.PORTFOLIO,
   },
   {
-    element: <Work />,
+    element: <PortfolioProject />,
     path: PATHNAMES.PORTFOLIO_WORK,
   },
   {
@@ -33,7 +33,7 @@ const ROUTES = [
     path: PATHNAMES.BLOG,
   },
   {
-    element: <Post />,
+    element: <BlogPost />,
     path: PATHNAMES.BLOG_POST,
   },
   {

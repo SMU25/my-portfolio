@@ -7,3 +7,8 @@ export const selectIsLoading = createSelector(
   selectFeedbackFormState,
   (feedbackFormState) => feedbackFormState.isLoading
 );
+
+export const selectSuccess = createSelector(
+  selectFeedbackFormState,
+  (feedbackFormState) => feedbackFormState.success
+);
